@@ -10,6 +10,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.HealthyLife">
         <activity
+            android:name=".fragments.mainfragments.Diet.TypicalDiets"
+            android:exported="true" />
+        <activity
+            android:name=".fragments.mainfragments.Diet.DietEvaluation"
+            android:exported="true" />
+        <activity
+            android:name=".fragments.mainfragments.Diet.DietPlan"
+            android:exported="true" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
