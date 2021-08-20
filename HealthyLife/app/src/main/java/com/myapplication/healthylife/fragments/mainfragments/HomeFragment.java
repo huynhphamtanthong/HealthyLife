@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -36,6 +37,7 @@ public class HomeFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 AppPrefs.getInstance(getContext()).edit().putBoolean("isLogout", true).apply();
+                Log.d("DEBUG", "logout: "+AppPrefs.getInstance(getContext()).getBoolean("isLogout", false));
                 navController.navigate(R.id.action_mainFragment_to_firstUseFragment);
             }
         });

@@ -34,6 +34,7 @@ public class FirstUseFragment extends Fragment {
     private FragmentFirstUseBinding binding;
     private NavController navController;
     private SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+    private SharedPreferences sharedPreferences = AppPrefs.getInstance(getContext());
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -68,7 +69,8 @@ public class FirstUseFragment extends Fragment {
                                     Float.valueOf(binding.etHeight.getText().toString()),
                                     Float.valueOf(binding.etWeight.getText().toString()));
                             user.setBmi(user.getWeight()/Math.pow(user.getHeight()/100, 2));
-                            AppPrefs.getInstance(getContext()).edit().putString("user", new Gson().toJson(user)).apply();
+                            sharedPreferences.edit().putBoolean("isLogout", false).apply();
+                            sharedPreferences.edit().putString("user", new Gson().toJson(user)).apply();
                             navController.navigate(R.id.action_firstUseFragment_to_mainFragment);
                         }else   {
                             binding.etWeight.requestFocus();

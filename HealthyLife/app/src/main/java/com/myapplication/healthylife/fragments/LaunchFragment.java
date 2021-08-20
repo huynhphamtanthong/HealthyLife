@@ -1,5 +1,6 @@
 package com.myapplication.healthylife.fragments;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -10,6 +11,7 @@ import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 
 import android.os.CountDownTimer;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,6 +25,7 @@ public class LaunchFragment extends Fragment {
     private FragmentLaunchBinding binding;
     private Boolean newLogin = true, isLogout = false;
     private NavController navController;
+    private SharedPreferences sharedPreferences = AppPrefs.getInstance(getContext());
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -35,10 +38,10 @@ public class LaunchFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        CountDownTimer countDownTimer = new CountDownTimer(1000, 500) {
+        CountDownTimer countDownTimer = new CountDownTimer(1000, 1000) {
             @Override
             public void onTick(long l) {
-                isLogout = AppPrefs.getInstance(getContext()).getBoolean("isLogout", false);
+                isLogout = sharedPreferences.getBoolean("isLogout", false);
                 if(!isLogout)    {
                     newLogin = false;
                 }
