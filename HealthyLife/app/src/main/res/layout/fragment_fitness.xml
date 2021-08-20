@@ -7,20 +7,6 @@
     android:weightSum="10"
     tools:context=".fragments.mainfragments.FitnessFragment">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="0.5">
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:fontFamily="@font/custom_front"
-            android:gravity="center"
-            android:text="Reccomended"
-            android:textSize="20dp"
-            android:textStyle="bold" />
-    </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -33,10 +19,11 @@
             android:layout_height="match_parent"
             android:layout_weight="2"
             android:fontFamily="@font/custom_front"
-            android:gravity="center"
+            android:gravity="left|center_vertical"
             android:text="Exercise Information"
             android:textSize="17dp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:paddingStart="12dp"/>
 
         <TextView
             android:layout_width="match_parent"
@@ -52,7 +39,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="4"
+        android:layout_weight="9.5"
         android:padding="10dp">
 
         <androidx.recyclerview.widget.RecyclerView
@@ -61,57 +48,5 @@
             android:layout_height="match_parent" />
     </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="0.5">
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:fontFamily="@font/custom_front"
-            android:gravity="center"
-            android:text="Others"
-            android:textSize="20dp"
-            android:textStyle="bold" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="0.5"
-        android:orientation="horizontal">
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="2"
-            android:fontFamily="@font/custom_front"
-            android:gravity="center"
-            android:text="Exercise Information"
-            android:textSize="17dp"
-            android:textStyle="bold" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="8"
-            android:fontFamily="@font/custom_front"
-            android:gravity="center"
-            android:text="Finished"
-            android:textSize="17dp"
-            android:textStyle="bold" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="4"
-        android:padding="10dp">
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/othersRecView"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
-    </LinearLayout>
 </LinearLayout>

@@ -2,6 +2,8 @@ package com.myapplication.healthylife.fragments.firstusefragment;
 
 import static android.content.Context.INPUT_METHOD_SERVICE;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -17,20 +19,29 @@ import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Toast;
 
+import com.google.gson.Gson;
 import com.myapplication.healthylife.R;
 import com.myapplication.healthylife.databinding.FragmentFirstUseBinding;
+import com.myapplication.healthylife.local.AppPrefs;
+import com.myapplication.healthylife.model.User;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class FirstUseFragment extends Fragment {
     private FragmentFirstUseBinding binding;
     private NavController navController;
+    private SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        Date date = new Date();
+        String now = sdf.format(date);
         binding = FragmentFirstUseBinding.inflate(getLayoutInflater());
+        AppPrefs.getInstance(getContext()).edit().putString("date", now).apply();
         return binding.getRoot();
     }
 
@@ -47,8 +58,17 @@ public class FirstUseFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 if(!binding.etName.getText().toString().equals("") && validateString(binding.etName.getText().toString())) {
-                    if (!binding.etHeight.getText().toString().equals("") && validateFloat(binding.etHeight.getText().toString()))    {
-                        if (!binding.etWeight.getText().toString().equals("")&& validateFloat(binding.etWeight.getText().toString()))    {
+                    if (!binding.etHeight.getText().toString().equals("")
+                            && validateFloat(binding.etHeight.getText().toString())
+                            && (Float.valueOf(binding.etHeight.getText().toString()) >= 10  && Float.valueOf(binding.etHeight.getText().toString()) <= 300))    {
+                        if (!binding.etWeight.getText().toString().equals("")
+                                && validateFloat(binding.etWeight.getText().toString())
+                                && (Float.valueOf(binding.etWeight.getText().toString()) >= 1 && Float.valueOf(binding.etWeight.getText().toString()) <= 600))    {
+                            User user = new User(binding.etName.getText().toString(),
+                                    Float.valueOf(binding.etHeight.getText().toString()),
+                                    Float.valueOf(binding.etWeight.getText().toString()));
+                            user.setBmi(user.getWeight()/Math.pow(user.getHeight()/100, 2));
+                            AppPrefs.getInstance(getContext()).edit().putString("user", new Gson().toJson(user)).apply();
                             navController.navigate(R.id.action_firstUseFragment_to_mainFragment);
                         }else   {
                             binding.etWeight.requestFocus();
