@@ -1,66 +1,145 @@
 package com.myapplication.healthylife.fragments.mainfragments;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.google.gson.Gson;
 import com.myapplication.healthylife.R;
+import com.myapplication.healthylife.databinding.FragmentFitnessBinding;
+import com.myapplication.healthylife.local.AppPrefs;
+import com.myapplication.healthylife.local.DatabaseHelper;
+import com.myapplication.healthylife.model.Exercise;
+import com.myapplication.healthylife.model.User;
+import com.myapplication.healthylife.recycleviewadapters.ExerciseRecViewAdapter;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link FitnessFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
+import java.util.ArrayList;
+
 public class FitnessFragment extends Fragment {
-
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
-
-    public FitnessFragment() {
-        // Required empty public constructor
-    }
-
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment FitnessFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static FitnessFragment newInstance(String param1, String param2) {
-        FitnessFragment fragment = new FitnessFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
-    }
+    private FragmentFitnessBinding binding;
+    private ArrayList<Exercise> exercises = new ArrayList<>();
+    private ExerciseRecViewAdapter exerciseRecViewAdapter;
+    private User user;
+    private DatabaseHelper db;
+    private ArrayList<Exercise> list = new ArrayList<>();
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_fitness, container, false);
+        db = new DatabaseHelper(getContext());
+        binding = FragmentFitnessBinding.inflate(getLayoutInflater());
+        String data = AppPrefs.getInstance(getContext()).getString("user", null);
+        user = new Gson().fromJson(data, User.class);
+        return binding.getRoot();
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        initData();
+        initRecycleViews();
+    }
+
+    private void initRecycleViews() {
+        list = getListOfExercises(exercises);
+        exerciseRecViewAdapter = new ExerciseRecViewAdapter();
+        exerciseRecViewAdapter.setExercises(list);
+        binding.recommendedRecView.setAdapter(exerciseRecViewAdapter);
+        binding.recommendedRecView.setLayoutManager(new LinearLayoutManager(getContext()));
+    }
+
+    private void initData() {
+        exercises.add(new Exercise(-1,"A", "BBB", 1, R.mipmap.ic_launcher, new int[]{1, 2, 3}));
+        exercises.add(new Exercise(-1,"B", "BBB", 1, R.mipmap.ic_launcher, new int[]{ 5}));
+        exercises.add(new Exercise(-1,"C", "BBB", 1, R.mipmap.ic_launcher, new int[]{1, 5}));
+        exercises.add(new Exercise(-1,"D", "BBB", 1, R.mipmap.ic_launcher, new int[]{2}));
+        exercises.add(new Exercise(-1,"E", "BBB", 1, R.mipmap.ic_launcher, new int[]{1}));
+        exercises.add(new Exercise(-1,"F", "BBB", 1, R.mipmap.ic_launcher, new int[]{4}));
+        exercises.add(new Exercise(-1,"G", "BBB", 1, R.mipmap.ic_launcher, new int[]{1, 2, 4, 5}));
+        exercises.add(new Exercise(-1,"H", "BBB", 1, R.mipmap.ic_launcher, new int[]{1}));
+        exercises.add(new Exercise(-1,"I", "BBB", 1, R.mipmap.ic_launcher, new int[]{4, 2}));
+        exercises.add(new Exercise(-1,"J", "BBB", 1, R.mipmap.ic_launcher, new int[]{4}));
+        exercises.add(new Exercise(-1,"K", "BBB", 1, R.mipmap.ic_launcher, new int[]{ 2, 5}));
+        exercises.add(new Exercise(-1,"L", "BBB", 1, R.mipmap.ic_launcher, new int[]{1, 2, 4}));
+        exercises.add(new Exercise(-1,"M", "BBB", 1, R.mipmap.ic_launcher, new int[]{1}));
+        exercises.add(new Exercise(-1,"N", "BBB", 1, R.mipmap.ic_launcher, new int[]{2}));
+        exercises.add(new Exercise(-1,"O", "BBB", 1, R.mipmap.ic_launcher, new int[]{1}));
+        exercises.add(new Exercise(-1,"P", "BBB", 1, R.mipmap.ic_launcher, new int[]{2, 5}));
+    }
+
+    private ArrayList<Exercise> getListOfExercises(ArrayList<Exercise> exercise)    {
+        boolean startRecommended = false;
+        boolean startOthers = false;
+        ArrayList<Exercise> result = new ArrayList<>();
+        int type;
+        double bmi = user.getBmi();
+        if (bmi >= 30) {
+            type = 5;
+        }else if(bmi >= 25 && bmi <= 29.9) {
+            type = 4;
+        }else if(bmi >= 23 && bmi <= 24.9)  {
+            type = 3;
+        }else if(bmi >= 18.5 && bmi <= 22.9)    {
+            type = 2;
+        }else   {
+            type = 1;
+        }
+
+        //add recommended ex
+        for (Exercise ex: exercise)    {
+            for (int i: ex.getTypes())  {
+                if (i == type && !startRecommended)  {
+                    ex.setFirst(true);
+                    ex.setRecommended(true);
+                    result.add(ex);
+                    startRecommended = true;
+                    break;
+                }else if(i == type && startRecommended) {
+                    ex.setRecommended(true);
+                    result.add(ex);
+                    break;
+                }
+            }
+        }
+
+        boolean isOthers = true;
+        for (Exercise ex: exercise)    {
+            isOthers = true;
+            for (int i: ex.getTypes()) {
+               if(i == type)    {
+                   isOthers = false;
+               }
+            }
+            if (isOthers && !startOthers) {
+                ex.setFirst(true);
+                ex.setOthers(true);
+                result.add(ex);
+                startOthers = true;
+            } else if (isOthers && startOthers) {
+                ex.setOthers(true);
+                result.add(ex);
+            }
+        }
+
+        return result;
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        for (Exercise ex: list
+             ) {
+            db.add(ex);
+        }
     }
 }
