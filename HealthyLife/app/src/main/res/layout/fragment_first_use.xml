@@ -12,31 +12,32 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dp"
         android:layout_marginBottom="30dp"
         android:fontFamily="@font/custom_front"
         android:text="Healthy Life"
         android:textColor="@android:color/white"
         android:textSize="50sp"
-        android:textStyle="bold"
-        android:layout_marginTop="50dp"/>
+        android:textStyle="bold" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_centerInParent="true">
+        android:layout_centerInParent="true"
+        android:orientation="vertical">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:fontFamily="@font/custom_front"
             android:text="Your Name"
+            android:textColor="@android:color/white"
             android:textSize="25sp"
-            android:textStyle="bold"
-            android:layout_gravity="center"
-            android:fontFamily="@font/custom_front"
-            android:textColor="@android:color/white"/>
+            android:textStyle="bold" />
 
         <EditText
+            android:id="@+id/etName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="40dp"
@@ -44,49 +45,48 @@
             android:fontFamily="@font/custom_front"
             android:padding="10dp"
             android:textColor="@android:color/black"
-            android:textSize="20sp"
-            android:id="@+id/etName"/>
+            android:textSize="20sp" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:fontFamily="@font/custom_front"
             android:text="Your Height"
+            android:textColor="@android:color/white"
             android:textSize="25sp"
-            android:textStyle="bold"
-            android:layout_gravity="center"
-            android:fontFamily="@font/custom_front"
-            android:textColor="@android:color/white"/>
+            android:textStyle="bold" />
 
         <EditText
+            android:id="@+id/etHeight"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="20sp"
             android:layout_marginBottom="40dp"
-            android:fontFamily="@font/custom_front"
-            android:textColor="@android:color/black"
             android:background="@drawable/custom_edittext"
+            android:fontFamily="@font/custom_front"
             android:padding="10dp"
-            android:id="@+id/etHeight"/>
+            android:textColor="@android:color/black"
+            android:textSize="20sp" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Your Weight"
-            android:textSize="25sp"
-            android:textStyle="bold"
             android:layout_gravity="center"
             android:fontFamily="@font/custom_front"
-            android:textColor="@android:color/white"/>
+            android:text="Your Weight"
+            android:textColor="@android:color/white"
+            android:textSize="25sp"
+            android:textStyle="bold" />
 
         <EditText
+            android:id="@+id/etWeight"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="20sp"
-            android:fontFamily="@font/custom_front"
-            android:textColor="@android:color/black"
             android:background="@drawable/custom_edittext"
+            android:fontFamily="@font/custom_front"
             android:padding="10dp"
-            android:id="@+id/etWeight"/>
+            android:textColor="@android:color/black"
+            android:textSize="20sp" />
     </LinearLayout>
 
     <Button
