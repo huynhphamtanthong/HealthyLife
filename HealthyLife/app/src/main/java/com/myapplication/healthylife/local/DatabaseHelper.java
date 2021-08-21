@@ -27,6 +27,7 @@ public class DatabaseHelper extends SQLiteOpenHelper{
     public static final String ISFIRST = "ISFIRST";
     public static final String TYPES = "TYPES";
     public static final String EXERCISES = "EXERCISESS";
+    public static final String ISDIETFFIRST="ISDIETFIRST";
 
 
     public DatabaseHelper(Context context) {
@@ -46,7 +47,8 @@ public class DatabaseHelper extends SQLiteOpenHelper{
                 + ISRECOMMENDED + " INTEGER, "
                 + ISOTHERS + " INTEGER, "
                 + ISFIRST + " INTEGER, "
-                + TYPES + " VARCHAR(150) )"
+                + TYPES + " VARCHAR(150), "
+                +ISDIETFFIRST +"INTEGER )"
         );
 
     }
@@ -100,7 +102,7 @@ public class DatabaseHelper extends SQLiteOpenHelper{
                 boolean isRecommended = cursor.getInt(7) == 0 ? false:true;
                 boolean isOthers = cursor.getInt(8) == 0 ? false:true;
                 boolean isFirst = cursor.getInt(9) == 0 ? false:true;
-
+                boolean isDietFirst = cursor.getInt(10) == 0 ? false:true;
                 String temp = cursor.getString(10);;
                 String[] arr = temp.split(",");
                 int[] types = new int[arr.length];
