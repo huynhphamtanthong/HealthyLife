@@ -23,9 +23,11 @@ import com.google.gson.Gson;
 import com.myapplication.healthylife.R;
 import com.myapplication.healthylife.databinding.FragmentFirstUseBinding;
 import com.myapplication.healthylife.local.AppPrefs;
+import com.myapplication.healthylife.model.Exercise;
 import com.myapplication.healthylife.model.User;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -35,6 +37,7 @@ public class FirstUseFragment extends Fragment {
     private NavController navController;
     private SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
     private SharedPreferences sharedPreferences = AppPrefs.getInstance(getContext());
+    private ArrayList<Exercise> exercises = new ArrayList<>();
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -107,6 +110,25 @@ public class FirstUseFragment extends Fragment {
             return true;
         }
         return false;
+    }
+
+    private void initDataForNewUser() {
+        exercises.add(new Exercise(-1,"A", "BBB", 1, R.mipmap.ic_launcher, new int[]{1, 2, 3}));
+        exercises.add(new Exercise(-1,"B", "BBB", 1, R.mipmap.ic_launcher, new int[]{ 5}));
+        exercises.add(new Exercise(-1,"C", "BBB", 1, R.mipmap.ic_launcher, new int[]{1, 5}));
+        exercises.add(new Exercise(-1,"D", "BBB", 1, R.mipmap.ic_launcher, new int[]{2}));
+        exercises.add(new Exercise(-1,"E", "BBB", 1, R.mipmap.ic_launcher, new int[]{1}));
+        exercises.add(new Exercise(-1,"F", "BBB", 1, R.mipmap.ic_launcher, new int[]{4}));
+        exercises.add(new Exercise(-1,"G", "BBB", 1, R.mipmap.ic_launcher, new int[]{1, 2, 4, 5}));
+        exercises.add(new Exercise(-1,"H", "BBB", 1, R.mipmap.ic_launcher, new int[]{1}));
+        exercises.add(new Exercise(-1,"I", "BBB", 1, R.mipmap.ic_launcher, new int[]{4, 2}));
+        exercises.add(new Exercise(-1,"J", "BBB", 1, R.mipmap.ic_launcher, new int[]{4}));
+        exercises.add(new Exercise(-1,"K", "BBB", 1, R.mipmap.ic_launcher, new int[]{ 2, 5}));
+        exercises.add(new Exercise(-1,"L", "BBB", 1, R.mipmap.ic_launcher, new int[]{1, 2, 4}));
+        exercises.add(new Exercise(-1,"M", "BBB", 1, R.mipmap.ic_launcher, new int[]{1}));
+        exercises.add(new Exercise(-1,"N", "BBB", 1, R.mipmap.ic_launcher, new int[]{2}));
+        exercises.add(new Exercise(-1,"O", "BBB", 1, R.mipmap.ic_launcher, new int[]{1}));
+        exercises.add(new Exercise(-1,"P", "BBB", 1, R.mipmap.ic_launcher, new int[]{2, 5}));
     }
 
     @Override
