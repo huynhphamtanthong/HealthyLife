@@ -19,17 +19,19 @@ import android.view.ViewGroup;
 import com.myapplication.healthylife.R;
 import com.myapplication.healthylife.databinding.FragmentLaunchBinding;
 import com.myapplication.healthylife.local.AppPrefs;
+import com.myapplication.healthylife.model.User;
 
 public class LaunchFragment extends Fragment {
 
     private FragmentLaunchBinding binding;
     private Boolean newLogin = true, isLogout = false;
     private NavController navController;
-    private SharedPreferences sharedPreferences = AppPrefs.getInstance(getContext());
+    private SharedPreferences sharedPreferences;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        sharedPreferences = AppPrefs.getInstance(getContext());
         binding = FragmentLaunchBinding.inflate(getLayoutInflater());
         return binding.getRoot();
     }
@@ -41,9 +43,12 @@ public class LaunchFragment extends Fragment {
         CountDownTimer countDownTimer = new CountDownTimer(1000, 1000) {
             @Override
             public void onTick(long l) {
-                isLogout = sharedPreferences.getBoolean("isLogout", false);
-                if(!isLogout)    {
-                    newLogin = false;
+                String data = sharedPreferences.getString("user", null);
+                if (data != null) {
+                    isLogout = sharedPreferences.getBoolean("isLogout", false);
+                    if(!isLogout)    {
+                        newLogin = false;
+                    }
                 }
             }
             @Override

@@ -1,9 +1,15 @@
 package com.myapplication.healthylife.model;
 
+import android.os.Parcelable;
+
+import androidx.versionedparcelable.VersionedParcelize;
+
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-public class Exercise {
+
+public class Exercise implements Serializable {
     private int id;
     private String name;
     private String level;
@@ -36,7 +42,7 @@ public class Exercise {
         this.tutorial = tutorial;
     }
 
-    public Exercise(int id, String name, String level, int duration, int progress, int image, boolean isFinished, boolean isRecommended, boolean isOthers, boolean isFirst, int[] types) {
+    public Exercise(int id, String name, String level, int duration, int progress, int image, boolean isFinished, boolean isRecommended, boolean isOthers, boolean isFirst, int[] types, int video, String description, String tutorial) {
         this.id = id;
         this.name = name;
         this.level = level;
