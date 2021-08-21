@@ -53,9 +53,9 @@ public class DatabaseHelper extends SQLiteOpenHelper{
                 + ISOTHERS + " INTEGER, "
                 + ISFIRST + " INTEGER, "
                 + VIDEO + " INTEGER, "
-                + DESCRIPTION + " VARCHAR(1000), "
+                + DESCRIPTION + " NVARCHAR(1000), "
                 + TUTORIAL + " NVARCHAR(1000), "
-                + EQUIPMENT + " VARCHAR(150),"
+                + EQUIPMENT + " NVARCHAR(150),"
                 + TYPES + " VARCHAR(20) )"
                 // + TYPES + " VARCHAR(150), "
                 // +ISDIETFFIRST +"INTEGER )"
@@ -133,7 +133,7 @@ public class DatabaseHelper extends SQLiteOpenHelper{
                 String equipment = cursor.getString(13);
 
                 // boolean isDietFirst = cursor.getInt(10) == 0 ? false:true;
-                String temp = cursor.getString(10);;
+                String temp = cursor.getString(14);;
                 String[] arr = temp.split(",");
                 int[] types = new int[arr.length];
                 int count = 0;

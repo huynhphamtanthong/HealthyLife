@@ -129,67 +129,67 @@ public class FirstUseFragment extends Fragment {
     private void initData() {
         exercises.add(new Exercise(-1,"Bridge", "Easy", 90, R.drawable.bridge, new int[]{1, 5}, R.raw.bridge,
                 "Đây là nhóm động tác kích thích cơ toàn thân và vùng cơ lưng phía sau cơ thể, nhìn trông giống như 1 cây cầy. Động tác này được xem là cách để khởi động và làm nóng cơ thể khá hoàn hảo",
-                "Nằm ngửa lưng trên sàn, hai gối gập lại, lòng bàn chân để trên sàn, hai tay duỗi thẳng 2 bên hông.@Dùng lực bàn chân và gồng cơ toàn thân, nâng người lên khỏi sàn cho tới khi nào hông duỗi thẳng hoàn toàn, siết cứng cơ mông.@Từ từ hạ xuống và lặp lại.@- 15-20 lần/hiệp.@- 3 hiệp/bài.@- 10 giây nghỉ giữa các hiệp.@- Nghỉ 1 phút để chuyển sang bài tập khác.",
+                "Nằm ngửa lưng trên sàn, hai gối gập lại, lòng bàn chân để trên sàn, hai tay duỗi thẳng 2 bên hông.\nDùng lực bàn chân và gồng cơ toàn thân, nâng người lên khỏi sàn cho tới khi nào hông duỗi thẳng hoàn toàn, siết cứng cơ mông.\nTừ từ hạ xuống và lặp lại.\n- 15-20 lần/hiệp.\n- 3 hiệp/bài.\n- 10 giây nghỉ giữa các hiệp.\n- Nghỉ 1 phút để chuyển sang bài tập khác.",
                 "Không có"));
 
         exercises.add(new Exercise(-1,"Chair Squat", "Moderate", 90, R.drawable.chairsquat, new int[]{2, 3}, R.raw.chairsquat,
                 "Squat để tăng cường độ khoẻ cho đôi chân, mông và cơ toàn thân của bạn. Đây là 1 động tác có thể thực hiện ở bất kỳ nơi nào, chỉ cần đặt 1 ghế ngồi ngay phía sau để đảm bảo bạn tập đúng tư thế.",
-                "Đứng phía trước ghế, hai chân bằng vai, mũi chân hơi hướng ra 2 bên.@Gập người ở hông và khuỵu gối xuống, hạ người về sau và hướng xuống, cho tới khi mông hơi chạm vào ghế, duỗi thẳng 2 tay ra phía trước.@Dùng lực gót chân, đẩy người đúng dậy và quay trở lại vị trí ban đầu.@- 10-15 lần/hiệp.@- 3 hiệp/bài.@- 10 giây nghỉ giữa các hiệp.@- Nghỉ 1 phút để chuyển sang bài tập khác.",
+                "Đứng phía trước ghế, hai chân bằng vai, mũi chân hơi hướng ra 2 bên.\nGập người ở hông và khuỵu gối xuống, hạ người về sau và hướng xuống, cho tới khi mông hơi chạm vào ghế, duỗi thẳng 2 tay ra phía trước.\nDùng lực gót chân, đẩy người đúng dậy và quay trở lại vị trí ban đầu.\n- 10-15 lần/hiệp.\n- 3 hiệp/bài.\n- 10 giây nghỉ giữa các hiệp.\n- Nghỉ 1 phút để chuyển sang bài tập khác.",
                 "Ghế (tuỳ chọn)"));
 
         exercises.add(new Exercise(-1,"Knee Pushup", "Moderate", 90, R.drawable.kneepushup, new int[]{3, 4}, R.raw.kneepushup,
                 "Đây là cách hít đất cho người mới bắt đầu tập, giúp bạn xây dựng dần sức mạnh của đôi tay, ngực, và toàn thân.",
-                "Vào tư thế Plank cao, hai gối đặt trên sàn.@Duy trì 1 đường thẳng từ đầu tới gối, khuỵu 2 cùi chỏ để hạ người xuống gần chạm sàn. Giữ 2 cùi chỏ gập lại 1 góc 45 độ.@Đẩy ngược lại vị trí ban đầu.@- 10-15 lần/hiệp.@- 2 hiệp/bài.@- 10 giây nghỉ giữa các hiệp.@- Nghỉ 1 phút để chuyển sang bài tập khác.",
+                "Vào tư thế Plank cao, hai gối đặt trên sàn.\nDuy trì 1 đường thẳng từ đầu tới gối, khuỵu 2 cùi chỏ để hạ người xuống gần chạm sàn. Giữ 2 cùi chỏ gập lại 1 góc 45 độ.\nĐẩy ngược lại vị trí ban đầu.\n- 10-15 lần/hiệp.\n- 2 hiệp/bài.\n- 10 giây nghỉ giữa các hiệp.\n- Nghỉ 1 phút để chuyển sang bài tập khác.",
                 "Không có"));
 
         exercises.add(new Exercise(-1,"Stationary Lunge", "Moderate", 60, R.drawable.stationarylunge, new int[]{2, 5}, R.raw.stationarylunge,
                 "Động tác này giúp bạn rèn luyện cơ đùi trước, sau, và cơ mông",
-                "Đứng hai chân dạng rộng, chân phải ở phía trước. Bàn chân phải đặt cố định trên sàn, mũi bàn chân trái đặt trên sàn.@Khuỵu gối và nhún xuống, dừng lại khi đùi phải song song với sàn.@Đẩy ngược người đứng dậy bằng lực bàn chân phải, để quay trở lại vị trí ban đầu. Sau đó đổi chân.@- 15-20 lần/hiệp.@- 2 hiệp/bài.@- 10 giây nghỉ giữa các hiệp.@- Nghỉ 1 phút để chuyển sang bài tập khác.",
+                "Đứng hai chân dạng rộng, chân phải ở phía trước. Bàn chân phải đặt cố định trên sàn, mũi bàn chân trái đặt trên sàn.\nKhuỵu gối và nhún xuống, dừng lại khi đùi phải song song với sàn.\nĐẩy ngược người đứng dậy bằng lực bàn chân phải, để quay trở lại vị trí ban đầu. Sau đó đổi chân.\n- 15-20 lần/hiệp.\n- 2 hiệp/bài.\n- 10 giây nghỉ giữa các hiệp.\n- Nghỉ 1 phút để chuyển sang bài tập khác.",
                 "Không có"));
 
         exercises.add(new Exercise(-1,"Downward Dog", "Moderate", 90, R.drawable.downwarddog, new int[]{5}, R.raw.downwarddog,
                 "Động tác này để kiểm tra vùng thân người trên, đặc biệt là cơ vai.",
-                "Vào tư thế Plank cao, hai tay chống xuống sàn, ngay dưới 2 vai, hai bàn chân đặt hơi sát vào nhau.@Đẩy hông lên cao và hạ xuống, thân người bạn sẽ tạo thành 1 hình tam giác với mặt sàn, mắt nhìn về phía 2 chân.@- 15-20 lần/hiệp.@- 2 hiệp/bài.@- 10 giây nghỉ giữa các hiệp.@- Nghỉ 1 phút để chuyển sang bài tập khác.",
+                "Vào tư thế Plank cao, hai tay chống xuống sàn, ngay dưới 2 vai, hai bàn chân đặt hơi sát vào nhau.\nĐẩy hông lên cao và hạ xuống, thân người bạn sẽ tạo thành 1 hình tam giác với mặt sàn, mắt nhìn về phía 2 chân.\n- 15-20 lần/hiệp.\n- 2 hiệp/bài.\n- 10 giây nghỉ giữa các hiệp.\n- Nghỉ 1 phút để chuyển sang bài tập khác.",
                 "Không có"));
 
         exercises.add(new Exercise(-1,"Donkey Kick", "Moderate", 60, R.drawable.donkeykick, new int[]{1, 2}, R.raw.donkeykick,
                 "Tăng cơ mông với bài tập này là 1 trong những nhóm động tác được nhiều người yêu thích.",
-                "Vào tư thế 4 chân, hai tay dưới 2 vai, hai gối dưới hông.@Giữ lưng thẳng, đẩy chân phải thẳng ra phía sau.@Mũi chân gập lại, hướng thẳng xuống sàn. Giữ hông cố định. Siết cứng cơ mông ở đỉnh.@Quay trở lại vị trí ban đầu. Lặp lại cho chân kia.@- 15-20 lần/hiệp.@- 2 hiệp/bài.@- 10 giây nghỉ giữa các hiệp.@- Nghỉ 1 phút để chuyển sang bài tập khác.",
+                "Vào tư thế 4 chân, hai tay dưới 2 vai, hai gối dưới hông.\nGiữ lưng thẳng, đẩy chân phải thẳng ra phía sau.\nMũi chân gập lại, hướng thẳng xuống sàn. Giữ hông cố định. Siết cứng cơ mông ở đỉnh.\nQuay trở lại vị trí ban đầu. Lặp lại cho chân kia.\n- 15-20 lần/hiệp.\n- 2 hiệp/bài.\n- 10 giây nghỉ giữa các hiệp.\n- Nghỉ 1 phút để chuyển sang bài tập khác.",
                 "Không có"));
 
         exercises.add(new Exercise(-1,"Bird Dog", "Hard", 90, R.drawable.birddog, new int[]{3, 4}, R.raw.birddog,
                 "Động tác toàn thân này đòi hỏi khả năng giữ thăng bằng, tư thế này rất phù hợp cho những người thường xuyên tập luyện tại nhà của mình.",
-                "Vào tư thế 4 chân, đảm bảo 2 tay ở ngay dưới 2 vai, hai gối ở dưới hông.@Giữ đầu cổ cố định, đồng thời duỗi thẳng tay trái và chân phải. Giữ hông cố định và dừng lại trong 2 giây.@Quay trở lại vị trí ban đầu. Lặp lại cho tay phải và chân trái.@- 15-20 lần/hiệp.@- 2 hiệp/bài.@- 10 giây nghỉ giữa các hiệp.@- Nghỉ 1 phút để chuyển sang bài tập khác.",
+                "Vào tư thế 4 chân, đảm bảo 2 tay ở ngay dưới 2 vai, hai gối ở dưới hông.\nGiữ đầu cổ cố định, đồng thời duỗi thẳng tay trái và chân phải. Giữ hông cố định và dừng lại trong 2 giây.\nQuay trở lại vị trí ban đầu. Lặp lại cho tay phải và chân trái.\n- 15-20 lần/hiệp.\n- 2 hiệp/bài.\n- 10 giây nghỉ giữa các hiệp.\n- Nghỉ 1 phút để chuyển sang bài tập khác.",
                 "Không có"));
 
         exercises.add(new Exercise(-1,"Forearm Plank", "Hard", 60, R.drawable.forearmplank, new int[]{2, 4}, R.raw.forearmplank,
                 "Động tác này đòi hỏi khả năng giữ thăng bằng và động trực diện vào cơ bụng của bạn.",
-                "Vào tư thế Plank trên cẳng tay. Thân người tạo thành 1 đường thẳng, từ đầu tới chân.@Đảm bảo hông và lưng dưới không bị xà xuống sàn. Giữ yên tư thế này trong vòng 30 đến 60 giây.@- 15-30 lần/hiệp.@- 1 hiệp/bài.@- Nghỉ 1 phút để chuyển sang bài tập khác.",
+                "Vào tư thế Plank trên cẳng tay. Thân người tạo thành 1 đường thẳng, từ đầu tới chân.\nĐảm bảo hông và lưng dưới không bị xà xuống sàn. Giữ yên tư thế này trong vòng 30 đến 60 giây.\n- 15-30 lần/hiệp.\n- 1 hiệp/bài.\n- Nghỉ 1 phút để chuyển sang bài tập khác.",
                 "Không có"));
 
         exercises.add(new Exercise(-1,"Hip Abduction", "Moderate", 90, R.drawable.hipabduction, new int[]{1, 2}, R.raw.hipabduction,
                 "Cơ hông đóng vai trò rất quan trọng trong hầu hết các động tác và hoạt động thường ngày, nên bạn cần phải gia tăng thể lực cho vùng này. Động tác này đặc biệt cần thiết cho những ai thường xuyên phải ngồi suốt cả ngày dài.",
-                "Nằm nghiêng 1 bên người, chân trái dưới, chân phải trên, hai chân duỗi thẳng.@Nâng chân phải lên, giữ người cố định.@Sau đó, hạ chân phải xuống vị trí ban đầu.@Lặp lại với chân kia.@- 15-20 lần/hiệp.@- 2 hiệp/bài.@- 10 giây nghỉ giữa các hiệp.@- Nghỉ 1 phút để chuyển sang bài tập khác.",
+                "Nằm nghiêng 1 bên người, chân trái dưới, chân phải trên, hai chân duỗi thẳng.\nNâng chân phải lên, giữ người cố định.\nSau đó, hạ chân phải xuống vị trí ban đầu.\nLặp lại với chân kia.\n- 15-20 lần/hiệp.\n- 2 hiệp/bài.\n- 10 giây nghỉ giữa các hiệp.\n- Nghỉ 1 phút để chuyển sang bài tập khác.",
                 "Không có"));
 
         exercises.add(new Exercise(-1,"Bicycle Crunch", "Hard", 70, R.drawable.bicyclecrunch, new int[]{1, 3}, R.raw.bicyclecrunch,
                 "Đây là 1 trong những động tác cực tốt để đốt cháy calo dư thừa, cũng như tăng cường cơ bụng giúp eo thon, bụng chắc khoẻ.",
-                "Nằm ngửa lưng trên sàn, đưa 2 chân lên cao. Gập cùi chỏ và đặt 2 tay ra sau đầu.@Gập người lên và đưa cùi chỏ phải chạm vào gối trái, duỗi thẳng chân phải.@Hạ người xuống vừa phải, gập chân phải và duỗi thẳng chân trái, sau đó kéo cùi chỏ trái chạm vào gối phải. Sau đó, lặp lại.@- 10-15 lần/hiệp.@- 2 hiệp/bài.@- 10 giây nghỉ giữa các hiệp.@- Nghỉ 1 phút để chuyển sang bài tập khác.",
+                "Nằm ngửa lưng trên sàn, đưa 2 chân lên cao. Gập cùi chỏ và đặt 2 tay ra sau đầu.\nGập người lên và đưa cùi chỏ phải chạm vào gối trái, duỗi thẳng chân phải.\nHạ người xuống vừa phải, gập chân phải và duỗi thẳng chân trái, sau đó kéo cùi chỏ trái chạm vào gối phải. Sau đó, lặp lại.\n- 10-15 lần/hiệp.\n- 2 hiệp/bài.\n- 10 giây nghỉ giữa các hiệp.\n- Nghỉ 1 phút để chuyển sang bài tập khác.",
                 "Không có"));
 
         exercises.add(new Exercise(-1,"Running", "Moderate", 300, R.drawable.running, new int[]{3, 4, 5}, R.raw.running,
                 "Chạy bộ không chỉ giúp tim và phổi của bạn tốt hơn mà còn giúp bạn có một cơ thể săn chắc, khoẻ mạnh, và một tinh thần lạc quan, yêu đời.",
-                "Khởi động làm nóng cơ thể trước khi chạy bộ.@Sau đó, bắt đầu chạy bộ trong vòng 5 phút.@Giữ tư thế thẳng lưng, mặt hướng về phía trước, 2 tay đánh thoải mái, và hít thở đều, nhẹ nhàng.@Lưu ý: Bạn nên chạy với tốc độ phù hợp để tránh việc đuối sức, bạn có thể chạy lâu hơn để có hiệu quả tốt hơn.",
+                "Khởi động làm nóng cơ thể trước khi chạy bộ.\nSau đó, bắt đầu chạy bộ trong vòng 5 phút.\nGiữ tư thế thẳng lưng, mặt hướng về phía trước, 2 tay đánh thoải mái, và hít thở đều, nhẹ nhàng.\nLưu ý: Bạn nên chạy với tốc độ phù hợp để tránh việc đuối sức, bạn có thể chạy lâu hơn để có hiệu quả tốt hơn.",
                 "Giày (tuỳ chọn)"));
 
         exercises.add(new Exercise(-1,"Skipping Rope", "Moderate", 70, R.drawable.skippingrope, new int[]{4, 5}, R.raw.skippingrope,
                 "Nhảy dây giúp bạn đốt cháy calories, mang lại một cơ thể săn chắc, khoẻ mạnh. Đây là một môn thể thao được rất nhiều người ưa thích.",
-                "Xếp 2 chân gần nhau, giữ tư thế của bạn thẳng, không còng lưng. Sau đó, bắt đầu nhảy dây và hít thở đều, nhẹ nhàng.@- 25-30 lần/hiệp.@- 2 hiệp/bài.@- 10 giây nghỉ giữa các hiệp.@- Nghỉ 1 phút để chuyển sang bài tập khác.",
+                "Xếp 2 chân gần nhau, giữ tư thế của bạn thẳng, không còng lưng. Sau đó, bắt đầu nhảy dây và hít thở đều, nhẹ nhàng.\n- 25-30 lần/hiệp.\n- 2 hiệp/bài.\n- 10 giây nghỉ giữa các hiệp.\n- Nghỉ 1 phút để chuyển sang bài tập khác.",
                 "Dây nhảy (bắt buộc)"));
 
         exercises.add(new Exercise(-1,"Push Up", "Hard", 90, R.drawable.pushup, new int[]{1, 2}, R.raw.pushup,
                 "Hít đất giúp bạn rèn luyện cơ bắp, đặc biệt là cơ tay, ngực và mang lại một thể chất tốt cho cơ thể.",
-                "Chống tay xuống sàn, 2 tay nằm dưới 2 vai, 2 chân đặt trên ghế hoặc 1 bục cao, thân người duỗi thẳng.@Hít vào, đồng thời hạ người xuống đến khi ngực sắp chạm sàn.@Đẩy người lên về vị trí ban đầu, siết cơ ngực đồng thời thở mạnh.@Lặp lại.@- 10-20 lần/hiệp.@- 2 hiệp/bài.@- 10 giây nghỉ giữa các hiệp.@- Nghỉ 1 phút để chuyển sang bài tập khác.",
+                "Chống tay xuống sàn, 2 tay nằm dưới 2 vai, 2 chân đặt trên ghế hoặc 1 bục cao, thân người duỗi thẳng.\nHít vào, đồng thời hạ người xuống đến khi ngực sắp chạm sàn.\nĐẩy người lên về vị trí ban đầu, siết cơ ngực đồng thời thở mạnh.\nLặp lại.\n- 10-20 lần/hiệp.\n- 2 hiệp/bài.\n- 10 giây nghỉ giữa các hiệp.\n- Nghỉ 1 phút để chuyển sang bài tập khác.",
                 "Không có"));
     }
 

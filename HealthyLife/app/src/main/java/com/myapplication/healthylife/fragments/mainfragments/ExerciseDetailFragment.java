@@ -1,5 +1,6 @@
 package com.myapplication.healthylife.fragments.mainfragments;
 
+import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -12,7 +13,9 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.MediaController;
 
+import com.myapplication.healthylife.R;
 import com.myapplication.healthylife.databinding.FragmentExerciseDetailBinding;
 import com.myapplication.healthylife.model.Exercise;
 
@@ -36,6 +39,15 @@ public class ExerciseDetailFragment extends Fragment{
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        binding.tvName.setText(exercise.getName());
+        binding.tvNumOfWeek.setText(String.valueOf(2));
+        binding.tvlevel.setText(exercise.getLevel());
+        binding.tvDescription.setText(exercise.getDescription());
+        binding.tvTutorial.setText(exercise.getTutorial());
+
+        binding.video.setVideoURI(Uri.parse("android.resource://"+getContext().getPackageName()+"/"+ exercise.getVideo()));
+        binding.video.setMediaController(new MediaController(getContext()));
+//      binding.video.start();
 
     }
 
