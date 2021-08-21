@@ -30,6 +30,7 @@ public class DatabaseHelper extends SQLiteOpenHelper{
     public static final String VIDEO = "VIDEO";
     public static final String DESCRIPTION = "DESCRIPTION";
     public static final String TUTORIAL = "TUTORIAL";
+    public static final String EQUIPMENT = "EQUIPMENT";
 
 //    public static final String EXERCISES = "EXERCISESS";
 //    public static final String ISDIETFFIRST="ISDIETFIRST";
@@ -43,8 +44,8 @@ public class DatabaseHelper extends SQLiteOpenHelper{
     public void onCreate(SQLiteDatabase db) {
         db.execSQL("CREATE TABLE " + EXERCISES + "("
                 + ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
-                + NAME + " VARCHAR(150), "
-                + LEVEL+ " VARCHAR(150), "
+                + NAME + " VARCHAR(50), "
+                + LEVEL + " CHAR(8), "
                 + DURATION + " INTEGER, "
                 + PROGRESS + " INTEGER, "
                 + IMAGE + " INTEGER, "
@@ -53,9 +54,10 @@ public class DatabaseHelper extends SQLiteOpenHelper{
                 + ISOTHERS + " INTEGER, "
                 + ISFIRST + " INTEGER, "
                 + VIDEO + " INTEGER, "
-                + DESCRIPTION + " VARCHAR(150), "
-                + TUTORIAL + " VARCHAR(150), "
-                + TYPES + " VARCHAR(150) )"
+                + DESCRIPTION + " VARCHAR(1000), "
+                + TUTORIAL + " NVARCHAR(1000), "
+                + EQUIPMENT + " VARCHAR(150),"
+                + TYPES + " VARCHAR(20) )"
                 // + TYPES + " VARCHAR(150), "
                 // +ISDIETFFIRST +"INTEGER )"
         );
@@ -81,7 +83,7 @@ public class DatabaseHelper extends SQLiteOpenHelper{
                 types += String.valueOf(i);
                 start = true;
             }else {
-                types += ","+String.valueOf(i);
+                types += "," + String.valueOf(i);
             }
         }
 
@@ -100,6 +102,7 @@ public class DatabaseHelper extends SQLiteOpenHelper{
         cv.put(VIDEO, exercise.getVideo());
         cv.put(DESCRIPTION, exercise.getDescription());
         cv.put(TUTORIAL, exercise.getTutorial());
+        cv.put(EQUIPMENT, exercise.getEquipment());
 
         long insert = db.insert(EXERCISES, null, cv);
         if (insert != -1)   {
@@ -112,7 +115,7 @@ public class DatabaseHelper extends SQLiteOpenHelper{
     public ArrayList<Exercise> getList()    {
         SQLiteDatabase db = getReadableDatabase();
         ArrayList<Exercise> returnList = new ArrayList<>();
-        Cursor cursor = db.rawQuery("SELECT * FROM "+EXERCISES, null);
+        Cursor cursor = db.rawQuery("SELECT * FROM " + EXERCISES, null);
         if (cursor.moveToFirst())   {
             do {
                 int id = cursor.getInt(0);
@@ -128,6 +131,7 @@ public class DatabaseHelper extends SQLiteOpenHelper{
                 int video = cursor.getInt(10);
                 String description = cursor.getString(11);
                 String tutorial = cursor.getString(12);
+                String equipment = cursor.getString(13);
 
                 // boolean isDietFirst = cursor.getInt(10) == 0 ? false:true;
                 String temp = cursor.getString(10);;
@@ -138,7 +142,7 @@ public class DatabaseHelper extends SQLiteOpenHelper{
                     types[count++] = Integer.parseInt(s);
                 }
 
-                returnList.add(new Exercise(id, name, level, duration, progress, image, isFinished, isRecommended, isOthers, isFirst, types, video, description, tutorial));
+                returnList.add(new Exercise(id, name, level, duration, progress, image, isFinished, isRecommended, isOthers, isFirst, types, video, description, tutorial, equipment));
             }while (cursor.moveToNext());
         }
         return returnList;
@@ -147,7 +151,7 @@ public class DatabaseHelper extends SQLiteOpenHelper{
     public boolean deleteAll()  {
         try {
             SQLiteDatabase db = getWritableDatabase();
-            db.execSQL("delete from "+ EXERCISES);
+            db.execSQL("delete from " + EXERCISES);
             return true;
         }catch (Exception e)    {
             e.printStackTrace();

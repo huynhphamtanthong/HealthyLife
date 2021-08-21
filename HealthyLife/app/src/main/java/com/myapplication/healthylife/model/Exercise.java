@@ -24,8 +24,9 @@ public class Exercise implements Serializable {
     private int video;
     private String description;
     private String tutorial;
+    private String equipment;
 
-    public Exercise(int id, String name, String level, int duration, int image, int[] types, int video, String description, String tutorial) {
+    public Exercise(int id, String name, String level, int duration, int image, int[] types, int video, String description, String tutorial, String equipment) {
         this.id = id;
         this.name = name;
         this.level = level;
@@ -40,9 +41,10 @@ public class Exercise implements Serializable {
         this.video = video;
         this.description = description;
         this.tutorial = tutorial;
+        this.equipment = equipment;
     }
 
-    public Exercise(int id, String name, String level, int duration, int progress, int image, boolean isFinished, boolean isRecommended, boolean isOthers, boolean isFirst, int[] types, int video, String description, String tutorial) {
+    public Exercise(int id, String name, String level, int duration, int progress, int image, boolean isFinished, boolean isRecommended, boolean isOthers, boolean isFirst, int[] types, int video, String description, String tutorial, String equipment) {
         this.id = id;
         this.name = name;
         this.level = level;
@@ -57,6 +59,7 @@ public class Exercise implements Serializable {
         this.video = video;
         this.description = description;
         this.tutorial = tutorial;
+        this.equipment = equipment;
     }
 
     public String getName() {
@@ -167,7 +170,13 @@ public class Exercise implements Serializable {
         return tutorial;
     }
 
-    public void setTutorial(String tutorial) {
-        this.tutorial = tutorial;
+    public void setTutorial(String tutorial) { this.tutorial = tutorial; }
+
+    public String getEquipment() {
+        return equipment;
+    }
+
+    public void setEquipment(String equipment) {
+        this.equipment = equipment;
     }
 }
