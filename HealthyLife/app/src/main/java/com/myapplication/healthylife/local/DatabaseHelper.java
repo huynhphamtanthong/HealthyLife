@@ -30,6 +30,9 @@ public class DatabaseHelper extends SQLiteOpenHelper{
     public static final String VIDEO = "VIDEO";
     public static final String DESCRIPTION = "DESCRIPTION";
     public static final String TUTORIAL = "TUTORIAL";
+    public static final String EXERCISES = "EXERCISESS";
+    public static final String ISDIETFFIRST="ISDIETFIRST";
+
 
     public DatabaseHelper(Context context) {
         super(context, "healthylife.db", null, 1);
@@ -52,6 +55,8 @@ public class DatabaseHelper extends SQLiteOpenHelper{
                 + DESCRIPTION + " VARCHAR(150), "
                 + TUTORIAL + " VARCHAR(150), "
                 + TYPES + " VARCHAR(150) )"
+                // + TYPES + " VARCHAR(150), "
+                // +ISDIETFFIRST +"INTEGER )"
         );
 
     }
@@ -123,6 +128,7 @@ public class DatabaseHelper extends SQLiteOpenHelper{
                 String description = cursor.getString(11);
                 String tutorial = cursor.getString(12);
 
+                // boolean isDietFirst = cursor.getInt(10) == 0 ? false:true;
                 String temp = cursor.getString(10);;
                 String[] arr = temp.split(",");
                 int[] types = new int[arr.length];
