@@ -37,7 +37,6 @@ public class ExerciseDetailFragment extends Fragment{
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        binding.test.setText(exercise.getName());
     }
 
 }

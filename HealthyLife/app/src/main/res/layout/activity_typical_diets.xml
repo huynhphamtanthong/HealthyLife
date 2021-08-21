@@ -13,7 +13,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="10dp"
         android:layout_marginBottom="30dp"
-        android:fontFamily="@font/custom_front"
+        android:fontFamily="@font/custom_font"
         android:text="@string/typical_diets"
         android:textAllCaps="true"
         android:textAlignment="center"

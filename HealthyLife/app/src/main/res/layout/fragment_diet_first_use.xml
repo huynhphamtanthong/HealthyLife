@@ -17,7 +17,7 @@
         android:textColor="@color/white"
         android:textStyle="bold"
         android:textAllCaps="true"
-        android:fontFamily="@font/custom_front"
+        android:fontFamily="@font/custom_font"
         android:textAlignment="center"/>
 
     <Button

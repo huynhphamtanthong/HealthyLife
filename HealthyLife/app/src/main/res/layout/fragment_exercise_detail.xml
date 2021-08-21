@@ -1,16 +1,184 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".fragments.mainfragments.ExerciseDetailFragment">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="DETAILS"
-        android:layout_centerInParent="true"
-        android:textSize="50sp"
-        android:id="@+id/test"/>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="10dp">
 
-</RelativeLayout>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/custom_font"
+            android:text="Exercise's Name"
+            android:textSize="30sp"
+            android:id="@+id/tvName"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="20dp"/>
+
+        <androidx.constraintlayout.widget.Guideline
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/gl"
+            app:layout_constraintGuide_begin="20dp"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.5"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tvNumOfWeek"
+            android:textSize="25sp"
+            android:text="1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvName"
+            app:layout_constraintEnd_toEndOf="@id/gl"
+            android:textStyle="bold"
+            android:fontFamily="@font/custom_font"
+            android:layout_marginTop="30dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tvWeek"
+            android:textSize="20sp"
+            android:text="Week(s)"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvNumOfWeek"
+            app:layout_constraintEnd_toEndOf="@id/gl"
+            android:fontFamily="@font/custom_font"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tvlevel"
+            android:textSize="25sp"
+            android:text="Easy"
+            app:layout_constraintStart_toStartOf="@id/gl"
+            app:layout_constraintTop_toTopOf="@id/tvNumOfWeek"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:textStyle="bold"
+            android:fontFamily="@font/custom_font"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tvLevelTittle"
+            android:textSize="20sp"
+            android:text="Level"
+            app:layout_constraintStart_toStartOf="@id/gl"
+            app:layout_constraintTop_toBottomOf="@id/tvlevel"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:fontFamily="@font/custom_font"/>
+
+        <TextView
+            android:id="@+id/tvDurationTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/custom_font"
+            android:text="Duration: "
+            android:textSize="20sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/tvDuration"/>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/tvDuration"
+            android:text="15 minutes"
+            android:textSize="20sp"
+            android:fontFamily="@font/custom_font"
+            app:layout_constraintTop_toBottomOf="@id/tvWeek"
+            app:layout_constraintStart_toEndOf="@id/tvDurationTitle"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="30dp"/>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/tvEquipment"
+            android:text="Running Machine"
+            android:textSize="20sp"
+            android:fontFamily="@font/custom_font"
+            app:layout_constraintTop_toBottomOf="@id/tvDuration"
+            app:layout_constraintStart_toEndOf="@id/tvEquipmentTitle"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="30dp"
+            android:layout_marginStart="10dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tvEquipmentTitle"
+            android:text="Equipment:"
+            android:textSize="20sp"
+            android:fontFamily="@font/custom_font"
+            app:layout_constraintTop_toTopOf="@id/tvEquipment"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tvDescriptionTitle"
+            android:text="Description"
+            android:textSize="20sp"
+            android:fontFamily="@font/custom_font"
+            app:layout_constraintTop_toBottomOf="@id/tvEquipment"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="30dp"/>
+
+        <TextView
+            android:id="@+id/tvDescription"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/custom_font"
+            android:text="Descriptionaaaaaaaaaaaaaaaa\nawdawdawawdawdawdawdadw"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvDescriptionTitle" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tvTutorialTitle"
+            android:text="Tutorial"
+            android:textSize="20sp"
+            android:fontFamily="@font/custom_font"
+            app:layout_constraintTop_toBottomOf="@id/tvDescription"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="30dp"/>
+
+        <TextView
+            android:id="@+id/tvTutorial"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/custom_font"
+            android:text="aaaaaaaaaaaaaaaa\nawdawdawawdawdawdawdadw"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvTutorialTitle" />
+
+        <VideoView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:id="@+id/video"
+            app:layout_constraintDimensionRatio="1:1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvTutorial"
+            android:layout_marginTop="30dp"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>

@@ -13,7 +13,6 @@ import com.myapplication.healthylife.model.User;
 
 import java.util.ArrayList;
 
-
 public class DatabaseHelper extends SQLiteOpenHelper{
     public static final String EXERCISES = "EXERCISESS";
     public static final String ID = "ID";

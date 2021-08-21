@@ -13,7 +13,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="10dp"
         android:layout_marginBottom="30dp"
-        android:fontFamily="@font/custom_front"
+        android:fontFamily="@font/custom_font"
         android:text="HEALTHY DIET"
         android:textAlignment="center"
         android:textColor="@color/white"
@@ -38,7 +38,7 @@
             android:textColor="@color/black"
             android:textAllCaps="false"
             android:textSize="30sp"
-            android:fontFamily="@font/custom_front"
+            android:fontFamily="@font/custom_font"
             />
         <Button
             android:id="@+id/DietEvaluationButton"
@@ -52,7 +52,7 @@
             android:textColor="@color/black"
             android:textAllCaps="false"
             android:textSize="30sp"
-            android:fontFamily="@font/custom_front"
+            android:fontFamily="@font/custom_font"
             />
         <Button
             android:id="@+id/TypicalDiets"
@@ -66,7 +66,7 @@
             android:textColor="@color/black"
             android:textAllCaps="false"
             android:textSize="30sp"
-            android:fontFamily="@font/custom_front"
+            android:fontFamily="@font/custom_font"
             />
 
     </LinearLayout>
