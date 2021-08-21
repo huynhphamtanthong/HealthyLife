@@ -27,11 +27,11 @@ import java.util.ArrayList;
 
 public class FitnessFragment extends Fragment {
     private FragmentFitnessBinding binding;
-    private ArrayList<Exercise> exercises = new ArrayList<>();
     private ExerciseRecViewAdapter exerciseRecViewAdapter;
     private User user;
     private DatabaseHelper db;
     private ArrayList<Exercise> list = new ArrayList<>();
+    private SharedPreferences sharedPreferences = AppPrefs.getInstance(getContext());
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -46,35 +46,15 @@ public class FitnessFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        initData();
         initRecycleViews();
     }
 
     private void initRecycleViews() {
-        list = getListOfExercises(exercises);
+//        list = getListOfExercises(exercises);
         exerciseRecViewAdapter = new ExerciseRecViewAdapter();
         exerciseRecViewAdapter.setExercises(list);
         binding.recommendedRecView.setAdapter(exerciseRecViewAdapter);
         binding.recommendedRecView.setLayoutManager(new LinearLayoutManager(getContext()));
-    }
-
-    private void initData() {
-        exercises.add(new Exercise(-1,"A", "BBB", 1, R.mipmap.ic_launcher, new int[]{1, 2, 3}));
-        exercises.add(new Exercise(-1,"B", "BBB", 1, R.mipmap.ic_launcher, new int[]{ 5}));
-        exercises.add(new Exercise(-1,"C", "BBB", 1, R.mipmap.ic_launcher, new int[]{1, 5}));
-        exercises.add(new Exercise(-1,"D", "BBB", 1, R.mipmap.ic_launcher, new int[]{2}));
-        exercises.add(new Exercise(-1,"E", "BBB", 1, R.mipmap.ic_launcher, new int[]{1}));
-        exercises.add(new Exercise(-1,"F", "BBB", 1, R.mipmap.ic_launcher, new int[]{4}));
-        exercises.add(new Exercise(-1,"G", "BBB", 1, R.mipmap.ic_launcher, new int[]{1, 2, 4, 5}));
-        exercises.add(new Exercise(-1,"H", "BBB", 1, R.mipmap.ic_launcher, new int[]{1}));
-        exercises.add(new Exercise(-1,"I", "BBB", 1, R.mipmap.ic_launcher, new int[]{4, 2}));
-        exercises.add(new Exercise(-1,"J", "BBB", 1, R.mipmap.ic_launcher, new int[]{4}));
-        exercises.add(new Exercise(-1,"K", "BBB", 1, R.mipmap.ic_launcher, new int[]{ 2, 5}));
-        exercises.add(new Exercise(-1,"L", "BBB", 1, R.mipmap.ic_launcher, new int[]{1, 2, 4}));
-        exercises.add(new Exercise(-1,"M", "BBB", 1, R.mipmap.ic_launcher, new int[]{1}));
-        exercises.add(new Exercise(-1,"N", "BBB", 1, R.mipmap.ic_launcher, new int[]{2}));
-        exercises.add(new Exercise(-1,"O", "BBB", 1, R.mipmap.ic_launcher, new int[]{1}));
-        exercises.add(new Exercise(-1,"P", "BBB", 1, R.mipmap.ic_launcher, new int[]{2, 5}));
     }
 
     private ArrayList<Exercise> getListOfExercises(ArrayList<Exercise> exercise)    {
@@ -112,7 +92,7 @@ public class FitnessFragment extends Fragment {
             }
         }
 
-        boolean isOthers = true;
+        boolean isOthers;
         for (Exercise ex: exercise)    {
             isOthers = true;
             for (int i: ex.getTypes()) {
