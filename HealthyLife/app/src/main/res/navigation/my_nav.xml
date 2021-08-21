@@ -47,6 +47,9 @@
             app:destination="@id/firstUseFragment"
             app:popUpTo="@id/mainFragment"
             app:popUpToInclusive="true"/>
+        <action
+            android:id="@+id/action_mainFragment_to_exerciseDetailFragment"
+            app:destination="@id/exerciseDetailFragment" />
     </fragment>
     <fragment
         android:id="@+id/notificationFragment"
@@ -55,6 +58,15 @@
         tools:layout="@layout/fragment_notification" >
         <action
             android:id="@+id/action_notificationFragment_to_mainFragment"
+            app:destination="@id/mainFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/exerciseDetailFragment"
+        android:name="com.myapplication.healthylife.fragments.mainfragments.ExerciseDetailFragment"
+        android:label="fragment_exercise_detail"
+        tools:layout="@layout/fragment_exercise_detail" >
+        <action
+            android:id="@+id/action_exerciseDetailFragment_to_mainFragment"
             app:destination="@id/mainFragment" />
     </fragment>
 

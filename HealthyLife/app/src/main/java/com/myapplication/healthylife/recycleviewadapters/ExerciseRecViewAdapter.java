@@ -1,22 +1,29 @@
 package com.myapplication.healthylife.recycleviewadapters;
 
-import android.util.Log;
+import android.app.Activity;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.myapplication.healthylife.R;
 import com.myapplication.healthylife.databinding.ExerciseListBinding;
 import com.myapplication.healthylife.model.Exercise;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 public class ExerciseRecViewAdapter extends RecyclerView.Adapter<ExerciseRecViewAdapter.ViewHolder> {
-
     private ArrayList<Exercise> exercises = new ArrayList<>();
+    private Activity activity;
+
+    public ExerciseRecViewAdapter(Activity activity) {
+        this.activity = activity;
+    }
 
     @NonNull
     @Override
@@ -39,7 +46,7 @@ public class ExerciseRecViewAdapter extends RecyclerView.Adapter<ExerciseRecView
         notifyDataSetChanged();
     }
 
-    protected class ViewHolder extends RecyclerView.ViewHolder {
+    protected class ViewHolder extends RecyclerView.ViewHolder{
 
        ExerciseListBinding binding;
 
@@ -87,7 +94,10 @@ public class ExerciseRecViewAdapter extends RecyclerView.Adapter<ExerciseRecView
             binding.parent.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-
+                    Bundle bundle = new Bundle();
+                    bundle.putSerializable("data", (Serializable) exercise);
+//                    Navigation.createNavigateOnClickListener(R.id.action_mainFragment_to_exerciseDetailFragment).onClick(view);
+                    Navigation.findNavController(activity, R.id.fragmentContainer).navigate(R.id.action_mainFragment_to_exerciseDetailFragment, bundle);
                 }
             });
         }

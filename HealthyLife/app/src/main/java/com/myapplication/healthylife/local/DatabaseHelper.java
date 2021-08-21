@@ -15,6 +15,7 @@ import java.util.ArrayList;
 
 
 public class DatabaseHelper extends SQLiteOpenHelper{
+    public static final String EXERCISES = "EXERCISESS";
     public static final String ID = "ID";
     public static final String NAME = "NAME";
     public static final String LEVEL = "LEVEL";
@@ -26,8 +27,12 @@ public class DatabaseHelper extends SQLiteOpenHelper{
     public static final String ISOTHERS = "ISOTHERS";
     public static final String ISFIRST = "ISFIRST";
     public static final String TYPES = "TYPES";
-    public static final String EXERCISES = "EXERCISESS";
-    public static final String ISDIETFFIRST="ISDIETFIRST";
+    public static final String VIDEO = "VIDEO";
+    public static final String DESCRIPTION = "DESCRIPTION";
+    public static final String TUTORIAL = "TUTORIAL";
+
+//    public static final String EXERCISES = "EXERCISESS";
+//    public static final String ISDIETFFIRST="ISDIETFIRST";
 
 
     public DatabaseHelper(Context context) {
@@ -47,8 +52,12 @@ public class DatabaseHelper extends SQLiteOpenHelper{
                 + ISRECOMMENDED + " INTEGER, "
                 + ISOTHERS + " INTEGER, "
                 + ISFIRST + " INTEGER, "
-                + TYPES + " VARCHAR(150), "
-                +ISDIETFFIRST +"INTEGER )"
+                + VIDEO + " INTEGER, "
+                + DESCRIPTION + " VARCHAR(150), "
+                + TUTORIAL + " VARCHAR(150), "
+                + TYPES + " VARCHAR(150) )"
+                // + TYPES + " VARCHAR(150), "
+                // +ISDIETFFIRST +"INTEGER )"
         );
 
     }
@@ -62,8 +71,19 @@ public class DatabaseHelper extends SQLiteOpenHelper{
     public boolean add(Exercise exercise)    {
         int isFinished = exercise.isFinished()?1:0;
         int isRecommended = exercise.isRecommended()?1:0;
-        int isOthers = exercise.isFinished()?1:0;
-        int isFirst = exercise.isFinished()?1:0;
+        int isOthers = exercise.isOthers()?1:0;
+        int isFirst = exercise.isFirst()?1:0;
+
+        String types = new String();
+        boolean start = false;
+        for (int i: exercise.getTypes())    {
+            if (!start) {
+                types += String.valueOf(i);
+                start = true;
+            }else {
+                types += ","+String.valueOf(i);
+            }
+        }
 
         SQLiteDatabase db = getWritableDatabase();
         ContentValues cv = new ContentValues();
@@ -71,12 +91,15 @@ public class DatabaseHelper extends SQLiteOpenHelper{
         cv.put(LEVEL, exercise.getLevel());
         cv.put(DURATION, exercise.getDuration());
         cv.put(PROGRESS, exercise.getProgress());
-        cv.put(IMAGE, exercise.getDuration());
+        cv.put(IMAGE, exercise.getImage());
         cv.put(ISFINISHED, isFinished);
         cv.put(ISRECOMMENDED, isRecommended);
         cv.put(ISOTHERS , isOthers);
         cv.put(ISFIRST, isFirst);
-        cv.put(TYPES, exercise.getDuration());
+        cv.put(TYPES, types);
+        cv.put(VIDEO, exercise.getVideo());
+        cv.put(DESCRIPTION, exercise.getDescription());
+        cv.put(TUTORIAL, exercise.getTutorial());
 
         long insert = db.insert(EXERCISES, null, cv);
         if (insert != -1)   {
@@ -102,7 +125,11 @@ public class DatabaseHelper extends SQLiteOpenHelper{
                 boolean isRecommended = cursor.getInt(7) == 0 ? false:true;
                 boolean isOthers = cursor.getInt(8) == 0 ? false:true;
                 boolean isFirst = cursor.getInt(9) == 0 ? false:true;
-                boolean isDietFirst = cursor.getInt(10) == 0 ? false:true;
+                int video = cursor.getInt(10);
+                String description = cursor.getString(11);
+                String tutorial = cursor.getString(12);
+
+                // boolean isDietFirst = cursor.getInt(10) == 0 ? false:true;
                 String temp = cursor.getString(10);;
                 String[] arr = temp.split(",");
                 int[] types = new int[arr.length];
@@ -111,7 +138,7 @@ public class DatabaseHelper extends SQLiteOpenHelper{
                     types[count++] = Integer.parseInt(s);
                 }
 
-                returnList.add(new Exercise(id, name, level, duration, progress, image, isFinished, isRecommended, isOthers, isFirst, types));
+                returnList.add(new Exercise(id, name, level, duration, progress, image, isFinished, isRecommended, isOthers, isFirst, types, video, description, tutorial));
             }while (cursor.moveToNext());
         }
         return returnList;

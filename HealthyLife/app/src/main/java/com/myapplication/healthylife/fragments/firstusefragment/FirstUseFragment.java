@@ -13,6 +13,7 @@ import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -37,17 +38,20 @@ public class FirstUseFragment extends Fragment {
     private FragmentFirstUseBinding binding;
     private NavController navController;
     private SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-    private SharedPreferences sharedPreferences = AppPrefs.getInstance(getContext());
+    private SharedPreferences sharedPreferences;
     private ArrayList<Exercise> exercises = new ArrayList<>();
-    private DatabaseHelper db = new DatabaseHelper(getContext());
+    private DatabaseHelper db;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        sharedPreferences = AppPrefs.getInstance(getContext());
+        db = new DatabaseHelper(getContext());
         Date date = new Date();
         String now = sdf.format(date);
         binding = FragmentFirstUseBinding.inflate(getLayoutInflater());
         sharedPreferences.edit().putString("date", now).apply();
+        initData();
         return binding.getRoot();
     }
 
@@ -73,11 +77,17 @@ public class FirstUseFragment extends Fragment {
                             User user = new User(binding.etName.getText().toString(),
                                     Float.valueOf(binding.etHeight.getText().toString()),
                                     Float.valueOf(binding.etWeight.getText().toString()));
-                            user.setBmi(user.getWeight()/Math.pow(user.getHeight()/100, 2));
+
+                            double bmi = user.getWeight()/Math.pow(user.getHeight()/100, 2);
+                            Log.d("DATA", String.valueOf(bmi));
+                            user.setBmi(bmi);
+
                             sharedPreferences.edit().putBoolean("isLogout", false).apply();
+
                             sharedPreferences.edit().putString("user", new Gson().toJson(user)).apply();
 
-                            initDataForNewUser();
+                            saveListOfExercisesForNewUser(exercises, bmi);
+
                             navController.navigate(R.id.action_firstUseFragment_to_mainFragment);
                         }else   {
                             binding.etWeight.requestFocus();
@@ -116,7 +126,7 @@ public class FirstUseFragment extends Fragment {
         return false;
     }
 
-    private void initDataForNewUser() {
+    private void initData() {
         exercises.add(new Exercise(-1,"Bridge", "Easy", 90, R.drawable.bridge, new int[]{1, 5}, R.raw.bridge,
                 "Đây là nhóm động tác kích thích cơ toàn thân và vùng cơ lưng phía sau cơ thể, nhìn trông giống như 1 cây cầy. Động tác này được xem là cách để khởi động và làm nóng cơ thể khá hoàn hảo",
                 "Nằm ngửa lưng trên sàn, hai gối gập lại, lòng bàn chân để trên sàn, hai tay duỗi thẳng 2 bên hông.@Dùng lực bàn chân và gồng cơ toàn thân, nâng người lên khỏi sàn cho tới khi nào hông duỗi thẳng hoàn toàn, siết cứng cơ mông.@Từ từ hạ xuống và lặp lại.@- 15-20 lần/hiệp.@- 3 hiệp/bài.@- 10 giây nghỉ giữa các hiệp.@- Nghỉ 1 phút để chuyển sang bài tập khác."));
@@ -168,8 +178,68 @@ public class FirstUseFragment extends Fragment {
         exercises.add(new Exercise(-1,"Push Up", "Hard", 90, R.drawable.pushup, new int[]{1, 2}, R.raw.pushup,
                 "Hít đất giúp bạn rèn luyện cơ bắp, đặc biệt là cơ tay, ngực và mang lại một thể chất tốt cho cơ thể.",
                 "Chống tay xuống sàn, 2 tay nằm dưới 2 vai, 2 chân đặt trên ghế hoặc 1 bục cao, thân người duỗi thẳng.@Hít vào, đồng thời hạ người xuống đến khi ngực sắp chạm sàn.@Đẩy người lên về vị trí ban đầu, siết cơ ngực đồng thời thở mạnh.@Lặp lại.@- 10-20 lần/hiệp.@- 2 hiệp/bài.@- 10 giây nghỉ giữa các hiệp.@- Nghỉ 1 phút để chuyển sang bài tập khác."));
+    }
 
-        for (Exercise ex: exercises)    {
+    private void saveListOfExercisesForNewUser(ArrayList<Exercise> exercise, double bmi)    {
+        boolean startRecommended = false;
+        boolean startOthers = false;
+        ArrayList<Exercise> result = new ArrayList<>();
+        int type;
+        if (bmi >= 30) {
+            type = 5;
+        }else if(bmi >= 25 && bmi <= 29.9) {
+            type = 4;
+        }else if(bmi >= 23 && bmi <= 24.9)  {
+            type = 3;
+        }else if(bmi >= 18.5 && bmi <= 22.9)    {
+            type = 2;
+        }else   {
+            type = 1;
+        }
+        Log.d("DATA", String.valueOf(type));
+
+        //add recommended ex
+        for (Exercise ex: exercise)    {
+            for (int i: ex.getTypes())  {
+                if (i == type && !startRecommended)  {
+                    ex.setFirst(true);
+                    ex.setRecommended(true);
+                    Log.d("REC", ex.getName()+" "+ex.isRecommended()+" "+ex.isOthers()+" "+ex.isFirst());
+                    result.add(ex);
+                    startRecommended = true;
+                    break;
+                }else if(i == type && startRecommended) {
+                    ex.setRecommended(true);
+                    Log.d("REC", ex.getName()+" "+ex.isRecommended()+" "+ex.isOthers()+" "+ex.isFirst());
+                    result.add(ex);
+                    break;
+                }
+            }
+        }
+
+        boolean isOthers;
+        for (Exercise ex: exercise)    {
+            isOthers = true;
+            for (int i: ex.getTypes()) {
+                if(i == type)    {
+                    isOthers = false;
+                }
+            }
+            if (isOthers && !startOthers) {
+                ex.setFirst(true);
+                ex.setOthers(true);
+                Log.d("OTH", ex.getName()+" "+ex.isRecommended()+" "+ex.isOthers()+" "+ex.isFirst());
+                result.add(ex);
+                startOthers = true;
+            } else if (isOthers && startOthers) {
+                ex.setOthers(true);
+                Log.d("OTH", ex.getName()+" "+ex.isRecommended()+" "+ex.isOthers()+" "+ex.isFirst());
+                result.add(ex);
+            }
+        }
+
+        for (Exercise ex: result) {
+            Log.d("DATA", ex.getName()+" "+ex.isRecommended()+" "+ex.isOthers()+" "+ex.isFirst());
             db.add(ex);
         }
     }
