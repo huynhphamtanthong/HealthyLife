@@ -113,22 +113,22 @@ public class FirstUseFragment extends Fragment {
     }
 
     private void initDataForNewUser() {
-        exercises.add(new Exercise(-1,"A", "BBB", 1, R.mipmap.ic_launcher, new int[]{1, 2, 3}));
-        exercises.add(new Exercise(-1,"B", "BBB", 1, R.mipmap.ic_launcher, new int[]{ 5}));
-        exercises.add(new Exercise(-1,"C", "BBB", 1, R.mipmap.ic_launcher, new int[]{1, 5}));
-        exercises.add(new Exercise(-1,"D", "BBB", 1, R.mipmap.ic_launcher, new int[]{2}));
-        exercises.add(new Exercise(-1,"E", "BBB", 1, R.mipmap.ic_launcher, new int[]{1}));
-        exercises.add(new Exercise(-1,"F", "BBB", 1, R.mipmap.ic_launcher, new int[]{4}));
-        exercises.add(new Exercise(-1,"G", "BBB", 1, R.mipmap.ic_launcher, new int[]{1, 2, 4, 5}));
-        exercises.add(new Exercise(-1,"H", "BBB", 1, R.mipmap.ic_launcher, new int[]{1}));
-        exercises.add(new Exercise(-1,"I", "BBB", 1, R.mipmap.ic_launcher, new int[]{4, 2}));
-        exercises.add(new Exercise(-1,"J", "BBB", 1, R.mipmap.ic_launcher, new int[]{4}));
-        exercises.add(new Exercise(-1,"K", "BBB", 1, R.mipmap.ic_launcher, new int[]{ 2, 5}));
-        exercises.add(new Exercise(-1,"L", "BBB", 1, R.mipmap.ic_launcher, new int[]{1, 2, 4}));
-        exercises.add(new Exercise(-1,"M", "BBB", 1, R.mipmap.ic_launcher, new int[]{1}));
-        exercises.add(new Exercise(-1,"N", "BBB", 1, R.mipmap.ic_launcher, new int[]{2}));
-        exercises.add(new Exercise(-1,"O", "BBB", 1, R.mipmap.ic_launcher, new int[]{1}));
-        exercises.add(new Exercise(-1,"P", "BBB", 1, R.mipmap.ic_launcher, new int[]{2, 5}));
+        exercises.add(new Exercise(-1,"A", "BBB", 1, R.mipmap.ic_launcher, new int[]{1, 2, 3}, 1, "description", "tutorial"));
+        exercises.add(new Exercise(-1,"B", "BBB", 1, R.mipmap.ic_launcher, new int[]{ 5}, 1, "description", "tutorial"));
+        exercises.add(new Exercise(-1,"C", "BBB", 1, R.mipmap.ic_launcher, new int[]{1, 5}, 1, "description", "tutorial"));
+        exercises.add(new Exercise(-1,"D", "BBB", 1, R.mipmap.ic_launcher, new int[]{2}, 1, "description", "tutorial"));
+        exercises.add(new Exercise(-1,"E", "BBB", 1, R.mipmap.ic_launcher, new int[]{1}, 1, "description", "tutorial"));
+        exercises.add(new Exercise(-1,"F", "BBB", 1, R.mipmap.ic_launcher, new int[]{4}, 1, "description", "tutorial"));
+        exercises.add(new Exercise(-1,"G", "BBB", 1, R.mipmap.ic_launcher, new int[]{1, 2, 4, 5}, 1, "description", "tutorial"));
+        exercises.add(new Exercise(-1,"H", "BBB", 1, R.mipmap.ic_launcher, new int[]{1}, 1, "description", "tutorial"));
+        exercises.add(new Exercise(-1,"I", "BBB", 1, R.mipmap.ic_launcher, new int[]{4, 2}, 1, "description", "tutorial"));
+        exercises.add(new Exercise(-1,"J", "BBB", 1, R.mipmap.ic_launcher, new int[]{4}, 1, "description", "tutorial"));
+        exercises.add(new Exercise(-1,"K", "BBB", 1, R.mipmap.ic_launcher, new int[]{ 2, 5}, 1, "description", "tutorial"));
+        exercises.add(new Exercise(-1,"L", "BBB", 1, R.mipmap.ic_launcher, new int[]{1, 2, 4}, 1, "description", "tutorial"));
+        exercises.add(new Exercise(-1,"M", "BBB", 1, R.mipmap.ic_launcher, new int[]{1}, 1, "description", "tutorial"));
+        exercises.add(new Exercise(-1,"N", "BBB", 1, R.mipmap.ic_launcher, new int[]{2}, 1, "description", "tutorial"));
+        exercises.add(new Exercise(-1,"O", "BBB", 1, R.mipmap.ic_launcher, new int[]{1}, 1, "description", "tutorial"));
+        exercises.add(new Exercise(-1,"P", "BBB", 1, R.mipmap.ic_launcher, new int[]{2, 5}, 1, "description", "tutorial"));
     }
 
     @Override

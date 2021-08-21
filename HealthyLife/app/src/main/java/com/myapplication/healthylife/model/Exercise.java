@@ -15,8 +15,11 @@ public class Exercise {
     private boolean isOthers;
     private boolean isFirst;
     private int[] types;
+    private int video;
+    private String description;
+    private String tutorial;
 
-    public Exercise(int id, String name, String level, int duration, int image, int[] types) {
+    public Exercise(int id, String name, String level, int duration, int image, int[] types, int video, String description, String tutorial) {
         this.id = id;
         this.name = name;
         this.level = level;
@@ -28,6 +31,9 @@ public class Exercise {
         this.isOthers = false;
         this.isFirst = false;
         this.types = types;
+        this.video = video;
+        this.description = description;
+        this.tutorial = tutorial;
     }
 
     public Exercise(int id, String name, String level, int duration, int progress, int image, boolean isFinished, boolean isRecommended, boolean isOthers, boolean isFirst, int[] types) {
@@ -42,6 +48,9 @@ public class Exercise {
         this.isOthers = isOthers;
         this.isFirst = isFirst;
         this.types = types;
+        this.video = video;
+        this.description = description;
+        this.tutorial = tutorial;
     }
 
     public String getName() {
@@ -124,19 +133,35 @@ public class Exercise {
         this.types = types;
     }
 
-    @Override
-    public String toString() {
-        return "Exercise{" +
-                "name='" + name + '\'' +
-                ", level='" + level + '\'' +
-                ", duration=" + duration +
-                ", progress=" + progress +
-                ", image=" + image +
-                ", isFinished=" + isFinished +
-                ", isRecommended=" + isRecommended +
-                ", isOthers=" + isOthers +
-                ", isFirst=" + isFirst +
-                ", types=" + Arrays.toString(types) +
-                '}';
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public int getVideo() {
+        return video;
+    }
+
+    public void setVideo(int video) {
+        this.video = video;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getTutorial() {
+        return tutorial;
+    }
+
+    public void setTutorial(String tutorial) {
+        this.tutorial = tutorial;
     }
 }
