@@ -23,6 +23,7 @@ import com.google.gson.Gson;
 import com.myapplication.healthylife.R;
 import com.myapplication.healthylife.databinding.FragmentFirstUseBinding;
 import com.myapplication.healthylife.local.AppPrefs;
+import com.myapplication.healthylife.local.DatabaseHelper;
 import com.myapplication.healthylife.model.Exercise;
 import com.myapplication.healthylife.model.User;
 
@@ -38,6 +39,7 @@ public class FirstUseFragment extends Fragment {
     private SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
     private SharedPreferences sharedPreferences = AppPrefs.getInstance(getContext());
     private ArrayList<Exercise> exercises = new ArrayList<>();
+    private DatabaseHelper db = new DatabaseHelper(getContext());
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -45,7 +47,7 @@ public class FirstUseFragment extends Fragment {
         Date date = new Date();
         String now = sdf.format(date);
         binding = FragmentFirstUseBinding.inflate(getLayoutInflater());
-        AppPrefs.getInstance(getContext()).edit().putString("date", now).apply();
+        sharedPreferences.edit().putString("date", now).apply();
         return binding.getRoot();
     }
 
@@ -74,6 +76,8 @@ public class FirstUseFragment extends Fragment {
                             user.setBmi(user.getWeight()/Math.pow(user.getHeight()/100, 2));
                             sharedPreferences.edit().putBoolean("isLogout", false).apply();
                             sharedPreferences.edit().putString("user", new Gson().toJson(user)).apply();
+
+                            initDataForNewUser();
                             navController.navigate(R.id.action_firstUseFragment_to_mainFragment);
                         }else   {
                             binding.etWeight.requestFocus();
@@ -113,22 +117,26 @@ public class FirstUseFragment extends Fragment {
     }
 
     private void initDataForNewUser() {
-        exercises.add(new Exercise(-1,"A", "BBB", 1, R.mipmap.ic_launcher, new int[]{1, 2, 3}, 1, "description", "tutorial"));
-        exercises.add(new Exercise(-1,"B", "BBB", 1, R.mipmap.ic_launcher, new int[]{ 5}, 1, "description", "tutorial"));
-        exercises.add(new Exercise(-1,"C", "BBB", 1, R.mipmap.ic_launcher, new int[]{1, 5}, 1, "description", "tutorial"));
-        exercises.add(new Exercise(-1,"D", "BBB", 1, R.mipmap.ic_launcher, new int[]{2}, 1, "description", "tutorial"));
-        exercises.add(new Exercise(-1,"E", "BBB", 1, R.mipmap.ic_launcher, new int[]{1}, 1, "description", "tutorial"));
-        exercises.add(new Exercise(-1,"F", "BBB", 1, R.mipmap.ic_launcher, new int[]{4}, 1, "description", "tutorial"));
-        exercises.add(new Exercise(-1,"G", "BBB", 1, R.mipmap.ic_launcher, new int[]{1, 2, 4, 5}, 1, "description", "tutorial"));
-        exercises.add(new Exercise(-1,"H", "BBB", 1, R.mipmap.ic_launcher, new int[]{1}, 1, "description", "tutorial"));
-        exercises.add(new Exercise(-1,"I", "BBB", 1, R.mipmap.ic_launcher, new int[]{4, 2}, 1, "description", "tutorial"));
-        exercises.add(new Exercise(-1,"J", "BBB", 1, R.mipmap.ic_launcher, new int[]{4}, 1, "description", "tutorial"));
-        exercises.add(new Exercise(-1,"K", "BBB", 1, R.mipmap.ic_launcher, new int[]{ 2, 5}, 1, "description", "tutorial"));
-        exercises.add(new Exercise(-1,"L", "BBB", 1, R.mipmap.ic_launcher, new int[]{1, 2, 4}, 1, "description", "tutorial"));
-        exercises.add(new Exercise(-1,"M", "BBB", 1, R.mipmap.ic_launcher, new int[]{1}, 1, "description", "tutorial"));
-        exercises.add(new Exercise(-1,"N", "BBB", 1, R.mipmap.ic_launcher, new int[]{2}, 1, "description", "tutorial"));
-        exercises.add(new Exercise(-1,"O", "BBB", 1, R.mipmap.ic_launcher, new int[]{1}, 1, "description", "tutorial"));
-        exercises.add(new Exercise(-1,"P", "BBB", 1, R.mipmap.ic_launcher, new int[]{2, 5}, 1, "description", "tutorial"));
+        exercises.add(new Exercise(-1,"A", "BBB", 1, R.mipmap.ic_launcher, new int[]{1, 2, 3}, R.raw.test, "description", "tutorial"));
+        exercises.add(new Exercise(-1,"B", "BBB", 1, R.mipmap.ic_launcher, new int[]{ 5}, R.raw.test, "description", "tutorial"));
+        exercises.add(new Exercise(-1,"C", "BBB", 1, R.mipmap.ic_launcher, new int[]{1, 5}, R.raw.test, "description", "tutorial"));
+        exercises.add(new Exercise(-1,"D", "BBB", 1, R.mipmap.ic_launcher, new int[]{2}, R.raw.test, "description", "tutorial"));
+        exercises.add(new Exercise(-1,"E", "BBB", 1, R.mipmap.ic_launcher, new int[]{1}, R.raw.test, "description", "tutorial"));
+        exercises.add(new Exercise(-1,"F", "BBB", 1, R.mipmap.ic_launcher, new int[]{4}, R.raw.test, "description", "tutorial"));
+        exercises.add(new Exercise(-1,"G", "BBB", 1, R.mipmap.ic_launcher, new int[]{1, 2, 4, 5}, R.raw.test, "description", "tutorial"));
+        exercises.add(new Exercise(-1,"H", "BBB", 1, R.mipmap.ic_launcher, new int[]{1}, R.raw.test, "description", "tutorial"));
+        exercises.add(new Exercise(-1,"I", "BBB", 1, R.mipmap.ic_launcher, new int[]{4, 2}, R.raw.test, "description", "tutorial"));
+        exercises.add(new Exercise(-1,"J", "BBB", 1, R.mipmap.ic_launcher, new int[]{4}, R.raw.test, "description", "tutorial"));
+        exercises.add(new Exercise(-1,"K", "BBB", 1, R.mipmap.ic_launcher, new int[]{ 2, 5}, R.raw.test, "description", "tutorial"));
+        exercises.add(new Exercise(-1,"L", "BBB", 1, R.mipmap.ic_launcher, new int[]{1, 2, 4}, R.raw.test, "description", "tutorial"));
+        exercises.add(new Exercise(-1,"M", "BBB", 1, R.mipmap.ic_launcher, new int[]{1}, R.raw.test, "description", "tutorial"));
+        exercises.add(new Exercise(-1,"N", "BBB", 1, R.mipmap.ic_launcher, new int[]{2}, R.raw.test, "description", "tutorial"));
+        exercises.add(new Exercise(-1,"O", "BBB", 1, R.mipmap.ic_launcher, new int[]{1}, R.raw.test, "description", "tutorial"));
+        exercises.add(new Exercise(-1,"P", "BBB", 1, R.mipmap.ic_launcher, new int[]{2, 5}, R.raw.test, "description", "tutorial"));
+
+        for (Exercise ex: exercises)    {
+            db.add(ex);
+        }
     }
 
     @Override

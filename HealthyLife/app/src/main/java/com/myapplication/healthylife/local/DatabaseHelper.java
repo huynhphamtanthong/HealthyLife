@@ -115,6 +115,17 @@ public class DatabaseHelper extends SQLiteOpenHelper{
         return returnList;
     }
 
+    public boolean deleteAll()  {
+        try {
+            SQLiteDatabase db = getWritableDatabase();
+            db.execSQL("delete from "+ EXERCISES);
+            return true;
+        }catch (Exception e)    {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
 //    public boolean delete(int id) {
 //        SQLiteDatabase db = getWritableDatabase();
 //        int res = db.delete(DOVAT, ID+" = ?", new String[]{String.valueOf(id)});

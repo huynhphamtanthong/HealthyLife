@@ -29,16 +29,15 @@ public class FitnessFragment extends Fragment {
     private FragmentFitnessBinding binding;
     private ExerciseRecViewAdapter exerciseRecViewAdapter;
     private User user;
-    private DatabaseHelper db;
+    private DatabaseHelper db = new DatabaseHelper(getContext());;
     private ArrayList<Exercise> list = new ArrayList<>();
     private SharedPreferences sharedPreferences = AppPrefs.getInstance(getContext());
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        db = new DatabaseHelper(getContext());
         binding = FragmentFitnessBinding.inflate(getLayoutInflater());
-        String data = AppPrefs.getInstance(getContext()).getString("user", null);
+        String data = sharedPreferences.getString("user", null);
         user = new Gson().fromJson(data, User.class);
         return binding.getRoot();
     }
