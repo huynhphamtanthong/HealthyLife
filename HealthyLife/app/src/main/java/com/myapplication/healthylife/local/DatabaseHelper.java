@@ -30,8 +30,9 @@ public class DatabaseHelper extends SQLiteOpenHelper{
     public static final String VIDEO = "VIDEO";
     public static final String DESCRIPTION = "DESCRIPTION";
     public static final String TUTORIAL = "TUTORIAL";
-    public static final String EXERCISES = "EXERCISESS";
-    public static final String ISDIETFFIRST="ISDIETFIRST";
+
+//    public static final String EXERCISES = "EXERCISESS";
+//    public static final String ISDIETFFIRST="ISDIETFIRST";
 
 
     public DatabaseHelper(Context context) {
