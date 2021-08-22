@@ -189,4 +189,14 @@ public class Exercise implements Serializable {
             return this.duration+"s";
         }
     }
+
+    @Override
+    public String toString() {
+        return "Exercise{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", progress=" + progress +
+                ", isFinished=" + isFinished +
+                '}';
+    }
 }

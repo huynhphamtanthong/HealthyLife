@@ -4,7 +4,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".fragments.mainfragments.ExerciseDetailFragment">
+    tools:context=".fragments.mainfragments.ExerciseDetailFragment"
+    android:id="@+id/scrollview"
+    android:background="@drawable/gradient_background">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -20,7 +22,8 @@
             android:id="@+id/tvName"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            android:layout_marginTop="20dp"/>
+            android:textAllCaps="true"
+            android:textColor="@color/white" />
 
         <androidx.constraintlayout.widget.Guideline
             android:layout_width="wrap_content"
@@ -30,52 +33,87 @@
             android:orientation="vertical"
             app:layout_constraintGuide_percent="0.5"/>
 
-        <TextView
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:id="@+id/tvNumOfWeek"
-            android:textSize="25sp"
-            android:text="1"
+            android:orientation="vertical"
             app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="@id/gl"
             app:layout_constraintTop_toBottomOf="@id/tvName"
-            app:layout_constraintEnd_toEndOf="@id/gl"
-            android:textStyle="bold"
-            android:fontFamily="@font/custom_font"
-            android:layout_marginTop="30dp"/>
+            android:id="@+id/lyWeek"
+            android:layout_marginTop="30dp"
+            app:layout_constraintWidth_percent="0.4"
+            android:padding="20dp"
+            android:background="@color/purple_500">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/tvWeek"
-            android:textSize="20sp"
-            android:text="Week(s)"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tvNumOfWeek"
-            app:layout_constraintEnd_toEndOf="@id/gl"
-            android:fontFamily="@font/custom_font"/>
+            <me.grantland.widget.AutofitTextView
+                android:id="@+id/tvNumOfWeek"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:fontFamily="@font/custom_font"
+                android:maxLines="1"
+                android:singleLine="true"
+                android:text="1"
+                android:textColor="@color/white"
+                android:textSize="30sp"
+                android:textStyle="bold" />
 
-        <TextView
-            android:layout_width="wrap_content"
+            <me.grantland.widget.AutofitTextView
+                android:id="@+id/tvWeek"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:singleLine="true"
+                android:maxLines="1"
+                android:layout_gravity="center_horizontal"
+                android:fontFamily="@font/custom_font"
+                android:text="Week(s)"
+                android:textColor="@color/white"
+                android:textSize="30sp"
+                />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:id="@+id/tvlevel"
-            android:textSize="25sp"
-            android:text="Easy"
+            android:orientation="vertical"
             app:layout_constraintStart_toStartOf="@id/gl"
-            app:layout_constraintTop_toTopOf="@id/tvNumOfWeek"
             app:layout_constraintEnd_toEndOf="parent"
-            android:textStyle="bold"
-            android:fontFamily="@font/custom_font"/>
+            app:layout_constraintTop_toTopOf="@id/lyWeek"
+            android:id="@+id/lyLevel"
+            app:layout_constraintWidth_percent="0.4"
+            android:padding="20dp"
+            android:background="@color/purple_500">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/tvLevelTittle"
-            android:textSize="20sp"
-            android:text="Level"
-            app:layout_constraintStart_toStartOf="@id/gl"
-            app:layout_constraintTop_toBottomOf="@id/tvlevel"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:fontFamily="@font/custom_font"/>
+            <me.grantland.widget.AutofitTextView
+                android:id="@+id/tvlevel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:singleLine="true"
+                android:maxLines="1"
+                android:layout_gravity="center_horizontal"
+                android:fontFamily="@font/custom_font"
+                android:text="Easy"
+                android:textColor="@color/white"
+                android:textSize="30sp"
+                android:textStyle="bold"
+                />
+
+            <me.grantland.widget.AutofitTextView
+                android:id="@+id/tvLevelTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:singleLine="true"
+                android:maxLines="1"
+                android:layout_gravity="center_horizontal"
+                android:fontFamily="@font/custom_font"
+                android:text="Level"
+                android:textColor="@color/white"
+                android:textSize="30sp"
+                />
+
+        </LinearLayout>
 
         <TextView
             android:id="@+id/tvDurationTitle"
@@ -85,20 +123,23 @@
             android:text="Duration: "
             android:textSize="20sp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@id/tvDuration"/>
+            app:layout_constraintTop_toTopOf="@id/tvDuration"
+            android:textColor="@color/white"/>
 
         <TextView
+            android:id="@+id/tvDuration"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:id="@+id/tvDuration"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="8dp"
             android:text="15 minutes"
             android:textSize="20sp"
             android:textStyle="bold"
-            app:layout_constraintTop_toBottomOf="@id/tvWeek"
-            app:layout_constraintStart_toEndOf="@id/tvDurationTitle"
             app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="10dp"/>
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@id/tvDurationTitle"
+            app:layout_constraintTop_toBottomOf="@id/lyWeek"
+            android:textColor="@color/white"/>
 
         <TextView
             android:layout_width="0dp"
@@ -110,8 +151,9 @@
             app:layout_constraintTop_toBottomOf="@id/tvDuration"
             app:layout_constraintStart_toEndOf="@id/tvEquipmentTitle"
             app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginTop="10dp"
-            android:layout_marginStart="10dp"/>
+            android:layout_marginTop="1dp"
+            android:layout_marginStart="10dp"
+            android:textColor="@color/white"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -121,47 +163,51 @@
             android:textSize="20sp"
             android:textStyle="bold"
             app:layout_constraintTop_toTopOf="@id/tvEquipment"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            android:textColor="@color/white"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/tvDescriptionTitle"
             android:text="Description"
-            android:textSize="25sp"
+            android:textSize="27sp"
             android:textStyle="bold"
             app:layout_constraintTop_toBottomOf="@id/tvEquipment"
             app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginTop="30dp"/>
+            android:layout_marginTop="30dp"
+            android:textColor="@color/white"/>
 
         <TextView
             android:id="@+id/tvDescription"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="5dp"
             android:textStyle="bold"
             android:text="aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
             android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tvDescriptionTitle" />
+            app:layout_constraintTop_toBottomOf="@id/tvDescriptionTitle"
+            android:textColor="@color/white"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/tvTutorialTitle"
             android:text="Tutorial"
-            android:textSize="25sp"
+            android:textSize="27sp"
             android:textStyle="bold"
             app:layout_constraintTop_toBottomOf="@id/tvDescription"
             app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginTop="30dp"/>
+            android:layout_marginTop="30dp"
+            android:textColor="@color/white"/>
 
         <TextView
             android:id="@+id/tvTutorial"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
+            android:textColor="@color/white"
             android:textStyle="bold"
             android:text="aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
             android:textSize="20sp"
@@ -169,7 +215,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tvTutorialTitle" />
 
-        <VideoView
+        <TextureView
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:id="@+id/video"

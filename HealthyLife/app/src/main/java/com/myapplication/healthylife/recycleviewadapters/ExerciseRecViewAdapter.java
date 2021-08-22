@@ -1,10 +1,12 @@
 package com.myapplication.healthylife.recycleviewadapters;
 
 import android.app.Activity;
+import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.navigation.Navigation;
@@ -12,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.myapplication.healthylife.R;
 import com.myapplication.healthylife.databinding.ExerciseListBinding;
+import com.myapplication.healthylife.local.DatabaseHelper;
 import com.myapplication.healthylife.model.Exercise;
 
 import java.io.Serializable;
@@ -20,9 +23,11 @@ import java.util.ArrayList;
 public class ExerciseRecViewAdapter extends RecyclerView.Adapter<ExerciseRecViewAdapter.ViewHolder> {
     private ArrayList<Exercise> exercises = new ArrayList<>();
     private Activity activity;
+    private DatabaseHelper db;
 
-    public ExerciseRecViewAdapter(Activity activity) {
+    public ExerciseRecViewAdapter(Activity activity, Context context) {
         this.activity = activity;
+        this.db = new DatabaseHelper(context);
     }
 
     @NonNull
@@ -78,17 +83,18 @@ public class ExerciseRecViewAdapter extends RecyclerView.Adapter<ExerciseRecView
                         exercise.setProgress(exercise.getProgress()-1);
                     }
                     notifyItemChanged(getAdapterPosition());
+                    db.edit(exercise);
                 }
             });
 
             if(exercise.isRecommended() && exercise.isFirst())   {
-                binding.title.setVisibility(View.VISIBLE);
+                binding.titleLayout.setVisibility(View.VISIBLE);
                 binding.title.setText("Recommend");
             }else if (exercise.isOthers() && exercise.isFirst())  {
-                binding.title.setVisibility(View.VISIBLE);
+                binding.titleLayout.setVisibility(View.VISIBLE);
                 binding.title.setText("Others");
             }else   {
-                binding.title.setVisibility(View.GONE);
+                binding.titleLayout.setVisibility(View.GONE);
             }
 
             binding.parent.setOnClickListener(new View.OnClickListener() {

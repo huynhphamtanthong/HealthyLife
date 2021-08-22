@@ -1,5 +1,6 @@
 package com.myapplication.healthylife.fragments.mainfragments;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -16,11 +17,15 @@ import android.view.ViewGroup;
 
 import com.myapplication.healthylife.R;
 import com.myapplication.healthylife.databinding.FragmentFitnessBinding;
+import com.myapplication.healthylife.local.AppPrefs;
 import com.myapplication.healthylife.local.DatabaseHelper;
 import com.myapplication.healthylife.model.Exercise;
 import com.myapplication.healthylife.recycleviewadapters.ExerciseRecViewAdapter;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 public class FitnessFragment extends Fragment {
     private FragmentFitnessBinding binding;
@@ -28,12 +33,16 @@ public class FitnessFragment extends Fragment {
     private DatabaseHelper db;
     private ArrayList<Exercise> list = new ArrayList<>();
     private NavController navController;
+    private SharedPreferences sharedPreferences;
+    private SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+    private Date date = new Date();
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         binding = FragmentFitnessBinding.inflate(getLayoutInflater());
         db = new DatabaseHelper(getContext());
+        sharedPreferences = AppPrefs.getInstance(getContext());
         return binding.getRoot();
     }
 
@@ -45,7 +54,15 @@ public class FitnessFragment extends Fragment {
 
     private void initRecycleViews() {
         list = db.getList();
-        exerciseRecViewAdapter = new ExerciseRecViewAdapter(getActivity());
+
+        String lastLogin = sharedPreferences.getString("lastLogin", null);
+
+        if (!lastLogin.equals(sdf.format(date))) {
+            for (Exercise ex: list) {
+                ex.setFinished(false);
+            }
+        }
+        exerciseRecViewAdapter = new ExerciseRecViewAdapter(getActivity(), getContext());
         exerciseRecViewAdapter.setExercises(list);
         binding.recommendedRecView.setAdapter(exerciseRecViewAdapter);
         binding.recommendedRecView.setLayoutManager(new LinearLayoutManager(getContext()));

@@ -63,7 +63,7 @@
     <fragment
         android:id="@+id/exerciseDetailFragment"
         android:name="com.myapplication.healthylife.fragments.mainfragments.ExerciseDetailFragment"
-        android:label="fragment_exercise_detail"
+        android:label="Detail"
         tools:layout="@layout/fragment_exercise_detail" >
         <action
             android:id="@+id/action_exerciseDetailFragment_to_mainFragment"

@@ -49,7 +49,7 @@ public class MainFragment extends Fragment {
     private void optionFragment(){
         binding.tabLayout.addTab(binding.tabLayout.newTab().setText("Home").setIcon(R.drawable.ic_home));
         binding.tabLayout.addTab(binding.tabLayout.newTab().setText("Fitness").setIcon(R.drawable.ic_fitnesss));
-        binding.tabLayout.addTab(binding.tabLayout.newTab().setText("Diet").setIcon(R.drawable.ic_fitnesss));
+        binding.tabLayout.addTab(binding.tabLayout.newTab().setText("Diet").setIcon(R.drawable.ic_diet));
 
         binding.tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override

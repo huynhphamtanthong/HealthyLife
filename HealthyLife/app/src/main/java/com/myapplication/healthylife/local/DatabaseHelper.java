@@ -177,20 +177,46 @@ public class DatabaseHelper extends SQLiteOpenHelper{
 //        return null;
 //    }
 
-//    public boolean edit(Item edited) {
-//        SQLiteDatabase db = getWritableDatabase();
-//        ContentValues cv = new ContentValues();
-//        cv.put(ID, edited.getId());
-//        cv.put(TEN, edited.getName());
-//        cv.put(MOTA, edited.getDescription());
-//        cv.put(HINHANH, edited.getImg());
-//        int update = db.update(DOVAT, cv, ID + " = ?", new String[]{String.valueOf(edited.getId())});
-//        if (update == 1)    {
-//            return true;
-//        }else   {
-//            return false;
-//        }
-//    }
+    public boolean edit(Exercise exercise) {
+        int isFinished = exercise.isFinished()?1:0;
+        int isRecommended = exercise.isRecommended()?1:0;
+        int isOthers = exercise.isOthers()?1:0;
+        int isFirst = exercise.isFirst()?1:0;
+
+        String types = new String();
+        boolean start = false;
+        for (int i: exercise.getTypes())    {
+            if (!start) {
+                types += String.valueOf(i);
+                start = true;
+            }else {
+                types += "," + String.valueOf(i);
+            }
+        }
+        SQLiteDatabase db = getWritableDatabase();
+        ContentValues cv = new ContentValues();
+        cv.put(NAME, exercise.getName());
+        cv.put(LEVEL, exercise.getLevel());
+        cv.put(DURATION, exercise.getDuration());
+        cv.put(PROGRESS, exercise.getProgress());
+        cv.put(IMAGE, exercise.getImage());
+        cv.put(ISFINISHED, isFinished);
+        cv.put(ISRECOMMENDED, isRecommended);
+        cv.put(ISOTHERS , isOthers);
+        cv.put(ISFIRST, isFirst);
+        cv.put(VIDEO, exercise.getVideo());
+        cv.put(DESCRIPTION, exercise.getDescription());
+        cv.put(TUTORIAL, exercise.getTutorial());
+        cv.put(EQUIPMENT, exercise.getEquipment());
+        cv.put(TYPES, types);
+
+        int update = db.update(EXERCISES, cv, ID + " = ?", new String[]{String.valueOf(exercise.getId())});
+        if (update == 1)    {
+            return true;
+        }else   {
+            return false;
+        }
+    }
 }
 
 
