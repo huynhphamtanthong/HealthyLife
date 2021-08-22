@@ -97,11 +97,11 @@ public class DatabaseHelper extends SQLiteOpenHelper{
         cv.put(ISRECOMMENDED, isRecommended);
         cv.put(ISOTHERS , isOthers);
         cv.put(ISFIRST, isFirst);
-        cv.put(TYPES, types);
         cv.put(VIDEO, exercise.getVideo());
         cv.put(DESCRIPTION, exercise.getDescription());
         cv.put(TUTORIAL, exercise.getTutorial());
         cv.put(EQUIPMENT, exercise.getEquipment());
+        cv.put(TYPES, types);
 
         long insert = db.insert(EXERCISES, null, cv);
         if (insert != -1)   {

@@ -44,6 +44,7 @@ public class ExerciseDetailFragment extends Fragment{
         binding.tvlevel.setText(exercise.getLevel());
         binding.tvDescription.setText(exercise.getDescription());
         binding.tvTutorial.setText(exercise.getTutorial());
+        binding.tvDuration.setText(exercise.convertSecToMin());
 
         binding.video.setVideoURI(Uri.parse("android.resource://"+getContext().getPackageName()+"/"+ exercise.getVideo()));
         binding.video.setMediaController(new MediaController(getContext()));

@@ -60,10 +60,6 @@ public class FitnessFragment extends Fragment {
     @Override
     public void onDestroy() {
         super.onDestroy();
-        for (Exercise ex: list
-             ) {
-            db.add(ex);
-        }
     }
 
 

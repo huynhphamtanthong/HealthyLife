@@ -42,9 +42,8 @@ public class HomeFragment extends Fragment {
         binding.btnLogout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                sharedPreferences.edit().putBoolean("isLogout", true).apply();
+                sharedPreferences.edit().putString("user", null).apply();
                 db.deleteAll();
-                Log.d("DEBUG", "logout: "+AppPrefs.getInstance(getContext()).getBoolean("isLogout", false));
                 navController.navigate(R.id.action_mainFragment_to_firstUseFragment);
             }
         });

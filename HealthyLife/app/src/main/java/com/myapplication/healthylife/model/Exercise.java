@@ -179,4 +179,14 @@ public class Exercise implements Serializable {
     public void setEquipment(String equipment) {
         this.equipment = equipment;
     }
+
+    public String convertSecToMin()    {
+        if(this.duration >= 60)   {
+            int m = this.duration/60;
+            int s = this.duration-m*60;
+            return m + "m" + s + "s";
+        }else   {
+            return this.duration+"s";
+        }
+    }
 }

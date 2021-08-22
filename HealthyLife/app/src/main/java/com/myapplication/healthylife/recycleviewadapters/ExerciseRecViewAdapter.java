@@ -59,7 +59,7 @@ public class ExerciseRecViewAdapter extends RecyclerView.Adapter<ExerciseRecView
 
             binding.tvName.setText(exercise.getName());
             binding.level.setText(String.valueOf(exercise.getLevel()));
-            binding.duration.setText(String.valueOf(exercise.getDuration()));
+            binding.duration.setText(String.valueOf(exercise.convertSecToMin()));
             binding.progressBar.setMax(14);
             binding.progressBar.setProgress(exercise.getProgress());
             binding.image.setImageResource(exercise.getImage());

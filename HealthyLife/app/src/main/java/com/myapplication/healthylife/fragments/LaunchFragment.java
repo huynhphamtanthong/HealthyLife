@@ -11,6 +11,7 @@ import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 
 import android.os.CountDownTimer;
+import android.os.Handler;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -40,27 +41,18 @@ public class LaunchFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        CountDownTimer countDownTimer = new CountDownTimer(1000, 1000) {
+        Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
             @Override
-            public void onTick(long l) {
+            public void run() {
                 String data = sharedPreferences.getString("user", null);
-                if (data != null) {
-                    isLogout = sharedPreferences.getBoolean("isLogout", false);
-                    if(!isLogout)    {
-                        newLogin = false;
-                    }
-                }
-            }
-            @Override
-            public void onFinish() {
-                if (newLogin)   {
+                if (data == null) {
                     navController.navigate(R.id.action_launchFragment_to_firstUseFragment);
-                }else   {
+                }else{
                     navController.navigate(R.id.action_launchFragment_to_mainFragment);
                 }
             }
-        };
-        countDownTimer.start();
+        }, 1000);
     }
 
     @Override

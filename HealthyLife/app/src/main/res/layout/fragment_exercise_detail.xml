@@ -14,7 +14,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/custom_font"
+            android:textStyle="bold"
             android:text="Exercise's Name"
             android:textSize="30sp"
             android:id="@+id/tvName"
@@ -81,7 +81,7 @@
             android:id="@+id/tvDurationTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/custom_font"
+            android:textStyle="bold"
             android:text="Duration: "
             android:textSize="20sp"
             app:layout_constraintStart_toStartOf="parent"
@@ -93,12 +93,12 @@
             android:id="@+id/tvDuration"
             android:text="15 minutes"
             android:textSize="20sp"
-            android:fontFamily="@font/custom_font"
+            android:textStyle="bold"
             app:layout_constraintTop_toBottomOf="@id/tvWeek"
             app:layout_constraintStart_toEndOf="@id/tvDurationTitle"
             app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginStart="10dp"
-            android:layout_marginTop="30dp"/>
+            android:layout_marginTop="10dp"/>
 
         <TextView
             android:layout_width="0dp"
@@ -106,11 +106,11 @@
             android:id="@+id/tvEquipment"
             android:text="Running Machine"
             android:textSize="20sp"
-            android:fontFamily="@font/custom_font"
+            android:textStyle="bold"
             app:layout_constraintTop_toBottomOf="@id/tvDuration"
             app:layout_constraintStart_toEndOf="@id/tvEquipmentTitle"
             app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="10dp"
             android:layout_marginStart="10dp"/>
 
         <TextView
@@ -119,7 +119,7 @@
             android:id="@+id/tvEquipmentTitle"
             android:text="Equipment:"
             android:textSize="20sp"
-            android:fontFamily="@font/custom_font"
+            android:textStyle="bold"
             app:layout_constraintTop_toTopOf="@id/tvEquipment"
             app:layout_constraintStart_toStartOf="parent" />
 
@@ -128,8 +128,8 @@
             android:layout_height="wrap_content"
             android:id="@+id/tvDescriptionTitle"
             android:text="Description"
-            android:textSize="20sp"
-            android:fontFamily="@font/custom_font"
+            android:textSize="25sp"
+            android:textStyle="bold"
             app:layout_constraintTop_toBottomOf="@id/tvEquipment"
             app:layout_constraintStart_toStartOf="parent"
             android:layout_marginTop="30dp"/>
@@ -139,8 +139,8 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:fontFamily="@font/custom_font"
-            android:text="Descriptionaaaaaaaaaaaaaaaa\nawdawdawawdawdawdawdadw"
+            android:textStyle="bold"
+            android:text="aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
             android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -151,8 +151,8 @@
             android:layout_height="wrap_content"
             android:id="@+id/tvTutorialTitle"
             android:text="Tutorial"
-            android:textSize="20sp"
-            android:fontFamily="@font/custom_font"
+            android:textSize="25sp"
+            android:textStyle="bold"
             app:layout_constraintTop_toBottomOf="@id/tvDescription"
             app:layout_constraintStart_toStartOf="parent"
             android:layout_marginTop="30dp"/>
@@ -162,8 +162,8 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:fontFamily="@font/custom_font"
-            android:text="aaaaaaaaaaaaaaaa\nawdawdawawdawdawdawdadw"
+            android:textStyle="bold"
+            android:text="aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
             android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
