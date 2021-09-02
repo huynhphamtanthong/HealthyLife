@@ -132,69 +132,69 @@ public class FirstUseFragment extends Fragment {
 
     private void initData() {
         exercises.add(new Exercise(-1,"Bridge", "Easy", 90, R.drawable.bridge, new int[]{1, 5}, R.raw.bridge,
-                "Đây là nhóm động tác kích thích cơ toàn thân và vùng cơ lưng phía sau cơ thể, nhìn trông giống như 1 cây cầy. Động tác này được xem là cách để khởi động và làm nóng cơ thể khá hoàn hảo",
-                "- Nằm ngửa lưng trên sàn, hai gối gập lại, lòng bàn chân để trên sàn, hai tay duỗi thẳng 2 bên hông.\n- Dùng lực bàn chân và gồng cơ toàn thân, nâng người lên khỏi sàn cho tới khi nào hông duỗi thẳng hoàn toàn, siết cứng cơ mông.\n- Từ từ hạ xuống và lặp lại.\n\nLƯU Ý:\n- 15-20 lần/hiệp.\n- 3 hiệp/bài.\n- 10 giây nghỉ giữa các hiệp.\n- Nghỉ 1 phút để chuyển sang bài tập khác.",
-                "Không có"));
+                "This exercise helps strengthen your core muscles, whittles your waistline, and boosts flexibility. It is a perfect way to warm up your body",
+                "- Find an open space on the floor, lie on your back floor, rest your hands at your sides, bend your knees, and place your feet flat on the floor, beneath your knees.\n- Tighten your abdominal and buttock muscles by pushing your low back into the ground.\n- Raise your hips to create a straight line from your knees to your shoulders.\n- Squeeze your core and pull your belly button back toward your spine\n- Lower the hips to return to the starting position\n- Repeat.\n\nNOTICE:\n- 15-20 reps/set.\n- 3 sets/time.\n- 10s resting between set.\n- 1 minute rest before moving to other exercise.",
+                "None"));
 
         exercises.add(new Exercise(-1,"Chair Squat", "Moderate", 90, R.drawable.chairsquat, new int[]{2, 3}, R.raw.chairsquat,
-                "Squat để tăng cường độ khoẻ cho đôi chân, mông và cơ toàn thân của bạn. Đây là 1 động tác có thể thực hiện ở bất kỳ nơi nào, chỉ cần đặt 1 ghế ngồi ngay phía sau để đảm bảo bạn tập đúng tư thế.",
-                "- Đứng phía trước ghế, hai chân bằng vai, mũi chân hơi hướng ra 2 bên.\n- Gập người ở hông và khuỵu gối xuống, hạ người về sau và hướng xuống, cho tới khi mông hơi chạm vào ghế, duỗi thẳng 2 tay ra phía trước.\n- Dùng lực gót chân, đẩy người đúng dậy và quay trở lại vị trí ban đầu.\n\nLƯU Ý:\n- 10-15 lần/hiệp.\n- 3 hiệp/bài.\n- 10 giây nghỉ giữa các hiệp.\n- Nghỉ 1 phút để chuyển sang bài tập khác.",
-                "Ghế (tuỳ chọn)"));
+                "Chair squats are a great way to build up the strength in your leg muscles. The chair provides added support as you work your glutes, hamstrings, and quads. You can make use of your chair and do this exercise almost anywhere.",
+                "- Stand just in front of your chair, facing away from it. Your feet should be shoulder-width apart, with toes pointing straight ahead.\n- Keep your spine neutral and head and chest raised. Engage your core as you bend knees and lower your hips down and back. You can lift your arms out in front for extra balance while you lower yourself down.\n- Gently tap the chair with your butt, but don’t sit down.\n- Squeeze glutes and hamstrings to drive your hips forward and up, returning to the starting position.\n\nNOTICE:\n- 10-15 reps/set.\n- 3 sets/time.\n- 10s resting between set.\n- 1 minute resting before moving to other exercises.",
+                "A chair"));
 
-        exercises.add(new Exercise(-1,"Knee Pushup", "Moderate", 90, R.drawable.kneepushup, new int[]{3, 4}, R.raw.kneepushup,
-                "Đây là cách hít đất cho người mới bắt đầu tập, giúp bạn xây dựng dần sức mạnh của đôi tay, ngực, và toàn thân.",
-                "- Vào tư thế Plank cao, hai gối đặt trên sàn.\n- Duy trì 1 đường thẳng từ đầu tới gối, khuỵu 2 cùi chỏ để hạ người xuống gần chạm sàn. Giữ 2 cùi chỏ gập lại 1 góc 45 độ.\n- Đẩy ngược lại vị trí ban đầu.\n\nLƯU Ý:\n- 10-15 lần/hiệp.\n- 2 hiệp/bài.\n- 10 giây nghỉ giữa các hiệp.\n- Nghỉ 1 phút để chuyển sang bài tập khác.",
-                "Không có"));
+        exercises.add(new Exercise(-1,"Knee Push-up", "Moderate", 90, R.drawable.kneepushup, new int[]{3, 4}, R.raw.kneepushup,
+                "Knee push-ups can improve upper-body strength, increase core stability. It is a beginner-level bodyweight exercise.",
+                "- Place the knees on the floor, the hands below the shoulders, and cross your feet.\n- Keeping your back straight, start bending the elbows until your chest is almost touching the floor.\n- Pause and push back to the starting position.\n- Repeat until the set is complete.\n\nNOTICE:\n- 10-15 reps/set.\n- 2 sets/time.\n- 10s resting between sets.\n- 1 minute resting before moving to other exercises.",
+                "None"));
 
         exercises.add(new Exercise(-1,"Stationary Lunge", "Moderate", 60, R.drawable.stationarylunge, new int[]{2, 5}, R.raw.stationarylunge,
-                "Động tác này giúp bạn rèn luyện cơ đùi trước, sau, và cơ mông",
-                "- Đứng hai chân dạng rộng, chân phải ở phía trước. Bàn chân phải đặt cố định trên sàn, mũi bàn chân trái đặt trên sàn.\n- Khuỵu gối và nhún xuống, dừng lại khi đùi phải song song với sàn.\n- Đẩy ngược người đứng dậy bằng lực bàn chân phải, để quay trở lại vị trí ban đầu. Sau đó đổi chân.\n\nLƯU Ý:\n- 15-20 lần/hiệp.\n- 2 hiệp/bài.\n- 10 giây nghỉ giữa các hiệp.\n- Nghỉ 1 phút để chuyển sang bài tập khác.",
-                "Không có"));
+                "Stationary lunges target your glutes, quadriceps, and hamstrings. You’ll put most of your weight on your front leg and use your back leg to balance, stabilize, and support your entire body.",
+                "- Stand up straight, feet hip-width apart.\n- Put your hands on your hips for stability.\n- Tighten your abs.\n- Shift your weight forward as you take one big step in front of you, allowing your back heel to rise.\n- Sink until your forward-stepping leg is at a right angle (thigh parallel with the ground, shin vertical).\n- Press into your front heel while you push back up into the starting position.\n- Repeat on the other side.\n\nNOTICE:\n- 15-20 reps/set.\n- 2 sets/time.\n- 10s resting between sets.\n- 1 minute resting before moving to other exercises.",
+                "None"));
 
         exercises.add(new Exercise(-1,"Downward Dog", "Moderate", 90, R.drawable.downwarddog, new int[]{5}, R.raw.downwarddog,
-                "Động tác này để kiểm tra vùng thân người trên, đặc biệt là cơ vai.",
-                "- Vào tư thế Plank cao, hai tay chống xuống sàn, ngay dưới 2 vai, hai bàn chân đặt hơi sát vào nhau.\n- Đẩy hông lên cao và hạ xuống, thân người bạn sẽ tạo thành 1 hình tam giác với mặt sàn, mắt nhìn về phía 2 chân.\n\nLƯU Ý:\n- 15-20 lần/hiệp.\n- 2 hiệp/bài.\n- 10 giây nghỉ giữa các hiệp.\n- Nghỉ 1 phút để chuyển sang bài tập khác.",
-                "Không có"));
+                "Downward Dog helps stretch the lower body, strengthen the upper body, and stimulates blood flow. This exercise is also great for improving postures and fine-tuning your foot muscles.",
+                "- On all fours, hands and knees, spread your palms wide, knees are hip distance apart, palms are spread flat.\n- Raise the body up and back into posture, your body should form a triangle with the floor, eyes looking at your legs.\n\nNOTICE:\n- 15-20 rep/set.\n- 2 sets/time.\n- 10s resting between sets.\n- 1 minute resting before moving to other exercises.",
+                "None"));
 
         exercises.add(new Exercise(-1,"Donkey Kick", "Moderate", 60, R.drawable.donkeykick, new int[]{1, 2}, R.raw.donkeykick,
-                "Tăng cơ mông với bài tập này là 1 trong những nhóm động tác được nhiều người yêu thích.",
-                "- Vào tư thế 4 chân, hai tay dưới 2 vai, hai gối dưới hông.\n- Giữ lưng thẳng, đẩy chân phải thẳng ra phía sau.\n- Mũi chân gập lại, hướng thẳng xuống sàn. Giữ hông cố định. Siết cứng cơ mông ở đỉnh.\n- Quay trở lại vị trí ban đầu. Lặp lại cho chân kia.\n\nLƯU Ý:\n- 15-20 lần/hiệp.\n- 2 hiệp/bài.\n- 10 giây nghỉ giữa các hiệp.\n- Nghỉ 1 phút để chuyển sang bài tập khác.",
-                "Không có"));
+                "Donkey kicks are great for both stability and toning. They target your gluteus maximus—the largest of your three glutes muscles, and the bulk of your booty. They also work your core and shoulder muscles. This exercise is especially beneficial for anyone who has a desk job.",
+                "- Get on all fours, with your hands stacked directly under shoulders, and knees under hips.\n- Make sure your back is flat and tuck your chin slightly so the back of your neck is facing the ceiling.\n- Without rounding your spine, engage your lower abdominals. Keeping the 90-degree bend in your right knee, slowly lift your leg straight back and up toward the ceiling.\n- Your max height is right before your back starts to arch, or your hips begin to rotate.\n- Return to the starting position. Repeat all reps on one side, then switch legs. \n\nNOTICE:\n- 15-20 reps/set.\n- 2 sets/time.\n- 10s resting between sets.\n- 1 minute resting before moving to other exercises.",
+                "None"));
 
         exercises.add(new Exercise(-1,"Bird Dog", "Hard", 90, R.drawable.birddog, new int[]{3, 4}, R.raw.birddog,
-                "Động tác toàn thân này đòi hỏi khả năng giữ thăng bằng, tư thế này rất phù hợp cho những người thường xuyên tập luyện tại nhà của mình.",
-                "- Vào tư thế 4 chân, đảm bảo 2 tay ở ngay dưới 2 vai, hai gối ở dưới hông.\n- Giữ đầu cổ cố định, đồng thời duỗi thẳng tay trái và chân phải. Giữ hông cố định và dừng lại trong 2 giây.\n- Quay trở lại vị trí ban đầu. Lặp lại cho tay phải và chân trái.\n\nLƯU Ý:\n- 15-20 lần/hiệp.\n- 2 hiệp/bài.\n- 10 giây nghỉ giữa các hiệp.\n- Nghỉ 1 phút để chuyển sang bài tập khác.",
-                "Không có"));
+                "The bird dog exercise works the erector spinae, rectus abdominis, and glutes. This allows for correct movement, control, and stability of the whole body. It’s an ideal exercise for people with low back concerns, and it can help to develop good balance and posture.\n",
+                "- Begin on all fours in the tabletop position. Place your knees under your hips and your hands under your shoulders.\n- Maintain a neutral spine by engaging your abdominal muscles.\n- Draw your shoulder blades together.\n- Raise your right arm and left leg, keeping your shoulders and hips parallel to the floor.\n- Lengthen the back of your neck and tuck your chin into your chest to gaze down at the floor.\n- Hold this position for a few seconds, then lower back down to the starting position.\n- Raise your left arm and right leg, holding this position for a few seconds.\n- Return to the starting position. This is one round.\n\nNOTICE:\n- 15-20 reps/set.\n- 2 sets/time.\n- 10s resting between sets.\n- 1 minute resting before moving to other exercises.",
+                "None"));
 
         exercises.add(new Exercise(-1,"Forearm Plank", "Hard", 60, R.drawable.forearmplank, new int[]{2, 4}, R.raw.forearmplank,
-                "Động tác này đòi hỏi khả năng giữ thăng bằng và động trực diện vào cơ bụng của bạn.",
-                "- Vào tư thế Plank trên cẳng tay. Thân người tạo thành 1 đường thẳng, từ đầu tới chân.\n- Đảm bảo hông và lưng dưới không bị xà xuống sàn. Giữ yên tư thế này trong vòng 30 đến 60 giây.\n\nLƯU Ý:\n- 15-30 lần/hiệp.\n- 1 hiệp/bài.\n- Nghỉ 1 phút để chuyển sang bài tập khác.",
-                "Không có"));
+                "The Forearm Plank strengthens the abs, legs and core. It is also good for stretching the arches of your feet as well as your calves, shoulders and hamstrings to support the spine in day-to-day activities.",
+                "- Start lying face down on the floor with your forearms flat on the ground. Make sure that your elbows are directly under the shoulders.\n- Fire up the core and raise your body up off the ground.\n- Engage your core and keep your body in a straight line- avoid letting your hips rise or drop.\n- Breathe and hold.\n\nNOTICE:\n- 15-30 rep/set.\n- 1 set/time.\n- 1 minute resting before moving to other exercises.",
+                "None"));
 
         exercises.add(new Exercise(-1,"Hip Abduction", "Moderate", 90, R.drawable.hipabduction, new int[]{1, 2}, R.raw.hipabduction,
-                "Cơ hông đóng vai trò rất quan trọng trong hầu hết các động tác và hoạt động thường ngày, nên bạn cần phải gia tăng thể lực cho vùng này. Động tác này đặc biệt cần thiết cho những ai thường xuyên phải ngồi suốt cả ngày dài.",
-                "- Nằm nghiêng 1 bên người, chân trái dưới, chân phải trên, hai chân duỗi thẳng.\n- Nâng chân phải lên, giữ người cố định.\n- Sau đó, hạ chân phải xuống vị trí ban đầu.\n- Lặp lại với chân kia.\n\nLƯU Ý:\n- 15-20 lần/hiệp.\n- 2 hiệp/bài.\n- 10 giây nghỉ giữa các hiệp.\n- Nghỉ 1 phút để chuyển sang bài tập khác.",
-                "Không có"));
+                "Not only can hip abduction exercises help you get a tight and toned backside, they can also help to prevent and treat pain in the hips and knees.",
+                "- \n- Lie down on the floor on your side. Rest your head on your arm. Bend your legs at the knees.\n- Keep your feet together and lift your top leg up so that your knees are separated. Keep your hips steady.\n- Slowly lower your leg back down.\n-Switch sides.\n\nNOTICE:\n- 15-20 rep/set.\n- 2 set/time.\n- 10s resting between sets.\n- 1 minute resting before moving to other exercises.",
+                "None"));
 
         exercises.add(new Exercise(-1,"Bicycle Crunch", "Hard", 70, R.drawable.bicyclecrunch, new int[]{1, 3}, R.raw.bicyclecrunch,
-                "Đây là 1 trong những động tác cực tốt để đốt cháy calo dư thừa, cũng như tăng cường cơ bụng giúp eo thon, bụng chắc khoẻ.",
-                "- Nằm ngửa lưng trên sàn, đưa 2 chân lên cao. Gập cùi chỏ và đặt 2 tay ra sau đầu.\n- Gập người lên và đưa cùi chỏ phải chạm vào gối trái, duỗi thẳng chân phải.\n- Hạ người xuống vừa phải, gập chân phải và duỗi thẳng chân trái, sau đó kéo cùi chỏ trái chạm vào gối phải. Sau đó, lặp lại.\n\nLƯU Ý:\n- 10-15 lần/hiệp.\n- 2 hiệp/bài.\n- 10 giây nghỉ giữa các hiệp.\n- Nghỉ 1 phút để chuyển sang bài tập khác.",
-                "Không có"));
+                "The bicycle crunch is excellent for activating the rectus abdominis, your upper abdominal muscle, and the obliques—your side abdominal muscles. You also engage the transverse abdominis, which is the deep ab muscle that is hard to target. Besides working your abs, you will also be toning your thighs as both your hamstrings and quads will be involved with bicycling.",
+                "- Lie down on your back. Bend your knees and plant your feet on the floor, hip-width apart. Place your arms behind your head, pointing your elbows outward.\n- Brace your abs. Lift your knees to 90 degrees and raise your upper body. This is your starting position.\n- Exhale and rotate your trunk, moving your right elbow and left knee toward each other. Simultaneously straighten your right leg. Pause.\n- Inhale and return to starting position.\n- Exhale. Move your left elbow to your right knee and extend your left leg. Pause. This completes 1 rep.\n\nNOTICE:\n- 10-15 reps/set.\n- 2 sets/time.\n- 10s resting between sets.\n- 1 minute resting before moving to other exercises.",
+                "None"));
 
         exercises.add(new Exercise(-1,"Running", "Moderate", 300, R.drawable.running, new int[]{3, 4, 5}, R.raw.running,
-                "Chạy bộ không chỉ giúp tim và phổi của bạn tốt hơn mà còn giúp bạn có một cơ thể săn chắc, khoẻ mạnh, và một tinh thần lạc quan, yêu đời.",
-                "- Khởi động làm nóng cơ thể trước khi chạy bộ.\n- Sau đó, bắt đầu chạy bộ trong vòng 5 phút.\n- Giữ tư thế thẳng lưng, mặt hướng về phía trước, 2 tay đánh thoải mái, và hít thở đều, nhẹ nhàng.\n\nLƯU Ý:\n- Bạn nên chạy với tốc độ phù hợp để tránh việc đuối sức, bạn có thể chạy lâu hơn để có hiệu quả tốt hơn.",
-                "Giày (tuỳ chọn)"));
+                "Running not only helps your heart and lungs but also gives you a fit, healthy body and an optimistic mind.",
+                "- Warm up your body\n- Run for 5 minutes.\n- Keep your back straight, face looking forward, hands swinging naturally, and breathe in and exhale deeply\n\nNOTICE:\n- Keep your pace suitable to your health condition",
+                "Shoe (Optional)"));
 
         exercises.add(new Exercise(-1,"Skipping Rope", "Moderate", 70, R.drawable.skippingrope, new int[]{4, 5}, R.raw.skippingrope,
-                "Nhảy dây giúp bạn đốt cháy calories, mang lại một cơ thể săn chắc, khoẻ mạnh. Đây là một môn thể thao được rất nhiều người ưa thích.",
-                "- Xếp 2 chân gần nhau, giữ tư thế của bạn thẳng, không còng lưng. Sau đó, bắt đầu nhảy dây và hít thở đều, nhẹ nhàng.\n\nLƯU Ý:\n- 25-30 lần/hiệp.\n- 2 hiệp/bài.\n- 10 giây nghỉ giữa các hiệp.\n- Nghỉ 1 phút để chuyển sang bài tập khác.",
-                "Dây nhảy (bắt buộc)"));
+                "The benefits of jumping rope include burning calories, better coordination, stronger bones, a lower injury risk, and improved heart health.\n.",
+                "- Stand straight with your feet close to each other.\n- Swing the ropes and jump\n\nNOTICE:\n- 25-30 reps/set.\n- 2 sets/time.\n- 10s resting between sets.\n- 1 minute resting before moving to other exercises.",
+                "Ropes"));
 
         exercises.add(new Exercise(-1,"Push Up", "Hard", 90, R.drawable.pushup, new int[]{1, 2}, R.raw.pushup,
-                "Hít đất giúp bạn rèn luyện cơ bắp, đặc biệt là cơ tay, ngực và mang lại một thể chất tốt cho cơ thể.",
-                "- Chống tay xuống sàn, 2 tay nằm dưới 2 vai, 2 chân đặt trên ghế hoặc 1 bục cao, thân người duỗi thẳng.\n- Hít vào, đồng thời hạ người xuống đến khi ngực sắp chạm sàn.\n- Đẩy người lên về vị trí ban đầu, siết cơ ngực đồng thời thở mạnh.\n- Lặp lại.\n\nLƯU Ý:\n- 10-20 lần/hiệp.\n- 2 hiệp/bài.\n- 10 giây nghỉ giữa các hiệp.\n- Nghỉ 1 phút để chuyển sang bài tập khác.",
-                "Không có"));
+                "Traditional push-ups are beneficial for building upper body strength. They work the triceps, pectoral muscles, and shoulders. When done with proper form, they can also strengthen the lower back and core.",
+                "- Get down on all fours, placing your hands slightly wider than your shoulders.\n-Straighten your arms and legs.\n- Lower your body until your chest nearly touches the floor.\n-Pause, then push yourself back up.\n-Repeat.\n\nNOTICE:\n- 10-20 reps/set.\n- 2 sets/time.\n- 10s resting between sets.\n- 1 minute resting before moving to other exercises.",
+                "None"));
     }
 
     private void saveListOfExercisesForNewUser(ArrayList<Exercise> exercise, double bmi)    {
