@@ -6,10 +6,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-import androidx.annotation.Nullable;
-
 import com.myapplication.healthylife.model.Exercise;
-import com.myapplication.healthylife.model.User;
 
 import java.util.ArrayList;
 
@@ -30,6 +27,14 @@ public class DatabaseHelper extends SQLiteOpenHelper{
     public static final String DESCRIPTION = "DESCRIPTION";
     public static final String TUTORIAL = "TUTORIAL";
     public static final String EQUIPMENT = "EQUIPMENT";
+    public static final String DURATIONSET = "DURATIONSET";
+    public static final String BREAKSET = "BREAKSET";
+    public static final String NUMSET = "NUMSET";
+    public static final String BREAKEX = "BREAKEX";
+    public static final String CALOSET = "CALOSET";
+
+
+
 
 //    public static final String EXERCISES = "EXERCISESS";
 //    public static final String ISDIETFFIRST="ISDIETFIRST";
@@ -56,7 +61,13 @@ public class DatabaseHelper extends SQLiteOpenHelper{
                 + DESCRIPTION + " NVARCHAR(1000), "
                 + TUTORIAL + " NVARCHAR(1000), "
                 + EQUIPMENT + " NVARCHAR(150),"
-                + TYPES + " VARCHAR(20) )"
+                + DURATIONSET + " INTEGER, "
+                + BREAKSET + " INTEGER, "
+                + NUMSET + " INTEGER, "
+                + BREAKEX + " INTEGER, "
+                + CALOSET +" INTEGER,"
+                + TYPES + " VARCHAR(20)) "
+
                 // + TYPES + " VARCHAR(150), "
                 // +ISDIETFFIRST +"INTEGER )"
         );
@@ -101,6 +112,11 @@ public class DatabaseHelper extends SQLiteOpenHelper{
         cv.put(DESCRIPTION, exercise.getDescription());
         cv.put(TUTORIAL, exercise.getTutorial());
         cv.put(EQUIPMENT, exercise.getEquipment());
+        cv.put(DURATIONSET, exercise.getDurationSet());
+        cv.put(BREAKSET, exercise.getbreakSet());
+        cv.put(NUMSET, exercise.getnumSet());
+        cv.put(BREAKEX, exercise.getbreakEx());
+        cv.put(CALOSET, exercise.getcaloSet());
         cv.put(TYPES, types);
 
         long insert = db.insert(EXERCISES, null, cv);
@@ -131,9 +147,15 @@ public class DatabaseHelper extends SQLiteOpenHelper{
                 String description = cursor.getString(11);
                 String tutorial = cursor.getString(12);
                 String equipment = cursor.getString(13);
-
                 // boolean isDietFirst = cursor.getInt(10) == 0 ? false:true;
-                String temp = cursor.getString(14);;
+
+                int durationSet = cursor.getInt(14);
+                int breakSet = cursor.getInt(15);
+                int numSet = cursor.getInt(16);
+                int breakEx = cursor.getInt(17);
+                int caloSet = cursor.getInt(18);
+
+                String temp = cursor.getString(19);;
                 String[] arr = temp.split(",");
                 int[] types = new int[arr.length];
                 int count = 0;
@@ -141,7 +163,8 @@ public class DatabaseHelper extends SQLiteOpenHelper{
                     types[count++] = Integer.parseInt(s);
                 }
 
-                returnList.add(new Exercise(id, name, level, duration, progress, image, isFinished, isRecommended, isOthers, isFirst, types, video, description, tutorial, equipment));
+
+                returnList.add(new Exercise(id, name, level, duration, progress, image, isFinished, isRecommended, isOthers, isFirst, types, video, description, tutorial, equipment, durationSet, breakSet, numSet, breakEx, caloSet));
             }while (cursor.moveToNext());
         }
         return returnList;

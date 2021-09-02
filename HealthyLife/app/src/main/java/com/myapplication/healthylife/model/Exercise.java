@@ -1,12 +1,6 @@
 package com.myapplication.healthylife.model;
 
-import android.os.Parcelable;
-
-import androidx.versionedparcelable.VersionedParcelize;
-
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.Arrays;
 
 
 public class Exercise implements Serializable {
@@ -25,8 +19,13 @@ public class Exercise implements Serializable {
     private String description;
     private String tutorial;
     private String equipment;
+    private int durationSet;
+    private int breakSet;
+    private int numSet;
+    private int breakEx;
+    private int caloSet;
 
-    public Exercise(int id, String name, String level, int duration, int image, int[] types, int video, String description, String tutorial, String equipment) {
+    public Exercise(int id, String name, String level, int duration, int image, int[] types, int video, String description, String tutorial, String equipment, int durationSet, int breakSet, int numSet, int breakEx, int caloSet) {
         this.id = id;
         this.name = name;
         this.level = level;
@@ -42,9 +41,14 @@ public class Exercise implements Serializable {
         this.description = description;
         this.tutorial = tutorial;
         this.equipment = equipment;
+        this.durationSet=durationSet;
+        this.breakSet=breakSet;
+        this.numSet=numSet;
+        this.breakEx=breakEx;
+        this.caloSet=caloSet;
     }
 
-    public Exercise(int id, String name, String level, int duration, int progress, int image, boolean isFinished, boolean isRecommended, boolean isOthers, boolean isFirst, int[] types, int video, String description, String tutorial, String equipment) {
+    public Exercise(int id, String name, String level, int duration, int progress, int image, boolean isFinished, boolean isRecommended, boolean isOthers, boolean isFirst, int[] types, int video, String description, String tutorial, String equipment, int durationSet, int breakSet, int numSet, int breakEx, int caloSet) {
         this.id = id;
         this.name = name;
         this.level = level;
@@ -60,6 +64,11 @@ public class Exercise implements Serializable {
         this.description = description;
         this.tutorial = tutorial;
         this.equipment = equipment;
+        this.durationSet=durationSet;
+        this.breakSet=breakSet;
+        this.numSet=numSet;
+        this.breakEx=breakEx;
+        this.caloSet=caloSet;
     }
 
     public String getName() {
@@ -178,6 +187,42 @@ public class Exercise implements Serializable {
 
     public void setEquipment(String equipment) {
         this.equipment = equipment;
+    }
+
+    public int getDurationSet() {
+        return durationSet;
+    }
+
+    public void setDurationSet(int durationSet) { this.durationSet=durationSet; }
+
+    public int getbreakEx() {
+        return breakEx;
+    }
+
+    public void setbreakEx(int breakEx) {
+        this.breakEx = breakEx;
+    }
+
+    public int getnumSet() {
+        return numSet;
+    }
+
+    public void setnumSet(int numSet) {
+        this.numSet = numSet;
+    }
+
+    public int getbreakSet() {return breakSet;}
+
+    public void setbreakSet(int breakSet) {
+        this.breakSet = breakSet;
+    }
+
+    public int getcaloSet() {
+        return caloSet;
+    }
+
+    public void setcaloSet(int caloSet) {
+        this.caloSet = caloSet;
     }
 
     public String convertSecToMin()    {
