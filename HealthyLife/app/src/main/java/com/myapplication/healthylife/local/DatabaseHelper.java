@@ -170,6 +170,49 @@ public class DatabaseHelper extends SQLiteOpenHelper{
         return returnList;
     }
 
+    public ArrayList<Exercise> getRecommendedList()    {
+        SQLiteDatabase db = getReadableDatabase();
+        ArrayList<Exercise> returnList = new ArrayList<>();
+        Cursor cursor = db.rawQuery("SELECT * FROM " + EXERCISES + " LIMIT 5", null);
+        if (cursor.moveToFirst())   {
+            do {
+                int id = cursor.getInt(0);
+                String name = cursor.getString(1);
+                String level = cursor.getString(2);
+                int duration = cursor.getInt(3);
+                int progress = cursor.getInt(4);
+                int image = cursor.getInt(5);
+                boolean isFinished = cursor.getInt(6) == 0 ? false:true;
+                boolean isRecommended = cursor.getInt(7) == 0 ? false:true;
+                boolean isOthers = cursor.getInt(8) == 0 ? false:true;
+                boolean isFirst = cursor.getInt(9) == 0 ? false:true;
+                int video = cursor.getInt(10);
+                String description = cursor.getString(11);
+                String tutorial = cursor.getString(12);
+                String equipment = cursor.getString(13);
+                // boolean isDietFirst = cursor.getInt(10) == 0 ? false:true;
+
+                int durationSet = cursor.getInt(14);
+                int breakSet = cursor.getInt(15);
+                int numSet = cursor.getInt(16);
+                int breakEx = cursor.getInt(17);
+                int caloSet = cursor.getInt(18);
+
+                String temp = cursor.getString(19);;
+                String[] arr = temp.split(",");
+                int[] types = new int[arr.length];
+                int count = 0;
+                for (String s:arr)  {
+                    types[count++] = Integer.parseInt(s);
+                }
+
+
+                returnList.add(new Exercise(id, name, level, duration, progress, image, isFinished, isRecommended, isOthers, isFirst, types, video, description, tutorial, equipment, durationSet, breakSet, numSet, breakEx, caloSet));
+            }while (cursor.moveToNext());
+        }
+        return returnList;
+    }
+
     public boolean deleteAll()  {
         try {
             SQLiteDatabase db = getWritableDatabase();

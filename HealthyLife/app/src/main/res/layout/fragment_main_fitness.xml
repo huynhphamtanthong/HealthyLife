@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragments.mainfragments.MainFitnessFragment"
+    android:background="@drawable/gradient_background">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent="0.3"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintWidth_percent="0.9"
+        android:id="@+id/table"
+        android:background="@color/purple_500">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Height"
+            android:textSize="30sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="@id/glVer"
+            app:layout_constraintTop_toTopOf="parent"
+            android:id="@+id/tvHeightTitle"
+            app:layout_constraintBottom_toTopOf="@id/tvHeight"
+            android:textColor="@color/white"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="173cm"
+            android:textSize="30sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="@id/glVer"
+            android:id="@+id/tvHeight"
+            app:layout_constraintTop_toBottomOf="@id/tvHeightTitle"
+            app:layout_constraintBottom_toBottomOf="@id/glHori"
+            android:textColor="@color/white"/>
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Weight"
+            android:textSize="30sp"
+            android:id="@+id/tvWeightTitle"
+            app:layout_constraintStart_toStartOf="@id/glVer"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/tvWeight"
+            android:textColor="@color/white"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="73kg"
+            android:textSize="30sp"
+            android:id="@+id/tvWeight"
+            app:layout_constraintStart_toStartOf="@id/glVer"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvWeightTitle"
+            app:layout_constraintBottom_toBottomOf="@id/glHori"
+            android:textColor="@color/white"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="BMI"
+            android:textSize="30sp"
+            android:id="@+id/tvBmiTitle"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="@id/glVer"
+            app:layout_constraintTop_toTopOf="@id/glHori"
+            app:layout_constraintBottom_toTopOf="@id/tvBmi"
+            android:textColor="@color/white"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="18kg/m2"
+            android:textSize="30sp"
+            android:id="@+id/tvBmi"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="@id/glVer"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvBmiTitle"
+            android:textColor="@color/white"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Calo"
+            android:textSize="30sp"
+            android:id="@+id/tvCaloTitle"
+            app:layout_constraintStart_toStartOf="@id/glVer"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/glHori"
+            app:layout_constraintBottom_toTopOf="@id/tvCalo"
+            android:textColor="@color/white"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="123"
+            android:textSize="30sp"
+            android:id="@+id/tvCalo"
+            app:layout_constraintStart_toStartOf="@id/glVer"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvCaloTitle"
+            android:textColor="@color/white"/>
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/glVer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_begin="20dp"
+            app:layout_constraintGuide_percent="0.5"/>
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/glHori"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_begin="20dp"
+            app:layout_constraintGuide_percent="0.5"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <Button
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Timer"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/table"
+        android:id="@+id/btnTimer"
+        app:layout_constraintBottom_toTopOf="@id/btnExercise"
+        app:layout_constraintWidth_percent="0.7"
+        android:textSize="20sp"
+        android:padding="10dp"/>
+
+    <Button
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Exercise"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:id="@+id/btnExercise"
+        app:layout_constraintTop_toBottomOf="@id/btnTimer"
+        app:layout_constraintBottom_toTopOf="@id/btnFootstep"
+        app:layout_constraintWidth_percent="0.7"
+        android:textSize="20sp"
+        android:padding="10dp"/>
+
+    <Button
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Foot step"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:id="@+id/btnFootstep"
+        app:layout_constraintTop_toBottomOf="@id/btnExercise"
+        app:layout_constraintBottom_toTopOf="@id/btnStandup"
+        app:layout_constraintWidth_percent="0.7"
+        android:textSize="20sp"
+        android:padding="10dp"/>
+
+    <Button
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Stand up"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:id="@+id/btnStandup"
+        app:layout_constraintTop_toBottomOf="@id/btnFootstep"
+        app:layout_constraintBottom_toTopOf="@id/btnStat"
+        app:layout_constraintWidth_percent="0.7"
+        android:textSize="20sp"
+        android:padding="10dp"/>
+
+    <Button
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Stats"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:id="@+id/btnStat"
+        app:layout_constraintTop_toBottomOf="@id/btnStandup"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintWidth_percent="0.7"
+        android:textSize="20sp"
+        android:padding="10dp"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

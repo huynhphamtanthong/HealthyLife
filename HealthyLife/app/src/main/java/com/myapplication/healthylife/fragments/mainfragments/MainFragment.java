@@ -92,12 +92,7 @@ public class MainFragment extends Fragment {
     public void onStart() {
         super.onStart();
         navController = Navigation.findNavController(getActivity(), R.id.fragmentContainer);
-        binding.floatingActionButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                navController.navigate(R.id.action_mainFragment_to_notificationFragment);
-            }
-        });
+
     }
 
 

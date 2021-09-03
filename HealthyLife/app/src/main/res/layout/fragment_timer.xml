@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragments.mainfragments.TimerFragment"
+    android:orientation="horizontal"
+    android:background="@color/black">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Exercise"
+        android:textSize="40sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:id="@+id/tvName"
+        android:layout_marginTop="10dp"
+        android:textColor="#00ffff"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Set 1"
+        android:textSize="40sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvName"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:id="@+id/tvStatus"
+        android:layout_marginTop="10dp"
+        android:textColor="#00ffff"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="60:00"
+        android:id="@+id/tvTime"
+        android:textSize="60sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvStatus"
+        android:layout_marginTop="10dp"
+        android:textColor="#00ffff"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Start"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvTime"
+        android:id="@+id/btn"
+        android:textSize="25sp"
+        android:layout_marginTop="10dp"/>
+
+    <TextureView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:id="@+id/video"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btn"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginTop="10dp"/>
+</androidx.constraintlayout.widget.ConstraintLayout>

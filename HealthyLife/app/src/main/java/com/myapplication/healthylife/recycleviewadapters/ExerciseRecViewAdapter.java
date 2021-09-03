@@ -102,8 +102,7 @@ public class ExerciseRecViewAdapter extends RecyclerView.Adapter<ExerciseRecView
                 public void onClick(View view) {
                     Bundle bundle = new Bundle();
                     bundle.putSerializable("data", (Serializable) exercise);
-//                    Navigation.createNavigateOnClickListener(R.id.action_mainFragment_to_exerciseDetailFragment).onClick(view);
-                    Navigation.findNavController(activity, R.id.fragmentContainer).navigate(R.id.action_mainFragment_to_exerciseDetailFragment, bundle);
+                    Navigation.findNavController(activity, R.id.fragmentContainer).navigate(R.id.action_fitnessFragment_to_exerciseDetailFragment, bundle);
                 }
             });
         }

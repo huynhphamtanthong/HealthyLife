@@ -9,6 +9,7 @@ import androidx.viewpager2.adapter.FragmentStateAdapter;
 import com.myapplication.healthylife.fragments.mainfragments.DietFragment;
 import com.myapplication.healthylife.fragments.mainfragments.FitnessFragment;
 import com.myapplication.healthylife.fragments.mainfragments.HomeFragment;
+import com.myapplication.healthylife.fragments.mainfragments.MainFitnessFragment;
 
 public class ViewPager2Adapter extends FragmentStateAdapter {
 
@@ -24,7 +25,7 @@ public class ViewPager2Adapter extends FragmentStateAdapter {
                 return new HomeFragment();
 
             case 1:
-                return new FitnessFragment();
+                return new MainFitnessFragment();
 
             case 2:
                 return new DietFragment();

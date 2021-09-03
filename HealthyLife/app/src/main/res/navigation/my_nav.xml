@@ -40,25 +40,16 @@
         android:label="fragment_main"
         tools:layout="@layout/fragment_main" >
         <action
-            android:id="@+id/action_mainFragment_to_notificationFragment"
-            app:destination="@id/notificationFragment" />
-        <action
             android:id="@+id/action_mainFragment_to_firstUseFragment"
             app:destination="@id/firstUseFragment"
             app:popUpTo="@id/mainFragment"
             app:popUpToInclusive="true"/>
         <action
-            android:id="@+id/action_mainFragment_to_exerciseDetailFragment"
-            app:destination="@id/exerciseDetailFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/notificationFragment"
-        android:name="com.myapplication.healthylife.fragments.notificationfragment.NotificationFragment"
-        android:label="Notifications"
-        tools:layout="@layout/fragment_notification" >
+            android:id="@+id/action_mainFragment_to_fitnessFragment"
+            app:destination="@id/fitnessFragment" />
         <action
-            android:id="@+id/action_notificationFragment_to_mainFragment"
-            app:destination="@id/mainFragment" />
+            android:id="@+id/action_mainFragment_to_timerFragment"
+            app:destination="@id/timerFragment" />
     </fragment>
     <fragment
         android:id="@+id/exerciseDetailFragment"
@@ -66,7 +57,28 @@
         android:label="Detail"
         tools:layout="@layout/fragment_exercise_detail" >
         <action
-            android:id="@+id/action_exerciseDetailFragment_to_mainFragment"
+            android:id="@+id/action_exerciseDetailFragment_to_fitnessFragment"
+            app:destination="@id/fitnessFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/fitnessFragment"
+        android:name="com.myapplication.healthylife.fragments.mainfragments.FitnessFragment"
+        android:label="fragment_fitness"
+        tools:layout="@layout/fragment_fitness" >
+        <action
+            android:id="@+id/action_fitnessFragment_to_mainFragment"
+            app:destination="@id/mainFragment" />
+        <action
+            android:id="@+id/action_fitnessFragment_to_exerciseDetailFragment"
+            app:destination="@id/exerciseDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/timerFragment"
+        android:name="com.myapplication.healthylife.fragments.mainfragments.TimerFragment"
+        android:label="fragment_timer"
+        tools:layout="@layout/fragment_timer" >
+        <action
+            android:id="@+id/action_timerFragment_to_mainFragment"
             app:destination="@id/mainFragment" />
     </fragment>
 
