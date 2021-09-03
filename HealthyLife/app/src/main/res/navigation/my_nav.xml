@@ -50,6 +50,9 @@
         <action
             android:id="@+id/action_mainFragment_to_timerFragment"
             app:destination="@id/timerFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_standUpNoti"
+            app:destination="@id/standUpNoti" />
     </fragment>
     <fragment
         android:id="@+id/exerciseDetailFragment"
@@ -79,6 +82,15 @@
         tools:layout="@layout/fragment_timer" >
         <action
             android:id="@+id/action_timerFragment_to_mainFragment"
+            app:destination="@id/mainFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/standUpNoti"
+        android:name="com.myapplication.healthylife.fragments.mainfragments.StandUpNoti"
+        android:label="fragment_stand_up_noti"
+        tools:layout="@layout/fragment_stand_up_noti" >
+        <action
+            android:id="@+id/action_standUpNoti_to_mainFragment"
             app:destination="@id/mainFragment" />
     </fragment>
 

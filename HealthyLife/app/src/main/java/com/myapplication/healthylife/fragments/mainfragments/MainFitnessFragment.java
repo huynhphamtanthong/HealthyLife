@@ -1,14 +1,13 @@
 package com.myapplication.healthylife.fragments.mainfragments;
 
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 
 import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
-
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 
 import com.myapplication.healthylife.R;
 import com.myapplication.healthylife.databinding.FragmentMainFitnessBinding;
@@ -40,6 +39,13 @@ public class MainFitnessFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 navController.navigate(R.id.action_mainFragment_to_timerFragment);
+            }
+        });
+
+        binding.btnStandup.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                navController.navigate(R.id.action_mainFragment_to_standUpNoti);
             }
         });
     }
