@@ -51,5 +51,25 @@ public class HomeFragment extends Fragment {
                 navController.navigate(R.id.action_mainFragment_to_aboutUs);
             }
         });
+        binding.btnAboutDiet.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                navController.navigate(R.id.action_mainFragment_to_aboutDiet);
+            }
+        });
+        binding.btnAboutFitness.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                navController.navigate(R.id.action_mainFragment_to_aboutFitness);
+
+            }
+        });
+        binding.btnCommonInfo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                navController.navigate(R.id.action_mainFragment_to_commonKnowledge);
+
+            }
+        });
     }
 }

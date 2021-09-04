@@ -59,6 +59,15 @@
         <action
             android:id="@+id/action_mainFragment_to_aboutUs"
             app:destination="@id/aboutUs" />
+        <action
+            android:id="@+id/action_mainFragment_to_aboutFitness"
+            app:destination="@id/aboutFitness" />
+        <action
+            android:id="@+id/action_mainFragment_to_aboutDiet"
+            app:destination="@id/aboutDiet" />
+        <action
+            android:id="@+id/action_mainFragment_to_commonKnowledge"
+            app:destination="@id/commonKnowledge" />
     </fragment>
     <fragment
         android:id="@+id/exerciseDetailFragment"
@@ -115,6 +124,33 @@
         tools:layout="@layout/fragment_about_us" >
         <action
             android:id="@+id/action_aboutUs_to_mainFragment"
+            app:destination="@id/mainFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/aboutFitness"
+        android:name="com.myapplication.healthylife.AboutFitness"
+        android:label="fragment_about_fitness"
+        tools:layout="@layout/fragment_about_fitness" >
+        <action
+            android:id="@+id/action_aboutFitness_to_mainFragment"
+            app:destination="@id/mainFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/aboutDiet"
+        android:name="com.myapplication.healthylife.AboutDiet"
+        android:label="fragment_about_diet"
+        tools:layout="@layout/fragment_about_diet" >
+        <action
+            android:id="@+id/action_aboutDiet_to_mainFragment"
+            app:destination="@id/mainFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/commonKnowledge"
+        android:name="com.myapplication.healthylife.CommonKnowledge"
+        android:label="fragment_common_knowledge"
+        tools:layout="@layout/fragment_common_knowledge" >
+        <action
+            android:id="@+id/action_commonKnowledge_to_mainFragment"
             app:destination="@id/mainFragment" />
     </fragment>
 
