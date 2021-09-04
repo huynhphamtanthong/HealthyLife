@@ -14,55 +14,47 @@
         android:layout_marginTop="10dp"
         android:layout_marginBottom="30dp"
         android:fontFamily="@font/custom_font"
-        android:text="HEALTHY DIET"
+        android:text="DIET"
         android:textAlignment="center"
         android:textColor="@color/white"
         android:textSize="50sp" />
     <LinearLayout
         android:layout_marginTop="100dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
         android:id="@+id/DietMainBackground"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_weight="1">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="40sp"
+                android:text="@string/today_dish"
+                android:textSize="25sp"
+                android:textColor="@color/white"
+                android:fontFamily="@font/custom_font"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvDishDetail"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+            </LinearLayout>
+        </LinearLayout>
         <Button
-            android:id="@+id/DietPlanButton"
+            android:id="@+id/RecommendDietButton"
             android:layout_marginTop="20dp"
             android:layout_marginBottom="20dp"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="1"
+            android:layout_weight="5"
             android:background = "@drawable/button_design"
-            android:text="@string/diet_plan"
-            android:textColor="@color/black"
-            android:textAllCaps="false"
-            android:textSize="30sp"
-            android:fontFamily="@font/custom_font"
-            />
-        <Button
-            android:id="@+id/DietEvaluationButton"
-            android:layout_marginTop="20dp"
-            android:layout_marginBottom="20dp"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background = "@drawable/button_design"
-            android:text="@string/diet_evaluation"
-            android:textColor="@color/black"
-            android:textAllCaps="false"
-            android:textSize="30sp"
-            android:fontFamily="@font/custom_font"
-            />
-        <Button
-            android:id="@+id/TypicalDiets"
-            android:layout_marginTop="20dp"
-            android:layout_marginBottom="20dp"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background = "@drawable/button_design"
-            android:text="@string/typical_diets"
+            android:text="@string/recommend"
             android:textColor="@color/black"
             android:textAllCaps="false"
             android:textSize="30sp"
