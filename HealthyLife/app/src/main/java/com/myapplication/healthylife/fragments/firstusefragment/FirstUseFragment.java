@@ -26,6 +26,7 @@ import com.myapplication.healthylife.databinding.FragmentFirstUseBinding;
 import com.myapplication.healthylife.local.AppPrefs;
 import com.myapplication.healthylife.local.DatabaseHelper;
 import com.myapplication.healthylife.model.Exercise;
+import com.myapplication.healthylife.model.Stat;
 import com.myapplication.healthylife.model.User;
 
 import java.text.SimpleDateFormat;
@@ -42,7 +43,8 @@ public class FirstUseFragment extends Fragment {
     private ArrayList<Exercise> exercises = new ArrayList<>();
     private DatabaseHelper db;
     private SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-    private Date date = new Date();
+    private SimpleDateFormat dateTimeSdf = new SimpleDateFormat("dd/MM/yyyy, kk:mm:ss");
+    private Date date;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -79,7 +81,7 @@ public class FirstUseFragment extends Fragment {
                                     Float.valueOf(binding.etHeight.getText().toString()),
                                     Float.valueOf(binding.etWeight.getText().toString()));
 
-                            double bmi = user.getWeight()/Math.pow(user.getHeight()/100, 2);
+                            double bmi = Math.round(((user.getWeight()/Math.pow(user.getHeight()/100, 2))*10)/10);
                             Log.d("DATA", String.valueOf(bmi));
                             user.setBmi(bmi);
 
@@ -87,10 +89,13 @@ public class FirstUseFragment extends Fragment {
 
                             sharedPreferences.edit().putString("user", new Gson().toJson(user)).apply();
 
+                            date = new Date();
                             String now = sdf.format(date);
                             sharedPreferences.edit().putString("lastLogin", now).apply();
 
                             saveListOfExercisesForNewUser(exercises, bmi);
+
+                            db.addStat(new Stat(-1, user.getHeight(), user.getWeight(), user.getBmi(), dateTimeSdf.format(date)));
 
                             navController.navigate(R.id.action_firstUseFragment_to_mainFragment);
                         }else   {
@@ -257,7 +262,7 @@ public class FirstUseFragment extends Fragment {
 
         for (Exercise ex: result) {
             Log.d("DATA", ex.getName()+" "+ex.isRecommended()+" "+ex.isOthers()+" "+ex.isFirst());
-            db.add(ex);
+            db.addExercise(ex);
         }
     }
 
