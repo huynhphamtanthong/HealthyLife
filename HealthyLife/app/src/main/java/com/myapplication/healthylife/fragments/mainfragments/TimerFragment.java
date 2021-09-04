@@ -3,6 +3,7 @@ package com.myapplication.healthylife.fragments.mainfragments;
 import android.content.res.AssetFileDescriptor;
 import android.graphics.SurfaceTexture;
 import android.media.MediaPlayer;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 
@@ -17,6 +18,7 @@ import android.view.Surface;
 import android.view.TextureView;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.MediaController;
 
 import com.myapplication.healthylife.R;
 import com.myapplication.healthylife.databinding.FragmentTimerBinding;
@@ -30,20 +32,13 @@ import java.util.ArrayList;
 
 import kotlin.jvm.Synchronized;
 
-public class TimerFragment extends Fragment implements TextureView.SurfaceTextureListener{
+public class TimerFragment extends Fragment{
     FragmentTimerBinding binding;
     DatabaseHelper db;
-    private MediaPlayer mediaPlayer;
-    private AssetFileDescriptor assetFileDescriptor;
+
     private ArrayList<Exercise> list;
     private ArrayList<Timer> listTimer;
     int i = 0;
-
-    long currentDuration;
-    int numOfSet;
-    long breakEx;
-    long breakSet;
-    int setCount = 1;
 
     CountDownTimer timer;
 
@@ -52,20 +47,30 @@ public class TimerFragment extends Fragment implements TextureView.SurfaceTextur
                              Bundle savedInstanceState) {
         db = new DatabaseHelper(getContext());
         binding = FragmentTimerBinding.inflate(getLayoutInflater());
-        list = db.getRecommendedList();
+        list = db.getRecommendedExerciseList();
         listTimer = convert(list);
+
         return binding.getRoot();
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        binding.video.setSurfaceTextureListener(this);
 
         binding.tvName.setText(listTimer.get(i).getName());
         binding.tvStatus.setText(listTimer.get(i).getStatus());
-        mediaPlayer = new MediaPlayer();
-        assetFileDescriptor = getResources().openRawResourceFd(listTimer.get(i).getVideo());
+
+        binding.video.setVideoURI(Uri.parse("android.resource://"+getActivity().getPackageName()+"/"+listTimer.get(i).getVideo()));
+        MediaController ctrl = new MediaController(getContext());
+        ctrl.setVisibility(View.GONE);
+        binding.video.setMediaController(ctrl);
+        binding.video.start();
+        binding.video.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
+            @Override
+            public void onPrepared(MediaPlayer mediaPlayer) {
+                mediaPlayer.setLooping(true);
+            }
+        });
         countDown(listTimer);
     }
 
@@ -76,13 +81,23 @@ public class TimerFragment extends Fragment implements TextureView.SurfaceTextur
                 updateTime(l);
             }
 
+            @RequiresApi(api = Build.VERSION_CODES.N)
             @Override
             public void onFinish() {
-                binding.tvName.setText(listTimer.get(++i).getName());
-                binding.tvStatus.setText(listTimer.get(i).getStatus());
-                mediaPlayer = new MediaPlayer();
-                assetFileDescriptor = getResources().openRawResourceFd(listTimer.get(i).getVideo());
-                countDown(listTimer);
+                if(++i < listTimer.size()) {
+                    binding.tvName.setText(listTimer.get(i).getName());
+                    binding.tvStatus.setText(listTimer.get(i).getStatus());
+                    binding.video.setVideoURI(Uri.parse("android.resource://"+getActivity().getPackageName()+"/"+listTimer.get(i).getVideo()));
+                    binding.video.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
+                        @Override
+                        public void onPrepared(MediaPlayer mediaPlayer) {
+                            mediaPlayer.setLooping(true);
+                        }
+                    });
+                    countDown(listTimer);
+                }else   {
+                    binding.video.stopPlayback();
+                }
             }
         }.start();
     }
@@ -131,72 +146,5 @@ public class TimerFragment extends Fragment implements TextureView.SurfaceTextur
         }
 
         return returnList;
-    }
-
-    @RequiresApi(api = Build.VERSION_CODES.N)
-    @Override
-    public void onSurfaceTextureAvailable(@NonNull SurfaceTexture surfaceTexture, int i, int i1) {
-        Surface surface = new Surface(surfaceTexture);
-        try {
-            mediaPlayer.setDataSource(assetFileDescriptor);
-            mediaPlayer.setSurface(surface);
-            mediaPlayer.prepareAsync();
-            mediaPlayer.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
-                @Override
-                public void onPrepared(MediaPlayer mediaPlayer) {
-                    mediaPlayer.start();
-                    mediaPlayer.setLooping(true);
-                }
-            });
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    @Override
-    public void onSurfaceTextureSizeChanged(@NonNull SurfaceTexture surfaceTexture, int i, int i1) {
-
-    }
-
-    @Override
-    public boolean onSurfaceTextureDestroyed(@NonNull SurfaceTexture surfaceTexture) {
-        return false;
-    }
-
-    @Override
-    public void onSurfaceTextureUpdated(@NonNull SurfaceTexture surfaceTexture) {
-
-    }
-
-    @Override
-    public void onPause() {
-        super.onPause();
-        if (mediaPlayer != null && mediaPlayer.isPlaying()) {
-            mediaPlayer.pause();
-        }
-    }
-
-    @Override
-    public void onResume() {
-        super.onResume();
-        if (mediaPlayer != null)    {
-            mediaPlayer.start();
-        }
-    }
-
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
-        if (mediaPlayer != null)    {
-            mediaPlayer.stop();
-            mediaPlayer.release();
-            mediaPlayer = null;
-        }
-    }
-
-    private void runCallback(Runnable callback)
-    {
-//        countDown(currentDuration);
-        callback.run();
     }
 }

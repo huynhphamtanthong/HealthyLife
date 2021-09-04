@@ -55,7 +55,7 @@
         android:textSize="25sp"
         android:layout_marginTop="10dp"/>
 
-    <TextureView
+    <VideoView
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:id="@+id/video"

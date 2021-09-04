@@ -66,4 +66,6 @@ dependencies {
 
     //AutoResizeTextView
     implementation 'me.grantland:autofittextview:0.2.+'
+
+    implementation 'com.github.medyo:android-about-page:1.2.6'
 }

@@ -2,15 +2,13 @@ package com.myapplication.healthylife.fragments.mainfragments;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 
 import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
-
-import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 
 import com.myapplication.healthylife.R;
 import com.myapplication.healthylife.databinding.FragmentHomeBinding;
@@ -43,9 +41,19 @@ public class HomeFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 sharedPreferences.edit().putString("user", null).apply();
-                db.deleteAll();
+                db.deleteAllExercises();
                 navController.navigate(R.id.action_mainFragment_to_firstUseFragment);
             }
         });
+
+<<<<<<< HEAD
+        binding.btnAboutUs.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                navController.navigate(R.id.action_mainFragment_to_aboutUs);
+            }
+        });
+=======
+>>>>>>> e78be7a837529ed7d154a8fff809e261668e09aa
     }
 }

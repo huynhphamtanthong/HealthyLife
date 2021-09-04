@@ -7,6 +7,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 import com.myapplication.healthylife.model.Exercise;
+import com.myapplication.healthylife.model.Stat;
 
 import java.util.ArrayList;
 
@@ -33,11 +34,12 @@ public class DatabaseHelper extends SQLiteOpenHelper{
     public static final String BREAKEX = "BREAKEX";
     public static final String CALOSET = "CALOSET";
 
+    public static final String STAT = "STAT";
+    public static final String HEIGHT = "HEIGHT";
+    public static final String WEIGHT = "WEIGHT";
+    public static final String BMI = "BMI";
+    public static final String DATE = "DATE";
 
-
-
-//    public static final String EXERCISES = "EXERCISESS";
-//    public static final String ISDIETFFIRST="ISDIETFIRST";
 
 
     public DatabaseHelper(Context context) {
@@ -68,19 +70,26 @@ public class DatabaseHelper extends SQLiteOpenHelper{
                 + CALOSET +" INTEGER,"
                 + TYPES + " VARCHAR(20)) "
 
-                // + TYPES + " VARCHAR(150), "
-                // +ISDIETFFIRST +"INTEGER )"
         );
 
+        db.execSQL("CREATE TABLE " + STAT + "("
+                + ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
+                + HEIGHT + " FLOAT, "
+                + WEIGHT + " FLOAT, "
+                + BMI + " FLOAT, "
+                + DATE + " CHAR(20)) "
+
+        );
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL("DROP TABLE IF EXISTS "+ EXERCISES);
+        db.execSQL("DROP TABLE IF EXISTS "+ STAT);
         onCreate(db);
     }
 
-    public boolean add(Exercise exercise)    {
+    public boolean addExercise(Exercise exercise)    {
         int isFinished = exercise.isFinished()?1:0;
         int isRecommended = exercise.isRecommended()?1:0;
         int isOthers = exercise.isOthers()?1:0;
@@ -127,7 +136,7 @@ public class DatabaseHelper extends SQLiteOpenHelper{
         }
     }
 
-    public ArrayList<Exercise> getList()    {
+    public ArrayList<Exercise> getExerciseList()    {
         SQLiteDatabase db = getReadableDatabase();
         ArrayList<Exercise> returnList = new ArrayList<>();
         Cursor cursor = db.rawQuery("SELECT * FROM " + EXERCISES, null);
@@ -170,7 +179,7 @@ public class DatabaseHelper extends SQLiteOpenHelper{
         return returnList;
     }
 
-    public ArrayList<Exercise> getRecommendedList()    {
+    public ArrayList<Exercise> getRecommendedExerciseList()    {
         SQLiteDatabase db = getReadableDatabase();
         ArrayList<Exercise> returnList = new ArrayList<>();
         Cursor cursor = db.rawQuery("SELECT * FROM " + EXERCISES + " LIMIT 5", null);
@@ -213,7 +222,7 @@ public class DatabaseHelper extends SQLiteOpenHelper{
         return returnList;
     }
 
-    public boolean deleteAll()  {
+    public boolean deleteAllExercises()  {
         try {
             SQLiteDatabase db = getWritableDatabase();
             db.execSQL("delete from " + EXERCISES);
@@ -278,6 +287,50 @@ public class DatabaseHelper extends SQLiteOpenHelper{
 
         int update = db.update(EXERCISES, cv, ID + " = ?", new String[]{String.valueOf(exercise.getId())});
         if (update == 1)    {
+            return true;
+        }else   {
+            return false;
+        }
+    }
+
+    public boolean addStat(Stat stat)    {
+        SQLiteDatabase db = getWritableDatabase();
+        ContentValues cv = new ContentValues();
+        cv.put(HEIGHT, stat.getHeight());
+        cv.put(WEIGHT, stat.getWeight());
+        cv.put(BMI, stat.getBmi());
+        cv.put(DATE, stat.getDate());
+
+        long insert = db.insert(STAT, null, cv);
+        if (insert != -1)   {
+            return true;
+        }else {
+            return false;
+        }
+    }
+
+    public ArrayList<Stat> getStatList()    {
+        SQLiteDatabase db = getReadableDatabase();
+        ArrayList<Stat> returnList = new ArrayList<>();
+        Cursor cursor = db.rawQuery("SELECT * FROM " + STAT, null);
+        if (cursor.moveToFirst())   {
+            do {
+                int id = cursor.getInt(0);
+                float height = cursor.getFloat(1);
+                float weight = cursor.getFloat(2);
+                double bmi = cursor.getDouble(3);
+                String date = cursor.getString(4);
+
+                returnList.add(new Stat(id, weight, height, bmi, date));
+            }while (cursor.moveToNext());
+        }
+        return returnList;
+    }
+
+    public boolean deleteStat(int id) {
+        SQLiteDatabase db = getWritableDatabase();
+        int res = db.delete(STAT, ID+" = ?", new String[]{String.valueOf(id)});
+        if (res == 1)   {
             return true;
         }else   {
             return false;

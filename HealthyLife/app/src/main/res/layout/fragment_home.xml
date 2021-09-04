@@ -9,8 +9,42 @@
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
         android:text="log out"
+        android:layout_centerInParent="true"
         android:id="@+id/btnLogout"/>
+
+    <Button
+        android:id="@+id/btnAboutUs"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/btnLogout"
+        android:layout_centerInParent="true"
+        android:text="About Us" />
+
+    <Button
+        android:id="@+id/btnAboutDiet"
+        :layout_centerVertical="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/btnAboutUs"
+        android:layout_centerInParent="true"
+        android:text="About Diet" />
+
+    <Button
+        android:id="@+id/btnAboutFitness"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/btnAboutDiet"
+        android:layout_centerInParent="true"
+        android:text="About Fitness" />
+
+    <Button
+        android:id="@+id/btnCommonInfo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/btnAboutFitness"
+        android:layout_centerInParent="true"
+        android:text="Common Information" />
+
 
 </RelativeLayout>
