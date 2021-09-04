@@ -40,7 +40,11 @@ public class DatabaseHelper extends SQLiteOpenHelper{
     public static final String BMI = "BMI";
     public static final String DATE = "DATE";
 
-
+    public static final String DIET = "DIET";
+    public static final String DISH = "DISH";
+    public static final String CALORIES ="CALORIES";
+    public static final String ISASSIGNED = " ISASSIGNED";
+    public static final String DAY = "DAY"; // in-week
 
     public DatabaseHelper(Context context) {
         super(context, "healthylife.db", null, 1);
@@ -80,6 +84,18 @@ public class DatabaseHelper extends SQLiteOpenHelper{
                 + DATE + " CHAR(20)) "
 
         );
+        db.execSQL("CREATE TABLE " + DIET + "("
+                + ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
+                + NAME + " VARCHAR(50), "
+                + DESCRIPTION + " NVARCHAR(1000)), "
+                + CALORIES +"INT, "
+                + TYPES + "VARCHAR(20),"
+                + ISASSIGNED + "VAR");
+        db.execSQL("CREATE TABLE " + DISH + "("
+                + ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
+                + NAME + " VARCHAR(50), "
+                + TYPES + "VARCHAR(20)");
+
     }
 
     @Override
