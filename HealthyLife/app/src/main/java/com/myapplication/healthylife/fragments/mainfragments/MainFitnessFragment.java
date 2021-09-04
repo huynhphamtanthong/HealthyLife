@@ -48,5 +48,12 @@ public class MainFitnessFragment extends Fragment {
                 navController.navigate(R.id.action_mainFragment_to_standUpNoti);
             }
         });
+
+        binding.btnStat.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                navController.navigate(R.id.action_mainFragment_to_statFragment);
+            }
+        });
     }
 }

@@ -53,6 +53,9 @@
         <action
             android:id="@+id/action_mainFragment_to_standUpNoti"
             app:destination="@id/standUpNoti" />
+        <action
+            android:id="@+id/action_mainFragment_to_statFragment"
+            app:destination="@id/statFragment" />
     </fragment>
     <fragment
         android:id="@+id/exerciseDetailFragment"
@@ -91,6 +94,15 @@
         tools:layout="@layout/fragment_stand_up_noti" >
         <action
             android:id="@+id/action_standUpNoti_to_mainFragment"
+            app:destination="@id/mainFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/statFragment"
+        android:name="com.myapplication.healthylife.fragments.mainfragments.StatFragment"
+        android:label="fragment_stat"
+        tools:layout="@layout/fragment_stat" >
+        <action
+            android:id="@+id/action_statFragment_to_mainFragment"
             app:destination="@id/mainFragment" />
     </fragment>
 

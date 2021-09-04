@@ -53,7 +53,7 @@ public class FitnessFragment extends Fragment {
     }
 
     private void initRecycleViews() {
-        list = db.getList();
+        list = db.getExerciseList();
 
         String lastLogin = sharedPreferences.getString("lastLogin", null);
 

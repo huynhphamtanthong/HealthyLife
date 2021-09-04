@@ -43,9 +43,10 @@ public class HomeFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 sharedPreferences.edit().putString("user", null).apply();
-                db.deleteAll();
+                db.deleteAllExercises();
                 navController.navigate(R.id.action_mainFragment_to_firstUseFragment);
             }
         });
+
     }
 }
