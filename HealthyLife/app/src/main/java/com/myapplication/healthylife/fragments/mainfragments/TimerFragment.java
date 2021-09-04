@@ -71,6 +71,7 @@ public class TimerFragment extends Fragment{
                 mediaPlayer.setLooping(true);
             }
         });
+
         countDown(listTimer);
     }
 
@@ -84,7 +85,7 @@ public class TimerFragment extends Fragment{
             @RequiresApi(api = Build.VERSION_CODES.N)
             @Override
             public void onFinish() {
-                if(++i < listTimer.size()) {
+                if (++i < listTimer.size()) {
                     binding.tvName.setText(listTimer.get(i).getName());
                     binding.tvStatus.setText(listTimer.get(i).getStatus());
                     binding.video.setVideoURI(Uri.parse("android.resource://"+getActivity().getPackageName()+"/"+listTimer.get(i).getVideo()));
@@ -140,8 +141,10 @@ public class TimerFragment extends Fragment{
                 returnList.add(new Timer(name, status, time, video));
             }
 
-            status = "Next Exercise";
+            name = "Next Exercise";
+            status = "Breathe...";
             time = list.get(i).getbreakEx() * 1000;
+            video = R.raw.breath;
             returnList.add(new Timer(name, status, time, video));
         }
 

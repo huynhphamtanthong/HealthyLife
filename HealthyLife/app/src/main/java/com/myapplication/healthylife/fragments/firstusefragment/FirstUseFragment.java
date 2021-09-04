@@ -207,13 +207,13 @@ public class FirstUseFragment extends Fragment {
         boolean startOthers = false;
         ArrayList<Exercise> result = new ArrayList<>();
         int type;
-        if (bmi >= 30) {
+        if (bmi >= 35) {
             type = 5;
-        }else if(bmi >= 25 && bmi <= 29.9) {
+        }else if(bmi >= 30 && bmi <= 34.9) {
             type = 4;
-        }else if(bmi >= 23 && bmi <= 24.9)  {
+        }else if(bmi >= 25 && bmi <= 29.9)  {
             type = 3;
-        }else if(bmi >= 18.5 && bmi <= 22.9)    {
+        }else if(bmi >= 18.5 && bmi <= 24.9)    {
             type = 2;
         }else   {
             type = 1;
