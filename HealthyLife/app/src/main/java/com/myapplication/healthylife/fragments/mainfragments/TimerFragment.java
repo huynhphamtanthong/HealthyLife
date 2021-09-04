@@ -22,8 +22,10 @@ import com.myapplication.healthylife.R;
 import com.myapplication.healthylife.databinding.FragmentTimerBinding;
 import com.myapplication.healthylife.local.DatabaseHelper;
 import com.myapplication.healthylife.model.Exercise;
+import com.myapplication.healthylife.model.Timer;
 
 import java.io.IOException;
+import java.sql.Time;
 import java.util.ArrayList;
 
 import kotlin.jvm.Synchronized;
@@ -34,6 +36,8 @@ public class TimerFragment extends Fragment implements TextureView.SurfaceTextur
     private MediaPlayer mediaPlayer;
     private AssetFileDescriptor assetFileDescriptor;
     private ArrayList<Exercise> list;
+    private ArrayList<Timer> listTimer;
+    int i = 0;
 
     long currentDuration;
     int numOfSet;
@@ -49,6 +53,7 @@ public class TimerFragment extends Fragment implements TextureView.SurfaceTextur
         db = new DatabaseHelper(getContext());
         binding = FragmentTimerBinding.inflate(getLayoutInflater());
         list = db.getRecommendedList();
+        listTimer = convert(list);
         return binding.getRoot();
     }
 
@@ -57,28 +62,15 @@ public class TimerFragment extends Fragment implements TextureView.SurfaceTextur
         super.onViewCreated(view, savedInstanceState);
         binding.video.setSurfaceTextureListener(this);
 
-        for (Exercise ex: list
-             ) {
-            mediaPlayer = new MediaPlayer();
-            assetFileDescriptor = getResources().openRawResourceFd(ex.getVideo());
-
-            currentDuration = ex.getDurationSet()*1000;
-            numOfSet = ex.getnumSet();
-            breakEx = ex.getbreakEx();
-            breakSet = ex.getbreakSet();
-
-            for (int i = 0; i < numOfSet; i++)  {
-                countDown(currentDuration);
-
-            }
-
-        }
-
-
+        binding.tvName.setText(listTimer.get(i).getName());
+        binding.tvStatus.setText(listTimer.get(i).getStatus());
+        mediaPlayer = new MediaPlayer();
+        assetFileDescriptor = getResources().openRawResourceFd(listTimer.get(i).getVideo());
+        countDown(listTimer);
     }
 
-    synchronized private void countDown(long time)    {
-        timer= new CountDownTimer(time, 1000) {
+    synchronized private void countDown(ArrayList<Timer> listTimer)    {
+        timer = new CountDownTimer(listTimer.get(i).getTime(), 1000) {
             @Override
             public void onTick(long l) {
                 updateTime(l);
@@ -86,18 +78,11 @@ public class TimerFragment extends Fragment implements TextureView.SurfaceTextur
 
             @Override
             public void onFinish() {
-//                binding.tvStatus.setText("Break");
-//                CountDownTimer breakTimer = new CountDownTimer(breakEx, 1000) {
-//                    @Override
-//                    public void onTick(long l) {
-//                        updateTime(l);
-//                    }
-//
-//                    @Override
-//                    public void onFinish() {
-//
-//                    }
-//                }.start();
+                binding.tvName.setText(listTimer.get(++i).getName());
+                binding.tvStatus.setText(listTimer.get(i).getStatus());
+                mediaPlayer = new MediaPlayer();
+                assetFileDescriptor = getResources().openRawResourceFd(listTimer.get(i).getVideo());
+                countDown(listTimer);
             }
         }.start();
     }
@@ -114,6 +99,38 @@ public class TimerFragment extends Fragment implements TextureView.SurfaceTextur
         }
         text += sec;
         binding.tvTime.setText(text);
+    }
+
+    private ArrayList<Timer> convert (ArrayList<Exercise> list) {
+        ArrayList<Timer> returnList = new ArrayList<>();
+
+        for (int i = 0; i < 5; ++i) {
+            String name = list.get(i).getName();
+            String status = "";
+            long time = 0;
+            int video = list.get(i).getVideo();
+            boolean isBreak = false;
+
+            for (int j = 1; j <= (list.get(i).getnumSet() * 2) - 1; ++j) {
+                if (!isBreak) {
+                    status = (j == 1) ? "Set " + j : "Set " + (j - 1);
+                    time = list.get(i).getDurationSet() * 1000;
+                    isBreak = true;
+                }
+                else {
+                    status = "Break " + (j - 1) + "-" + j;
+                    time = list.get(i).getbreakSet() * 1000;
+                    isBreak = false;
+                }
+                returnList.add(new Timer(name, status, time, video));
+            }
+
+            status = "Next Exercise";
+            time = list.get(i).getbreakEx() * 1000;
+            returnList.add(new Timer(name, status, time, video));
+        }
+
+        return returnList;
     }
 
     @RequiresApi(api = Build.VERSION_CODES.N)
@@ -179,7 +196,7 @@ public class TimerFragment extends Fragment implements TextureView.SurfaceTextur
 
     private void runCallback(Runnable callback)
     {
-        countDown(currentDuration);
+//        countDown(currentDuration);
         callback.run();
     }
 }
