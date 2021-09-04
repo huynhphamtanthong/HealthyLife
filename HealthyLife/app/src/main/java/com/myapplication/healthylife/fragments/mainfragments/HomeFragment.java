@@ -45,15 +45,11 @@ public class HomeFragment extends Fragment {
                 navController.navigate(R.id.action_mainFragment_to_firstUseFragment);
             }
         });
-
-<<<<<<< HEAD
         binding.btnAboutUs.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 navController.navigate(R.id.action_mainFragment_to_aboutUs);
             }
         });
-=======
->>>>>>> e78be7a837529ed7d154a8fff809e261668e09aa
     }
 }

@@ -56,6 +56,9 @@
         <action
             android:id="@+id/action_mainFragment_to_statFragment"
             app:destination="@id/statFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_aboutUs"
+            app:destination="@id/aboutUs" />
     </fragment>
     <fragment
         android:id="@+id/exerciseDetailFragment"
@@ -103,6 +106,15 @@
         tools:layout="@layout/fragment_stat" >
         <action
             android:id="@+id/action_statFragment_to_mainFragment"
+            app:destination="@id/mainFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/aboutUs"
+        android:name="com.myapplication.healthylife.AboutUs"
+        android:label="fragment_about_us"
+        tools:layout="@layout/fragment_about_us" >
+        <action
+            android:id="@+id/action_aboutUs_to_mainFragment"
             app:destination="@id/mainFragment" />
     </fragment>
 
