@@ -82,19 +82,22 @@ public class DatabaseHelper extends SQLiteOpenHelper{
                 + WEIGHT + " FLOAT, "
                 + BMI + " FLOAT, "
                 + DATE + " CHAR(20)) "
-
         );
+
         db.execSQL("CREATE TABLE " + DIET + "("
                 + ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
                 + NAME + " VARCHAR(50), "
-                + DESCRIPTION + " NVARCHAR(1000)), "
-                + CALORIES +"INT, "
-                + TYPES + "VARCHAR(20),"
-                + ISASSIGNED + "VAR");
+                + DESCRIPTION + " NVARCHAR(1000), "
+                + CALORIES +" INTERGER , "
+                + TYPES + " VARCHAR(20), "
+                + ISASSIGNED + " INTEGER ) "
+        );
+
         db.execSQL("CREATE TABLE " + DISH + "("
                 + ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
                 + NAME + " VARCHAR(50), "
-                + TYPES + "VARCHAR(20)");
+                + TYPES + " VARCHAR(20)) "
+        );
 
     }
 
