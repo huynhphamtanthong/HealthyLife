@@ -41,6 +41,7 @@ public class FirstUseFragment extends Fragment {
 
     private SharedPreferences sharedPreferences;
     private ArrayList<Exercise> exercises = new ArrayList<>();
+    private ArrayList<Exercise> diets = new ArrayList<>();
     private DatabaseHelper db;
     private SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
     private SimpleDateFormat dateTimeSdf = new SimpleDateFormat("dd/MM/yyyy, kk:mm:ss");
@@ -200,6 +201,7 @@ public class FirstUseFragment extends Fragment {
                 "Traditional push-ups are beneficial for building upper body strength. They work the triceps, pectoral muscles, and shoulders. When done with proper form, they can also strengthen the lower back and core.",
                 "- Get down on all fours, placing your hands slightly wider than your shoulders.\n-Straighten your arms and legs.\n- Lower your body until your chest nearly touches the floor.\n-Pause, then push yourself back up.\n-Repeat.\n\nNOTICE:\n- 10-20 reps/set.\n- 2 sets/time.\n- 10s resting between sets.\n- 1 minute resting before moving to other exercises.",
                 "None",35,10,3,60,4));
+
     }
 
     private void saveListOfExercisesForNewUser(ArrayList<Exercise> exercise, double bmi)    {
@@ -207,13 +209,13 @@ public class FirstUseFragment extends Fragment {
         boolean startOthers = false;
         ArrayList<Exercise> result = new ArrayList<>();
         int type;
-        if (bmi >= 30) {
+        if (bmi >= 35) {
             type = 5;
-        }else if(bmi >= 25 && bmi <= 29.9) {
+        }else if(bmi >= 30 && bmi <= 34.9) {
             type = 4;
-        }else if(bmi >= 23 && bmi <= 24.9)  {
+        }else if(bmi >= 25 && bmi <= 29.9)  {
             type = 3;
-        }else if(bmi >= 18.5 && bmi <= 22.9)    {
+        }else if(bmi >= 18.5 && bmi <= 24.9)    {
             type = 2;
         }else   {
             type = 1;
