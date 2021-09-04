@@ -128,12 +128,12 @@ public class TimerFragment extends Fragment{
 
             for (int j = 1; j <= (list.get(i).getnumSet() * 2) - 1; ++j) {
                 if (!isBreak) {
-                    status = (j == 1) ? "Set " + j : "Set " + (j - 1);
+                    status = "Set " + Math.round(j / 2.0);
                     time = list.get(i).getDurationSet() * 1000;
                     isBreak = true;
                 }
                 else {
-                    status = "Break " + (j - 1) + "-" + j;
+                    status = "Break " + (j / 2) + "-" + ((j / 2) + 1);
                     time = list.get(i).getbreakSet() * 1000;
                     isBreak = false;
                 }
