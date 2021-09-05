@@ -37,6 +37,9 @@ public class Diet implements Serializable {
         this.isAssigned=isAssigned;
         this.isRecommended=false;
         this.image = image;
+        this.breakfast=new ArrayList<>();
+        this.lunch=new ArrayList<>();
+        this.dinner=new ArrayList<>();
     }
 
     public Diet (int ID, String Name, String Description, String Note, int Calories,int[] Types,
@@ -54,6 +57,9 @@ public class Diet implements Serializable {
         this.isAssigned=isAssigned;
         this.isRecommended=isRecommended;
         this.image = image;
+        this.breakfast=new ArrayList<>();
+        this.lunch=new ArrayList<>();
+        this.dinner=new ArrayList<>();
     }
     public String getNote() {
         return Note;

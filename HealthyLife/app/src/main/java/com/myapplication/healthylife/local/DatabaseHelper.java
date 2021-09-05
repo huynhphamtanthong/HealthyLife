@@ -113,15 +113,14 @@ public class DatabaseHelper extends SQLiteOpenHelper{
         db.execSQL("CREATE TABLE " + DISH + "("
                 + ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
                 + NAME + " VARCHAR(50), "
-                + TYPES + " VARCHAR(20), "
                 + DESCRIPTION + " NVARCHAR(1000), "
                 + TUTORIAL + " NVARCHAR(1000), "
                 + NOTE + " NVARCHAR(1000), "
                 + INGREDIENTS+ " NVARCHAR(1000), "
                 + IMAGE + " INTEGER, "
                 + VIDEO + " INTEGER, "
-                + ISCARB + " INTEGER, "
                 + ISFAT + " INTEGER, "
+                + ISCARB + " INTEGER, "
                 + ISVEGAN + " INTEGER, "
                 + ISBREAKFAST + " INTEGER, "
                 + ISLUNCH + " INTEGER, "
@@ -412,7 +411,6 @@ public class DatabaseHelper extends SQLiteOpenHelper{
                 types += "," + String.valueOf(i);
             }
         }
-        cv.put(ID,diet.getID());
         cv.put(NAME, diet.getName());
         cv.put(DESCRIPTION, diet.getDescription());
         cv.put(NOTE, diet.getNote());
@@ -487,7 +485,7 @@ public class DatabaseHelper extends SQLiteOpenHelper{
                 boolean isRecommended=cursor.getInt(10)==0 ? false:true;
                 int image = cursor.getInt(11);
                 returnList.add(new Diet(id, Name, Description, Note, Calories, types,
-                        isFatAllowed, isCarbAllowed, isVegan, isAssigned,isRecommended, image));
+                        isAssigned ,isFatAllowed, isCarbAllowed, isVegan,isRecommended, image));
             }while (cursor.moveToNext());
         }
         return returnList;
@@ -506,12 +504,7 @@ public class DatabaseHelper extends SQLiteOpenHelper{
     public boolean addDish(Dish dish){
         SQLiteDatabase db = getWritableDatabase();
         ContentValues cv = new ContentValues();
-
-        String types = new String();
-        boolean start = false;
-        cv.put(ID,dish.getID());
         cv.put(NAME, dish.getName());
-        cv.put(TYPES, types);
         cv.put(DESCRIPTION, dish.getDescription());
         cv.put(TUTORIAL, dish.getTutorial());
         cv.put(NOTE, dish.getNote());

@@ -95,7 +95,7 @@ public class FirstUseFragment extends Fragment {
 
                             saveListOfExercisesForNewUser(exercises, bmi);
                             saveListofDietForNewUser(diets, bmi);
-
+                            saveListofDishForNewUser(dishes);
                             db.addStat(new Stat(-1, user.getHeight(), user.getWeight(), user.getBmi(), dateTimeSdf.format(date)));
 
                             navController.navigate(R.id.action_firstUseFragment_to_mainFragment);
@@ -202,9 +202,9 @@ public class FirstUseFragment extends Fragment {
                 "- Get down on all fours, placing your hands slightly wider than your shoulders.\n-Straighten your arms and legs.\n- Lower your body until your chest nearly touches the floor.\n-Pause, then push yourself back up.\n-Repeat.\n\nNOTICE:\n- 10-20 reps/set.\n- 2 sets/time.\n- 10s resting between sets.\n- 1 minute resting before moving to other exercises.",
                 "None",45,10,3,60,70));
 
-        diets.add(new Diet(-1, "Low-carb Diet","Diets with restriction on carbohydrate-rich products. The primary aim of the diet is to force your body to use more fats for fuel instead of using carbs as a main source of energy.","In extremely rare cases, low-carb diets can cause a serious condition called nondiabetic ketoacidosis. This condition seems to be more common in lactating women and can be fatal if left untreated.",1800,new int[]{2, 3, 4, 5},false,false, true, false, R.raw.bridge));
-        diets.add(new Diet(-1,"Vegan Diet","A vegan diet excludes all animal products.","Vegan diets is effective at helping people naturally reduce the amount of calories they eat, resulting in weight loss.However,Vegans may be at an increased risk of certain nutrient deficiencies.",1500, new int[]{2,3,4},false,true,true, false, R.raw.bridge));
-        diets.add(new Diet(-1,"3k Diet", "A diet to gain weight for underweight people","The menu shown later is only cover 75% amount of calories needed. Keep exercising for balance, or you will be overwhelmed by the calories taken in.", 3000, new int[]{1}, false,true,false, false, R.raw.bridge));
+        diets.add(new Diet(1, "Low-carb Diet","Diets with restriction on carbohydrate-rich products. The primary aim of the diet is to force your body to use more fats for fuel instead of using carbs as a main source of energy.","In extremely rare cases, low-carb diets can cause a serious condition called nondiabetic ketoacidosis. This condition seems to be more common in lactating women and can be fatal if left untreated.",1800,new int[]{2, 3, 4, 5},false,false, true, false, R.raw.bridge));
+        diets.add(new Diet(2,"Vegan Diet","A vegan diet excludes all animal products.","Vegan diets is effective at helping people naturally reduce the amount of calories they eat, resulting in weight loss.However,Vegans may be at an increased risk of certain nutrient deficiencies.",1500, new int[]{2,3,4},false,true,true, false, R.raw.bridge));
+        diets.add(new Diet(3,"3k Diet", "A diet to gain weight for underweight people","The menu shown later is only cover 75% amount of calories needed. Keep exercising for balance, or you will be overwhelmed by the calories taken in.", 3000, new int[]{1}, false,true,false, false, R.raw.bridge));
 
         dishes.add(new Dish(-1, "Bacon and egg"," No Description",
                 "Fried Bacon and egg in medium heat in 3 mins, until it is done",
@@ -272,6 +272,12 @@ public class FirstUseFragment extends Fragment {
         }
         for (Diet d:result){
             db.addDiet(d);
+        }
+    }
+    private void saveListofDishForNewUser(ArrayList<Dish> Dishes){
+
+        for (Dish d:Dishes){
+            db.addDish(d);
         }
     }
     private void saveListOfExercisesForNewUser(ArrayList<Exercise> exercise, double bmi)    {

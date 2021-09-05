@@ -35,6 +35,7 @@ public class DietFragment extends Fragment {
     private DatabaseHelper db;
     private SharedPreferences sharedPreferences;
     private ArrayList<Diet> diets;
+    private ArrayList<Dish> dishes;
     private DishRecViewAdapter dishRecViewAdapterBreakfast;
     private DishRecViewAdapter dishRecViewAdapterLunch;
     private DishRecViewAdapter dishRecViewAdapterDinner;
@@ -59,6 +60,8 @@ public class DietFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         int index = 0;
+        diets=db.getDietList();
+        dishes=db.getDishList();
         for(Diet i : diets){
             if(i.isAssigned()){
                 break;
@@ -70,32 +73,81 @@ public class DietFragment extends Fragment {
                     "Please pick a diet by clicking recommend button and doing further actions.");
         }
         else{
-            Calendar calendar = Calendar.getInstance();
-            int day = calendar.get(Calendar.DAY_OF_WEEK);
-            ArrayList<Dish> breakfast = new ArrayList<>();
-            breakfast.add(diets.get(index).getBreakfast().get(day % diets.get(index).getBreakfast().size()));
+            int Check = AssignDishesToDiet(diets.get(index));
+            if (Check == 0)
+                binding.LoveDishNotification.setText("Not enough dishes found! " +
+                        "Please pick another diet by clicking recommend button and doing further actions.");
+            else {
+                Calendar calendar = Calendar.getInstance();
+                int day = calendar.get(Calendar.DAY_OF_WEEK);
+                ArrayList<Dish> breakfast = new ArrayList<>();
+                breakfast.add(diets.get(index).getBreakfast().get(day % diets.get(index).getBreakfast().size()));
 
-            ArrayList<Dish> lunch = new ArrayList<>();
-            lunch.add(diets.get(index).getLunch().get(day % diets.get(index).getLunch().size()));
+                ArrayList<Dish> lunch = new ArrayList<>();
+                lunch.add(diets.get(index).getLunch().get(day % diets.get(index).getLunch().size()));
 
-            ArrayList<Dish> dinner = new ArrayList<>();
-            dinner.add(diets.get(index).getDinner().get(day % diets.get(index).getDinner().size()));
+                ArrayList<Dish> dinner = new ArrayList<>();
+                dinner.add(diets.get(index).getDinner().get(day % diets.get(index).getDinner().size()));
 
-            dishRecViewAdapterBreakfast = new DishRecViewAdapter(getActivity(), getContext());
-            dishRecViewAdapterBreakfast.SetDishes(breakfast);
-            binding.rvDishDetailTodayBreakfast.setAdapter(dishRecViewAdapterBreakfast);
-            binding.rvDishDetailTodayBreakfast.setLayoutManager(new LinearLayoutManager(getContext()));
+                dishRecViewAdapterBreakfast = new DishRecViewAdapter(getActivity(), getContext());
+                dishRecViewAdapterBreakfast.SetDishes(breakfast);
+                binding.rvDishDetailTodayBreakfast.setAdapter(dishRecViewAdapterBreakfast);
+                binding.rvDishDetailTodayBreakfast.setLayoutManager(new LinearLayoutManager(getContext()));
 
-            dishRecViewAdapterLunch = new DishRecViewAdapter(getActivity(), getContext());
-            dishRecViewAdapterLunch.SetDishes(lunch);
-            binding.rvDishDetailTodayLunch.setAdapter(dishRecViewAdapterBreakfast);
-            binding.rvDishDetailTodayLunch.setLayoutManager(new LinearLayoutManager(getContext()));
+                dishRecViewAdapterLunch = new DishRecViewAdapter(getActivity(), getContext());
+                dishRecViewAdapterLunch.SetDishes(lunch);
+                binding.rvDishDetailTodayLunch.setAdapter(dishRecViewAdapterBreakfast);
+                binding.rvDishDetailTodayLunch.setLayoutManager(new LinearLayoutManager(getContext()));
 
-            dishRecViewAdapterBreakfast = new DishRecViewAdapter(getActivity(), getContext());
-            dishRecViewAdapterBreakfast.SetDishes(dinner);
-            binding.rvDishDetailTodayBreakfast.setAdapter(dishRecViewAdapterBreakfast);
-            binding.rvDishDetailTodayBreakfast.setLayoutManager(new LinearLayoutManager(getContext()));
+                dishRecViewAdapterBreakfast = new DishRecViewAdapter(getActivity(), getContext());
+                dishRecViewAdapterBreakfast.SetDishes(dinner);
+                binding.rvDishDetailTodayBreakfast.setAdapter(dishRecViewAdapterBreakfast);
+                binding.rvDishDetailTodayBreakfast.setLayoutManager(new LinearLayoutManager(getContext()));
+            }
         }
+    }
+
+    private int AssignDishesToDiet(Diet diet) {
+        for (Dish d : dishes) {
+            if((diet.isCarbAllowed() == d.isCarb() || diet.isCarbAllowed() == true) && d.isBreakfast() && (d.isVegan() == diet.isVegan() || !d.isVegan()) && diet.getBreakfast().size()<7)   {
+                diet.insertBreakfast(d);
+                continue;
+            }
+            if((diet.isCarbAllowed() == d.isCarb() || diet.isCarbAllowed() == true) && d.isLunch() && (d.isVegan() == diet.isVegan() || !d.isVegan()) && diet.getLunch().size()<7)  {
+                diet.insertLunch(d);
+                continue;
+            }
+            if((diet.isCarbAllowed() == d.isCarb() || diet.isCarbAllowed() == true) && d.isDinner() && (d.isVegan() == diet.isVegan()) || !d.isVegan() && diet.getDinner().size()<7) {
+                diet.insertDinner(d);
+                continue;
+            }
+            if(diet.getBreakfast().size()==7 && diet.getLunch().size()==7 && diet.getDinner().size()==7)
+                return 1;
+        }
+        if(diet.getBreakfast().size()==0 || diet.getLunch().size()==0 || diet.getDinner().size()==0)
+            return 0;
+        int curBreakfast=diet.getBreakfast().size();
+        int curLunch=diet.getLunch().size();
+        int curDinner=diet.getDinner().size();
+        for (Dish d: diet.getBreakfast()){
+            if(diet.getBreakfast().size() == 7){
+                break;
+            }
+            diet.insertBreakfast(diet.getBreakfast().get(diet.getBreakfast().size() - curBreakfast ));
+        }
+        for (Dish d: diet.getLunch()){
+            if(diet.getLunch().size() == 7){
+                break;
+            }
+            diet.insertLunch(diet.getLunch().get(diet.getLunch().size() - curLunch ));
+        }
+        for (Dish d: diet.getBreakfast()){
+            if(diet.getDinner().size() == 7){
+                break;
+            }
+            diet.insertLunch(diet.getDinner().get(diet.getDinner().size() - curDinner ));
+        }
+        return 1;
     }
 
 
