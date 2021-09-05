@@ -106,8 +106,8 @@ public class DatabaseHelper extends SQLiteOpenHelper{
                 + ISCARBALLOWED + " INTEGER ,"
                 + ISFATALLOWED + " INTEGER ,"
                 + ISVEGAN + " INTEGER, "
-                +ISRECOMMENDED + "INTEGER, "
-                + IMAGE + "INTEGER) "
+                + ISRECOMMENDED + " INTEGER, "
+                + IMAGE + " INTEGER) "
         );
 
         db.execSQL("CREATE TABLE " + DISH + "("
@@ -123,9 +123,9 @@ public class DatabaseHelper extends SQLiteOpenHelper{
                 + ISCARB + " INTEGER, "
                 + ISFAT + " INTEGER, "
                 + ISVEGAN + " INTEGER, "
-                + ISBREAKFAST + "INTEGER, "
-                + ISLUNCH + "INTEGER, "
-                + ISDINNER + "INTEGER) "
+                + ISBREAKFAST + " INTEGER, "
+                + ISLUNCH + " INTEGER, "
+                + ISDINNER + " INTEGER) "
         );
 
     }

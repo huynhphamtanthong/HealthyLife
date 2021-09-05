@@ -37,7 +37,7 @@ public class DietFragment extends Fragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        diet = (Diet) getArguments().getSerializable("PickDietData");
+//        diet = (Diet) getArguments().getSerializable("PickDietData");
     }
 
     @Override
