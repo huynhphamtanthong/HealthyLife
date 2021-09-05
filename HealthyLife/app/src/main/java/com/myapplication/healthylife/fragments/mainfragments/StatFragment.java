@@ -74,7 +74,8 @@ public class StatFragment extends Fragment {
                         date = new Date();
                         Stat stat = new Stat(-1, height, weight, bmi, dateTimeSdf.format(date));
                         if (db.addStat(stat))   {
-                            stats.add(stat);
+                            stats.clear();
+                            stats = db.getStatList();
                             adapter.setStat(stats);
                             dialog.dismiss();
                         }

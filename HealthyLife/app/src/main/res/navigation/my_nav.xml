@@ -114,7 +114,7 @@
     <fragment
         android:id="@+id/statFragment"
         android:name="com.myapplication.healthylife.fragments.mainfragments.StatFragment"
-        android:label="fragment_stat"
+        android:label="Manage BMI"
         tools:layout="@layout/fragment_stat" >
         <action
             android:id="@+id/action_statFragment_to_mainFragment"

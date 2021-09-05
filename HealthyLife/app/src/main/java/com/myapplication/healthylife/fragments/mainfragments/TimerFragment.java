@@ -1,5 +1,6 @@
 package com.myapplication.healthylife.fragments.mainfragments;
 
+import android.app.Dialog;
 import android.content.res.AssetFileDescriptor;
 import android.graphics.SurfaceTexture;
 import android.media.MediaPlayer;
@@ -11,6 +12,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 
 import android.os.CountDownTimer;
 import android.view.LayoutInflater;
@@ -18,6 +21,9 @@ import android.view.Surface;
 import android.view.TextureView;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
+import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.MediaController;
 
 import com.myapplication.healthylife.R;
@@ -35,6 +41,7 @@ import kotlin.jvm.Synchronized;
 public class TimerFragment extends Fragment{
     FragmentTimerBinding binding;
     DatabaseHelper db;
+    NavController navController;
 
     private ArrayList<Exercise> list;
     private ArrayList<Timer> listTimer;
@@ -42,13 +49,20 @@ public class TimerFragment extends Fragment{
 
     CountDownTimer timer;
 
+    boolean isRunning = false;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         db = new DatabaseHelper(getContext());
         binding = FragmentTimerBinding.inflate(getLayoutInflater());
         list = db.getRecommendedExerciseList();
-        listTimer = convert(list);
+//        listTimer = convert(list);
+
+        listTimer = new ArrayList<>();
+        listTimer.add(new Timer("Test1", "Test1", 5000, list.get(0).getVideo()));
+        listTimer.add(new Timer("Test2", "Test2", 5000, list.get(1).getVideo()));
+
 
         return binding.getRoot();
     }
@@ -59,12 +73,12 @@ public class TimerFragment extends Fragment{
 
         binding.tvName.setText(listTimer.get(i).getName());
         binding.tvStatus.setText(listTimer.get(i).getStatus());
+        updateTime(listTimer.get(i).getTime());
 
         binding.video.setVideoURI(Uri.parse("android.resource://"+getActivity().getPackageName()+"/"+listTimer.get(i).getVideo()));
         MediaController ctrl = new MediaController(getContext());
         ctrl.setVisibility(View.GONE);
         binding.video.setMediaController(ctrl);
-        binding.video.start();
         binding.video.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
             @Override
             public void onPrepared(MediaPlayer mediaPlayer) {
@@ -72,7 +86,22 @@ public class TimerFragment extends Fragment{
             }
         });
 
-        countDown(listTimer);
+        binding.btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (!isRunning) {
+                    countDown(listTimer);
+                    binding.video.start();
+                    isRunning = true;
+                    binding.btn.setText("Cancel");
+                }else  {
+                    timer.cancel();
+                    binding.video.stopPlayback();
+                    isRunning = false;
+                    binding.btn.setText("Start");
+                }
+            }
+        });
     }
 
     synchronized private void countDown(ArrayList<Timer> listTimer)    {
@@ -98,6 +127,35 @@ public class TimerFragment extends Fragment{
                     countDown(listTimer);
                 }else   {
                     binding.video.stopPlayback();
+                    ArrayList<Exercise> exercises = db.getExerciseList();
+                    for (int i = 0; i < 5; i++) {
+                        if (!exercises.get(i).isFinished()) {
+                            exercises.get(i).setFinished(true);
+                            exercises.get(i).setProgress(exercises.get(i).getProgress()+1);
+                        }
+                    }
+                    db.deleteAllExercises();
+                    for (Exercise ex: exercises
+                         ) {
+                        db.addExercise(ex);
+                    }
+
+                    Dialog dialog = new Dialog(getContext());
+                    dialog.setContentView(R.layout.custom_dialog_congratz);
+                    dialog.setCanceledOnTouchOutside(true);
+                    Button btnOk = dialog.findViewById(R.id.btnOk);
+                    btnOk.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            navController.navigateUp();
+                            dialog.dismiss();
+                        }
+                    });
+                    dialog.show();
+                    Window window = dialog.getWindow();
+                    window.setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.WRAP_CONTENT);
+
+
                 }
             }
         }.start();
@@ -149,5 +207,11 @@ public class TimerFragment extends Fragment{
         }
 
         return returnList;
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        navController = Navigation.findNavController(getActivity(), R.id.fragmentContainer);
     }
 }
