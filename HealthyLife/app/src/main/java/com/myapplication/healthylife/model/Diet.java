@@ -6,7 +6,6 @@ public class Diet {
     private int ID;
     private String Name;
     private String Description;
-    private ArrayList<Dish> Dishes;
     private String Note;
     private int Calories;
     private int[] Types;
@@ -18,7 +17,7 @@ public class Diet {
     private int image;
 
 
-    public Diet (int ID, String Name, String Description, String Not, int Calories,int[] Types,
+    public Diet (int ID, String Name, String Description, String Note, int Calories,int[] Types,
                  boolean isAssigned, boolean isCarbAllowed, boolean isFatAllowed, boolean isVegan, int image){
 
         this.ID=ID;
@@ -58,9 +57,6 @@ public class Diet {
         return Types;
     }
 
-    public ArrayList<Dish> getDishes() {
-        return Dishes;
-    }
 
     public boolean isAssigned() {
         return isAssigned;
