@@ -52,7 +52,9 @@ public class DatabaseHelper extends SQLiteOpenHelper{
     public static final String ISDINNER = "ISDINNER";
     public static final String ISASSIGNED = " ISASSIGNED";
     public static final String DAY = "DAY"; // in-week
-
+    public static final String ISCARBALLOWED ="ISCARBALLOWED";
+    public static final String ISFATALLOWED = "ISFATALLOWED";
+    public static final String ISVEGAN = "ISVEGAN";
     public DatabaseHelper(Context context) {
         super(context, "healthylife.db", null, 1);
     }
@@ -95,8 +97,12 @@ public class DatabaseHelper extends SQLiteOpenHelper{
                 + ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
                 + NAME + " VARCHAR(50), "
                 + DESCRIPTION + " NVARCHAR(1000), "
-                + CALORIES +" INTERGER , "
+                + NOTE + " NVARCHAR(1000), "
+                + CALORIES +" INTEGER, "
                 + TYPES + " VARCHAR(20), "
+                + ISFATALLOWED + " INTEGER ,"
+                + ISCARBALLOWED + " INTEGER ,"
+                + ISVEGAN + " INTEGER, "
                 + ISASSIGNED + " INTEGER ) "
         );
 
@@ -411,16 +417,20 @@ public class DatabaseHelper extends SQLiteOpenHelper{
                 String Name = cursor.getString(1);
                 String Description = cursor.getString(2);
                 int Calories = cursor.getInt( 3);
-                String temp = cursor.getString(4);;
+                String Note = cursor.getString(4);;
+                String temp = cursor.getString(5);
                 String[] arr = temp.split(",");
                 int[] types = new int[arr.length];
                 int count = 0;
                 for (String s:arr)  {
                     types[count++] = Integer.parseInt(s);
                 }
-                boolean isAssigned = cursor.getInt(5) == 0 ? false : true;
+                boolean isFatAllowed =cursor.getInt(6)==0 ? false :true;
+                boolean isCarbAllowed =cursor.getInt(8)==0 ? false :true;
+                boolean isVegan =cursor.getInt(7)==0 ? false :true;
+                boolean isAssigned = cursor.getInt(9) == 0 ? false : true;
 
-                returnList.add(new Diet(id, Name, Description, Calories, types, isAssigned));
+                returnList.add(new Diet(id, Name, Description, Note, Calories, types, isFatAllowed, isCarbAllowed, isVegan, isAssigned));
             }while (cursor.moveToNext());
         }
         return returnList;

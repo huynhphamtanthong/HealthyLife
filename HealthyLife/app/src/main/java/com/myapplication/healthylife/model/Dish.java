@@ -81,4 +81,16 @@ public class Dish {
     public boolean isDinner() {
         return isDinner;
     }
+
+    public boolean isCarb() {
+        return isCarb;
+    }
+
+    public boolean isFat() {
+        return isFat;
+    }
+
+    public boolean isVegan() {
+        return isVegan;
+    }
 }
