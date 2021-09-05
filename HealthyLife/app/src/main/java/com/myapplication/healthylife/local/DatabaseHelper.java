@@ -100,10 +100,11 @@ public class DatabaseHelper extends SQLiteOpenHelper{
                 + NOTE + " NVARCHAR(1000), "
                 + CALORIES +" INTEGER, "
                 + TYPES + " VARCHAR(20), "
-                + ISFATALLOWED + " INTEGER ,"
+                + ISASSIGNED + " INTEGER, "
                 + ISCARBALLOWED + " INTEGER ,"
+                + ISFATALLOWED + " INTEGER ,"
                 + ISVEGAN + " INTEGER, "
-                + ISASSIGNED + " INTEGER ) "
+                + IMAGE + "INTEGER) "
         );
 
         db.execSQL("CREATE TABLE " + DISH + "("
@@ -395,9 +396,14 @@ public class DatabaseHelper extends SQLiteOpenHelper{
         cv.put(ID,diet.getID());
         cv.put(NAME, diet.getName());
         cv.put(DESCRIPTION, diet.getDescription());
+        cv.put(NOTE, diet.getNote());
         cv.put(CALORIES, diet.getCalories());
         cv.put(TYPES, types);
         cv.put(ISASSIGNED, diet.isAssigned());
+        cv.put(ISCARBALLOWED, diet.isCarbAllowed());
+        cv.put(ISFATALLOWED, diet.isFatAllowed());
+        cv.put(ISVEGAN, diet.isVegan());
+        cv.put(IMAGE, diet.getImage());
 
         long insert = db.insert(DIET, null, cv);
         if (insert != -1)   {
@@ -425,12 +431,13 @@ public class DatabaseHelper extends SQLiteOpenHelper{
                 for (String s:arr)  {
                     types[count++] = Integer.parseInt(s);
                 }
-                boolean isFatAllowed =cursor.getInt(6)==0 ? false :true;
-                boolean isCarbAllowed =cursor.getInt(8)==0 ? false :true;
-                boolean isVegan =cursor.getInt(7)==0 ? false :true;
-                boolean isAssigned = cursor.getInt(9) == 0 ? false : true;
-
-                returnList.add(new Diet(id, Name, Description, Note, Calories, types, isFatAllowed, isCarbAllowed, isVegan, isAssigned));
+                boolean isAssigned = cursor.getInt(6) == 0 ? false : true;
+                boolean isCarbAllowed =cursor.getInt(7)==0 ? false :true;
+                boolean isFatAllowed =cursor.getInt(8)==0 ? false :true;
+                boolean isVegan =cursor.getInt(9)==0 ? false :true;
+                int image = cursor.getInt(6);
+                returnList.add(new Diet(id, Name, Description, Note, Calories, types,
+                        isFatAllowed, isCarbAllowed, isVegan, isAssigned, image));
             }while (cursor.moveToNext());
         }
         return returnList;
