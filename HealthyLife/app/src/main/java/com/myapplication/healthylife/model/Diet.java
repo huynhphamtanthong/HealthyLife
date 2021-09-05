@@ -1,8 +1,9 @@
 package com.myapplication.healthylife.model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Diet {
+public class Diet implements Serializable {
     private int ID;
     private String Name;
     private String Description;

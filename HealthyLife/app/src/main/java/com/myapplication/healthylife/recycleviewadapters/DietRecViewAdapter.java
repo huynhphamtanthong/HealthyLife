@@ -44,7 +44,7 @@ public class DietRecViewAdapter extends RecyclerView.Adapter<DietRecViewAdapter.
 
     @Override
     public int getItemCount() {
-        return 0;
+        return diets.size();
     }
 
     public void setDiets(ArrayList<Diet> diets){

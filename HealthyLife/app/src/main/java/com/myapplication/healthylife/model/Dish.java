@@ -1,6 +1,8 @@
 package com.myapplication.healthylife.model;
 
-public class Dish {
+import java.io.Serializable;
+
+public class Dish implements Serializable {
     private int ID;
     private String Name;
     private String description;

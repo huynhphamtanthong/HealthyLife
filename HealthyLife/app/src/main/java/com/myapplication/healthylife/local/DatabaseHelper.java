@@ -134,6 +134,8 @@ public class DatabaseHelper extends SQLiteOpenHelper{
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL("DROP TABLE IF EXISTS "+ EXERCISES);
         db.execSQL("DROP TABLE IF EXISTS "+ STAT);
+        db.execSQL("DROP TABLE IF EXISTS "+ DIET);
+        db.execSQL("DROP TABLE IF EXISTS "+ DISH);
         onCreate(db);
     }
 
@@ -455,7 +457,37 @@ public class DatabaseHelper extends SQLiteOpenHelper{
                 boolean isRecommended=cursor.getInt(10)==0 ? false:true;
                 int image = cursor.getInt(11);
                 returnList.add(new Diet(id, Name, Description, Note, Calories, types,
-                        isFatAllowed, isCarbAllowed, isVegan, isAssigned, image));
+                        isFatAllowed, isCarbAllowed, isVegan, isAssigned,isRecommended, image));
+            }while (cursor.moveToNext());
+        }
+        return returnList;
+    }
+    public ArrayList<Diet> getRecommendedDietList(){
+        SQLiteDatabase db = getReadableDatabase();
+        ArrayList<Diet> returnList = new ArrayList<>();
+        Cursor cursor = db.rawQuery("SELECT * FROM " + DIET + "WHERE ISRECOMMENDED = 1", null);
+        if (cursor.moveToFirst())   {
+            do {
+                int id = cursor.getInt(0);
+                String Name = cursor.getString(1);
+                String Description = cursor.getString(2);
+                int Calories = cursor.getInt( 3);
+                String Note = cursor.getString(4);;
+                String temp = cursor.getString(5);
+                String[] arr = temp.split(",");
+                int[] types = new int[arr.length];
+                int count = 0;
+                for (String s:arr)  {
+                    types[count++] = Integer.parseInt(s);
+                }
+                boolean isAssigned = cursor.getInt(6) == 0 ? false : true;
+                boolean isCarbAllowed =cursor.getInt(7)==0 ? false :true;
+                boolean isFatAllowed =cursor.getInt(8)==0 ? false :true;
+                boolean isVegan =cursor.getInt(9)==0 ? false :true;
+                boolean isRecommended=cursor.getInt(10)==0 ? false:true;
+                int image = cursor.getInt(11);
+                returnList.add(new Diet(id, Name, Description, Note, Calories, types,
+                        isFatAllowed, isCarbAllowed, isVegan, isAssigned,isRecommended, image));
             }while (cursor.moveToNext());
         }
         return returnList;

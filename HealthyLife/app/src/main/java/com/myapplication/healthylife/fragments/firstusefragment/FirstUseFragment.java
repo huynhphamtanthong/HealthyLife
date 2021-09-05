@@ -270,6 +270,9 @@ public class FirstUseFragment extends Fragment {
                 }
             }
         }
+        for (Diet d:result){
+            db.addDiet(d);
+        }
     }
     private void saveListOfExercisesForNewUser(ArrayList<Exercise> exercise, double bmi)    {
         boolean startRecommended = false;

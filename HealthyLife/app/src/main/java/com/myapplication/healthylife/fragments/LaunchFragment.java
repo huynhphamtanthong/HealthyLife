@@ -22,6 +22,7 @@ import com.myapplication.healthylife.R;
 import com.myapplication.healthylife.databinding.FragmentLaunchBinding;
 import com.myapplication.healthylife.local.AppPrefs;
 import com.myapplication.healthylife.local.DatabaseHelper;
+import com.myapplication.healthylife.model.Diet;
 import com.myapplication.healthylife.model.Exercise;
 import com.myapplication.healthylife.model.User;
 
@@ -63,7 +64,6 @@ public class LaunchFragment extends Fragment {
                 String lastLogin = sharedPreferences.getString("lastLogin", null);
 
                 ArrayList<Exercise> list = db.getExerciseList();
-
                 if(lastLogin == null)   {
                     lastLogin = now;
                 }
@@ -80,7 +80,6 @@ public class LaunchFragment extends Fragment {
                 for (Exercise ex: list) {
                     db.addExercise(ex);
                 }
-
                 sharedPreferences.edit().putString("lastLogin", now).apply();
 
                 if (data == null) {
