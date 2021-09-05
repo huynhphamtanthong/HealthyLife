@@ -11,6 +11,7 @@ import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -35,7 +36,7 @@ public class FitnessFragment extends Fragment {
     private NavController navController;
     private SharedPreferences sharedPreferences;
     private SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-    private Date date = new Date();
+    private Date date;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -55,13 +56,6 @@ public class FitnessFragment extends Fragment {
     private void initRecycleViews() {
         list = db.getExerciseList();
 
-        String lastLogin = sharedPreferences.getString("lastLogin", null);
-
-        if (!lastLogin.equals(sdf.format(date))) {
-            for (Exercise ex: list) {
-                ex.setFinished(false);
-            }
-        }
         exerciseRecViewAdapter = new ExerciseRecViewAdapter(getActivity(), getContext());
         exerciseRecViewAdapter.setExercises(list);
         binding.recommendedRecView.setAdapter(exerciseRecViewAdapter);

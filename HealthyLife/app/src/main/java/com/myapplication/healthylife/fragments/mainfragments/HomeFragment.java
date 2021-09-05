@@ -15,6 +15,8 @@ import android.widget.EditText;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 
@@ -27,6 +29,7 @@ import com.myapplication.healthylife.model.Diet;
 import com.myapplication.healthylife.model.Exercise;
 import com.myapplication.healthylife.model.Stat;
 import com.myapplication.healthylife.model.User;
+import com.myapplication.healthylife.viewmodel.CommunicateViewModel;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -42,6 +45,8 @@ public class HomeFragment extends Fragment {
     private SimpleDateFormat dateTimeSdf = new SimpleDateFormat("dd/MM/yyyy, kk:mm:ss");
     private Date date;
     private ArrayList<Exercise> exercises = new ArrayList<>();
+    private User user;
+    private CommunicateViewModel viewModel;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -50,12 +55,32 @@ public class HomeFragment extends Fragment {
         sharedPreferences = AppPrefs.getInstance(getContext());
         db = new DatabaseHelper(getContext());
         binding = FragmentHomeBinding.inflate(getLayoutInflater());
+
+        String data = sharedPreferences.getString("user", null);
+        user = new Gson().fromJson(data, User.class);
+
+        viewModel = new ViewModelProvider(getActivity()).get(CommunicateViewModel.class);
+
         return binding.getRoot();
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        viewModel.pos.observe(getActivity(), new Observer<Integer>() {
+            @Override
+            public void onChanged(Integer integer) {
+                if (integer == 0)   {
+                    Log.d("TAB", "onChanged: "+integer);
+                    String data = sharedPreferences.getString("user", null);
+                    user = new Gson().fromJson(data, User.class);
+                    binding.CaloExercise.setText(String.valueOf(user.getCaloFitness()));
+                }
+            }
+        });
+
+        binding.CaloExercise.setText(String.valueOf(user.getCaloFitness()));
 
         if (challengeCompleted())   {
             Dialog dialog = new Dialog(getContext());
@@ -105,7 +130,7 @@ public class HomeFragment extends Fragment {
         ArrayList<Exercise> exercises = db.getRecommendedExerciseList();
         for (Exercise ex: exercises
              ) {
-            if (!ex.isFinished())    {
+            if (ex.getProgress() < 14)    {
                 return false;
             }
         }
@@ -124,7 +149,6 @@ public class HomeFragment extends Fragment {
                 db.deleteAllExercises();
                 db.deleteAllStat();
                 navController.navigate(R.id.action_mainFragment_to_firstUseFragment);
-
             }
         });
         binding.btnAboutUs.setOnClickListener(new View.OnClickListener() {

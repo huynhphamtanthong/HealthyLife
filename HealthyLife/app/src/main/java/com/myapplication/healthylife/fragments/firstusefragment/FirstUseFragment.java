@@ -92,8 +92,6 @@ public class FirstUseFragment extends Fragment {
                             sharedPreferences.edit().putString("user", new Gson().toJson(user)).apply();
 
                             date = new Date();
-                            String now = sdf.format(date);
-                            sharedPreferences.edit().putString("lastLogin", now).apply();
 
                             saveListOfExercisesForNewUser(exercises, bmi);
 
