@@ -78,6 +78,7 @@ public class Diet {
     public boolean isAssigned() {
         return isAssigned;
     }
+    public void setAssigned(boolean temp) {this.isAssigned = temp; }
 
     public boolean isVegan() {
         return isVegan;

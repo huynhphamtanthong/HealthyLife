@@ -71,6 +71,9 @@
         <action
             android:id="@+id/action_mainFragment_to_dietRecommendFragment"
             app:destination="@id/dietRecommendFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_dietDetailFragment"
+            app:destination="@id/dishDetailFragment" />
     </fragment>
     <fragment
         android:id="@+id/exerciseDetailFragment"

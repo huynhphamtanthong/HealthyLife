@@ -34,7 +34,7 @@ public class DietRecViewAdapter extends RecyclerView.Adapter<DietRecViewAdapter.
     @NonNull
     @Override
     public DietRecViewAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return null;
+        return new ViewHolder(DietListBinding.inflate(LayoutInflater.from(parent.getContext()), parent, false));
     }
 
     @Override
@@ -45,6 +45,11 @@ public class DietRecViewAdapter extends RecyclerView.Adapter<DietRecViewAdapter.
     @Override
     public int getItemCount() {
         return 0;
+    }
+
+    public void setDiets(ArrayList<Diet> diets){
+        this.diets = diets;
+        notifyDataSetChanged();
     }
 
     protected class ViewHolder extends RecyclerView.ViewHolder{
