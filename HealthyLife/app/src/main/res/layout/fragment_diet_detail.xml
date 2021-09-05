@@ -85,7 +85,6 @@
             android:layout_alignParentBottom="true"
             android:layout_gravity="end"
             android:layout_marginRight="16dp"
-            android:layout_paddingBottom="16dp"
             android:foreground="@drawable/ic_heart"
             android:backgroundTint="@color/white"
             android:gravity="bottom"
