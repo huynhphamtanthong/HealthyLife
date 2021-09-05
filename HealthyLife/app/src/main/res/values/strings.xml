@@ -6,7 +6,10 @@
     <string name="diet_evaluation">Diet Evaluation</string>
     <string name="typical_diets">Typical Diets</string>
     <string name="recommend">Recommend</string>
-    <string name="today_dish">Today Dish</string>
+    <string name="today_dish">Today Dishes</string>
     <string name="diet">DIET</string>
     <string name="dietary_recommendation">Dietary Recommendation</string>
+    <string name="breakfast">Breakfast</string>
+    <string name="lunch">Lunch</string>
+    <string name="dinner">Dinner</string>
 </resources>

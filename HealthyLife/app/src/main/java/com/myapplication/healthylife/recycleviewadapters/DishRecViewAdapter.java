@@ -44,7 +44,7 @@ public class DishRecViewAdapter extends RecyclerView.Adapter<DishRecViewAdapter.
 
     @Override
     public int getItemCount() {
-        return 0;
+        return dishes.size();
     }
     public void SetDishes(ArrayList<Dish> dishes){
         this.dishes = dishes;
@@ -60,14 +60,16 @@ public class DishRecViewAdapter extends RecyclerView.Adapter<DishRecViewAdapter.
         }
 
         public void bind(Dish dish){
-
+            binding.dishName.setText(dish.getName());
+            binding.RVDishContentDescription.setText(dish.getDescription());
+            binding.RVDishListImage.setImageResource(dish.getImage());
 
             binding.DishListRV.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     Bundle bundle = new Bundle();
-                    bundle.putSerializable("DietData", (Serializable) dish);
-                    Navigation.findNavController(activity, R.id.fragmentContainer).navigate(R.id.action_dietRecommendFragment_to_DietDetailFragment, bundle);
+                    bundle.putSerializable("DishData", (Serializable) dish);
+                    Navigation.findNavController(activity, R.id.fragmentContainer).navigate(R.id.action_DietDetail_to_DishDetail, bundle);
                 }
             });
         }

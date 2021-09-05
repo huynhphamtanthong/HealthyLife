@@ -1,8 +1,9 @@
 package com.myapplication.healthylife.model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Diet {
+public class Diet implements Serializable {
     private int ID;
     private String Name;
     private String Description;
@@ -36,6 +37,9 @@ public class Diet {
         this.isAssigned=isAssigned;
         this.isRecommended=false;
         this.image = image;
+        this.breakfast=new ArrayList<>();
+        this.lunch=new ArrayList<>();
+        this.dinner=new ArrayList<>();
     }
 
     public Diet (int ID, String Name, String Description, String Note, int Calories,int[] Types,
@@ -53,6 +57,9 @@ public class Diet {
         this.isAssigned=isAssigned;
         this.isRecommended=isRecommended;
         this.image = image;
+        this.breakfast=new ArrayList<>();
+        this.lunch=new ArrayList<>();
+        this.dinner=new ArrayList<>();
     }
     public String getNote() {
         return Note;
@@ -111,6 +118,18 @@ public class Diet {
     }
     public void insertDinner (Dish dish){
         dinner.add(dish);
+    }
+
+    public ArrayList<Dish> getBreakfast() {
+        return breakfast;
+    }
+
+    public ArrayList<Dish> getLunch() {
+        return lunch;
+    }
+
+    public ArrayList<Dish> getDinner() {
+        return dinner;
     }
 }
 

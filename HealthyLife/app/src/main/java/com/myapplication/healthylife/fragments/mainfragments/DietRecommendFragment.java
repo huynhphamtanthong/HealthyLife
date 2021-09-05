@@ -21,6 +21,7 @@ import com.myapplication.healthylife.databinding.FragmentLaunchBinding;
 import com.myapplication.healthylife.local.AppPrefs;
 import com.myapplication.healthylife.local.DatabaseHelper;
 import com.myapplication.healthylife.model.Diet;
+import com.myapplication.healthylife.model.Dish;
 import com.myapplication.healthylife.recycleviewadapters.DietRecViewAdapter;
 
 import java.util.ArrayList;
@@ -30,6 +31,7 @@ public class DietRecommendFragment extends Fragment {
     private NavController navController;
     private DatabaseHelper db;
     private ArrayList<Diet> dietList;
+    private ArrayList<Dish> dish;
     private SharedPreferences sharedPreferences;
     DietRecViewAdapter dietRecAdapter;
 
@@ -51,7 +53,54 @@ public class DietRecommendFragment extends Fragment {
 
     private void initDietRecycleView() {
         dietList = db.getDietList();
-
+        dish = db.getDishList();
+        int m = 0;
+        for(Diet i : dietList){
+            if(i.isRecommended()){
+                if(i.isCarbAllowed()) {
+                    for (Dish k : dish) {
+                        if (k.isCarb()) {
+                            if (k.isBreakfast()) {
+                                dietList.get(m).insertBreakfast(k);
+                            } else if (k.isLunch()) {
+                                dietList.get(m).insertLunch(k);
+                            } else if (k.isDinner()) {
+                                dietList.get(m).insertDinner(k);
+                            }
+                        }
+                    }
+                }
+                else if(i.isFatAllowed()) {
+                    for (Dish k : dish) {
+                        if (k.isFat()) {
+                            if (k.isBreakfast()) {
+                                dietList.get(m).insertBreakfast(k);
+                            } else if (k.isLunch()) {
+                                dietList.get(m).insertLunch(k);
+                            } else if (k.isDinner()) {
+                                dietList.get(m).insertDinner(k);
+                            }
+                        }
+                    }
+                }
+                else if(i.isVegan()) {
+                    for(Dish k : dish) {
+                        if(k.isVegan()){
+                            if (k.isBreakfast()) {
+                                dietList.get(m).insertBreakfast(k);
+                            }
+                            else if (k.isLunch()){
+                                dietList.get(m).insertLunch(k);
+                            }
+                            else if (k.isDinner()){
+                                dietList.get(m).insertDinner(k);
+                            }
+                        }
+                    }
+                }
+            }
+            m++;
+        }
         dietRecAdapter = new DietRecViewAdapter(getActivity(), getContext());
         dietRecAdapter.setDiets(dietList);
         binding.RVDietRecommend.setAdapter(dietRecAdapter);
