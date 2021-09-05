@@ -3,30 +3,44 @@ package com.myapplication.healthylife.model;
 public class Dish {
     private int ID;
     private String Name;
-    private String Type;
+    private int[] Types;
     private String description;
     private String tutorial;
     private String note;
     private String ingredients;
     private int image;
     private int video;
+    private boolean isCarb;
+    private boolean isFat;
+    private boolean isVegan;
+    private boolean isBreakfast;
+    private boolean isLunch;
+    private boolean isDinner;
 
-    public Dish(int id, String Name, String Type,
+    public Dish(int id, String Name, int[] Types,
                 String description, String tutorial, String note,
-                String ingredients, int image, int video){
+                String ingredients, int image, int video,
+                boolean isBreakfast, boolean isLunch, boolean isDinner){
         this.ID=id;
         this.Name= Name;
-        this.Type=Type;
+        this.Types = Types;
         this.description = description;
         this.tutorial = tutorial;
         this.note = note;
         this.ingredients = ingredients;
         this.image = image;
         this.video = video;
+        this.isBreakfast = isBreakfast;
+        this.isLunch = isLunch;
+        this.isDinner = isDinner;
     }
 
-    public String getType() {
-        return Type;
+    public int getID() {
+        return ID;
+    }
+
+    public int[] getTypes() {
+        return Types;
     }
 
     public String getName() {
@@ -56,4 +70,15 @@ public class Dish {
         return video;
     }
 
+    public boolean isBreakfast() {
+        return isBreakfast;
+    }
+
+    public boolean isLunch() {
+        return isLunch;
+    }
+
+    public boolean isDinner() {
+        return isDinner;
+    }
 }

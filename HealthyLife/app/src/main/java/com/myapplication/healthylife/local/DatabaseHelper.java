@@ -6,6 +6,8 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import com.myapplication.healthylife.model.Diet;
+import com.myapplication.healthylife.model.Dish;
 import com.myapplication.healthylife.model.Exercise;
 import com.myapplication.healthylife.model.Stat;
 
@@ -42,7 +44,12 @@ public class DatabaseHelper extends SQLiteOpenHelper{
 
     public static final String DIET = "DIET";
     public static final String DISH = "DISH";
+    public static final String NOTE = "NOTE";
+    public static final String INGREDIENTS = "INGREDIENTS";
     public static final String CALORIES ="CALORIES";
+    public static final String ISBREAKFAST = "ISBREAKFAST";
+    public static final String ISLUNCH = "ISLUNCH";
+    public static final String ISDINNER = "ISDINNER";
     public static final String ISASSIGNED = " ISASSIGNED";
     public static final String DAY = "DAY"; // in-week
 
@@ -96,7 +103,16 @@ public class DatabaseHelper extends SQLiteOpenHelper{
         db.execSQL("CREATE TABLE " + DISH + "("
                 + ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
                 + NAME + " VARCHAR(50), "
-                + TYPES + " VARCHAR(20)) "
+                + TYPES + " VARCHAR(20), "
+                + DESCRIPTION + " NVARCHAR(1000), "
+                + TUTORIAL + " NVARCHAR(1000), "
+                + NOTE + " NVARCHAR(1000), "
+                + INGREDIENTS+ " NVARCHAR(1000), "
+                + IMAGE + " INTEGER, "
+                + VIDEO + " INTEGER, "
+                + ISBREAKFAST + "INTEGER, "
+                + ISLUNCH + "INTEGER, "
+                + ISDINNER + "INTEGER) "
         );
 
     }
@@ -354,6 +370,139 @@ public class DatabaseHelper extends SQLiteOpenHelper{
         }else   {
             return false;
         }
+    }
+
+    public boolean addDiet(Diet diet){
+        SQLiteDatabase db = getWritableDatabase();
+        ContentValues cv = new ContentValues();
+
+        String types = new String();
+        boolean start = false;
+        for (int i: diet.getTypes())    {
+            if (!start) {
+                types += String.valueOf(i);
+                start = true;
+            }else {
+                types += "," + String.valueOf(i);
+            }
+        }
+        cv.put(ID,diet.getID());
+        cv.put(NAME, diet.getName());
+        cv.put(DESCRIPTION, diet.getDescription());
+        cv.put(CALORIES, diet.getCalories());
+        cv.put(TYPES, types);
+        cv.put(ISASSIGNED, diet.isAssigned());
+
+        long insert = db.insert(DIET, null, cv);
+        if (insert != -1)   {
+            return true;
+        }else {
+            return false;
+        }
+    }
+
+    public ArrayList<Diet> getDietList(){
+        SQLiteDatabase db = getReadableDatabase();
+        ArrayList<Diet> returnList = new ArrayList<>();
+        Cursor cursor = db.rawQuery("SELECT * FROM " + DIET, null);
+        if (cursor.moveToFirst())   {
+            do {
+                int id = cursor.getInt(0);
+                String Name = cursor.getString(1);
+                String Description = cursor.getString(2);
+                int Calories = cursor.getInt( 3);
+                String temp = cursor.getString(4);;
+                String[] arr = temp.split(",");
+                int[] types = new int[arr.length];
+                int count = 0;
+                for (String s:arr)  {
+                    types[count++] = Integer.parseInt(s);
+                }
+                boolean isAssigned = cursor.getInt(5) == 0 ? false : true;
+
+                returnList.add(new Diet(id, Name, Description, Calories, types, isAssigned));
+            }while (cursor.moveToNext());
+        }
+        return returnList;
+    }
+
+    public boolean deleteDiet(int id) {
+        SQLiteDatabase db = getWritableDatabase();
+        int res = db.delete(DIET, ID+" = ?", new String[]{String.valueOf(id)});
+        if (res == 1)   {
+            return true;
+        }else   {
+            return false;
+        }
+    }
+
+    public boolean addDish(Dish dish){
+        SQLiteDatabase db = getWritableDatabase();
+        ContentValues cv = new ContentValues();
+
+        String types = new String();
+        boolean start = false;
+        for (int i: dish.getTypes())    {
+            if (!start) {
+                types += String.valueOf(i);
+                start = true;
+            }else {
+                types += "," + String.valueOf(i);
+            }
+        }
+        cv.put(ID,dish.getID());
+        cv.put(NAME, dish.getName());
+        cv.put(TYPES, types);
+        cv.put(DESCRIPTION, dish.getDescription());
+        cv.put(TUTORIAL, dish.getTutorial());
+        cv.put(NOTE, dish.getNote());
+        cv.put(INGREDIENTS, dish.getIngredients());
+        cv.put(IMAGE, dish.getImage());
+        cv.put(VIDEO, dish.getVideo());
+        cv.put(ISBREAKFAST, dish.isBreakfast());
+        cv.put(ISLUNCH, dish.isLunch());
+        cv.put(ISDINNER, dish.isDinner());
+
+        long insert = db.insert(DIET, null, cv);
+        if (insert != -1)   {
+            return true;
+        }else {
+            return false;
+        }
+    }
+
+    public ArrayList<Dish> getDishList(){
+        SQLiteDatabase db = getReadableDatabase();
+        ArrayList<Dish> returnList = new ArrayList<>();
+        Cursor cursor = db.rawQuery("SELECT * FROM " + DISH, null);
+        if (cursor.moveToFirst())   {
+            do {
+                int id = cursor.getInt(0);
+                String Name = cursor.getString(1);
+
+                String temp = cursor.getString(2);
+                String[] arr = temp.split(",");
+                int[] types = new int[arr.length];
+                int count = 0;
+                for (String s:arr)  {
+                    types[count++] = Integer.parseInt(s);
+                }
+
+                String Description = cursor.getString(3);
+                String Tutorial = cursor.getString( 4);
+                String Note = cursor.getString(5);
+                String Ingredients = cursor.getString(6);
+                int image = cursor.getInt(7);
+                int video = cursor.getInt(8);
+                boolean isBreakfast = cursor.getInt(9) == 0 ? false : true;
+                boolean isLunch = cursor.getInt(10) == 0 ? false : true;
+                boolean isDinner = cursor.getInt(11) == 0 ? false : true;
+
+                returnList.add(new Dish(id, Name, types, Description, Tutorial,
+                        Note, Ingredients, image, video, isBreakfast, isLunch, isDinner));
+            }while (cursor.moveToNext());
+        }
+        return returnList;
     }
 }
 
