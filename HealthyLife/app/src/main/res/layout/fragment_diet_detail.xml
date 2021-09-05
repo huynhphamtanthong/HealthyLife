@@ -39,6 +39,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="DescriptionContent"
+                android:fontFamily="@font/custom_font"
                 android:textSize="17sp"
                 android:textColor="@color/white"/>
             <TextView

@@ -15,6 +15,10 @@ public class Diet {
     private boolean isCarbAllowed;
     private boolean isVegan;
     private int image;
+    private ArrayList<Dish> breakfast;
+    private ArrayList<Dish> lunch;
+    private ArrayList<Dish> dinner;
+
 
 
     public Diet (int ID, String Name, String Description, String Note, int Calories,int[] Types,
@@ -98,6 +102,15 @@ public class Diet {
     public void setRecommended(boolean isRecommended){this.isRecommended=isRecommended;}
     public int getImage() {
         return image;
+    }
+    public void insertBreakfast (Dish dish){
+        breakfast.add(dish);
+    }
+    public void insertLunch (Dish dish){
+        lunch.add(dish);
+    }
+    public void insertDinner (Dish dish){
+        dinner.add(dish);
     }
 }
 
