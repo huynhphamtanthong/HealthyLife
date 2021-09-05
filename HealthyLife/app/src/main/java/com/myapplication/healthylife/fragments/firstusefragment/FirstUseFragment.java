@@ -24,6 +24,7 @@ import com.myapplication.healthylife.databinding.FragmentFirstUseBinding;
 import com.myapplication.healthylife.local.AppPrefs;
 import com.myapplication.healthylife.local.DatabaseHelper;
 import com.myapplication.healthylife.model.Diet;
+import com.myapplication.healthylife.model.Dish;
 import com.myapplication.healthylife.model.Exercise;
 import com.myapplication.healthylife.model.Stat;
 import com.myapplication.healthylife.model.User;
@@ -41,7 +42,7 @@ public class FirstUseFragment extends Fragment {
     private SharedPreferences sharedPreferences;
     private ArrayList<Exercise> exercises = new ArrayList<>();
     private ArrayList<Diet> diets = new ArrayList<>();
-
+    private ArrayList<Dish> dishes = new ArrayList<Dish>();
     private DatabaseHelper db;
     private SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
     private SimpleDateFormat dateTimeSdf = new SimpleDateFormat("dd/MM/yyyy, kk:mm:ss");
@@ -201,12 +202,29 @@ public class FirstUseFragment extends Fragment {
                 "Traditional push-ups are beneficial for building upper body strength. They work the triceps, pectoral muscles, and shoulders. When done with proper form, they can also strengthen the lower back and core.",
                 "- Get down on all fours, placing your hands slightly wider than your shoulders.\n-Straighten your arms and legs.\n- Lower your body until your chest nearly touches the floor.\n-Pause, then push yourself back up.\n-Repeat.\n\nNOTICE:\n- 10-20 reps/set.\n- 2 sets/time.\n- 10s resting between sets.\n- 1 minute resting before moving to other exercises.",
                 "None",45,10,3,60,70));
-        diets.add(new Diet(-1, "Low-carb Diet","Diets with restriction on carbohydrate-rich products. The primary aim of the diet is to force your body to use more fats for fuel instead of using carbs as a main source of energy.","In extremely rare cases, very low-carb diets can cause a serious condition called nondiabetic ketoacidosis. This condition seems to be more common in lactating women and can be fatal if left untreated.",1800,new int[]{2, 3, 4, 5},false,false, false, false, R.raw.bridge));
-        diets.add(new Diet(-1, "Keto Diet","The keto diet is a low carb, high fat diet. It lowers blood sugar and insulin levels and shifts the body’s metabolism away from carbs and toward fat and ketones.","Although the ketogenic diet is usually safe for most healthy people, there may be some initial side effects known as keto flu while your body adapts. You can try low-carb diẻt first for adaptation",1650,new int[]{2, 3, 4, 5},true,false, false, false, R.raw.bridge));
-        diets.add(new Diet(-1, "Vegan Diet","A vegan diet excludes all animal products.","Vegan diets is effective at helping people naturally reduce the amount of calories they eat, resulting in weight loss.However,Vegans may be at an increased risk of certain nutrient deficiencies.",1500, new int[]{2,3,4},true,true,true, false, R.raw.bridge));
-        diets.add(new Diet(-1, "3k Diet", "A diet to gain weight for underweight people","Keep exercising for balance, or you will be overwhelmed by the calories taken in.", 3000, new int[]{1}, true,true,false, false, R.raw.bridge));
-    }
 
+        diets.add(new Diet(-1, "Low-carb Diet","Diets with restriction on carbohydrate-rich products. The primary aim of the diet is to force your body to use more fats for fuel instead of using carbs as a main source of energy.","In extremely rare cases, low-carb diets can cause a serious condition called nondiabetic ketoacidosis. This condition seems to be more common in lactating women and can be fatal if left untreated.",1800,new int[]{2, 3, 4, 5},false,false, true, false, R.raw.bridge));
+        diets.add(new Diet(-1, "Vegan Diet","A vegan diet excludes all animal products.","Vegan diets is effective at helping people naturally reduce the amount of calories they eat, resulting in weight loss.However,Vegans may be at an increased risk of certain nutrient deficiencies.",1500, new int[]{2,3,4},false,true,true, false, R.raw.bridge));
+        diets.add(new Diet(-1, "3k Diet", "A diet to gain weight for underweight people","The menu shown later is only cover 75% amount of calories needed. Keep exercising for balance, or you will be overwhelmed by the calories taken in.", 3000, new int[]{1}, false,true,false, false, R.raw.bridge));
+
+        dishes.add(new Dish(-1, "Bacon and egg"," No Description",
+                "Fried Bacon and egg in medium heat in 3 mins, until it is done",
+                "Eat with green veggies for fiber + vitamins","2-3 eggs + the amount of bacon you want",
+                1,1,true, false, false, true,false, false));
+        dishes.add(new Dish(-1, "Avocado salad"," No Description",
+                "Prepare and wash lettuce, avocado, bell chillies, cucumber. Mix them all together with  Vinaigrette",
+                "Non-vegan can top up with eggs  for diversity","Lettuce,cucumber, avocados, bell chillies, Vinaigrette  ",
+                2,2,false, false, true, true,false, false));
+        dishes.add(new Dish(-1, "Nuts milk with chia seed"," No Description","Use any types of nuts milk such as almond milk, soy milk, walnuts milk... and drop 1 tablespoon of chia seed in","Eat with fruits(apples, strawberries) if you like","Chia Seed, nuts milk"  ,3,3,true, false, true, true,false, true));
+        dishes.add(new Dish(-1, "Green pea with tofu/beef  ","No Description ","Wash green pea, season tofu/beef with garlics, soy bean. After stir frying tofu/beef for 2-3 min with medium/high flame, add the green peas, continue stirring for 5 min and turr off the heat.","Non-vegan can cook and eat with beef, Vegan can do the same with tofu, people with no restriction in carb can eat with rice","Green peas, tofu/beef, soy sauce, garlic, ",4,4,true, false, true, false,false,true));
+        dishes.add(new Dish(-1, "Omelet with veggies","No Description ","Break eggs, fry with olive oil for few mins. Meanwhile prepare boiled veggies (carrot,raddish, brocoli) ","No note","Eggs, vegetables ( carrot/brocoli/etc...) ",5,5,true, false, false, true,false, false));
+        dishes.add(new Dish(-1, "(Nuts) Yogurt with strawberries and nuts","No Description ","Just mix the yogurt with berries and nuts (any type you want)","Non-vegan can have cow milk yogurt, Vegan can alternate with nuts yogurt","Yogurt(nuts or normal), strawberries/blueberries, nuts(almond, walnuts...) ",6,6,true, false,true, true,true, false));
+        dishes.add(new Dish(-1, "Pork chop with veggies  ","No Description ","wash pork and boil it with salt (1 coffee spoon) until bubbles come up, after that countinue doing so for 15 min(or until the red part inside is gone).Meanwhile wash any kind of green veggies (cabbage, amaranth,brocoli...) and boil it after finishing the meat.", "No note","Pork, favorite veggies",7,7,true, false, false, false,true, true));
+
+    }
+    //public Dish(int id, String Name, String description, String tutorial, String note,
+      //          String ingredients, int image, int video,boolean isFat, boolean isCarb, boolean isVegan,
+        //        boolean isBreakfast, boolean isLunch, boolean isDinner
     private void saveListOfExercisesForNewUser(ArrayList<Exercise> exercise, double bmi)    {
         boolean startRecommended = false;
         boolean startOthers = false;

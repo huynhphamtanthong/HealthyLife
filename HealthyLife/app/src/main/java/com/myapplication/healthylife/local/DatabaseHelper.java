@@ -463,7 +463,7 @@ public class DatabaseHelper extends SQLiteOpenHelper{
             return false;
         }
     }
-
+/*
     public boolean addDish(Dish dish){
         SQLiteDatabase db = getWritableDatabase();
         ContentValues cv = new ContentValues();
@@ -498,7 +498,7 @@ public class DatabaseHelper extends SQLiteOpenHelper{
             return false;
         }
     }
-
+*/
     public ArrayList<Dish> getDishList(){
         SQLiteDatabase db = getReadableDatabase();
         ArrayList<Dish> returnList = new ArrayList<>();
