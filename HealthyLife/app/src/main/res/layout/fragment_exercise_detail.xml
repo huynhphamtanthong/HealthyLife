@@ -14,16 +14,18 @@
         android:padding="10dp">
 
         <TextView
+            android:id="@+id/tvName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textStyle="bold"
+            android:fontFamily="@font/custom_font"
             android:text="Exercise's Name"
-            android:textSize="30sp"
-            android:id="@+id/tvName"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
             android:textAllCaps="true"
-            android:textColor="@color/white" />
+            android:textColor="@color/white"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.constraintlayout.widget.Guideline
             android:layout_width="wrap_content"
@@ -121,6 +123,7 @@
             android:layout_height="wrap_content"
             android:textStyle="bold"
             android:text="Duration: "
+            android:fontFamily="@font/custom_font"
             android:textSize="20sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@id/tvDuration"
@@ -135,6 +138,7 @@
             android:text="15 minutes"
             android:textSize="20sp"
             android:textStyle="bold"
+            android:fontFamily="@font/custom_font"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toEndOf="@id/tvDurationTitle"
@@ -148,6 +152,7 @@
             android:text="Running Machine"
             android:textSize="20sp"
             android:textStyle="bold"
+            android:fontFamily="@font/custom_font"
             app:layout_constraintTop_toBottomOf="@id/tvDuration"
             app:layout_constraintStart_toEndOf="@id/tvEquipmentTitle"
             app:layout_constraintEnd_toEndOf="parent"
@@ -162,6 +167,7 @@
             android:text="Equipment:"
             android:textSize="20sp"
             android:textStyle="bold"
+            android:fontFamily="@font/custom_font"
             app:layout_constraintTop_toTopOf="@id/tvEquipment"
             app:layout_constraintStart_toStartOf="parent"
             android:textColor="@color/white"/>
@@ -173,6 +179,7 @@
             android:text="Description"
             android:textSize="27sp"
             android:textStyle="bold"
+            android:fontFamily="@font/custom_font"
             app:layout_constraintTop_toBottomOf="@id/tvEquipment"
             app:layout_constraintStart_toStartOf="parent"
             android:layout_marginTop="30dp"
@@ -185,7 +192,8 @@
             android:layout_marginTop="5dp"
             android:textStyle="bold"
             android:text="aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
-            android:textSize="20sp"
+            android:textSize="18sp"
+            android:fontFamily="@font/custom_font"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tvDescriptionTitle"
@@ -198,6 +206,7 @@
             android:text="Tutorial"
             android:textSize="27sp"
             android:textStyle="bold"
+            android:fontFamily="@font/custom_font"
             app:layout_constraintTop_toBottomOf="@id/tvDescription"
             app:layout_constraintStart_toStartOf="parent"
             android:layout_marginTop="30dp"
@@ -210,20 +219,21 @@
             android:textColor="@color/white"
             android:textStyle="bold"
             android:text="aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
-            android:textSize="20sp"
+            android:textSize="18sp"
+            android:fontFamily="@font/custom_font"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tvTutorialTitle" />
 
         <TextureView
+            android:id="@+id/video"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:id="@+id/video"
+            android:layout_marginTop="20dp"
             app:layout_constraintDimensionRatio="1:1"
-            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tvTutorial"
-            android:layout_marginTop="30dp"/>
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvTutorial" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

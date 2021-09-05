@@ -23,7 +23,6 @@ import com.myapplication.healthylife.R;
 import com.myapplication.healthylife.databinding.FragmentHomeBinding;
 import com.myapplication.healthylife.local.AppPrefs;
 import com.myapplication.healthylife.local.DatabaseHelper;
-import com.myapplication.healthylife.model.Diet;
 import com.myapplication.healthylife.model.Exercise;
 import com.myapplication.healthylife.model.Stat;
 import com.myapplication.healthylife.model.User;
@@ -56,6 +55,10 @@ public class HomeFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        String data= sharedPreferences.getString("user", null);
+        User userObject = new Gson().fromJson (data, User.class);
+        binding.userName.setText (userObject.getName());
 
         if (challengeCompleted())   {
             Dialog dialog = new Dialog(getContext());
@@ -99,9 +102,11 @@ public class HomeFragment extends Fragment {
             Window window = dialog.getWindow();
             window.setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.WRAP_CONTENT);
         }
+
+
     }
 
-    private boolean challengeCompleted()   {
+        private boolean challengeCompleted()   {
         ArrayList<Exercise> exercises = db.getRecommendedExerciseList();
         for (Exercise ex: exercises
              ) {
