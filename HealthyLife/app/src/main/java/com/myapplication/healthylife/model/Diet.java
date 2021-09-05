@@ -19,7 +19,7 @@ public class Diet {
 
     public Diet (int ID, String Name, String Description, String Note, int Calories,int[] Types,
                  boolean isAssigned, boolean isCarbAllowed, boolean isFatAllowed, boolean isVegan, int image){
-
+        this.isRecommended=false;
         this.ID=ID;
         this.Name=Name;
         this.Description=Description;
@@ -30,9 +30,26 @@ public class Diet {
         this.isFatAllowed=isFatAllowed;
         this.isVegan=isVegan;
         this.isAssigned=isAssigned;
+        this.isRecommended=false;
         this.image = image;
     }
 
+    public Diet (int ID, String Name, String Description, String Note, int Calories,int[] Types,
+                 boolean isAssigned, boolean isCarbAllowed, boolean isFatAllowed, boolean isVegan,boolean isRecommended, int image){
+        this.isRecommended=false;
+        this.ID=ID;
+        this.Name=Name;
+        this.Description=Description;
+        this.Note=Note;
+        this.Calories = Calories;
+        this.Types = Types;
+        this.isCarbAllowed=isCarbAllowed;
+        this.isFatAllowed=isFatAllowed;
+        this.isVegan=isVegan;
+        this.isAssigned=isAssigned;
+        this.isRecommended=isRecommended;
+        this.image = image;
+    }
     public String getNote() {
         return Note;
     }
@@ -61,6 +78,7 @@ public class Diet {
     public boolean isAssigned() {
         return isAssigned;
     }
+    public void setAssigned(boolean temp) {this.isAssigned = temp; }
 
     public boolean isVegan() {
         return isVegan;
@@ -77,6 +95,7 @@ public class Diet {
     public boolean isRecommended() {
         return isRecommended;
     }
+    public void setRecommended(boolean isRecommended){this.isRecommended=isRecommended;}
     public int getImage() {
         return image;
     }
