@@ -8,6 +8,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
+import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,10 +21,12 @@ import com.myapplication.healthylife.databinding.FragmentLaunchBinding;
 import com.myapplication.healthylife.local.AppPrefs;
 import com.myapplication.healthylife.local.DatabaseHelper;
 import com.myapplication.healthylife.model.Diet;
+import com.myapplication.healthylife.model.Dish;
 import com.myapplication.healthylife.recycleviewadapters.DietRecViewAdapter;
 import com.myapplication.healthylife.recycleviewadapters.DishRecViewAdapter;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 
 public class DietFragment extends Fragment {
 
@@ -31,8 +34,10 @@ public class DietFragment extends Fragment {
     private NavController navController;
     private DatabaseHelper db;
     private SharedPreferences sharedPreferences;
-    private Diet diet = null;
-    private DishRecViewAdapter dishRecViewAdapter;
+    private ArrayList<Diet> diets;
+    private DishRecViewAdapter dishRecViewAdapterBreakfast;
+    private DishRecViewAdapter dishRecViewAdapterLunch;
+    private DishRecViewAdapter dishRecViewAdapterDinner;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -53,12 +58,43 @@ public class DietFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        if(diet == null){
+        int index = 0;
+        for(Diet i : diets){
+            if(i.isAssigned()){
+                break;
+            }
+            index++;
+        }
+        if(index == diets.size()){
             binding.LoveDishNotification.setText("No dishes found! " +
                     "Please pick a diet by clicking recommend button and doing further actions.");
         }
         else{
-            dishRecViewAdapter = new DishRecViewAdapter(getActivity(), getContext());
+            Calendar calendar = Calendar.getInstance();
+            int day = calendar.get(Calendar.DAY_OF_WEEK);
+            ArrayList<Dish> breakfast = new ArrayList<>();
+            breakfast.add(diets.get(index).getBreakfast().get(day % diets.get(index).getBreakfast().size()));
+
+            ArrayList<Dish> lunch = new ArrayList<>();
+            lunch.add(diets.get(index).getLunch().get(day % diets.get(index).getLunch().size()));
+
+            ArrayList<Dish> dinner = new ArrayList<>();
+            dinner.add(diets.get(index).getDinner().get(day % diets.get(index).getDinner().size()));
+
+            dishRecViewAdapterBreakfast = new DishRecViewAdapter(getActivity(), getContext());
+            dishRecViewAdapterBreakfast.SetDishes(breakfast);
+            binding.rvDishDetailTodayBreakfast.setAdapter(dishRecViewAdapterBreakfast);
+            binding.rvDishDetailTodayBreakfast.setLayoutManager(new LinearLayoutManager(getContext()));
+
+            dishRecViewAdapterLunch = new DishRecViewAdapter(getActivity(), getContext());
+            dishRecViewAdapterLunch.SetDishes(lunch);
+            binding.rvDishDetailTodayLunch.setAdapter(dishRecViewAdapterBreakfast);
+            binding.rvDishDetailTodayLunch.setLayoutManager(new LinearLayoutManager(getContext()));
+
+            dishRecViewAdapterBreakfast = new DishRecViewAdapter(getActivity(), getContext());
+            dishRecViewAdapterBreakfast.SetDishes(dinner);
+            binding.rvDishDetailTodayBreakfast.setAdapter(dishRecViewAdapterBreakfast);
+            binding.rvDishDetailTodayBreakfast.setLayoutManager(new LinearLayoutManager(getContext()));
         }
     }
 

@@ -112,6 +112,18 @@ public class Diet {
     public void insertDinner (Dish dish){
         dinner.add(dish);
     }
+
+    public ArrayList<Dish> getBreakfast() {
+        return breakfast;
+    }
+
+    public ArrayList<Dish> getLunch() {
+        return lunch;
+    }
+
+    public ArrayList<Dish> getDinner() {
+        return dinner;
+    }
 }
 
 
