@@ -468,21 +468,13 @@ public class DatabaseHelper extends SQLiteOpenHelper{
             return false;
         }
     }
-/*
+
     public boolean addDish(Dish dish){
         SQLiteDatabase db = getWritableDatabase();
         ContentValues cv = new ContentValues();
 
         String types = new String();
         boolean start = false;
-        for (int i: dish.getTypes())    {
-            if (!start) {
-                types += String.valueOf(i);
-                start = true;
-            }else {
-                types += "," + String.valueOf(i);
-            }
-        }
         cv.put(ID,dish.getID());
         cv.put(NAME, dish.getName());
         cv.put(TYPES, types);
@@ -492,6 +484,9 @@ public class DatabaseHelper extends SQLiteOpenHelper{
         cv.put(INGREDIENTS, dish.getIngredients());
         cv.put(IMAGE, dish.getImage());
         cv.put(VIDEO, dish.getVideo());
+        cv.put(ISFAT, dish.isFat());
+        cv.put(ISCARB, dish.isCarb());
+        cv.put(ISVEGAN, dish.isVegan());
         cv.put(ISBREAKFAST, dish.isBreakfast());
         cv.put(ISLUNCH, dish.isLunch());
         cv.put(ISDINNER, dish.isDinner());
@@ -503,7 +498,6 @@ public class DatabaseHelper extends SQLiteOpenHelper{
             return false;
         }
     }
-*/
     public ArrayList<Dish> getDishList(){
         SQLiteDatabase db = getReadableDatabase();
         ArrayList<Dish> returnList = new ArrayList<>();
@@ -532,6 +526,15 @@ public class DatabaseHelper extends SQLiteOpenHelper{
             }while (cursor.moveToNext());
         }
         return returnList;
+    }
+    public boolean deleteDish(int id) {
+        SQLiteDatabase db = getWritableDatabase();
+        int res = db.delete(DISH, ID+" = ?", new String[]{String.valueOf(id)});
+        if (res == 1)   {
+            return true;
+        }else   {
+            return false;
+        }
     }
 }
 

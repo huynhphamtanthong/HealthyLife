@@ -17,19 +17,19 @@ public class Dish {
     private boolean isDinner;
 
     public Dish(int id, String Name, String description, String tutorial, String note,
-                String ingredients, int image, int video,boolean isFat, boolean isCarb, boolean isVegan,
-                boolean isBreakfast, boolean isLunch, boolean isDinner){
-        this.ID=id;
-        this.Name= Name;
+                String ingredients, int image, int video, boolean isFat, boolean isCarb, boolean isVegan,
+                boolean isBreakfast, boolean isLunch, boolean isDinner) {
+        this.ID = id;
+        this.Name = Name;
         this.description = description;
         this.tutorial = tutorial;
         this.note = note;
         this.ingredients = ingredients;
         this.image = image;
         this.video = video;
-        this.isFat=isFat;
-        this.isCarb=isCarb;
-        this.isVegan=isVegan;
+        this.isFat = isFat;
+        this.isCarb = isCarb;
+        this.isVegan = isVegan;
         this.isBreakfast = isBreakfast;
         this.isLunch = isLunch;
         this.isDinner = isDinner;
@@ -43,6 +43,7 @@ public class Dish {
     public String getName() {
         return Name;
     }
+
     public String getDescription() {
         return description;
     }
