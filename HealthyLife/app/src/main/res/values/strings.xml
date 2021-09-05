@@ -5,4 +5,7 @@
     <string name="diet_plan">Diet Plan</string>
     <string name="diet_evaluation">Diet Evaluation</string>
     <string name="typical_diets">Typical Diets</string>
+    <string name="recommend">Recommend</string>
+    <string name="today_dish">Today Dish</string>
+    <string name="diet">DIET</string>
 </resources>

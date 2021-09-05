@@ -68,6 +68,9 @@
         <action
             android:id="@+id/action_mainFragment_to_commonKnowledge"
             app:destination="@id/commonKnowledge" />
+        <action
+            android:id="@+id/action_mainFragment_to_dietRecommendFragment"
+            app:destination="@id/dietRecommendFragment" />
     </fragment>
     <fragment
         android:id="@+id/exerciseDetailFragment"
@@ -152,6 +155,39 @@
         <action
             android:id="@+id/action_commonKnowledge_to_mainFragment"
             app:destination="@id/mainFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/dietRecommendFragment"
+        android:name="com.myapplication.healthylife.fragments.mainfragments.DietRecommendFragment"
+        android:label="fragment_diet_recommend"
+        tools:layout="@layout/fragment_diet_recommend" >
+        <action
+            android:id="@+id/action_dietRecommendFragment_to_mainFragment"
+            app:destination="@id/mainFragment" />
+        <action
+            android:id="@+id/action_dietRecommendFragment_to_DietDetailFragment"
+            app:destination="@id/DietDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/DishDetailFragment"
+        android:name="com.myapplication.healthylife.fragments.mainfragments.DishDetailFragment"
+        android:label="fragment_dish_detail"
+        tools:layout="@layout/fragment_dish_detail" >
+        <action
+            android:id="@+id/action_DishDetail_to_DietDetailFragment"
+            app:destination="@id/DietDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/DietDetailFragment"
+        android:name="com.myapplication.healthylife.fragments.mainfragments.DietDetailFragment"
+        android:label="fragment_diet_detail"
+        tools:layout="@layout/fragment_diet_detail" >
+        <action
+            android:id="@+id/action_DietDetail_to_mainFragment"
+            app:destination="@id/mainFragment" />
+        <action
+            android:id="@+id/action_DietDetail_to_DishDetail"
+            app:destination="@id/DishDetailFragment" />
     </fragment>
 
 </navigation>
