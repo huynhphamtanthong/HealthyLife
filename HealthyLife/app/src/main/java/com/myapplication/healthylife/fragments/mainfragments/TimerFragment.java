@@ -1,6 +1,7 @@
 package com.myapplication.healthylife.fragments.mainfragments;
 
 import android.app.Dialog;
+import android.content.SharedPreferences;
 import android.content.res.AssetFileDescriptor;
 import android.graphics.SurfaceTexture;
 import android.media.MediaPlayer;
@@ -16,6 +17,7 @@ import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 
 import android.os.CountDownTimer;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Surface;
 import android.view.TextureView;
@@ -26,11 +28,14 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.MediaController;
 
+import com.google.gson.Gson;
 import com.myapplication.healthylife.R;
 import com.myapplication.healthylife.databinding.FragmentTimerBinding;
+import com.myapplication.healthylife.local.AppPrefs;
 import com.myapplication.healthylife.local.DatabaseHelper;
 import com.myapplication.healthylife.model.Exercise;
 import com.myapplication.healthylife.model.Timer;
+import com.myapplication.healthylife.model.User;
 
 import java.io.IOException;
 import java.sql.Time;
@@ -51,6 +56,8 @@ public class TimerFragment extends Fragment{
 
     boolean isRunning = false;
 
+    SharedPreferences sharedPreferences;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -58,12 +65,11 @@ public class TimerFragment extends Fragment{
         binding = FragmentTimerBinding.inflate(getLayoutInflater());
         list = db.getRecommendedExerciseList();
 //        listTimer = convert(list);
-
         listTimer = new ArrayList<>();
         listTimer.add(new Timer("Test1", "Test1", 5000, list.get(0).getVideo()));
         listTimer.add(new Timer("Test2", "Test2", 5000, list.get(1).getVideo()));
 
-
+        sharedPreferences = AppPrefs.getInstance(getContext());
         return binding.getRoot();
     }
 
@@ -126,14 +132,20 @@ public class TimerFragment extends Fragment{
                     });
                     countDown(listTimer);
                 }else   {
+                    String data = sharedPreferences.getString("user", null);
+                    User user = new Gson().fromJson(data, User.class);
+
                     binding.video.stopPlayback();
                     ArrayList<Exercise> exercises = db.getExerciseList();
                     for (int i = 0; i < 5; i++) {
+                        Log.d("DEBUG", String.valueOf(exercises.get(i).isFinished()));
                         if (!exercises.get(i).isFinished()) {
                             exercises.get(i).setFinished(true);
                             exercises.get(i).setProgress(exercises.get(i).getProgress()+1);
+                            user.setCaloFitness(user.getCaloFitness()+exercises.get(i).getcaloSet());
                         }
                     }
+                    sharedPreferences.edit().putString("user", new Gson().toJson(user)).apply();
                     db.deleteAllExercises();
                     for (Exercise ex: exercises
                          ) {

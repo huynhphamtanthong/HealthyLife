@@ -2,6 +2,7 @@ package com.myapplication.healthylife.recycleviewadapters;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,10 +13,13 @@ import androidx.annotation.NonNull;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.gson.Gson;
 import com.myapplication.healthylife.R;
 import com.myapplication.healthylife.databinding.ExerciseListBinding;
+import com.myapplication.healthylife.local.AppPrefs;
 import com.myapplication.healthylife.local.DatabaseHelper;
 import com.myapplication.healthylife.model.Exercise;
+import com.myapplication.healthylife.model.User;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -24,10 +28,12 @@ public class ExerciseRecViewAdapter extends RecyclerView.Adapter<ExerciseRecView
     private ArrayList<Exercise> exercises = new ArrayList<>();
     private Activity activity;
     private DatabaseHelper db;
+    private SharedPreferences sharedPreferences;
 
     public ExerciseRecViewAdapter(Activity activity, Context context) {
         this.activity = activity;
         this.db = new DatabaseHelper(context);
+        this.sharedPreferences = AppPrefs.getInstance(context);
     }
 
     @NonNull
@@ -75,12 +81,18 @@ public class ExerciseRecViewAdapter extends RecyclerView.Adapter<ExerciseRecView
             binding.checkBox.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
+                    String data = sharedPreferences.getString("user", null);
+                    User user = new Gson().fromJson(data, User.class);
+
                     exercise.setFinished(!exercise.isFinished());
                     if (exercise.isFinished())  {
                         exercise.setProgress(exercise.getProgress()+1);
-
+                        user.setCaloFitness(user.getCaloFitness()+exercise.getcaloSet());
+                        sharedPreferences.edit().putString("user", new Gson().toJson(user)).apply();
                     }else   {
                         exercise.setProgress(exercise.getProgress()-1);
+                        user.setCaloFitness(user.getCaloFitness()-exercise.getcaloSet());
+                        sharedPreferences.edit().putString("user", new Gson().toJson(user)).apply();
                     }
                     notifyItemChanged(getAdapterPosition());
                     db.edit(exercise);

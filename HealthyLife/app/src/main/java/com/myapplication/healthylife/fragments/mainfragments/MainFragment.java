@@ -9,11 +9,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.lifecycle.Lifecycle;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.viewpager2.widget.ViewPager2;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,6 +24,7 @@ import com.google.android.material.tabs.TabLayout;
 import com.myapplication.healthylife.R;
 import com.myapplication.healthylife.ViewPager2Adapter;
 import com.myapplication.healthylife.databinding.FragmentMainBinding;
+import com.myapplication.healthylife.viewmodel.CommunicateViewModel;
 
 public class MainFragment extends Fragment {
     private FragmentManager fragmentManager;
@@ -29,12 +32,15 @@ public class MainFragment extends Fragment {
     private ViewPager2Adapter adapter;
     private FragmentMainBinding binding;
     private NavController navController;
+    private CommunicateViewModel viewModel;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         fragmentManager = getActivity().getSupportFragmentManager();
         lifecycle = getLifecycle();
         binding = FragmentMainBinding.inflate(getLayoutInflater());
+        viewModel = new ViewModelProvider(getActivity()).get(CommunicateViewModel.class);
         return binding.getRoot();
     }
 
@@ -54,7 +60,11 @@ public class MainFragment extends Fragment {
         binding.tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
+                Log.d("TAB", "onTabSelected: "+tab.getPosition());
                 binding.viewPager2.setCurrentItem(tab.getPosition());
+                if (tab.getPosition() == 0) {
+                    viewModel.selectTab(0);
+                }
             }
 
             @Override

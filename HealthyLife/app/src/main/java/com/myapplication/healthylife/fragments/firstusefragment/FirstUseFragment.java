@@ -42,7 +42,7 @@ public class FirstUseFragment extends Fragment {
     private SharedPreferences sharedPreferences;
     private ArrayList<Exercise> exercises = new ArrayList<>();
     private ArrayList<Diet> diets = new ArrayList<>();
-    private ArrayList<Dish> dishes = new ArrayList<Dish>();
+    private ArrayList<Dish> dishes = new ArrayList<>();
     private DatabaseHelper db;
     private SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
     private SimpleDateFormat dateTimeSdf = new SimpleDateFormat("dd/MM/yyyy, kk:mm:ss");
@@ -92,10 +92,9 @@ public class FirstUseFragment extends Fragment {
                             sharedPreferences.edit().putString("user", new Gson().toJson(user)).apply();
 
                             date = new Date();
-                            String now = sdf.format(date);
-                            sharedPreferences.edit().putString("lastLogin", now).apply();
 
                             saveListOfExercisesForNewUser(exercises, bmi);
+                            saveListofDietForNewUser(diets, bmi);
 
                             db.addStat(new Stat(-1, user.getHeight(), user.getWeight(), user.getBmi(), dateTimeSdf.format(date)));
 
@@ -204,8 +203,8 @@ public class FirstUseFragment extends Fragment {
                 "None",45,10,3,60,70));
 
         diets.add(new Diet(-1, "Low-carb Diet","Diets with restriction on carbohydrate-rich products. The primary aim of the diet is to force your body to use more fats for fuel instead of using carbs as a main source of energy.","In extremely rare cases, low-carb diets can cause a serious condition called nondiabetic ketoacidosis. This condition seems to be more common in lactating women and can be fatal if left untreated.",1800,new int[]{2, 3, 4, 5},false,false, true, false, R.raw.bridge));
-        diets.add(new Diet(-1, "Vegan Diet","A vegan diet excludes all animal products.","Vegan diets is effective at helping people naturally reduce the amount of calories they eat, resulting in weight loss.However,Vegans may be at an increased risk of certain nutrient deficiencies.",1500, new int[]{2,3,4},false,true,true, false, R.raw.bridge));
-        diets.add(new Diet(-1, "3k Diet", "A diet to gain weight for underweight people","The menu shown later is only cover 75% amount of calories needed. Keep exercising for balance, or you will be overwhelmed by the calories taken in.", 3000, new int[]{1}, false,true,false, false, R.raw.bridge));
+        diets.add(new Diet(-1,"Vegan Diet","A vegan diet excludes all animal products.","Vegan diets is effective at helping people naturally reduce the amount of calories they eat, resulting in weight loss.However,Vegans may be at an increased risk of certain nutrient deficiencies.",1500, new int[]{2,3,4},false,true,true, false, R.raw.bridge));
+        diets.add(new Diet(-1,"3k Diet", "A diet to gain weight for underweight people","The menu shown later is only cover 75% amount of calories needed. Keep exercising for balance, or you will be overwhelmed by the calories taken in.", 3000, new int[]{1}, false,true,false, false, R.raw.bridge));
 
         dishes.add(new Dish(-1, "Bacon and egg"," No Description",
                 "Fried Bacon and egg in medium heat in 3 mins, until it is done",
@@ -215,16 +214,63 @@ public class FirstUseFragment extends Fragment {
                 "Prepare and wash lettuce, avocado, bell chillies, cucumber. Mix them all together with  Vinaigrette",
                 "Non-vegan can top up with eggs  for diversity","Lettuce,cucumber, avocados, bell chillies, Vinaigrette  ",
                 2,2,false, false, true, true,false, false));
-        dishes.add(new Dish(-1, "Nuts milk with chia seed"," No Description","Use any types of nuts milk such as almond milk, soy milk, walnuts milk... and drop 1 tablespoon of chia seed in","Eat with fruits(apples, strawberries) if you like","Chia Seed, nuts milk"  ,3,3,true, false, true, true,false, true));
-        dishes.add(new Dish(-1, "Green pea with tofu/beef  ","No Description ","Wash green pea, season tofu/beef with garlics, soy bean. After stir frying tofu/beef for 2-3 min with medium/high flame, add the green peas, continue stirring for 5 min and turr off the heat.","Non-vegan can cook and eat with beef, Vegan can do the same with tofu, people with no restriction in carb can eat with rice","Green peas, tofu/beef, soy sauce, garlic, ",4,4,true, false, true, false,false,true));
-        dishes.add(new Dish(-1, "Omelet with veggies","No Description ","Break eggs, fry with olive oil for few mins. Meanwhile prepare boiled veggies (carrot,raddish, brocoli) ","No note","Eggs, vegetables ( carrot/brocoli/etc...) ",5,5,true, false, false, true,false, false));
-        dishes.add(new Dish(-1, "(Nuts) Yogurt with strawberries and nuts","No Description ","Just mix the yogurt with berries and nuts (any type you want)","Non-vegan can have cow milk yogurt, Vegan can alternate with nuts yogurt","Yogurt(nuts or normal), strawberries/blueberries, nuts(almond, walnuts...) ",6,6,true, false,true, true,true, false));
-        dishes.add(new Dish(-1, "Pork chop with veggies  ","No Description ","wash pork and boil it with salt (1 coffee spoon) until bubbles come up, after that countinue doing so for 15 min(or until the red part inside is gone).Meanwhile wash any kind of green veggies (cabbage, amaranth,brocoli...) and boil it after finishing the meat.", "No note","Pork, favorite veggies",7,7,true, false, false, false,true, true));
+        dishes.add(new Dish(-1, "Nuts milk with chia seed"," No Description",
+                "Use any types of nuts milk such as almond milk, soy milk, walnuts milk... and drop 1 tablespoon of chia seed in",
+                "Eat with fruits(apples, strawberries) if you like","Chia Seed, nuts milk"  ,
+                3,3,true, false, true, true,false, true));
+        dishes.add(new Dish(-1, "Green pea with tofu/beef  ","No Description ",
+                "Wash green pea, season tofu/beef with garlics, soy bean. After stir frying tofu/beef for 2-3 min with medium/high flame, add the green peas, continue stirring for 5 min and turr off the heat.",
+                "Non-vegan can cook and eat with beef, Vegan can do the same with tofu, people with no restriction in carb can eat with rice",
+                "Green peas, tofu/beef, soy sauce, garlic, ",
+                4,4,true, false, true, false,false,true));
+        dishes.add(new Dish(-1, "Omelet with veggies","No Description ",
+                "Break eggs, fry with olive oil for few mins. Meanwhile prepare boiled veggies (carrot,raddish, brocoli) ",
+                "No note","Eggs, vegetables ( carrot/brocoli/etc...) ",
+                5,5,true, false, false, true,false, false));
+        dishes.add(new Dish(-1, "(Nuts) Yogurt with strawberries and nuts","No Description ",
+                "Just mix the yogurt with berries and nuts (any type you want)",
+                "Non-vegan can have cow milk yogurt, Vegan can alternate with nuts yogurt","Yogurt(nuts or normal), strawberries/blueberries, nuts(almond, walnuts...) ",
+                6,6,true, false,true, true,true, false));
+        dishes.add(new Dish(-1, "Pork chop with veggies  ","No Description ",
+                "wash pork and boil it with salt (1 coffee spoon) until bubbles come up, after that countinue doing so for 15 min(or until the red part inside is gone).Meanwhile wash any kind of green veggies (cabbage, amaranth,brocoli...) and boil it after finishing the meat.",
+                "No note","Pork, favorite veggies",
+                7,7,true, false, false, false,true, true));
 
     }
-    //public Dish(int id, String Name, String description, String tutorial, String note,
-      //          String ingredients, int image, int video,boolean isFat, boolean isCarb, boolean isVegan,
-        //        boolean isBreakfast, boolean isLunch, boolean isDinner
+    private void saveListofDietForNewUser(ArrayList<Diet> diets, double bmi){
+        boolean startRecommended = false;
+        boolean startOthers = false;
+        ArrayList<Diet> result = new ArrayList<>();
+        int type;
+        if (bmi >= 35) {
+            type = 5;
+        }else if(bmi >= 30 && bmi <= 34.9) {
+            type = 4;
+        }else if(bmi >= 25 && bmi <= 29.9)  {
+            type = 3;
+        }else if(bmi >= 18.5 && bmi <= 24.9)    {
+            type = 2;
+        }else   {
+            type = 1;
+        }
+        Log.d("DATA", String.valueOf(type));
+        for (Diet d: diets)    {
+            for (int i: d.getTypes())  {
+                if (i == type && !startRecommended)  {
+                    d.setRecommended(true);
+                    Log.d("REC", d.getName()+" "+d.isRecommended());
+                    result.add(d);
+                    startRecommended = true;
+                    break;
+                }else if(i == type && startRecommended) {
+                    d.setRecommended(true);
+                    Log.d("REC", d.getName()+" "+d.isRecommended());
+                    result.add(d);
+                    break;
+                }
+            }
+        }
+    }
     private void saveListOfExercisesForNewUser(ArrayList<Exercise> exercise, double bmi)    {
         boolean startRecommended = false;
         boolean startOthers = false;

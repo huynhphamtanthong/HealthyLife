@@ -106,7 +106,8 @@ public class DatabaseHelper extends SQLiteOpenHelper{
                 + ISCARBALLOWED + " INTEGER ,"
                 + ISFATALLOWED + " INTEGER ,"
                 + ISVEGAN + " INTEGER, "
-                + IMAGE + "INTEGER) "
+                + ISRECOMMENDED + " INTEGER, "
+                + IMAGE + " INTEGER) "
         );
 
         db.execSQL("CREATE TABLE " + DISH + "("
@@ -122,9 +123,9 @@ public class DatabaseHelper extends SQLiteOpenHelper{
                 + ISCARB + " INTEGER, "
                 + ISFAT + " INTEGER, "
                 + ISVEGAN + " INTEGER, "
-                + ISBREAKFAST + "INTEGER, "
-                + ISLUNCH + "INTEGER, "
-                + ISDINNER + "INTEGER) "
+                + ISBREAKFAST + " INTEGER, "
+                + ISLUNCH + " INTEGER, "
+                + ISDINNER + " INTEGER) "
         );
 
     }
@@ -451,7 +452,8 @@ public class DatabaseHelper extends SQLiteOpenHelper{
                 boolean isCarbAllowed =cursor.getInt(7)==0 ? false :true;
                 boolean isFatAllowed =cursor.getInt(8)==0 ? false :true;
                 boolean isVegan =cursor.getInt(9)==0 ? false :true;
-                int image = cursor.getInt(6);
+                boolean isRecommended=cursor.getInt(10)==0 ? false:true;
+                int image = cursor.getInt(11);
                 returnList.add(new Diet(id, Name, Description, Note, Calories, types,
                         isFatAllowed, isCarbAllowed, isVegan, isAssigned, image));
             }while (cursor.moveToNext());
