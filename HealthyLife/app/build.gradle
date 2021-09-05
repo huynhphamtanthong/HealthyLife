@@ -67,7 +67,14 @@ dependencies {
     //AutoResizeTextView
     implementation 'me.grantland:autofittextview:0.2.+'
 
+    //For
     implementation 'com.github.medyo:android-about-page:1.2.6'
 
+    //For GIF
     implementation 'pl.droidsonroids.gif:android-gif-drawable:1.2.19'
+
+    //For Homescreen
+    implementation 'de.hdodenhof:circleimageview:3.0.0'
+    implementation "androidx.cardview:cardview:1.0.0"
+
 }
