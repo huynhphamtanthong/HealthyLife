@@ -54,6 +54,8 @@ public class DatabaseHelper extends SQLiteOpenHelper{
     public static final String DAY = "DAY"; // in-week
     public static final String ISCARBALLOWED ="ISCARBALLOWED";
     public static final String ISFATALLOWED = "ISFATALLOWED";
+    public static final String ISCARB ="ISCARB";
+    public static final String ISFAT = "ISFAT";
     public static final String ISVEGAN = "ISVEGAN";
     public DatabaseHelper(Context context) {
         super(context, "healthylife.db", null, 1);
@@ -117,6 +119,9 @@ public class DatabaseHelper extends SQLiteOpenHelper{
                 + INGREDIENTS+ " NVARCHAR(1000), "
                 + IMAGE + " INTEGER, "
                 + VIDEO + " INTEGER, "
+                + ISCARB + " INTEGER, "
+                + ISFAT + " INTEGER, "
+                + ISVEGAN + " INTEGER, "
                 + ISBREAKFAST + "INTEGER, "
                 + ISLUNCH + "INTEGER, "
                 + ISDINNER + "INTEGER) "
@@ -508,26 +513,22 @@ public class DatabaseHelper extends SQLiteOpenHelper{
                 int id = cursor.getInt(0);
                 String Name = cursor.getString(1);
 
-                String temp = cursor.getString(2);
-                String[] arr = temp.split(",");
-                int[] types = new int[arr.length];
-                int count = 0;
-                for (String s:arr)  {
-                    types[count++] = Integer.parseInt(s);
-                }
 
-                String Description = cursor.getString(3);
-                String Tutorial = cursor.getString( 4);
-                String Note = cursor.getString(5);
-                String Ingredients = cursor.getString(6);
-                int image = cursor.getInt(7);
-                int video = cursor.getInt(8);
-                boolean isBreakfast = cursor.getInt(9) == 0 ? false : true;
-                boolean isLunch = cursor.getInt(10) == 0 ? false : true;
-                boolean isDinner = cursor.getInt(11) == 0 ? false : true;
+                String Description = cursor.getString(2);
+                String Tutorial = cursor.getString( 3);
+                String Note = cursor.getString(4);
+                String Ingredients = cursor.getString(5);
+                int image = cursor.getInt(6);
+                int video = cursor.getInt(7);
+                boolean isFat = cursor.getInt(8) == 0 ? false : true;
+                boolean isCarb = cursor.getInt(9) == 0 ? false : true;
+                boolean isVegan = cursor.getInt(10) == 0 ? false : true;
+                boolean isBreakfast = cursor.getInt(11) == 0 ? false : true;
+                boolean isLunch = cursor.getInt(12) == 0 ? false : true;
+                boolean isDinner = cursor.getInt(13) == 0 ? false : true;
 
-                returnList.add(new Dish(id, Name, types, Description, Tutorial,
-                        Note, Ingredients, image, video, isBreakfast, isLunch, isDinner));
+                returnList.add(new Dish(id, Name, Description, Tutorial,
+                        Note, Ingredients, image, video,isFat, isCarb, isVegan, isBreakfast, isLunch, isDinner));
             }while (cursor.moveToNext());
         }
         return returnList;
