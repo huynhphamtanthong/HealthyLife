@@ -88,6 +88,13 @@ public class MainFitnessFragment extends Fragment {
             }
         });
 
+        binding.btnBreathe.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                navController.navigate(R.id.action_mainFragment_to_breathe);
+            }
+        });
+
         binding.btnStat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

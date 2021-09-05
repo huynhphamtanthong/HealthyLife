@@ -74,6 +74,9 @@
         <action
             android:id="@+id/action_mainFragment_to_dietDetailFragment"
             app:destination="@id/dishDetailFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_breathe"
+            app:destination="@id/breathe" />
     </fragment>
     <fragment
         android:id="@+id/exerciseDetailFragment"
@@ -191,6 +194,15 @@
         <action
             android:id="@+id/action_DietDetail_to_DishDetail"
             app:destination="@id/DishDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/breathe"
+        android:name="com.myapplication.healthylife.Breathe"
+        android:label="fragment_breathe"
+        tools:layout="@layout/fragment_breathe" >
+        <action
+            android:id="@+id/action_breathe_to_mainFragment"
+            app:destination="@id/mainFragment" />
     </fragment>
 
 </navigation>

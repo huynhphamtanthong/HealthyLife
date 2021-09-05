@@ -1,18 +1,292 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".AboutFitness">
+    android:layout_height="wrap_content"
+    tools:context=".AboutFitness"
+    android:layout_margin="5dp"
+    android:orientation="vertical">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        app:cardCornerRadius="20dp">
 
-    <androidx.recyclerview.widget.RecyclerView
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/image"
+                android:layout_width="130dp"
+                android:layout_height="125dp"
+                android:src="@mipmap/ic_launcher"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintHeight_percent="1"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintWidth_percent="0.3"
+                android:scaleType="fitXY"/>
+
+            <TextView
+                android:id="@+id/tvName"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:fontFamily="@font/custom_font"
+                android:text="Feature: Exercise Timer"
+                android:textSize="20sp"
+                app:layout_constraintBottom_toTopOf="@id/tvLevel"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toEndOf="@id/image"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Description: "
+                app:layout_constraintStart_toEndOf="@id/image"
+                app:layout_constraintTop_toBottomOf="@id/tvName"
+                android:layout_marginStart="10dp"
+                android:textSize="20sp"
+                android:id="@+id/tvLevel"
+                android:fontFamily="@font/custom_font"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Train together with a recommended list\nof exercise. Want to start?"
+                app:layout_constraintStart_toEndOf="@id/image"
+                app:layout_constraintTop_toBottomOf="@id/tvLevel"
+                android:layout_marginStart="10dp"
+                android:textSize="14sp" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        app:cardCornerRadius="20dp"
+        android:layout_marginTop="10dp">
 
-</FrameLayout>
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/image2"
+                android:layout_width="130dp"
+                android:layout_height="125dp"
+                android:src="@mipmap/ic_launcher"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintHeight_percent="1"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintWidth_percent="0.3"
+                android:scaleType="fitXY"/>
+
+            <TextView
+                android:id="@+id/tvName2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:fontFamily="@font/custom_font"
+                android:text="Feature: Exercise List"
+                android:textSize="20sp"
+                app:layout_constraintBottom_toTopOf="@id/tvLevel2"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toEndOf="@id/image2"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Description: "
+                app:layout_constraintStart_toEndOf="@id/image2"
+                app:layout_constraintTop_toBottomOf="@id/tvName2"
+                android:layout_marginStart="10dp"
+                android:textSize="20sp"
+                android:id="@+id/tvLevel2"
+                android:fontFamily="@font/custom_font"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="A list of exercises customized for you\nbased on BMI! Let's WORK OUT"
+                app:layout_constraintStart_toEndOf="@id/image2"
+                app:layout_constraintTop_toBottomOf="@id/tvLevel2"
+                android:layout_marginStart="10dp"
+                android:textSize="14sp" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:cardCornerRadius="20dp"
+        android:layout_marginTop="10dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+            <ImageView
+                android:id="@+id/image3"
+                android:layout_width="130dp"
+                android:layout_height="125dp"
+                android:src="@mipmap/ic_launcher"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintHeight_percent="1"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintWidth_percent="0.3"
+                android:scaleType="fitXY" />
+
+            <TextView
+                android:id="@+id/tvName3"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:fontFamily="@font/custom_font"
+                android:text="Feature: Breathe"
+                android:textSize="20sp"
+                app:layout_constraintBottom_toTopOf="@id/tvLevel3"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toEndOf="@id/image3"
+                app:layout_constraintTop_toTopOf="parent"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Description: "
+                app:layout_constraintStart_toEndOf="@id/image3"
+                app:layout_constraintTop_toBottomOf="@id/tvName3"
+                android:layout_marginStart="10dp"
+                android:textSize="20sp"
+                android:id="@+id/tvLevel3"
+                android:fontFamily="@font/custom_font"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Set aside a few minutes a day to relax\nand focus on your breathing"
+                app:layout_constraintStart_toEndOf="@id/image3"
+                app:layout_constraintTop_toBottomOf="@id/tvLevel3"
+                android:layout_marginStart="10dp"
+                android:textSize="14sp" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:cardCornerRadius="20dp"
+        android:layout_marginTop="10dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+            <ImageView
+                android:id="@+id/image4"
+                android:layout_width="130dp"
+                android:layout_height="125dp"
+                android:src="@mipmap/ic_launcher"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintHeight_percent="1"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintWidth_percent="0.3"
+                android:scaleType="fitXY" />
+
+            <TextView
+                android:id="@+id/tvName4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:fontFamily="@font/custom_font"
+                android:text="Feature: Stand-up Noti"
+                android:textSize="20sp"
+                app:layout_constraintBottom_toTopOf="@id/tvLevel4"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toEndOf="@id/image4"
+                app:layout_constraintTop_toTopOf="parent"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Description: "
+                app:layout_constraintStart_toEndOf="@id/image4"
+                app:layout_constraintTop_toBottomOf="@id/tvName4"
+                android:layout_marginStart="10dp"
+                android:textSize="20sp"
+                android:id="@+id/tvLevel4"
+                android:fontFamily="@font/custom_font"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Remind you to get up and stretch your\nlegs every hour"
+                app:layout_constraintStart_toEndOf="@id/image4"
+                app:layout_constraintTop_toBottomOf="@id/tvLevel4"
+                android:layout_marginStart="10dp"
+                android:textSize="14sp" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:cardCornerRadius="20dp"
+        android:layout_marginTop="10dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/feature5">
+            <ImageView
+                android:id="@+id/image5"
+                android:layout_width="130dp"
+                android:layout_height="125dp"
+                android:src="@mipmap/ic_launcher"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintHeight_percent="1"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintWidth_percent="0.3"
+                android:scaleType="fitXY" />
+
+            <TextView
+                android:id="@+id/tvName5"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:fontFamily="@font/custom_font"
+                android:text="Feature: BMI Statistics"
+                android:textSize="20sp"
+                app:layout_constraintBottom_toTopOf="@id/tvLevel5"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toEndOf="@id/image5"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Description: "
+                app:layout_constraintStart_toEndOf="@id/image5"
+                app:layout_constraintTop_toBottomOf="@id/tvName5"
+                android:layout_marginStart="10dp"
+                android:textSize="20sp"
+                android:id="@+id/tvLevel5"
+                android:fontFamily="@font/custom_font"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Where all of your BMIs are stored for\nlooking back"
+                app:layout_constraintStart_toEndOf="@id/image5"
+                app:layout_constraintTop_toBottomOf="@id/tvLevel5"
+                android:layout_marginStart="10dp"
+                android:textSize="14sp" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+
+
+
+</LinearLayout>
