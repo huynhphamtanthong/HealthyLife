@@ -31,18 +31,22 @@
             app:layout_constraintBottom_toTopOf="@id/tvHeight"
             android:textColor="@color/white"/>
 
-        <TextView
+        <me.grantland.widget.AutofitTextView
+            android:id="@+id/tvHeight"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:singleLine="true"
+            android:maxLines="1"
+            android:layout_gravity="center_horizontal"
+            android:fontFamily="@font/custom_font"
             android:text="173cm"
+            android:textColor="@color/white"
             android:textSize="30sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="@id/glVer"
-            android:id="@+id/tvHeight"
             app:layout_constraintTop_toBottomOf="@id/tvHeightTitle"
             app:layout_constraintBottom_toBottomOf="@id/glHori"
-            android:textColor="@color/white"/>
-
+            />
 
         <TextView
             android:layout_width="wrap_content"
@@ -56,17 +60,23 @@
             app:layout_constraintBottom_toTopOf="@id/tvWeight"
             android:textColor="@color/white"/>
 
-        <TextView
+        <me.grantland.widget.AutofitTextView
+            android:id="@+id/tvWeight"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:singleLine="true"
+            android:maxLines="1"
+            android:layout_gravity="center_horizontal"
+            android:fontFamily="@font/custom_font"
             android:text="73kg"
+            android:textColor="@color/white"
             android:textSize="30sp"
-            android:id="@+id/tvWeight"
             app:layout_constraintStart_toStartOf="@id/glVer"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tvWeightTitle"
             app:layout_constraintBottom_toBottomOf="@id/glHori"
-            android:textColor="@color/white"/>
+            />
+
 
         <TextView
             android:layout_width="wrap_content"
@@ -80,41 +90,51 @@
             app:layout_constraintBottom_toTopOf="@id/tvBmi"
             android:textColor="@color/white"/>
 
-        <TextView
+        <me.grantland.widget.AutofitTextView
+            android:id="@+id/tvBmi"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:singleLine="true"
+            android:maxLines="1"
+            android:layout_gravity="center_horizontal"
+            android:fontFamily="@font/custom_font"
             android:text="18kg/m2"
+            android:textColor="@color/white"
             android:textSize="30sp"
-            android:id="@+id/tvBmi"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="@id/glVer"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tvBmiTitle"
-            android:textColor="@color/white"/>
+            />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Calo"
+            android:text="Type"
             android:textSize="30sp"
-            android:id="@+id/tvCaloTitle"
+            android:id="@+id/tvTypeTitle"
             app:layout_constraintStart_toStartOf="@id/glVer"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@id/glHori"
-            app:layout_constraintBottom_toTopOf="@id/tvCalo"
+            app:layout_constraintBottom_toTopOf="@id/tvType"
             android:textColor="@color/white"/>
 
-        <TextView
-            android:layout_width="wrap_content"
+        <me.grantland.widget.AutofitTextView
+            android:id="@+id/tvType"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:singleLine="true"
+            android:maxLines="1"
+            android:layout_gravity="center"
+            android:fontFamily="@font/custom_font"
             android:text="123"
+            android:textColor="@color/white"
+            android:gravity="center"
             android:textSize="30sp"
-            android:id="@+id/tvCalo"
             app:layout_constraintStart_toStartOf="@id/glVer"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tvCaloTitle"
-            android:textColor="@color/white"/>
+            app:layout_constraintTop_toBottomOf="@id/tvTypeTitle" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/glVer"

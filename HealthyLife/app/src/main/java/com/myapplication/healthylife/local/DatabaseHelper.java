@@ -378,6 +378,17 @@ public class DatabaseHelper extends SQLiteOpenHelper{
         }
     }
 
+    public boolean deleteAllStat()  {
+        try {
+            SQLiteDatabase db = getWritableDatabase();
+            db.execSQL("delete from " + STAT);
+            return true;
+        }catch (Exception e)    {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
     public boolean addDiet(Diet diet){
         SQLiteDatabase db = getWritableDatabase();
         ContentValues cv = new ContentValues();
