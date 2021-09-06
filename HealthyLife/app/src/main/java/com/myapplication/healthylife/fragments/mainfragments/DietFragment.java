@@ -97,13 +97,13 @@ public class DietFragment extends Fragment {
 
                 dishRecViewAdapterLunch = new DishRecSecViewAdapter(getActivity(), getContext());
                 dishRecViewAdapterLunch.SetDishes(lunch);
-                binding.rvDishDetailTodayLunch.setAdapter(dishRecViewAdapterBreakfast);
+                binding.rvDishDetailTodayLunch.setAdapter(dishRecViewAdapterLunch);
                 binding.rvDishDetailTodayLunch.setLayoutManager(new LinearLayoutManager(getContext()));
 
-                dishRecViewAdapterBreakfast = new DishRecSecViewAdapter(getActivity(), getContext());
-                dishRecViewAdapterBreakfast.SetDishes(dinner);
-                binding.rvDishDetailTodayBreakfast.setAdapter(dishRecViewAdapterBreakfast);
-                binding.rvDishDetailTodayBreakfast.setLayoutManager(new LinearLayoutManager(getContext()));
+                dishRecViewAdapterDinner = new DishRecSecViewAdapter(getActivity(), getContext());
+                dishRecViewAdapterDinner.SetDishes(dinner);
+                binding.rvDishDetailTodayDinner.setAdapter(dishRecViewAdapterDinner);
+                binding.rvDishDetailTodayDinner.setLayoutManager(new LinearLayoutManager(getContext()));
             }
         }
     }
