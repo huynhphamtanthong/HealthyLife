@@ -16,6 +16,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.google.gson.Gson;
 import com.myapplication.healthylife.R;
 import com.myapplication.healthylife.databinding.FragmentDietBinding;
 import com.myapplication.healthylife.databinding.FragmentLaunchBinding;
@@ -24,6 +25,7 @@ import com.myapplication.healthylife.local.AppPrefs;
 import com.myapplication.healthylife.local.DatabaseHelper;
 import com.myapplication.healthylife.model.Diet;
 import com.myapplication.healthylife.model.Dish;
+import com.myapplication.healthylife.model.User;
 import com.myapplication.healthylife.recycleviewadapters.DietRecViewAdapter;
 import com.myapplication.healthylife.recycleviewadapters.DishRecSecViewAdapter;
 import com.myapplication.healthylife.recycleviewadapters.DishRecViewAdapter;
@@ -185,6 +187,9 @@ public class DietFragment extends Fragment {
                             "Yes",
                             new DialogInterface.OnClickListener() {
                                 public void onClick(DialogInterface dialog, int id) {
+                                    String data = sharedPreferences.getString("user", null);
+                                    User user = new Gson().fromJson(data, User.class);
+                                    user.setCaloDiet(0);
                                     AssignedDiet.setAssigned(false);
                                     db.editAssignedDiet(AssignedDiet);
                                     navController.navigate(R.id.action_mainFragment_to_mainFragment);
