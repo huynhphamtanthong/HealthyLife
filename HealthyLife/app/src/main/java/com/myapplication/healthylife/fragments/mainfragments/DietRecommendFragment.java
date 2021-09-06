@@ -54,19 +54,20 @@ public class DietRecommendFragment extends Fragment {
     private void initDietRecycleView() {
         dietList = db.getDietList();
         dish = db.getDishList();
+        int m = 0;
         for (Diet diet : dietList) {
-            for(Dish d:dish)
-            if((diet.isCarbAllowed() == d.isCarb() || diet.isCarbAllowed()) && d.isBreakfast() && (d.isVegan() == diet.isVegan() || !diet.isVegan()) && (diet.isFatAllowed() == d.isFat() || diet.isFatAllowed()) && diet.getBreakfast().size()<7)   {
-                diet.insertBreakfast(d);
+            for(Dish d:dish) {
+                if ((diet.isCarbAllowed() == d.isCarb() || diet.isCarbAllowed()) && d.isBreakfast() && (d.isVegan() == diet.isVegan() || !diet.isVegan()) && (diet.isFatAllowed() == d.isFat() || diet.isFatAllowed()) && diet.getBreakfast().size() < 7) {
+                    dietList.get(m).insertBreakfast(d);
+                } else if ((diet.isCarbAllowed() == d.isCarb() || diet.isCarbAllowed()) && d.isLunch() && (d.isVegan() == diet.isVegan() || !diet.isVegan()) && (diet.isFatAllowed() == d.isFat() || diet.isFatAllowed()) && diet.getLunch().size() < 7) {
+                    dietList.get(m).insertLunch(d);
+                } else if ((diet.isCarbAllowed() == d.isCarb() || diet.isCarbAllowed()) && d.isDinner() && (d.isVegan() == diet.isVegan() || !diet.isVegan()) && (diet.isFatAllowed() == d.isFat() || diet.isFatAllowed()) && diet.getDinner().size() < 7) {
+                    dietList.get(m).insertDinner(d);
+                }
+                if (diet.getBreakfast().size() == 7 && diet.getLunch().size() == 7 && diet.getDinner().size() == 7)
+                    break;
             }
-            else if((diet.isCarbAllowed() == d.isCarb() || diet.isCarbAllowed()) && d.isLunch() && (d.isVegan() == diet.isVegan() || !diet.isVegan()) && (diet.isFatAllowed() == d.isFat() || diet.isFatAllowed()) && diet.getLunch().size()<7)  {
-                diet.insertLunch(d);
-            }
-            else if((diet.isCarbAllowed() == d.isCarb() || diet.isCarbAllowed()) && d.isDinner() && (d.isVegan() == diet.isVegan() || !diet.isVegan()) && (diet.isFatAllowed() == d.isFat() || diet.isFatAllowed()) && diet.getDinner().size()<7) {
-                diet.insertDinner(d);
-            }
-            if(diet.getBreakfast().size()==7 && diet.getLunch().size()==7 && diet.getDinner().size()==7)
-                break;
+            ++m;
         }
 
         dietRecAdapter = new DietRecViewAdapter(getActivity(), getContext());
