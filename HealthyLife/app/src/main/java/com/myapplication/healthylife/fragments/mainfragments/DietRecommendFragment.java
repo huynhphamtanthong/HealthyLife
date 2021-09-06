@@ -55,6 +55,7 @@ public class DietRecommendFragment extends Fragment {
         dietList = db.getDietList();
         dish = db.getDishList();
         int m = 0;
+        /*
         for(Diet i : dietList){
             if(i.isRecommended()){
                 if(i.isCarbAllowed()) {
@@ -101,6 +102,8 @@ public class DietRecommendFragment extends Fragment {
             }
             m++;
         }
+
+         */
         dietRecAdapter = new DietRecViewAdapter(getActivity(), getContext());
         dietRecAdapter.setDiets(dietList);
         binding.RVDietRecommend.setAdapter(dietRecAdapter);

@@ -460,36 +460,6 @@ public class DatabaseHelper extends SQLiteOpenHelper{
         }
         return returnList;
     }
-    public ArrayList<Diet> getRecommendedDietList(){
-        SQLiteDatabase db = getReadableDatabase();
-        ArrayList<Diet> returnList = new ArrayList<>();
-        Cursor cursor = db.rawQuery("SELECT * FROM " + DIET + "WHERE ISRECOMMENDED = 1", null);
-        if (cursor.moveToFirst())   {
-            do {
-                int id = cursor.getInt(0);
-                String Name = cursor.getString(1);
-                String Description = cursor.getString(2);
-                int Calories = cursor.getInt( 3);
-                String Note = cursor.getString(4);;
-                String temp = cursor.getString(5);
-                String[] arr = temp.split(",");
-                int[] types = new int[arr.length];
-                int count = 0;
-                for (String s:arr)  {
-                    types[count++] = Integer.parseInt(s);
-                }
-                boolean isAssigned = cursor.getInt(6) == 0 ? false : true;
-                boolean isCarbAllowed =cursor.getInt(7)==0 ? false :true;
-                boolean isFatAllowed =cursor.getInt(8)==0 ? false :true;
-                boolean isVegan =cursor.getInt(9)==0 ? false :true;
-                boolean isRecommended=cursor.getInt(10)==0 ? false:true;
-                int image = cursor.getInt(11);
-                returnList.add(new Diet(id, Name, Description, Note, Calories, types,
-                        isAssigned ,isFatAllowed, isCarbAllowed, isVegan,isRecommended, image));
-            }while (cursor.moveToNext());
-        }
-        return returnList;
-    }
 
     public boolean deleteDiet(int id) {
         SQLiteDatabase db = getWritableDatabase();
@@ -518,7 +488,7 @@ public class DatabaseHelper extends SQLiteOpenHelper{
         cv.put(ISLUNCH, dish.isLunch());
         cv.put(ISDINNER, dish.isDinner());
 
-        long insert = db.insert(DIET, null, cv);
+        long insert = db.insert(DISH, null, cv);
         if (insert != -1)   {
             return true;
         }else {
@@ -563,6 +533,28 @@ public class DatabaseHelper extends SQLiteOpenHelper{
             return false;
         }
     }
+
+    public boolean deleteAllDiets()  {
+        try {
+            SQLiteDatabase db = getWritableDatabase();
+            db.execSQL("delete from " + DIET);
+            return true;
+        }catch (Exception e)    {
+            e.printStackTrace();
+            return false;
+        }
+    }
+    public boolean deleteAllDishes()  {
+        try {
+            SQLiteDatabase db = getWritableDatabase();
+            db.execSQL("delete from " + DISH);
+            return true;
+        }catch (Exception e)    {
+            e.printStackTrace();
+            return false;
+        }
+    }
 }
+
 
 

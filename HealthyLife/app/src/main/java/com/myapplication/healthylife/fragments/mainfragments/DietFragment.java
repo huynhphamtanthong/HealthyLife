@@ -109,17 +109,14 @@ public class DietFragment extends Fragment {
 
     private int AssignDishesToDiet(Diet diet) {
         for (Dish d : dishes) {
-            if((diet.isCarbAllowed() == d.isCarb() || diet.isCarbAllowed() == true) && d.isBreakfast() && (d.isVegan() == diet.isVegan() || !d.isVegan()) && diet.getBreakfast().size()<7)   {
+            if((diet.isCarbAllowed() == d.isCarb() || diet.isCarbAllowed() == true) && d.isBreakfast() && (d.isVegan() == diet.isVegan() || !diet.isVegan()) && diet.getBreakfast().size()<7)   {
                 diet.insertBreakfast(d);
-                continue;
             }
-            if((diet.isCarbAllowed() == d.isCarb() || diet.isCarbAllowed() == true) && d.isLunch() && (d.isVegan() == diet.isVegan() || !d.isVegan()) && diet.getLunch().size()<7)  {
+            else if((diet.isCarbAllowed() == d.isCarb() || diet.isCarbAllowed() == true) && d.isLunch() && (d.isVegan() == diet.isVegan() || !diet.isVegan()) && diet.getLunch().size()<7)  {
                 diet.insertLunch(d);
-                continue;
             }
-            if((diet.isCarbAllowed() == d.isCarb() || diet.isCarbAllowed() == true) && d.isDinner() && (d.isVegan() == diet.isVegan()) || !d.isVegan() && diet.getDinner().size()<7) {
+            else if((diet.isCarbAllowed() == d.isCarb() || diet.isCarbAllowed() == true) && d.isDinner() && (d.isVegan() == diet.isVegan() || !diet.isVegan()) && diet.getDinner().size()<7) {
                 diet.insertDinner(d);
-                continue;
             }
             if(diet.getBreakfast().size()==7 && diet.getLunch().size()==7 && diet.getDinner().size()==7)
                 return 1;
@@ -129,19 +126,19 @@ public class DietFragment extends Fragment {
         int curBreakfast=diet.getBreakfast().size();
         int curLunch=diet.getLunch().size();
         int curDinner=diet.getDinner().size();
-        for (Dish d: diet.getBreakfast()){
+        for (int n = 0; n < 7 ; n++){
             if(diet.getBreakfast().size() == 7){
                 break;
             }
             diet.insertBreakfast(diet.getBreakfast().get(diet.getBreakfast().size() - curBreakfast ));
         }
-        for (Dish d: diet.getLunch()){
+        for (int n = 0; n < 7 ; n++){
             if(diet.getLunch().size() == 7){
                 break;
             }
             diet.insertLunch(diet.getLunch().get(diet.getLunch().size() - curLunch ));
         }
-        for (Dish d: diet.getBreakfast()){
+        for (int n = 0; n < 7 ; n++){
             if(diet.getDinner().size() == 7){
                 break;
             }

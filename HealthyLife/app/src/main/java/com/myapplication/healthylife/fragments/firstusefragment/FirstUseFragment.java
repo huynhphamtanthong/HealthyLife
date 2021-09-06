@@ -213,11 +213,11 @@ public class FirstUseFragment extends Fragment {
         dishes.add(new Dish(-1, "Avocado salad"," No Description",
                 "Prepare and wash lettuce, avocado, bell chillies, cucumber. Mix them all together with  Vinaigrette",
                 "Non-vegan can top up with eggs  for diversity","Lettuce,cucumber, avocados, bell chillies, Vinaigrette  ",
-                2,2,false, false, true, true,false, false));
+                2,2,false, false, true, false,false, true));
         dishes.add(new Dish(-1, "Nuts milk with chia seed"," No Description",
                 "Use any types of nuts milk such as almond milk, soy milk, walnuts milk... and drop 1 tablespoon of chia seed in",
                 "Eat with fruits(apples, strawberries) if you like","Chia Seed, nuts milk"  ,
-                3,3,true, false, true, true,false, true));
+                3,3,true, false, true, false,true, true));
         dishes.add(new Dish(-1, "Green pea with tofu/beef  ","No Description ",
                 "Wash green pea, season tofu/beef with garlics, soy bean. After stir frying tofu/beef for 2-3 min with medium/high flame, add the green peas, continue stirring for 5 min and turr off the heat.",
                 "Non-vegan can cook and eat with beef, Vegan can do the same with tofu, people with no restriction in carb can eat with rice",
