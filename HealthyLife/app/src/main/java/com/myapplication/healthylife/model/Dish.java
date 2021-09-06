@@ -10,7 +10,7 @@ public class Dish implements Serializable {
     private String note;
     private String ingredients;
     private int image;
-    private int video;
+    private String video;
     private boolean isCarb;
     private boolean isFat;
     private boolean isVegan;
@@ -19,7 +19,7 @@ public class Dish implements Serializable {
     private boolean isDinner;
 
     public Dish(int id, String Name, String description, String tutorial, String note,
-                String ingredients, int image, int video, boolean isFat, boolean isCarb, boolean isVegan,
+                String ingredients, int image, boolean isFat, boolean isCarb, boolean isVegan,
                 boolean isBreakfast, boolean isLunch, boolean isDinner) {
         this.ID = id;
         this.Name = Name;
@@ -28,7 +28,7 @@ public class Dish implements Serializable {
         this.note = note;
         this.ingredients = ingredients;
         this.image = image;
-        this.video = video;
+        this.video = "https://www.youtube.com/results?search_query="+ Name;
         this.isFat = isFat;
         this.isCarb = isCarb;
         this.isVegan = isVegan;
@@ -66,7 +66,7 @@ public class Dish implements Serializable {
         return image;
     }
 
-    public int getVideo() {
+    public String getVideo() {
         return video;
     }
 

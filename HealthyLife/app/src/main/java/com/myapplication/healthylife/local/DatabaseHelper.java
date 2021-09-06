@@ -118,7 +118,7 @@ public class DatabaseHelper extends SQLiteOpenHelper{
                 + NOTE + " NVARCHAR(1000), "
                 + INGREDIENTS+ " NVARCHAR(1000), "
                 + IMAGE + " INTEGER, "
-                + VIDEO + " INTEGER, "
+                + VIDEO + " NVARCHAR(1000), "
                 + ISFAT + " INTEGER, "
                 + ISCARB + " INTEGER, "
                 + ISVEGAN + " INTEGER, "
@@ -513,7 +513,7 @@ public class DatabaseHelper extends SQLiteOpenHelper{
                 String Note = cursor.getString(4);
                 String Ingredients = cursor.getString(5);
                 int image = cursor.getInt(6);
-                int video = cursor.getInt(7);
+                String video = cursor.getString(7);
                 boolean isFat = cursor.getInt(8) != 0;
                 boolean isCarb = cursor.getInt(9) != 0;
                 boolean isVegan = cursor.getInt(10) != 0;
@@ -522,7 +522,7 @@ public class DatabaseHelper extends SQLiteOpenHelper{
                 boolean isDinner = cursor.getInt(13) != 0;
 
                 returnList.add(new Dish(id, Name, Description, Tutorial,
-                        Note, Ingredients, image, video,isFat, isCarb, isVegan, isBreakfast, isLunch, isDinner));
+                        Note, Ingredients, image,isFat, isCarb, isVegan, isBreakfast, isLunch, isDinner));
             }while (cursor.moveToNext());
         }
         return returnList;
