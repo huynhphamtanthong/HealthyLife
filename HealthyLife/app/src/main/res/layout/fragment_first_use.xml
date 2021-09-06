@@ -65,6 +65,7 @@
             android:layout_marginBottom="40dp"
             android:background="@drawable/custom_edittext"
             android:fontFamily="@font/custom_font"
+            android:inputType="numberDecimal"
             android:hint="173"
             android:padding="10dp"
             android:textColor="@android:color/black"
@@ -87,6 +88,7 @@
             android:background="@drawable/custom_edittext"
             android:fontFamily="@font/custom_font"
             android:hint="73.5"
+            android:inputType="numberDecimal"
             android:padding="10dp"
             android:textColor="@android:color/black"
             android:textSize="20sp" />
@@ -103,4 +105,5 @@
         android:textAllCaps="true"
         android:textSize="25sp"
         android:id="@+id/btnStart"/>
+
 </RelativeLayout>

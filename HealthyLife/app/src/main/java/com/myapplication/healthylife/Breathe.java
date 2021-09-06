@@ -130,11 +130,11 @@ public class Breathe extends Fragment {
     private void updateTime(long time) {
         int min = (int) time / 60000;
         int sec = (int) time % 60000 / 1000;
-        if (sec==59)
+        if (sec==58)
             Toast.makeText(getContext(),"Be still and bring your attention to your breath.", Toast.LENGTH_LONG ).show();
-        else if (sec==54)
+        else if (sec==53)
             Toast.makeText(getContext(),"Now inhale...", Toast.LENGTH_SHORT ).show();
-        else if (sec==52)
+        else if (sec==50)
             Toast.makeText(getContext(),"and exhale.", Toast.LENGTH_SHORT ).show();
         String text;
         text = "" + min;
