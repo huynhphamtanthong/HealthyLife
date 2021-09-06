@@ -161,6 +161,13 @@ public class DietFragment extends Fragment {
                 navController.navigate(R.id.action_mainFragment_to_dietRecommendFragment);
             }
         });
+
+        binding.DrinkWaterButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                navController.navigate(R.id.action_mainFragment_to_drinkWater);
+            }
+        });
     }
 
     @Override
