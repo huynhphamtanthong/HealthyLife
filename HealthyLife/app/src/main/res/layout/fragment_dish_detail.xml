@@ -82,11 +82,23 @@
             android:textSize="17sp"
             android:textColor="@color/white"
             android:id="@+id/DishDetailIngredientsContent"/>
-        <TextureView
+        <TextView
             android:layout_marginTop="25sp"
             android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Online tutorial video"
+            android:textSize="25sp"
+            android:fontFamily="@font/custom_font"
+            android:textColor="@color/white" />
+        <TextView
+            android:layout_width="match_parent"
             android:layout_height="300dp"
+            android:text="@string/click_here"
             android:id="@+id/DishDetailVideo"
+            android:textColor="@color/white"
+            android:textSize="17sp"
+            android:clickable="true"
+            android:focusable="true"
             />
     </LinearLayout>
 </ScrollView>
