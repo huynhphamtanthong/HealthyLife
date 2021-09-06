@@ -152,6 +152,8 @@ public class HomeFragment extends Fragment {
                 sharedPreferences.edit().putString("user", null).apply();
                 db.deleteAllExercises();
                 db.deleteAllStat();
+                db.deleteAllDiets();
+                db.deleteAllDishes();
                 navController.navigate(R.id.action_mainFragment_to_firstUseFragment);
             }
         });
