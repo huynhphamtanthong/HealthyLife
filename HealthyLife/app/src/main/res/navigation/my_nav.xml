@@ -72,8 +72,8 @@
             android:id="@+id/action_mainFragment_to_dietRecommendFragment"
             app:destination="@id/dietRecommendFragment" />
         <action
-            android:id="@+id/action_mainFragment_to_dietDetailFragment"
-            app:destination="@id/dishDetailFragment" />
+            android:id="@+id/action_mainFragment_to_dishDetailFragment"
+            app:destination="@id/DishDetailFragment" />
         <action
             android:id="@+id/action_mainFragment_to_breathe"
             app:destination="@id/breathe" />

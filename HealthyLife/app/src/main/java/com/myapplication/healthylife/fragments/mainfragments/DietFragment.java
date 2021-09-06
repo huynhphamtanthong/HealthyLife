@@ -23,6 +23,7 @@ import com.myapplication.healthylife.local.DatabaseHelper;
 import com.myapplication.healthylife.model.Diet;
 import com.myapplication.healthylife.model.Dish;
 import com.myapplication.healthylife.recycleviewadapters.DietRecViewAdapter;
+import com.myapplication.healthylife.recycleviewadapters.DishRecSecViewAdapter;
 import com.myapplication.healthylife.recycleviewadapters.DishRecViewAdapter;
 
 import java.util.ArrayList;
@@ -36,9 +37,9 @@ public class DietFragment extends Fragment {
     private SharedPreferences sharedPreferences;
     private ArrayList<Diet> diets;
     private ArrayList<Dish> dishes;
-    private DishRecViewAdapter dishRecViewAdapterBreakfast;
-    private DishRecViewAdapter dishRecViewAdapterLunch;
-    private DishRecViewAdapter dishRecViewAdapterDinner;
+    private DishRecSecViewAdapter dishRecViewAdapterBreakfast;
+    private DishRecSecViewAdapter dishRecViewAdapterLunch;
+    private DishRecSecViewAdapter dishRecViewAdapterDinner;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -89,17 +90,17 @@ public class DietFragment extends Fragment {
                 ArrayList<Dish> dinner = new ArrayList<>();
                 dinner.add(diets.get(index).getDinner().get(day % diets.get(index).getDinner().size()));
 
-                dishRecViewAdapterBreakfast = new DishRecViewAdapter(getActivity(), getContext());
+                dishRecViewAdapterBreakfast = new DishRecSecViewAdapter(getActivity(), getContext());
                 dishRecViewAdapterBreakfast.SetDishes(breakfast);
                 binding.rvDishDetailTodayBreakfast.setAdapter(dishRecViewAdapterBreakfast);
                 binding.rvDishDetailTodayBreakfast.setLayoutManager(new LinearLayoutManager(getContext()));
 
-                dishRecViewAdapterLunch = new DishRecViewAdapter(getActivity(), getContext());
+                dishRecViewAdapterLunch = new DishRecSecViewAdapter(getActivity(), getContext());
                 dishRecViewAdapterLunch.SetDishes(lunch);
                 binding.rvDishDetailTodayLunch.setAdapter(dishRecViewAdapterBreakfast);
                 binding.rvDishDetailTodayLunch.setLayoutManager(new LinearLayoutManager(getContext()));
 
-                dishRecViewAdapterBreakfast = new DishRecViewAdapter(getActivity(), getContext());
+                dishRecViewAdapterBreakfast = new DishRecSecViewAdapter(getActivity(), getContext());
                 dishRecViewAdapterBreakfast.SetDishes(dinner);
                 binding.rvDishDetailTodayBreakfast.setAdapter(dishRecViewAdapterBreakfast);
                 binding.rvDishDetailTodayBreakfast.setLayoutManager(new LinearLayoutManager(getContext()));
