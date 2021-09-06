@@ -69,7 +69,7 @@ public class DishRecViewAdapter extends RecyclerView.Adapter<DishRecViewAdapter.
                 public void onClick(View view) {
                     Bundle bundle = new Bundle();
                     bundle.putSerializable("DishData", (Serializable) dish);
-                    Navigation.findNavController(activity, R.id.fragmentContainer).avigate(R.id.action_DietDetail_to_DishDetail, bundle);
+                    Navigation.findNavController(activity, R.id.fragmentContainer).navigate(R.id.action_DietDetail_to_DishDetail, bundle);
                 }
             });
         }
