@@ -85,7 +85,7 @@ public class HomeFragment extends Fragment {
         User userObject = new Gson().fromJson (data, User.class);
         binding.userName.setText (userObject.getName());
 
-        //if (challengeCompleted())   {
+        if (challengeCompleted())   {
             Dialog dialog = new Dialog(getContext());
             dialog.setContentView(R.layout.custom_dialog_refresh);
 
@@ -134,7 +134,7 @@ public class HomeFragment extends Fragment {
             dialog.show();
             Window window = dialog.getWindow();
             window.setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.WRAP_CONTENT);
-     //   }
+        }
 
 
     }

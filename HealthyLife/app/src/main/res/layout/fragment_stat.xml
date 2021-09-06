@@ -23,5 +23,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         android:layout_margin="20dp"
         android:src="@drawable/ic_add"
-        android:id="@+id/fabAdd"/>
+        android:id="@+id/fabAdd"
+        android:backgroundTint="#00ffff"
+        app:maxImageSize="40dp"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

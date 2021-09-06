@@ -66,10 +66,9 @@ public class StatRecViewAdapter extends RecyclerView.Adapter<StatRecViewAdapter.
         }
 
         public void bind(Stat stat)   {
-            Log.d("STAT", "Height: "+stat.getHeight()+", Weight: "+stat.getWeight());
-            binding.tvHeight.setText(String.valueOf(stat.getHeight()));
-            binding.tvWeight.setText(String.valueOf(stat.getWeight()));
-            binding.tvBmi.setText(String.valueOf(stat.getBmi()));
+            binding.tvHeight.setText(String.valueOf(stat.getHeight())+" (cm)");
+            binding.tvWeight.setText(String.valueOf(stat.getWeight())+" (kg)");
+            binding.tvBmi.setText(String.valueOf(stat.getBmi())+" (kg/m2)");
             binding.tvDate.setText(stat.getDate());
 
             binding.ibDelete.setOnClickListener(new View.OnClickListener() {
