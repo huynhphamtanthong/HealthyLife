@@ -60,6 +60,7 @@ public class Breathe extends Fragment {
             public void onClick(View view) {
                 if (!isRunning) {
                     countDown(60000);
+                    binding.video.setVisibility(View.VISIBLE);
                     binding.video.start();
                     isRunning = true;
                     binding.btn.setText("Cancel");
@@ -77,6 +78,7 @@ public class Breathe extends Fragment {
                             mediaPlayer.setLooping(true);
                         }
                     });
+                    binding.video.setVisibility(view.GONE);
                     isRunning = false;
                     binding.btn.setText("Start");
                 }
