@@ -158,7 +158,7 @@
     <Button
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="EXERCISE Timer"
+        android:text="WORK OUT"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/table"
@@ -173,7 +173,7 @@
     <Button
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Exercise LIST"
+        android:text="EXERCISE LIST"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:id="@+id/btnExercise"
