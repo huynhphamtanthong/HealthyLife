@@ -290,7 +290,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
                 android:fontFamily="@font/custom_font"
-                android:text="Feature: Drink Water Reminder"
+                android:text="Feature: Drink Water\nReminder"
                 android:textColor="@color/white"
                 android:textSize="15sp"
                 app:layout_constraintBottom_toTopOf="@id/tvLevel5"
