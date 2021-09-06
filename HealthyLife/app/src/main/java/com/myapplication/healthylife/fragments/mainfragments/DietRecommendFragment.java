@@ -55,12 +55,11 @@ public class DietRecommendFragment extends Fragment {
         dietList = db.getDietList();
         dish = db.getDishList();
         int m = 0;
-        /*
         for(Diet i : dietList){
-            if(i.isRecommended()){
+
                 if(i.isCarbAllowed()) {
                     for (Dish k : dish) {
-                        if (k.isCarb()) {
+                        if (!k.isCarb()) {
                             if (k.isBreakfast()) {
                                 dietList.get(m).insertBreakfast(k);
                             } else if (k.isLunch()) {
@@ -99,11 +98,9 @@ public class DietRecommendFragment extends Fragment {
                         }
                     }
                 }
-            }
             m++;
         }
 
-         */
         dietRecAdapter = new DietRecViewAdapter(getActivity(), getContext());
         dietRecAdapter.setDiets(dietList);
         binding.RVDietRecommend.setAdapter(dietRecAdapter);

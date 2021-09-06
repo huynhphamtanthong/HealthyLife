@@ -103,10 +103,10 @@ public class DatabaseHelper extends SQLiteOpenHelper{
                 + CALORIES +" INTEGER, "
                 + TYPES + " VARCHAR(20), "
                 + ISASSIGNED + " INTEGER, "
+                + ISRECOMMENDED + " INTEGER, "
                 + ISCARBALLOWED + " INTEGER ,"
                 + ISFATALLOWED + " INTEGER ,"
                 + ISVEGAN + " INTEGER, "
-                + ISRECOMMENDED + " INTEGER, "
                 + IMAGE + " INTEGER) "
         );
 
@@ -144,14 +144,14 @@ public class DatabaseHelper extends SQLiteOpenHelper{
         int isOthers = exercise.isOthers()?1:0;
         int isFirst = exercise.isFirst()?1:0;
 
-        String types = new String();
+        String types = "";
         boolean start = false;
         for (int i: exercise.getTypes())    {
             if (!start) {
                 types += String.valueOf(i);
                 start = true;
             }else {
-                types += "," + String.valueOf(i);
+                types += "," + i;
             }
         }
 
@@ -178,11 +178,7 @@ public class DatabaseHelper extends SQLiteOpenHelper{
         cv.put(TYPES, types);
 
         long insert = db.insert(EXERCISES, null, cv);
-        if (insert != -1)   {
-            return true;
-        }else {
-            return false;
-        }
+        return insert != -1;
     }
 
     public ArrayList<Exercise> getExerciseList()    {
@@ -197,10 +193,10 @@ public class DatabaseHelper extends SQLiteOpenHelper{
                 int duration = cursor.getInt(3);
                 int progress = cursor.getInt(4);
                 int image = cursor.getInt(5);
-                boolean isFinished = cursor.getInt(6) == 0 ? false:true;
-                boolean isRecommended = cursor.getInt(7) == 0 ? false:true;
-                boolean isOthers = cursor.getInt(8) == 0 ? false:true;
-                boolean isFirst = cursor.getInt(9) == 0 ? false:true;
+                boolean isFinished = cursor.getInt(6) != 0;
+                boolean isRecommended = cursor.getInt(7) != 0;
+                boolean isOthers = cursor.getInt(8) != 0;
+                boolean isFirst = cursor.getInt(9) != 0;
                 int video = cursor.getInt(10);
                 String description = cursor.getString(11);
                 String tutorial = cursor.getString(12);
@@ -213,7 +209,7 @@ public class DatabaseHelper extends SQLiteOpenHelper{
                 int breakEx = cursor.getInt(17);
                 int caloSet = cursor.getInt(18);
 
-                String temp = cursor.getString(19);;
+                String temp = cursor.getString(19);
                 String[] arr = temp.split(",");
                 int[] types = new int[arr.length];
                 int count = 0;
@@ -240,10 +236,10 @@ public class DatabaseHelper extends SQLiteOpenHelper{
                 int duration = cursor.getInt(3);
                 int progress = cursor.getInt(4);
                 int image = cursor.getInt(5);
-                boolean isFinished = cursor.getInt(6) == 0 ? false:true;
-                boolean isRecommended = cursor.getInt(7) == 0 ? false:true;
-                boolean isOthers = cursor.getInt(8) == 0 ? false:true;
-                boolean isFirst = cursor.getInt(9) == 0 ? false:true;
+                boolean isFinished = cursor.getInt(6) != 0;
+                boolean isRecommended = cursor.getInt(7) != 0;
+                boolean isOthers = cursor.getInt(8) != 0;
+                boolean isFirst = cursor.getInt(9) != 0;
                 int video = cursor.getInt(10);
                 String description = cursor.getString(11);
                 String tutorial = cursor.getString(12);
@@ -256,7 +252,7 @@ public class DatabaseHelper extends SQLiteOpenHelper{
                 int breakEx = cursor.getInt(17);
                 int caloSet = cursor.getInt(18);
 
-                String temp = cursor.getString(19);;
+                String temp = cursor.getString(19);
                 String[] arr = temp.split(",");
                 int[] types = new int[arr.length];
                 int count = 0;
@@ -307,14 +303,14 @@ public class DatabaseHelper extends SQLiteOpenHelper{
         int isOthers = exercise.isOthers()?1:0;
         int isFirst = exercise.isFirst()?1:0;
 
-        String types = new String();
+        String types = "";
         boolean start = false;
         for (int i: exercise.getTypes())    {
             if (!start) {
                 types += String.valueOf(i);
                 start = true;
             }else {
-                types += "," + String.valueOf(i);
+                types += "," + i;
             }
         }
         SQLiteDatabase db = getWritableDatabase();
@@ -335,11 +331,7 @@ public class DatabaseHelper extends SQLiteOpenHelper{
         cv.put(TYPES, types);
 
         int update = db.update(EXERCISES, cv, ID + " = ?", new String[]{String.valueOf(exercise.getId())});
-        if (update == 1)    {
-            return true;
-        }else   {
-            return false;
-        }
+        return update == 1;
     }
 
     public boolean addStat(Stat stat)    {
@@ -351,11 +343,7 @@ public class DatabaseHelper extends SQLiteOpenHelper{
         cv.put(DATE, stat.getDate());
 
         long insert = db.insert(STAT, null, cv);
-        if (insert != -1)   {
-            return true;
-        }else {
-            return false;
-        }
+        return insert != -1;
     }
 
     public ArrayList<Stat> getStatList()    {
@@ -379,11 +367,7 @@ public class DatabaseHelper extends SQLiteOpenHelper{
     public boolean deleteStat(int id) {
         SQLiteDatabase db = getWritableDatabase();
         int res = db.delete(STAT, ID+" = ?", new String[]{String.valueOf(id)});
-        if (res == 1)   {
-            return true;
-        }else   {
-            return false;
-        }
+        return res == 1;
     }
 
     public boolean deleteAllStat()  {
@@ -401,33 +385,31 @@ public class DatabaseHelper extends SQLiteOpenHelper{
         SQLiteDatabase db = getWritableDatabase();
         ContentValues cv = new ContentValues();
 
-        String types = new String();
+        String types = "";
         boolean start = false;
         for (int i: diet.getTypes())    {
             if (!start) {
                 types += String.valueOf(i);
                 start = true;
             }else {
-                types += "," + String.valueOf(i);
+                types += "," + i;
             }
         }
-        cv.put(NAME, diet.getName());
         cv.put(DESCRIPTION, diet.getDescription());
+        cv.put(NAME, diet.getName());
+
         cv.put(NOTE, diet.getNote());
         cv.put(CALORIES, diet.getCalories());
         cv.put(TYPES, types);
-        cv.put(ISASSIGNED, diet.isAssigned());
-        cv.put(ISCARBALLOWED, diet.isCarbAllowed());
-        cv.put(ISFATALLOWED, diet.isFatAllowed());
-        cv.put(ISVEGAN, diet.isVegan());
+        cv.put(ISASSIGNED, diet.isAssigned() == true ? 1:0);
+        cv.put(ISRECOMMENDED, diet.isRecommended() == true ? 1:0);
+        cv.put(ISCARBALLOWED, diet.isCarbAllowed()== true ? 1:0);
+        cv.put(ISFATALLOWED, diet.isFatAllowed()== true ? 1:0);
+        cv.put(ISVEGAN, diet.isVegan() == true ? 1:0);
         cv.put(IMAGE, diet.getImage());
 
         long insert = db.insert(DIET, null, cv);
-        if (insert != -1)   {
-            return true;
-        }else {
-            return false;
-        }
+        return insert != -1;
     }
 
     public ArrayList<Diet> getDietList(){
@@ -439,8 +421,8 @@ public class DatabaseHelper extends SQLiteOpenHelper{
                 int id = cursor.getInt(0);
                 String Name = cursor.getString(1);
                 String Description = cursor.getString(2);
-                int Calories = cursor.getInt( 3);
-                String Note = cursor.getString(4);;
+                String Note = cursor.getString(3);
+                int Calories = cursor.getInt( 4);
                 String temp = cursor.getString(5);
                 String[] arr = temp.split(",");
                 int[] types = new int[arr.length];
@@ -448,27 +430,52 @@ public class DatabaseHelper extends SQLiteOpenHelper{
                 for (String s:arr)  {
                     types[count++] = Integer.parseInt(s);
                 }
-                boolean isAssigned = cursor.getInt(6) == 0 ? false : true;
-                boolean isCarbAllowed =cursor.getInt(7)==0 ? false :true;
-                boolean isFatAllowed =cursor.getInt(8)==0 ? false :true;
-                boolean isVegan =cursor.getInt(9)==0 ? false :true;
-                boolean isRecommended=cursor.getInt(10)==0 ? false:true;
+                boolean isAssigned = cursor.getInt(6) != 0;
+                boolean isRecommended= cursor.getInt(7) != 0;
+                boolean isCarbAllowed = cursor.getInt(8) != 0;
+                boolean isFatAllowed = cursor.getInt(9) != 0;
+                boolean isVegan = cursor.getInt(10) != 0;
                 int image = cursor.getInt(11);
-                returnList.add(new Diet(id, Name, Description, Note, Calories, types,
-                        isFatAllowed, isCarbAllowed, isVegan, isAssigned,isRecommended, image));
+                returnList.add(new Diet(id, Name, Description, Note, Calories, types, isAssigned,
+                        isCarbAllowed, isFatAllowed, isVegan,isRecommended, image));
             }while (cursor.moveToNext());
         }
         return returnList;
     }
+    public boolean editAssignedDiet(Diet diet) {
+        SQLiteDatabase db = getWritableDatabase();
+        ContentValues cv = new ContentValues();
 
+        String types = "";
+        boolean start = false;
+        for (int i: diet.getTypes())    {
+            if (!start) {
+                types += String.valueOf(i);
+                start = true;
+            }else {
+                types += "," + i;
+            }
+        }
+        cv.put(DESCRIPTION, diet.getDescription());
+        cv.put(NAME, diet.getName());
+
+        cv.put(NOTE, diet.getNote());
+        cv.put(CALORIES, diet.getCalories());
+        cv.put(TYPES, types);
+        cv.put(ISASSIGNED, diet.isAssigned() ? 1:0);
+        cv.put(ISRECOMMENDED, diet.isRecommended() ? 1:0);
+        cv.put(ISCARBALLOWED, diet.isCarbAllowed() ? 1:0);
+        cv.put(ISFATALLOWED, diet.isFatAllowed() ? 1:0);
+        cv.put(ISVEGAN, diet.isVegan() ? 1:0);
+        cv.put(IMAGE, diet.getImage());
+
+        int update = db.update(DIET, cv, ID + " = ?", new String[]{String.valueOf(diet.getID())});
+        return update == 1;
+    }
     public boolean deleteDiet(int id) {
         SQLiteDatabase db = getWritableDatabase();
         int res = db.delete(DIET, ID+" = ?", new String[]{String.valueOf(id)});
-        if (res == 1)   {
-            return true;
-        }else   {
-            return false;
-        }
+        return res == 1;
     }
 
     public boolean addDish(Dish dish){
@@ -489,11 +496,7 @@ public class DatabaseHelper extends SQLiteOpenHelper{
         cv.put(ISDINNER, dish.isDinner());
 
         long insert = db.insert(DISH, null, cv);
-        if (insert != -1)   {
-            return true;
-        }else {
-            return false;
-        }
+        return insert != -1;
     }
     public ArrayList<Dish> getDishList(){
         SQLiteDatabase db = getReadableDatabase();
@@ -511,12 +514,12 @@ public class DatabaseHelper extends SQLiteOpenHelper{
                 String Ingredients = cursor.getString(5);
                 int image = cursor.getInt(6);
                 int video = cursor.getInt(7);
-                boolean isFat = cursor.getInt(8) == 0 ? false : true;
-                boolean isCarb = cursor.getInt(9) == 0 ? false : true;
-                boolean isVegan = cursor.getInt(10) == 0 ? false : true;
-                boolean isBreakfast = cursor.getInt(11) == 0 ? false : true;
-                boolean isLunch = cursor.getInt(12) == 0 ? false : true;
-                boolean isDinner = cursor.getInt(13) == 0 ? false : true;
+                boolean isFat = cursor.getInt(8) != 0;
+                boolean isCarb = cursor.getInt(9) != 0;
+                boolean isVegan = cursor.getInt(10) != 0;
+                boolean isBreakfast = cursor.getInt(11) != 0;
+                boolean isLunch = cursor.getInt(12) != 0;
+                boolean isDinner = cursor.getInt(13) != 0;
 
                 returnList.add(new Dish(id, Name, Description, Tutorial,
                         Note, Ingredients, image, video,isFat, isCarb, isVegan, isBreakfast, isLunch, isDinner));
@@ -527,11 +530,7 @@ public class DatabaseHelper extends SQLiteOpenHelper{
     public boolean deleteDish(int id) {
         SQLiteDatabase db = getWritableDatabase();
         int res = db.delete(DISH, ID+" = ?", new String[]{String.valueOf(id)});
-        if (res == 1)   {
-            return true;
-        }else   {
-            return false;
-        }
+        return res == 1;
     }
 
     public boolean deleteAllDiets()  {
