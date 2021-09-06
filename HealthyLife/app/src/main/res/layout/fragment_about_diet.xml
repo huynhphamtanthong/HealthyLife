@@ -24,7 +24,7 @@
                     android:id="@+id/image"
                     android:layout_width="130dp"
                     android:layout_height="125dp"
-                    android:src="@mipmap/ic_launcher"
+                    android:src="@drawable/diet_demo"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintHeight_percent="1"
                     app:layout_constraintStart_toStartOf="parent"
@@ -40,7 +40,7 @@
                     android:fontFamily="@font/custom_font"
                     android:text="Feature: Recommend Diet"
                     android:textColor="@color/white"
-                    android:textSize="18sp"
+                    android:textSize="17sp"
                     app:layout_constraintBottom_toTopOf="@id/tvLevel"
                     app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toEndOf="@id/image"
@@ -54,7 +54,7 @@
                     app:layout_constraintTop_toBottomOf="@id/tvName"
                     android:layout_marginStart="10dp"
                     android:textColor="@color/white"
-                    android:textSize="18sp"
+                    android:textSize="17sp"
                     android:id="@+id/tvLevel"
                     android:fontFamily="@font/custom_font"/>
                 <TextView
@@ -65,7 +65,7 @@
                     android:textColor="@color/white"
                     app:layout_constraintTop_toBottomOf="@id/tvLevel"
                     android:layout_marginStart="10dp"
-                    android:textSize="14sp" />
+                    android:textSize="12sp" />
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.cardview.widget.CardView>
 
@@ -86,6 +86,7 @@
                 android:id="@+id/image2"
                 android:layout_width="130dp"
                 android:layout_height="125dp"
+                android:src="@drawable/lowcarb"
                 android:scaleType="fitXY"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintHeight_percent="1"
@@ -100,8 +101,8 @@
                 android:layout_marginStart="10dp"
                 android:fontFamily="@font/custom_font"
                 android:textColor="@color/white"
-                android:text="Diet: "
-                android:textSize="16sp"
+                android:text="Diet: Low Carb"
+                android:textSize="17sp"
                 app:layout_constraintBottom_toTopOf="@id/tvLevel2"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toEndOf="@id/image2"
@@ -115,7 +116,7 @@
                 android:fontFamily="@font/custom_font"
                 android:textColor="@color/white"
                 android:text="Description: "
-                android:textSize="16sp"
+                android:textSize="17sp"
                 app:layout_constraintStart_toEndOf="@id/image2"
                 app:layout_constraintTop_toBottomOf="@id/tvName2" />
 
@@ -124,8 +125,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
                 android:textColor="@color/white"
-                android:text="Staying hydrated is important\n to be healthy and active all day!\n Don't forget"
-                android:textSize="14sp"
+                android:text="Enjoying eating but afraid of\ngaining weight. Try low-carb now!"
+                android:textSize="12sp"
                 app:layout_constraintStart_toEndOf="@id/image2"
                 app:layout_constraintTop_toBottomOf="@id/tvLevel2" />
         </androidx.constraintlayout.widget.ConstraintLayout>
@@ -149,6 +150,7 @@
                 android:layout_width="130dp"
                 android:layout_height="125dp"
                 android:scaleType="fitXY"
+                android:src="@drawable/vegan"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintHeight_percent="1"
                 app:layout_constraintStart_toStartOf="parent"
@@ -161,8 +163,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
                 android:fontFamily="@font/custom_font"
-                android:text="Diet:"
-                android:textSize="16sp"
+                android:text="Diet: Vegan"
+                android:textSize="17sp"
                 android:textColor="@color/white"
                 app:layout_constraintBottom_toTopOf="@id/tvLevel3"
                 app:layout_constraintHorizontal_bias="0.0"
@@ -177,7 +179,7 @@
                 android:fontFamily="@font/custom_font"
                 android:text="Description: "
                 android:textColor="@color/white"
-                android:textSize="20sp"
+                android:textSize="17sp"
                 app:layout_constraintStart_toEndOf="@id/image3"
                 app:layout_constraintTop_toBottomOf="@id/tvName3" />
 
@@ -186,8 +188,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
                 android:textColor="@color/white"
-                android:text="Staying hydrated is important to be\nhealthy and active all day! Don't forget"
-                android:textSize="14sp"
+                android:text="Don't worry about no meat in\nmeals! It's delicious"
+                android:textSize="12sp"
                 app:layout_constraintStart_toEndOf="@id/image3"
                 app:layout_constraintTop_toBottomOf="@id/tvLevel3" />
 
@@ -197,10 +199,8 @@
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginLeft="15dp"
-        android:layout_marginRight="15dp"
         android:layout_marginTop="10dp"
-        android:backgroundTint="@color/purple_200"
+        android:backgroundTint="@color/purple_500"
         app:cardCornerRadius="20dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -215,6 +215,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintHeight_percent="1"
                 app:layout_constraintStart_toStartOf="parent"
+                android:src="@drawable/dish_demo"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintWidth_percent="0.3" />
 
@@ -224,8 +225,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
                 android:fontFamily="@font/custom_font"
-                android:text="Diet:"
-                android:textSize="16sp"
+                android:text="Feature: Dish Recommend"
+                android:textSize="17sp"
                 android:textColor="@color/white"
                 app:layout_constraintBottom_toTopOf="@id/tvLevel4"
                 app:layout_constraintHorizontal_bias="0.0"
@@ -240,7 +241,7 @@
                 android:fontFamily="@font/custom_font"
                 android:textColor="@color/white"
                 android:text="Description: "
-                android:textSize="16sp"
+                android:textSize="17sp"
                 app:layout_constraintStart_toEndOf="@id/image4"
                 app:layout_constraintTop_toBottomOf="@id/tvName4" />
 
@@ -248,8 +249,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
-                android:text="Staying hydrated is important to be\nhealthy and active all day! Don't forget"
-                android:textSize="14sp"
+                android:text="Where many mouth-watering dishes\nfor your diet are. Why hesitate?"
+                android:textSize="12sp"
                 android:textColor="@color/white"
                 app:layout_constraintStart_toEndOf="@id/image4"
                 app:layout_constraintTop_toBottomOf="@id/tvLevel4" />
@@ -276,6 +277,7 @@
                 android:adjustViewBounds="false"
                 android:cropToPadding="false"
                 android:scaleType="fitXY"
+                android:src="@drawable/water_demo"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintHeight_percent="1"
                 app:layout_constraintStart_toStartOf="parent"
@@ -314,7 +316,7 @@
                 android:layout_marginStart="10dp"
                 android:textColor="@color/white"
                 android:text="Staying hydrated is important\n to behealthy and active all day!\n Don't forget"
-                android:textSize="14sp"
+                android:textSize="12sp"
                 app:layout_constraintStart_toEndOf="@id/image5"
                 app:layout_constraintTop_toBottomOf="@id/tvLevel5" />
         </androidx.constraintlayout.widget.ConstraintLayout>

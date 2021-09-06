@@ -24,7 +24,7 @@
                 android:id="@+id/image"
                 android:layout_width="130dp"
                 android:layout_height="125dp"
-                android:src="@mipmap/ic_launcher"
+                android:src="@drawable/timer_demo"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintHeight_percent="1"
                 app:layout_constraintStart_toStartOf="parent"
@@ -40,7 +40,7 @@
                 android:fontFamily="@font/custom_font"
                 android:text="Feature: Exercise Timer"
                 android:textColor="@color/white"
-                android:textSize="20sp"
+                android:textSize="18sp"
                 app:layout_constraintBottom_toTopOf="@id/tvLevel"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toEndOf="@id/image"
@@ -54,7 +54,7 @@
                 app:layout_constraintStart_toEndOf="@id/image"
                 app:layout_constraintTop_toBottomOf="@id/tvName"
                 android:layout_marginStart="10dp"
-                android:textSize="20sp"
+                android:textSize="18sp"
                 android:id="@+id/tvLevel"
                 android:fontFamily="@font/custom_font"/>
             <TextView
@@ -84,6 +84,7 @@
                 android:id="@+id/image2"
                 android:layout_width="130dp"
                 android:layout_height="125dp"
+                android:src="@drawable/exerciselist_demo"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintHeight_percent="1"
                 app:layout_constraintStart_toStartOf="parent"
@@ -99,7 +100,7 @@
                 android:fontFamily="@font/custom_font"
                 android:text="Feature: Exercise List"
                 android:textColor="@color/white"
-                android:textSize="20sp"
+                android:textSize="18sp"
                 app:layout_constraintBottom_toTopOf="@id/tvLevel2"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toEndOf="@id/image2"
@@ -113,7 +114,7 @@
                 app:layout_constraintTop_toBottomOf="@id/tvName2"
                 android:textColor="@color/white"
                 android:layout_marginStart="10dp"
-                android:textSize="20sp"
+                android:textSize="18sp"
                 android:id="@+id/tvLevel2"
                 android:fontFamily="@font/custom_font"/>
             <TextView
@@ -124,7 +125,7 @@
                 app:layout_constraintTop_toBottomOf="@id/tvLevel2"
                 android:textColor="@color/white"
                 android:layout_marginStart="10dp"
-                android:textSize="14sp" />
+                android:textSize="13sp" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
     <androidx.cardview.widget.CardView
@@ -143,6 +144,7 @@
                 android:id="@+id/image3"
                 android:layout_width="130dp"
                 android:layout_height="125dp"
+                android:src="@drawable/breathe_demo"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintHeight_percent="1"
                 app:layout_constraintStart_toStartOf="parent"
@@ -157,7 +159,7 @@
                 android:layout_marginStart="10dp"
                 android:fontFamily="@font/custom_font"
                 android:text="Feature: Breathe"
-                android:textSize="20sp"
+                android:textSize="18sp"
                 android:textColor="@color/white"
                 app:layout_constraintBottom_toTopOf="@id/tvLevel3"
                 app:layout_constraintHorizontal_bias="0.0"
@@ -172,7 +174,7 @@
                 android:textColor="@color/white"
                 app:layout_constraintTop_toBottomOf="@id/tvName3"
                 android:layout_marginStart="10dp"
-                android:textSize="20sp"
+                android:textSize="18sp"
                 android:id="@+id/tvLevel3"
                 android:fontFamily="@font/custom_font"/>
             <TextView
@@ -183,7 +185,7 @@
                 android:textColor="@color/white"
                 app:layout_constraintTop_toBottomOf="@id/tvLevel3"
                 android:layout_marginStart="10dp"
-                android:textSize="14sp" />
+                android:textSize="13sp" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
@@ -204,6 +206,7 @@
                 android:id="@+id/image4"
                 android:layout_width="130dp"
                 android:layout_height="125dp"
+                android:src="@drawable/standup_demo"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintHeight_percent="1"
                 app:layout_constraintStart_toStartOf="parent"
@@ -219,7 +222,7 @@
                 android:fontFamily="@font/custom_font"
                 android:text="Feature: Stand-up Noti"
                 android:textColor="@color/white"
-                android:textSize="20sp"
+                android:textSize="18sp"
                 app:layout_constraintBottom_toTopOf="@id/tvLevel4"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toEndOf="@id/image4"
@@ -233,7 +236,7 @@
                 app:layout_constraintTop_toBottomOf="@id/tvName4"
                 android:textColor="@color/white"
                 android:layout_marginStart="10dp"
-                android:textSize="20sp"
+                android:textSize="18sp"
                 android:id="@+id/tvLevel4"
                 android:fontFamily="@font/custom_font"/>
             <TextView
@@ -244,7 +247,7 @@
                 app:layout_constraintTop_toBottomOf="@id/tvLevel4"
                 android:textColor="@color/white"
                 android:layout_marginStart="10dp"
-                android:textSize="14sp" />
+                android:textSize="13dp" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
     <androidx.cardview.widget.CardView
@@ -263,6 +266,7 @@
             <ImageView
                 android:id="@+id/image5"
                 android:layout_width="130dp"
+                android:src="@drawable/bmi_demo"
                 android:layout_height="125dp"
                 android:adjustViewBounds="false"
                 android:cropToPadding="false"
@@ -281,7 +285,7 @@
                 android:fontFamily="@font/custom_font"
                 android:text="Feature: BMI Statistics"
                 android:textColor="@color/white"
-                android:textSize="20sp"
+                android:textSize="18sp"
                 app:layout_constraintBottom_toTopOf="@id/tvLevel5"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toEndOf="@id/image5"
@@ -295,7 +299,7 @@
                 app:layout_constraintTop_toBottomOf="@id/tvName5"
                 android:textColor="@color/white"
                 android:layout_marginStart="10dp"
-                android:textSize="20sp"
+                android:textSize="18sp"
                 android:id="@+id/tvLevel5"
                 android:fontFamily="@font/custom_font"/>
             <TextView
@@ -306,7 +310,7 @@
                 android:textColor="@color/white"
                 app:layout_constraintTop_toBottomOf="@id/tvLevel5"
                 android:layout_marginStart="10dp"
-                android:textSize="14sp" />
+                android:textSize="13sp" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
 
