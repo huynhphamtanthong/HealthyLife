@@ -41,7 +41,7 @@ public class DietDetailFragment extends Fragment{
     private ArrayList<Diet> diets;
     private SharedPreferences sharedPreferences;
     private DishRecViewAdapter dishRecViewAdapter;
-    private ArrayList<Dish> dishes;
+    private ArrayList<Dish> dishes = new ArrayList<>();
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
