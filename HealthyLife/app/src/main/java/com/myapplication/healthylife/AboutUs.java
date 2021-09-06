@@ -30,7 +30,7 @@ public class AboutUs extends Fragment {
                 .addGroup("CONNECT WITH US!")
                 .addEmail("chphat19@apcs.vn")
                 .addWebsite("https://www.facebook.com/groups/1012974159239556")
-                .addYoutube("UCbekhhidkzkGryM7mi5Ys_w")
+                .addYoutube("LedkkIoDfoc")
                 .addItem(createCopyright())
                 .create();
         v=aboutPage;
@@ -39,7 +39,7 @@ public class AboutUs extends Fragment {
     private Element createCopyright()
     {
         Element copyright = new Element();
-        @SuppressLint("DefaultLocale") final String copyrightString = String.format("Copyright %d by Your Name", Calendar.getInstance().get(Calendar.YEAR));
+        @SuppressLint("DefaultLocale") final String copyrightString = String.format("Copyright %d by Team HealthyLife APCS19", Calendar.getInstance().get(Calendar.YEAR));
         copyright.setTitle(copyrightString);
         // copyright.setIcon(R.mipmap.ic_launcher);
         copyright.setGravity(Gravity.CENTER);
