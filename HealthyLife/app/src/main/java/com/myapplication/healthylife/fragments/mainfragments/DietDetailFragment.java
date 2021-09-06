@@ -98,7 +98,6 @@ public class DietDetailFragment extends Fragment{
                                     Bundle bundle = new Bundle();
                                     bundle.putSerializable("PickDietData", (Serializable) diet);
                                     navController.navigate(R.id.action_DietDetail_to_mainFragment, bundle);
-                                    navController.navigate(R.id.action_mainFragment_to_mainFragment);
                                 }
                             });
 
