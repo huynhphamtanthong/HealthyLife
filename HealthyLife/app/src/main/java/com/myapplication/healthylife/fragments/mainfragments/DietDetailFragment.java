@@ -10,6 +10,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
+import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -23,8 +24,10 @@ import com.myapplication.healthylife.databinding.FragmentLaunchBinding;
 import com.myapplication.healthylife.local.AppPrefs;
 import com.myapplication.healthylife.local.DatabaseHelper;
 import com.myapplication.healthylife.model.Diet;
+import com.myapplication.healthylife.model.Dish;
 import com.myapplication.healthylife.model.User;
 import com.myapplication.healthylife.recycleviewadapters.DietRecViewAdapter;
+import com.myapplication.healthylife.recycleviewadapters.DishRecViewAdapter;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -37,6 +40,8 @@ public class DietDetailFragment extends Fragment{
     private int number = 0;
     private ArrayList<Diet> diets;
     private SharedPreferences sharedPreferences;
+    private DishRecViewAdapter dishRecViewAdapter;
+    private ArrayList<Dish> dishes;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -60,6 +65,21 @@ public class DietDetailFragment extends Fragment{
         binding.DietDetailName.setText(diet.getName());
         binding.DietDetailDescription.setText(diet.getDescription());
         binding.DietDetailNote.setText(diet.getNote());
+
+        for(Dish i : diet.getBreakfast()){
+            dishes.add(i);
+        }
+        for(Dish i : diet.getLunch()){
+            dishes.add(i);
+        }
+        for(Dish i : diet.getDinner()){
+            dishes.add(i);
+        }
+
+        dishRecViewAdapter = new DishRecViewAdapter(getActivity(), getContext());
+        dishRecViewAdapter.SetDishes(dishes);
+        binding.rvDishDetail.setAdapter(dishRecViewAdapter);
+        binding.rvDishDetail.setLayoutManager(new LinearLayoutManager(getContext()));
     }
 
     @Override
