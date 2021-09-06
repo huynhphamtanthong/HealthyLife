@@ -21,17 +21,19 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Congrats"
+            android:text="Woo!"
             android:fontFamily="@font/custom_font"
             android:textSize="50sp"
             android:textColor="@color/white"
             android:textAllCaps="true"/>
     </LinearLayout>
 
+
+
     <TextView
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="You have done well today"
+        android:text="Well done!"
         android:fontFamily="@font/custom_font"
         android:textSize="50sp"
         android:textColor="@color/white"
@@ -43,28 +45,43 @@
         android:id="@+id/tvDone"/>
 
     <TextView
-        android:id="@+id/tvNumOfEx"
+        android:id="@+id/tvDone2"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
         android:fontFamily="@font/custom_font"
         android:gravity="center"
-        android:text="5/5\nExercise"
+        android:text="Breathing helps reduce stress"
         android:textColor="@color/white"
-        android:textSize="50sp"
+        android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.6"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tvDone"
-        android:layout_marginTop="50dp"/>
+        app:layout_constraintTop_toBottomOf="@id/tvDone" />
 
     <Button
+        android:id="@+id/btnOk"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:padding="10dp"
         android:text="OK"
         android:textSize="30sp"
-        android:padding="10dp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tvNumOfEx"
-        android:id="@+id/btnOk"/>
+        app:layout_constraintTop_toBottomOf="@+id/tvDone2" />
+
+
+    <Button
+        android:id="@+id/btnRestart"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:padding="10dp"
+        android:text="Breathe Again"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.4"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnOk" />
 </androidx.constraintlayout.widget.ConstraintLayout>

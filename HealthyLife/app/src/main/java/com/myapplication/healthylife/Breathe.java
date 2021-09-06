@@ -65,7 +65,18 @@ public class Breathe extends Fragment {
                     binding.btn.setText("Cancel");
                 } else {
                     timer.cancel();
+                    updateTime(60000);
                     binding.video.stopPlayback();
+                    binding.video.setVideoURI(Uri.parse("android.resource://" + getActivity().getPackageName() + "/" + R.raw.breath));
+                    MediaController ctrl = new MediaController(getContext());
+                    ctrl.setVisibility(View.GONE);
+                    binding.video.setMediaController(ctrl);
+                    binding.video.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
+                        @Override
+                        public void onPrepared(MediaPlayer mediaPlayer) {
+                            mediaPlayer.setLooping(true);
+                        }
+                    });
                     isRunning = false;
                     binding.btn.setText("Start");
                 }
@@ -83,22 +94,33 @@ public class Breathe extends Fragment {
             @Override
             public void onFinish() {
                 binding.video.stopPlayback();
+                Dialog dialog = new Dialog(getContext());
+                dialog.setContentView(R.layout.custom_dialog_breathe);
+                dialog.setCanceledOnTouchOutside(true);
+                Button btnOk = dialog.findViewById(R.id.btnOk);
+                btnOk.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        navController.navigateUp();
+                        dialog.dismiss();
+                    }
+                });
+                Button btnRestart= dialog.findViewById(R.id.btnRestart);
+                btnRestart.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        isRunning=false;
+                        updateTime(60000);
+                        binding.btn.setText("Start");
+                        dialog.dismiss();
+                    }
+                });
+                dialog.show();
+                Window window = dialog.getWindow();
+                window.setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.WRAP_CONTENT);
             }
         }.start();
-                // Dialog dialog = new Dialog(getContext());
-                // dialog.setContentView(R.layout.custom_dialog_congratz);
-                // dialog.setCanceledOnTouchOutside(true);
-                // Button btnOk = dialog.findViewById(R.id.btnOk);
-                // btnOk.setOnClickListener(new View.OnClickListener() {
-                //     @Override
-                //     public void onClick(View view) {
-                //         navController.navigateUp();
-                //         dialog.dismiss();
-                //     }
-                // });
-                // dialog.show();
-                // Window window = dialog.getWindow();
-                // window.setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.WRAP_CONTENT);
+
     };
 
     private void updateTime(long time) {
