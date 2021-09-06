@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/launchFragment"
         android:name="com.myapplication.healthylife.fragments.LaunchFragment"
-        android:label="fragment_launch"
+        android:label="Launching"
         tools:layout="@layout/fragment_launch" >
         <action
             android:id="@+id/action_launchFragment_to_firstUseFragment"
@@ -37,7 +37,7 @@
     <fragment
         android:id="@+id/mainFragment"
         android:name="com.myapplication.healthylife.fragments.mainfragments.MainFragment"
-        android:label="fragment_main"
+        android:label="Main"
         tools:layout="@layout/fragment_main" >
         <action
             android:id="@+id/action_mainFragment_to_firstUseFragment"
@@ -108,7 +108,7 @@
     <fragment
         android:id="@+id/timerFragment"
         android:name="com.myapplication.healthylife.fragments.mainfragments.TimerFragment"
-        android:label="Exercise Timer"
+        android:label="Work Out"
         tools:layout="@layout/fragment_timer">
         <action
             android:id="@+id/action_timerFragment_to_mainFragment"
@@ -171,7 +171,7 @@
     <fragment
         android:id="@+id/dietRecommendFragment"
         android:name="com.myapplication.healthylife.fragments.mainfragments.DietRecommendFragment"
-        android:label="fragment_diet_recommend"
+        android:label="Diet Recommend"
         tools:layout="@layout/fragment_diet_recommend" >
         <action
             android:id="@+id/action_dietRecommendFragment_to_mainFragment"
@@ -183,7 +183,7 @@
     <fragment
         android:id="@+id/DishDetailFragment"
         android:name="com.myapplication.healthylife.fragments.mainfragments.DishDetailFragment"
-        android:label="fragment_dish_detail"
+        android:label="Dish Detail"
         tools:layout="@layout/fragment_dish_detail" >
         <action
             android:id="@+id/action_DishDetail_to_DietDetailFragment"
@@ -192,7 +192,7 @@
     <fragment
         android:id="@+id/DietDetailFragment"
         android:name="com.myapplication.healthylife.fragments.mainfragments.DietDetailFragment"
-        android:label="fragment_diet_detail"
+        android:label="Diet Detail"
         tools:layout="@layout/fragment_diet_detail" >
         <action
             android:id="@+id/action_DietDetail_to_mainFragment"
