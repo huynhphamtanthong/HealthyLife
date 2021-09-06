@@ -66,5 +66,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tvNumOfEx"
-        android:id="@+id/btnOk"/>
+        android:id="@+id/btnOk"
+        android:fontFamily="@font/custom_font"
+        android:background="@drawable/custom_button"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -72,15 +72,19 @@ public class HomeFragment extends Fragment {
             @Override
             public void onChanged(Integer integer) {
                 if (integer == 0)   {
-                    Log.d("TAB", "onChanged: "+integer);
+                    Log.d("TAB", "onChanged: "+user.getCaloFitness()+", "+user.getCaloDiet());
                     String data = sharedPreferences.getString("user", null);
                     user = new Gson().fromJson(data, User.class);
-                    binding.CaloExercise.setText(String.valueOf(user.getCaloFitness()));
+                    binding.CaloExercise.setText(String.valueOf("-"+user.getCaloFitness()));
+                    binding.CaloDiet.setText(String.valueOf("+"+user.getCaloDiet()));
+                    binding.CaloTotal.setText(String.valueOf(user.getCaloDiet()-user.getCaloFitness()));
                 }
             }
         });
 
-        binding.CaloExercise.setText(String.valueOf(user.getCaloFitness()));
+        binding.CaloExercise.setText(String.valueOf("-"+user.getCaloFitness()));
+        binding.CaloDiet.setText(String.valueOf("+"+user.getCaloDiet()));
+        binding.CaloTotal.setText(String.valueOf(user.getCaloDiet()-user.getCaloFitness()));
 
         binding.tvHello.setText("Hello, "+user.getName());
 

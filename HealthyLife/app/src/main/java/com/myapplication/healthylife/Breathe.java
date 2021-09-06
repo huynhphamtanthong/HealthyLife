@@ -32,6 +32,7 @@ public class Breathe extends Fragment {
     CountDownTimer timer;
     boolean isRunning = false;
     SharedPreferences sharedPreferences;
+    boolean initTimer = false;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -64,6 +65,7 @@ public class Breathe extends Fragment {
                     binding.video.start();
                     isRunning = true;
                     binding.btn.setText("Cancel");
+                    initTimer = true;
                 } else {
                     timer.cancel();
                     updateTime(60000);
@@ -155,7 +157,9 @@ public class Breathe extends Fragment {
     @Override
     public void onDestroy() {
         super.onDestroy();
-        timer.cancel();
-        binding.video.stopPlayback();
+        if (initTimer && isRunning)  {
+            timer.cancel();
+            binding.video.stopPlayback();
+        }
     }
 }

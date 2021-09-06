@@ -190,6 +190,7 @@ public class DietFragment extends Fragment {
                                     String data = sharedPreferences.getString("user", null);
                                     User user = new Gson().fromJson(data, User.class);
                                     user.setCaloDiet(0);
+                                    sharedPreferences.edit().putString("user", new Gson().toJson(user)).apply();
                                     AssignedDiet.setAssigned(false);
                                     db.editAssignedDiet(AssignedDiet);
                                     navController.navigate(R.id.action_mainFragment_to_mainFragment);

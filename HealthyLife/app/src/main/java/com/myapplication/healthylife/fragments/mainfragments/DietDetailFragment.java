@@ -43,6 +43,7 @@ public class DietDetailFragment extends Fragment{
         super.onCreate(savedInstanceState);
         diet = (Diet) getArguments().getSerializable("DietData");
         db = new DatabaseHelper(getContext());
+        sharedPreferences = AppPrefs.getInstance(getContext());
     }
 
     @Nullable
@@ -84,6 +85,7 @@ public class DietDetailFragment extends Fragment{
                     diet.setAssigned(true);
                     db.editAssignedDiet(diet);
                     user.setCaloDiet(diet.getCalories());
+                    sharedPreferences.edit().putString("user", new Gson().toJson(user)).apply();
                     Bundle bundle = new Bundle();
                     bundle.putSerializable("PickDietData", (Serializable) diet);
                     navController.navigate(R.id.action_DietDetail_to_mainFragment, bundle);
@@ -101,6 +103,7 @@ public class DietDetailFragment extends Fragment{
                                     db.editAssignedDiet(diet);
                                     db.editAssignedDiet(diets.get(number));
                                     user.setCaloDiet(diet.getCalories());
+                                    sharedPreferences.edit().putString("user", new Gson().toJson(user)).apply();
                                     Bundle bundle = new Bundle();
                                     bundle.putSerializable("PickDietData", (Serializable) diet);
                                     navController.navigate(R.id.action_DietDetail_to_mainFragment, bundle);

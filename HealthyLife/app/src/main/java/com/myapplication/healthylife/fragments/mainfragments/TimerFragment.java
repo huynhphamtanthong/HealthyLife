@@ -55,6 +55,7 @@ public class TimerFragment extends Fragment{
     CountDownTimer timer;
 
     boolean isRunning = false;
+    boolean initTimer = false;
 
     SharedPreferences sharedPreferences;
 
@@ -64,7 +65,7 @@ public class TimerFragment extends Fragment{
         db = new DatabaseHelper(getContext());
         binding = FragmentTimerBinding.inflate(getLayoutInflater());
         list = db.getRecommendedExerciseList();
-//        listTimer = convert(list);
+ //       listTimer = convert(list);
         listTimer = new ArrayList<>();
         listTimer.add(new Timer("Test1", "Test1", 5000, list.get(0).getVideo()));
         listTimer.add(new Timer("Test2", "Test2", 5000, list.get(1).getVideo()));
@@ -101,6 +102,7 @@ public class TimerFragment extends Fragment{
                     binding.video.start();
                     isRunning = true;
                     binding.btn.setText("Cancel");
+                    initTimer = true;
                 }else  {
                     timer.cancel();
                     updateTime(listTimer.get(i).getTime());
@@ -244,7 +246,9 @@ public class TimerFragment extends Fragment{
     public void onDestroy() {
         super.onDestroy();
         Log.d("DESTROY", "onDestroy: timer");
-        timer.cancel();
-        binding.video.stopPlayback();
+        if (initTimer && isRunning)  {
+            timer.cancel();
+            binding.video.stopPlayback();
+        }
     }
 }
