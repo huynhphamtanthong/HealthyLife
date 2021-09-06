@@ -370,7 +370,7 @@ public class DatabaseHelper extends SQLiteOpenHelper{
                 double bmi = cursor.getDouble(3);
                 String date = cursor.getString(4);
 
-                returnList.add(new Stat(id, weight, height, bmi, date));
+                returnList.add(new Stat(id, height, weight, bmi, date));
             }while (cursor.moveToNext());
         }
         return returnList;

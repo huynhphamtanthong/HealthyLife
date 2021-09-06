@@ -15,6 +15,7 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.myapplication.healthylife.R;
 import com.myapplication.healthylife.databinding.FragmentStatBinding;
@@ -68,16 +69,23 @@ public class StatFragment extends Fragment {
                 btnAdd.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        float height = Float.valueOf(etHeight.getText().toString());
-                        float weight = Float.valueOf(etWeight.getText().toString());
-                        double bmi = Math.round(((weight/Math.pow(height/100, 2))*10)/10);
-                        date = new Date();
-                        Stat stat = new Stat(-1, height, weight, bmi, dateTimeSdf.format(date));
-                        if (db.addStat(stat))   {
-                            stats.clear();
-                            stats = db.getStatList();
-                            adapter.setStat(stats);
-                            dialog.dismiss();
+                        float height;
+                        float weight;
+
+                        if (!etHeight.getText().toString().equals("") && !etWeight.getText().toString().equals("")) {
+                            height = Float.valueOf(etHeight.getText().toString());
+                            weight = Float.valueOf(etWeight.getText().toString());
+                            double bmi = Math.round(((weight/Math.pow(height/100, 2))*10)/10);
+                            date = new Date();
+                            Stat stat = new Stat(-1, height, weight, bmi, dateTimeSdf.format(date));
+                            if (db.addStat(stat))   {
+                                stats.clear();
+                                stats = db.getStatList();
+                                adapter.setStat(stats);
+                                dialog.dismiss();
+                            }
+                        }else{
+                            Toast.makeText(getActivity(), "Please Fill All Information", Toast.LENGTH_SHORT).show();
                         }
                     }
                 });

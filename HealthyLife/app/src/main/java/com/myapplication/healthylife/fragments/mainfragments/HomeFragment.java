@@ -11,6 +11,7 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -84,7 +85,7 @@ public class HomeFragment extends Fragment {
         User userObject = new Gson().fromJson (data, User.class);
         binding.userName.setText (userObject.getName());
 
-        if (challengeCompleted())   {
+        //if (challengeCompleted())   {
             Dialog dialog = new Dialog(getContext());
             dialog.setContentView(R.layout.custom_dialog_refresh);
 
@@ -96,22 +97,30 @@ public class HomeFragment extends Fragment {
             btnAdd.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    float height = Float.valueOf(etHeight.getText().toString());
-                    float weight = Float.valueOf(etWeight.getText().toString());
-                    double bmi = Math.round(((weight/Math.pow(height/100, 2))*10)/10);
-                    date = new Date();
-                    Stat stat = new Stat(-1, height, weight, bmi, dateTimeSdf.format(date));
-                    if (db.addStat(stat))   {
-                        String data = sharedPreferences.getString("user", null);
-                        User user = new Gson().fromJson(data, User.class);
-                        user.setHeight(height);
-                        user.setWeight(weight);
-                        user.setBmi(bmi);
-                        sharedPreferences.edit().putString("user", new Gson().toJson(user)).apply();
-                        db.deleteAllExercises();
-                        saveListOfExercisesForNewUser(exercises, bmi);
-                        dialog.dismiss();
+                    float height;
+                    float weight;
+
+                    if (!etHeight.getText().toString().equals("") && !etWeight.getText().toString().equals(""))   {
+                        height = Float.valueOf(etHeight.getText().toString());
+                        weight = Float.valueOf(etWeight.getText().toString());
+                        double bmi = Math.round(((weight/Math.pow(height/100, 2))*10)/10);
+                        date = new Date();
+                        Stat stat = new Stat(-1, height, weight, bmi, dateTimeSdf.format(date));
+                        if (db.addStat(stat))   {
+                            String data = sharedPreferences.getString("user", null);
+                            User user = new Gson().fromJson(data, User.class);
+                            user.setHeight(height);
+                            user.setWeight(weight);
+                            user.setBmi(bmi);
+                            sharedPreferences.edit().putString("user", new Gson().toJson(user)).apply();
+                            db.deleteAllExercises();
+                            saveListOfExercisesForNewUser(exercises, bmi);
+                            dialog.dismiss();
+                        }
+                    }else   {
+                        Toast.makeText(getActivity(), "Please Fill All Information", Toast.LENGTH_SHORT).show();
                     }
+
                 }
             });
 
@@ -125,7 +134,7 @@ public class HomeFragment extends Fragment {
             dialog.show();
             Window window = dialog.getWindow();
             window.setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.WRAP_CONTENT);
-        }
+     //   }
 
 
     }
