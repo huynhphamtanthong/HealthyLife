@@ -1,5 +1,7 @@
 package com.myapplication.healthylife.fragments.mainfragments;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 
@@ -30,6 +32,8 @@ public class DietDetailFragment extends Fragment{
     private NavController navController;
     private Diet diet;
     private DatabaseHelper db;
+    private int number = 0;
+    private ArrayList<Diet> diets;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -62,12 +66,53 @@ public class DietDetailFragment extends Fragment{
         binding.LoveList.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ArrayList<Diet> dbs =new ArrayList<>();
-                diet.setAssigned(true);
-                db.editAssignedDiet(diet);
-                Bundle bundle = new Bundle();
-                bundle.putSerializable("PickDietData", (Serializable) diet);
-                navController.navigate(R.id.action_DietDetail_to_mainFragment, bundle);
+                diets = db.getDietList();
+                boolean alreadyExists = false;
+                for(Diet i : diets){
+                    if(i.isAssigned()){
+                        alreadyExists = true;
+                        break;
+                    }
+                    number++;
+                }
+                if(!alreadyExists) {
+                    diet.setAssigned(true);
+                    db.editAssignedDiet(diet);
+                    Bundle bundle = new Bundle();
+                    bundle.putSerializable("PickDietData", (Serializable) diet);
+                    navController.navigate(R.id.action_DietDetail_to_mainFragment, bundle);
+                }
+                else{
+                    AlertDialog.Builder builder1 = new AlertDialog.Builder(getContext());
+                    builder1.setMessage("Your current dietary recommendation will disappear. Do you want to continue?");
+                    builder1.setCancelable(true);
+
+                    builder1.setPositiveButton(
+                            "Yes",
+                            new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int id) {
+                                    diet.setAssigned(true);
+                                    diets.get(number).setAssigned(false);
+                                    db.editAssignedDiet(diet);
+                                    db.editAssignedDiet(diets.get(number));
+                                    Bundle bundle = new Bundle();
+                                    bundle.putSerializable("PickDietData", (Serializable) diet);
+                                    navController.navigate(R.id.action_DietDetail_to_mainFragment, bundle);
+                                    navController.navigate(R.id.action_mainFragment_to_mainFragment);
+                                }
+                            });
+
+                    builder1.setNegativeButton(
+                            "No",
+                            new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int id) {
+                                    dialog.cancel();
+                                }
+                            });
+
+                    AlertDialog alert11 = builder1.create();
+                    alert11.show();
+                }
             }
         });
     }
