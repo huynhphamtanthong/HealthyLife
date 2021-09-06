@@ -204,5 +204,10 @@
             android:id="@+id/action_breathe_to_mainFragment"
             app:destination="@id/mainFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/drinkWaterNoti"
+        android:name="com.myapplication.healthylife.DrinkWaterNoti"
+        android:label="fragment_drink_water_noti"
+        tools:layout="@layout/fragment_drink_water_noti" />
 
 </navigation>

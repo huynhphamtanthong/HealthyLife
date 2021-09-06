@@ -31,6 +31,10 @@
         </activity>
         <activity android:name=".NotificationActivity" />
         <receiver android:name=".AlarmReceiver"/>
+        <activity android:name=".NotificationActivity2"/>
+        <receiver android:name=".AlarmReceiver2"/>
+        <activity android:name=".NotificationActivity3"/>
+        <receiver android:name=".AlarmReceiver3"/>
     </application>
 
 </manifest>
