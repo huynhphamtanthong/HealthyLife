@@ -103,23 +103,23 @@ public class Breathe extends Fragment {
     }
 
     private void updateTime(long time) {
-            int min = (int) time / 60000;
-            int sec = (int) time % 60000 / 1000;
+        int min = (int) time / 60000;
+        int sec = (int) time % 60000 / 1000;
+        if (sec==59)
+            Toast.makeText(getActivity(),"Be still and bring your attention to your breath.", Toast.LENGTH_LONG ).show();
+        else if (sec==54)
+            Toast.makeText(getActivity(),"Now inhale...", Toast.LENGTH_SHORT ).show();
+        else if (sec==52)
+            Toast.makeText(getActivity(),"and exhale.", Toast.LENGTH_SHORT ).show();
+        String text;
+        text = "" + min;
+        text += " : ";
+        if (sec < 10) {
+            text += "0";
+        }
+        text += sec;
+        binding.tvTime.setText(text);
 
-            String text;
-            text = "" + min;
-            text += " : ";
-            if (sec < 10) {
-                text += "0";
-            }
-            text += sec;
-            binding.tvTime.setText(text);
-            if (time ==59000)
-                Toast.makeText( getActivity(),"Be still and bring your attention to your breath.", Toast.LENGTH_SHORT ).show();
-            if (time==56000)
-                Toast.makeText( getActivity(),"Now inhale...", Toast.LENGTH_SHORT ).show();
-            if (time==55000)
-                Toast.makeText( getActivity(),"and exhale.", Toast.LENGTH_SHORT ).show();
 
     };
 
