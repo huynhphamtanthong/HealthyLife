@@ -1,5 +1,6 @@
 package com.myapplication.healthylife;
 
+import android.app.Dialog;
 import android.content.SharedPreferences;
 import android.media.MediaPlayer;
 import android.net.Uri;
@@ -8,7 +9,11 @@ import android.os.CountDownTimer;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
+import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.MediaController;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -21,7 +26,6 @@ import com.myapplication.healthylife.local.AppPrefs;
 
 
 public class Breathe extends Fragment {
-
     FragmentBreatheBinding binding;
     NavController navController;
 
@@ -80,8 +84,22 @@ public class Breathe extends Fragment {
             public void onFinish() {
                 binding.video.stopPlayback();
             }
-        };
-    }
+        }.start();
+                // Dialog dialog = new Dialog(getContext());
+                // dialog.setContentView(R.layout.custom_dialog_congratz);
+                // dialog.setCanceledOnTouchOutside(true);
+                // Button btnOk = dialog.findViewById(R.id.btnOk);
+                // btnOk.setOnClickListener(new View.OnClickListener() {
+                //     @Override
+                //     public void onClick(View view) {
+                //         navController.navigateUp();
+                //         dialog.dismiss();
+                //     }
+                // });
+                // dialog.show();
+                // Window window = dialog.getWindow();
+                // window.setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.WRAP_CONTENT);
+    };
 
     private void updateTime(long time) {
             int min = (int) time / 60000;
@@ -95,7 +113,14 @@ public class Breathe extends Fragment {
             }
             text += sec;
             binding.tvTime.setText(text);
-        };
+            if (time ==59000)
+                Toast.makeText( getActivity(),"Be still and bring your attention to your breath.", Toast.LENGTH_SHORT ).show();
+            if (time==56000)
+                Toast.makeText( getActivity(),"Now inhale...", Toast.LENGTH_SHORT ).show();
+            if (time==55000)
+                Toast.makeText( getActivity(),"and exhale.", Toast.LENGTH_SHORT ).show();
+
+    };
 
     @Override
     public void onStart() {
