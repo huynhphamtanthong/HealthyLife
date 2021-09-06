@@ -45,14 +45,13 @@ public class Breathe extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         updateTime(60000);
-        binding.video.setVideoURI(Uri.parse("android.resource://" + getActivity().getPackageName() + "/R.raw.breath"));
-        android.widget.MediaController ctrl = new MediaController(getContext());
+        binding.video.setVideoURI(Uri.parse("android.resource://" + getActivity().getPackageName() + "/" + R.raw.breath));
+        MediaController ctrl = new MediaController(getContext());
         ctrl.setVisibility(View.GONE);
         binding.video.setMediaController(ctrl);
         binding.video.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
             @Override
             public void onPrepared(MediaPlayer mediaPlayer) {
-                mediaPlayer.start();
                 mediaPlayer.setLooping(true);
             }
         });
@@ -66,7 +65,6 @@ public class Breathe extends Fragment {
                     binding.btn.setText("Cancel");
                 } else {
                     timer.cancel();
-                    updateTime(60000);
                     binding.video.stopPlayback();
                     isRunning = false;
                     binding.btn.setText("Start");
@@ -84,23 +82,24 @@ public class Breathe extends Fragment {
 
             @Override
             public void onFinish() {
-                Dialog dialog = new Dialog(getContext());
-                dialog.setContentView(R.layout.custom_dialog_congratz);
-                dialog.setCanceledOnTouchOutside(true);
-                Button btnOk = dialog.findViewById(R.id.btnOk);
-                btnOk.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        navController.navigateUp();
-                        dialog.dismiss();
-                    }
-                });
-                dialog.show();
-                Window window = dialog.getWindow();
-                window.setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.WRAP_CONTENT);
-            };
+                binding.video.stopPlayback();
+            }
         }.start();
-    }
+                // Dialog dialog = new Dialog(getContext());
+                // dialog.setContentView(R.layout.custom_dialog_congratz);
+                // dialog.setCanceledOnTouchOutside(true);
+                // Button btnOk = dialog.findViewById(R.id.btnOk);
+                // btnOk.setOnClickListener(new View.OnClickListener() {
+                //     @Override
+                //     public void onClick(View view) {
+                //         navController.navigateUp();
+                //         dialog.dismiss();
+                //     }
+                // });
+                // dialog.show();
+                // Window window = dialog.getWindow();
+                // window.setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.WRAP_CONTENT);
+    };
 
     private void updateTime(long time) {
         int min = (int) time / 60000;
