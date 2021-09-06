@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".fragments.mainfragments.StandUpNoti"
+    tools:context=".DrinkWaterNoti"
     android:background="@drawable/gradient_background">
 
     <TextView
@@ -13,9 +13,9 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="25dp"
         android:fontFamily="@font/custom_font"
-        android:text="Stand Reminder"
+        android:text="Drink Water Reminder"
+        android:textSize="35sp"
         android:textColor="@color/white"
-        android:textSize="40sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"
@@ -39,10 +39,10 @@
 
     <pl.droidsonroids.gif.GifImageView
         android:id="@+id/gifImageView"
-        android:layout_width="338dp"
-        android:layout_height="327dp"
+        android:layout_width="335dp"
+        android:layout_height="365dp"
         android:layout_centerInParent="true"
-        android:src="@drawable/counchpotato_2"
+        android:src="@drawable/waterdrink"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.493"
         app:layout_constraintStart_toStartOf="parent"
@@ -53,12 +53,11 @@
         android:id="@+id/textView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Don't be a couch potato"
-        android:textColor="@color/white"
-
+        android:text="Staying Hydrated is Important"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/gifImageView"
+        android:textColor="@color/white"
         android:fontFamily="@font/custom_font"
         android:textSize="17sp"
         />
@@ -68,9 +67,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:text="Stand up and move for one minute!"
+        android:text="75% of our body is water! So let's drink"
         android:textColor="@color/white"
-
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView4"
