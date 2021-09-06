@@ -69,6 +69,9 @@ public class LaunchFragment extends Fragment {
                 }
 
                 if (!lastLogin.equals(now)) {
+                    User user = new Gson().fromJson(data, User.class);
+                    user.setCaloFitness(0);
+                    sharedPreferences.edit().putString("user", new Gson().toJson(user)).apply();
                     for (Exercise ex: list) {
                         ex.setFinished(false);
                         Log.d("UNTICK", ex.getName()+ " "+ex.isFinished());
@@ -85,9 +88,7 @@ public class LaunchFragment extends Fragment {
                 if (data == null) {
                     navController.navigate(R.id.action_launchFragment_to_firstUseFragment);
                 }else{
-                    User user = new Gson().fromJson(data, User.class);
-                    user.setCaloFitness(0);
-                    sharedPreferences.edit().putString("user", new Gson().toJson(user)).apply();
+
                     navController.navigate(R.id.action_launchFragment_to_mainFragment);
                 }
 

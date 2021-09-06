@@ -97,12 +97,25 @@ public class TimerFragment extends Fragment{
             public void onClick(View view) {
                 if (!isRunning) {
                     countDown(listTimer);
+                    binding.video.setVisibility(View.VISIBLE);
                     binding.video.start();
                     isRunning = true;
                     binding.btn.setText("Cancel");
                 }else  {
                     timer.cancel();
+                    updateTime(listTimer.get(i).getTime());
                     binding.video.stopPlayback();
+                    binding.video.setVideoURI(Uri.parse("android.resource://" + getContext().getPackageName() + "/" + listTimer.get(i).getVideo()));
+                    MediaController ctrl = new MediaController(getContext());
+                    ctrl.setVisibility(View.GONE);
+                    binding.video.setMediaController(ctrl);
+                    binding.video.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
+                        @Override
+                        public void onPrepared(MediaPlayer mediaPlayer) {
+                            mediaPlayer.setLooping(true);
+                        }
+                    });
+                    binding.video.setVisibility(view.GONE);
                     isRunning = false;
                     binding.btn.setText("Start");
                 }
