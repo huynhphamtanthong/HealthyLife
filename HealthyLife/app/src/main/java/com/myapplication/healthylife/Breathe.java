@@ -1,5 +1,6 @@
 package com.myapplication.healthylife;
 
+import android.app.Dialog;
 import android.content.SharedPreferences;
 import android.media.MediaPlayer;
 import android.net.Uri;
@@ -8,7 +9,11 @@ import android.os.CountDownTimer;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
+import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.MediaController;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -21,7 +26,6 @@ import com.myapplication.healthylife.local.AppPrefs;
 
 
 public class Breathe extends Fragment {
-
     FragmentBreatheBinding binding;
     NavController navController;
 
@@ -40,7 +44,7 @@ public class Breathe extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        updateTime(600000);
+        updateTime(60000);
         binding.video.setVideoURI(Uri.parse("android.resource://" + getActivity().getPackageName() + "/R.raw.breath"));
         android.widget.MediaController ctrl = new MediaController(getContext());
         ctrl.setVisibility(View.GONE);
@@ -48,7 +52,8 @@ public class Breathe extends Fragment {
         binding.video.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
             @Override
             public void onPrepared(MediaPlayer mediaPlayer) {
-             mediaPlayer.setLooping(true);
+                mediaPlayer.start();
+                mediaPlayer.setLooping(true);
             }
         });
         binding.btn.setOnClickListener(new View.OnClickListener() {
@@ -56,12 +61,12 @@ public class Breathe extends Fragment {
             public void onClick(View view) {
                 if (!isRunning) {
                     countDown(60000);
-                    //binding.video.start();
+                    binding.video.start();
                     isRunning = true;
                     binding.btn.setText("Cancel");
                 } else {
-                    countDown(60000);
-                    //timer.cancel();
+                    timer.cancel();
+                    updateTime(60000);
                     binding.video.stopPlayback();
                     isRunning = false;
                     binding.btn.setText("Start");
@@ -79,8 +84,22 @@ public class Breathe extends Fragment {
 
             @Override
             public void onFinish() {
-            }
-        };
+                Dialog dialog = new Dialog(getContext());
+                dialog.setContentView(R.layout.custom_dialog_congratz);
+                dialog.setCanceledOnTouchOutside(true);
+                Button btnOk = dialog.findViewById(R.id.btnOk);
+                btnOk.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        navController.navigateUp();
+                        dialog.dismiss();
+                    }
+                });
+                dialog.show();
+                Window window = dialog.getWindow();
+                window.setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.WRAP_CONTENT);
+            };
+        }.start();
     }
 
     private void updateTime(long time) {
@@ -95,7 +114,14 @@ public class Breathe extends Fragment {
             }
             text += sec;
             binding.tvTime.setText(text);
-        };
+            if (time ==59000)
+                Toast.makeText( getActivity(),"Be still and bring your attention to your breath.", Toast.LENGTH_SHORT ).show();
+            if (time==56000)
+                Toast.makeText( getActivity(),"Now inhale...", Toast.LENGTH_SHORT ).show();
+            if (time==55000)
+                Toast.makeText( getActivity(),"and exhale.", Toast.LENGTH_SHORT ).show();
+
+    };
 
     @Override
     public void onStart() {
