@@ -73,12 +73,13 @@ public class DietFragment extends Fragment {
             binding.LoveDishNotification.setText("No dishes found! " +
                     "Please pick a diet by clicking recommend button and doing further actions.");
         }
-        else{
+        else {
             int Check = AssignDishesToDiet(diets.get(index));
             if (Check == 0)
                 binding.LoveDishNotification.setText("Not enough dishes found! " +
                         "Please pick another diet by clicking recommend button and doing further actions.");
             else {
+
                 Calendar calendar = Calendar.getInstance();
                 int day = calendar.get(Calendar.DAY_OF_WEEK);
                 ArrayList<Dish> breakfast = new ArrayList<>();
@@ -110,13 +111,13 @@ public class DietFragment extends Fragment {
 
     private int AssignDishesToDiet(Diet diet) {
         for (Dish d : dishes) {
-            if((diet.isCarbAllowed() == d.isCarb() || diet.isCarbAllowed() == true) && d.isBreakfast() && (d.isVegan() == diet.isVegan() || !diet.isVegan()) && diet.getBreakfast().size()<7)   {
+            if((diet.isCarbAllowed() == d.isCarb() || diet.isCarbAllowed() == true) && d.isBreakfast() && (d.isVegan() == diet.isVegan() || !diet.isVegan()) && (diet.isFatAllowed() == d.isFat() || diet.isFatAllowed() == true) && diet.getBreakfast().size()<7)   {
                 diet.insertBreakfast(d);
             }
-            else if((diet.isCarbAllowed() == d.isCarb() || diet.isCarbAllowed() == true) && d.isLunch() && (d.isVegan() == diet.isVegan() || !diet.isVegan()) && diet.getLunch().size()<7)  {
+            else if((diet.isCarbAllowed() == d.isCarb() || diet.isCarbAllowed() == true) && d.isLunch() && (d.isVegan() == diet.isVegan() || !diet.isVegan()) && (diet.isFatAllowed() == d.isFat() || diet.isFatAllowed() == true) && diet.getLunch().size()<7)  {
                 diet.insertLunch(d);
             }
-            else if((diet.isCarbAllowed() == d.isCarb() || diet.isCarbAllowed() == true) && d.isDinner() && (d.isVegan() == diet.isVegan() || !diet.isVegan()) && diet.getDinner().size()<7) {
+            else if((diet.isCarbAllowed() == d.isCarb() || diet.isCarbAllowed() == true) && d.isDinner() && (d.isVegan() == diet.isVegan() || !diet.isVegan()) && (diet.isFatAllowed() == d.isFat() || diet.isFatAllowed() == true) && diet.getDinner().size()<7) {
                 diet.insertDinner(d);
             }
             if(diet.getBreakfast().size()==7 && diet.getLunch().size()==7 && diet.getDinner().size()==7)

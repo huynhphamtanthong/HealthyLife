@@ -23,16 +23,19 @@ import com.myapplication.healthylife.model.Diet;
 import com.myapplication.healthylife.recycleviewadapters.DietRecViewAdapter;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 
 public class DietDetailFragment extends Fragment{
     private FragmentDietDetailBinding binding;
     private NavController navController;
     private Diet diet;
+    private DatabaseHelper db;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         diet = (Diet) getArguments().getSerializable("DietData");
+        db = new DatabaseHelper(getContext());
     }
 
     @Nullable
@@ -59,7 +62,9 @@ public class DietDetailFragment extends Fragment{
         binding.LoveList.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                ArrayList<Diet> dbs =new ArrayList<>();
                 diet.setAssigned(true);
+                db.editAssignedDiet(diet);
                 Bundle bundle = new Bundle();
                 bundle.putSerializable("PickDietData", (Serializable) diet);
                 navController.navigate(R.id.action_DietDetail_to_mainFragment, bundle);
