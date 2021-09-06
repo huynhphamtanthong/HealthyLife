@@ -1,5 +1,7 @@
 package com.myapplication.healthylife.fragments.mainfragments;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 
@@ -40,6 +42,7 @@ public class DietFragment extends Fragment {
     private DishRecSecViewAdapter dishRecViewAdapterBreakfast;
     private DishRecSecViewAdapter dishRecViewAdapterLunch;
     private DishRecSecViewAdapter dishRecViewAdapterDinner;
+    private Diet AssignedDiet = null;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -65,6 +68,7 @@ public class DietFragment extends Fragment {
         dishes=db.getDishList();
         for(Diet i : diets){
             if(i.isAssigned()){
+                AssignedDiet = i;
                 break;
             }
             index++;
@@ -166,6 +170,47 @@ public class DietFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 navController.navigate(R.id.action_mainFragment_to_drinkWater);
+            }
+        });
+
+        binding.ResetDietButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (AssignedDiet != null) {
+                    AlertDialog.Builder builder1 = new AlertDialog.Builder(getContext());
+                    builder1.setMessage("Your current dietary recommendation will disappear. Do you want to continue?");
+                    builder1.setCancelable(true);
+
+                    builder1.setPositiveButton(
+                            "Yes",
+                            new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int id) {
+                                    AssignedDiet.setAssigned(false);
+                                    db.editAssignedDiet(AssignedDiet);
+                                    navController.navigate(R.id.action_mainFragment_to_mainFragment);
+                                }
+                            });
+
+                    builder1.setNegativeButton(
+                            "No",
+                            new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int id) {
+                                    dialog.cancel();
+                                }
+                            });
+
+                    AlertDialog alert11 = builder1.create();
+                    alert11.show();
+                }
+                else{
+                    AlertDialog.Builder builder2 = new AlertDialog.Builder(getContext());
+                    builder2.setMessage("No dishes found! " +
+                            "Please pick a diet by clicking recommend button and doing further actions.");
+                    builder2.setCancelable(true);
+
+                    AlertDialog alert12 = builder2.create();
+                    alert12.show();
+                }
             }
         });
     }
