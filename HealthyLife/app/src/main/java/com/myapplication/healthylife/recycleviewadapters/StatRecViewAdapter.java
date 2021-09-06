@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -65,6 +66,7 @@ public class StatRecViewAdapter extends RecyclerView.Adapter<StatRecViewAdapter.
         }
 
         public void bind(Stat stat)   {
+            Log.d("STAT", "Height: "+stat.getHeight()+", Weight: "+stat.getWeight());
             binding.tvHeight.setText(String.valueOf(stat.getHeight()));
             binding.tvWeight.setText(String.valueOf(stat.getWeight()));
             binding.tvBmi.setText(String.valueOf(stat.getBmi()));
