@@ -65,10 +65,10 @@ public class TimerFragment extends Fragment{
         db = new DatabaseHelper(getContext());
         binding = FragmentTimerBinding.inflate(getLayoutInflater());
         list = db.getRecommendedExerciseList();
- //       listTimer = convert(list);
-        listTimer = new ArrayList<>();
-        listTimer.add(new Timer("Test1", "Test1", 5000, list.get(0).getVideo()));
-        listTimer.add(new Timer("Test2", "Test2", 5000, list.get(1).getVideo()));
+        listTimer = convert(list);
+//        listTimer = new ArrayList<>();
+//        listTimer.add(new Timer("Test1", "Test1", 5000, list.get(0).getVideo()));
+//        listTimer.add(new Timer("Test2", "Test2", 5000, list.get(1).getVideo()));
 
         sharedPreferences = AppPrefs.getInstance(getContext());
         return binding.getRoot();

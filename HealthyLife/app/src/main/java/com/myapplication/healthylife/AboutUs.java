@@ -25,14 +25,12 @@ public class AboutUs extends Fragment {
         Element adsElement= new Element();
         View aboutPage = new AboutPage(getActivity())
                 .isRTL(false)
-                .setDescription("Healthy Life- the ware house for Fitness and Diet")
+                .setDescription("Healthy Life - Stay strong and fit!")
                 .addItem(new Element().setTitle("Version 1.0"))
                 .addGroup("CONNECT WITH US!")
-                .addEmail("chphat19@apcs.vn ")
+                .addEmail("chphat19@apcs.vn")
                 .addWebsite("https://www.facebook.com/groups/1012974159239556")
-                .addYoutube("UCbekhhidkzkGryM7mi5Ys_w")   //Enter your youtube link here (replace with my channel link)
-                .addPlayStore("com.example.yourprojectname")   //Replace all this with your package name
-                .addInstagram("jarves.usaram")    //Your instagram id
+                .addYoutube("UCbekhhidkzkGryM7mi5Ys_w")
                 .addItem(createCopyright())
                 .create();
         v=aboutPage;
