@@ -62,7 +62,7 @@ public class DishRecViewAdapter extends RecyclerView.Adapter<DishRecViewAdapter.
         public void bind(Dish dish){
             binding.dishName.setText(dish.getName());
             binding.RVDishContentDescription.setText(dish.getDescription());
-         //   binding.RVDishListImage.setImageResource(dish.getImage()); --bugged
+             binding.RVDishListImage.setImageResource(dish.getImage());
 
             binding.DishListRV.setOnClickListener(new View.OnClickListener() {
                 @Override
