@@ -59,9 +59,9 @@ public class DishDetailFragment extends Fragment implements TextureView.SurfaceT
         binding.DishDetailVideo.setSurfaceTextureListener(this);
 
         mediaPlayer = new MediaPlayer();
-       // assetFileDescriptor = getResources().openRawResourceFd(dish.getVideo());
+        assetFileDescriptor = getResources().openRawResourceFd(dish.getVideo());
 
-     //   binding.DishDetailImage.setImageResource(dish.getImage());
+        binding.DishDetailImage.setImageResource(dish.getImage());
         binding.DishDetailName.setText(dish.getName());
         binding.DishDetailDescriptionContent.setText(dish.getDescription());
         binding.DishDetailTutorialContent.setText(dish.getTutorial());
@@ -79,7 +79,6 @@ public class DishDetailFragment extends Fragment implements TextureView.SurfaceT
     @Override
     public void onSurfaceTextureAvailable(@NonNull SurfaceTexture surfaceTexture, int i, int i1) {
         Surface surface = new Surface(surfaceTexture);
-        /*
         try {
             mediaPlayer.setDataSource(assetFileDescriptor);
             mediaPlayer.setSurface(surface);
@@ -94,8 +93,6 @@ public class DishDetailFragment extends Fragment implements TextureView.SurfaceT
         } catch (IOException e) {
             e.printStackTrace();
         }
-
-         */
     }
 
     @Override
