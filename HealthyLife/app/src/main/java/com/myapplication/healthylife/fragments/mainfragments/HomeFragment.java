@@ -81,9 +81,8 @@ public class HomeFragment extends Fragment {
         });
 
         binding.CaloExercise.setText(String.valueOf(user.getCaloFitness()));
-        String data= sharedPreferences.getString("user", null);
-        User userObject = new Gson().fromJson (data, User.class);
-        binding.userName.setText (userObject.getName());
+
+        binding.tvHello.setText("Hello, "+user.getName());
 
         if (challengeCompleted())   {
             Dialog dialog = new Dialog(getContext());

@@ -59,18 +59,20 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tvDone" />
 
+
     <Button
         android:id="@+id/btnOk"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="48dp"
         android:padding="10dp"
         android:text="OK"
         android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvDone2" />
-
+        app:layout_constraintTop_toBottomOf="@+id/tvDone2"
+        android:background="@drawable/custom_button"
+        android:fontFamily="@font/custom_font"/>
 
     <Button
         android:id="@+id/btnRestart"
@@ -83,5 +85,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.4"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnOk" />
+        app:layout_constraintTop_toBottomOf="@+id/btnOk"
+        android:background="@drawable/custom_button"
+        android:fontFamily="@font/custom_font"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

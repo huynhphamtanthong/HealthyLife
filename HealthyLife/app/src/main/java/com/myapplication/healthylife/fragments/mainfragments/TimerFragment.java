@@ -239,4 +239,12 @@ public class TimerFragment extends Fragment{
         super.onStart();
         navController = Navigation.findNavController(getActivity(), R.id.fragmentContainer);
     }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        Log.d("DESTROY", "onDestroy: timer");
+        timer.cancel();
+        binding.video.stopPlayback();
+    }
 }

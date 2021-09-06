@@ -111,7 +111,7 @@
     <fragment
         android:id="@+id/standUpNoti"
         android:name="com.myapplication.healthylife.fragments.mainfragments.StandUpNoti"
-        android:label="Stand-up Noti"
+        android:label="Stand-up Notification"
         tools:layout="@layout/fragment_stand_up_noti">
         <action
             android:id="@+id/action_standUpNoti_to_mainFragment"
