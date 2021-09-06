@@ -15,7 +15,7 @@
         android:layout_marginTop="87dp"
         android:fontFamily="@font/custom_font"
         android:text="60:00"
-        android:textColor="#00ffff"
+        android:textColor="#2DC0E5"
         android:textSize="60sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
@@ -26,7 +26,7 @@
         android:id="@+id/btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="28dp"
         android:fontFamily="@font/custom_font"
         android:text="Start"
         android:textSize="25sp"
@@ -37,8 +37,8 @@
 
     <VideoView
         android:id="@+id/video"
-        android:layout_width="407dp"
-        android:layout_height="363dp"
+        android:layout_width="405dp"
+        android:layout_height="418dp"
         android:layout_marginBottom="48dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

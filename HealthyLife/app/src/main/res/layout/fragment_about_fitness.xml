@@ -77,7 +77,7 @@
                 android:id="@+id/image2"
                 android:layout_width="130dp"
                 android:layout_height="125dp"
-                android:src="@mipmap/ic_launcher"
+                android:src="@drawable/execiselist_demo"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintHeight_percent="1"
                 app:layout_constraintStart_toStartOf="parent"
@@ -133,7 +133,7 @@
                 android:id="@+id/image3"
                 android:layout_width="130dp"
                 android:layout_height="125dp"
-                android:src="@mipmap/ic_launcher"
+                android:src="@drawable/breathe_demo"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintHeight_percent="1"
                 app:layout_constraintStart_toStartOf="parent"
@@ -190,7 +190,7 @@
                 android:id="@+id/image4"
                 android:layout_width="130dp"
                 android:layout_height="125dp"
-                android:src="@mipmap/ic_launcher"
+                android:src="@drawable/standup_demo"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintHeight_percent="1"
                 app:layout_constraintStart_toStartOf="parent"
@@ -241,17 +241,20 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:id="@+id/feature5">
+
             <ImageView
                 android:id="@+id/image5"
                 android:layout_width="130dp"
                 android:layout_height="125dp"
-                android:src="@mipmap/ic_launcher"
+                android:adjustViewBounds="false"
+                android:cropToPadding="false"
+                android:scaleType="fitXY"
+                android:src="@drawable/statbmi_demo"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintHeight_percent="1"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintWidth_percent="0.3"
-                android:scaleType="fitXY" />
+                app:layout_constraintWidth_percent="0.3" />
 
             <TextView
                 android:id="@+id/tvName5"

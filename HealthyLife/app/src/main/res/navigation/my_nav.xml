@@ -25,8 +25,8 @@
     <fragment
         android:id="@+id/firstUseFragment"
         android:name="com.myapplication.healthylife.fragments.firstusefragment.FirstUseFragment"
-        android:label="fragment_first_use"
-        tools:layout="@layout/fragment_first_use" >
+        android:label="Login"
+        tools:layout="@layout/fragment_first_use">
         <action
             android:id="@+id/action_firstUseFragment_to_mainFragment"
             app:destination="@id/mainFragment"
@@ -81,8 +81,8 @@
     <fragment
         android:id="@+id/exerciseDetailFragment"
         android:name="com.myapplication.healthylife.fragments.mainfragments.ExerciseDetailFragment"
-        android:label="Detail"
-        tools:layout="@layout/fragment_exercise_detail" >
+        android:label="Exercise Detail"
+        tools:layout="@layout/fragment_exercise_detail">
         <action
             android:id="@+id/action_exerciseDetailFragment_to_fitnessFragment"
             app:destination="@id/fitnessFragment" />
@@ -90,8 +90,8 @@
     <fragment
         android:id="@+id/fitnessFragment"
         android:name="com.myapplication.healthylife.fragments.mainfragments.FitnessFragment"
-        android:label="fragment_fitness"
-        tools:layout="@layout/fragment_fitness" >
+        android:label="Exercise List"
+        tools:layout="@layout/fragment_fitness">
         <action
             android:id="@+id/action_fitnessFragment_to_mainFragment"
             app:destination="@id/mainFragment" />
@@ -102,8 +102,8 @@
     <fragment
         android:id="@+id/timerFragment"
         android:name="com.myapplication.healthylife.fragments.mainfragments.TimerFragment"
-        android:label="fragment_timer"
-        tools:layout="@layout/fragment_timer" >
+        android:label="Exercise Timer"
+        tools:layout="@layout/fragment_timer">
         <action
             android:id="@+id/action_timerFragment_to_mainFragment"
             app:destination="@id/mainFragment" />
@@ -111,8 +111,8 @@
     <fragment
         android:id="@+id/standUpNoti"
         android:name="com.myapplication.healthylife.fragments.mainfragments.StandUpNoti"
-        android:label="fragment_stand_up_noti"
-        tools:layout="@layout/fragment_stand_up_noti" >
+        android:label="Stand-up Noti"
+        tools:layout="@layout/fragment_stand_up_noti">
         <action
             android:id="@+id/action_standUpNoti_to_mainFragment"
             app:destination="@id/mainFragment" />
@@ -121,7 +121,7 @@
         android:id="@+id/statFragment"
         android:name="com.myapplication.healthylife.fragments.mainfragments.StatFragment"
         android:label="Manage BMI"
-        tools:layout="@layout/fragment_stat" >
+        tools:layout="@layout/fragment_stat">
         <action
             android:id="@+id/action_statFragment_to_mainFragment"
             app:destination="@id/mainFragment" />
@@ -129,8 +129,8 @@
     <fragment
         android:id="@+id/aboutUs"
         android:name="com.myapplication.healthylife.AboutUs"
-        android:label="fragment_about_us"
-        tools:layout="@layout/fragment_about_us" >
+        android:label="About Us"
+        tools:layout="@layout/fragment_about_us">
         <action
             android:id="@+id/action_aboutUs_to_mainFragment"
             app:destination="@id/mainFragment" />
@@ -138,8 +138,8 @@
     <fragment
         android:id="@+id/aboutFitness"
         android:name="com.myapplication.healthylife.AboutFitness"
-        android:label="fragment_about_fitness"
-        tools:layout="@layout/fragment_about_fitness" >
+        android:label="About Fitness"
+        tools:layout="@layout/fragment_about_fitness">
         <action
             android:id="@+id/action_aboutFitness_to_mainFragment"
             app:destination="@id/mainFragment" />
@@ -147,8 +147,8 @@
     <fragment
         android:id="@+id/aboutDiet"
         android:name="com.myapplication.healthylife.AboutDiet"
-        android:label="fragment_about_diet"
-        tools:layout="@layout/fragment_about_diet" >
+        android:label="About Diet"
+        tools:layout="@layout/fragment_about_diet">
         <action
             android:id="@+id/action_aboutDiet_to_mainFragment"
             app:destination="@id/mainFragment" />
@@ -156,8 +156,8 @@
     <fragment
         android:id="@+id/commonKnowledge"
         android:name="com.myapplication.healthylife.CommonKnowledge"
-        android:label="fragment_common_knowledge"
-        tools:layout="@layout/fragment_common_knowledge" >
+        android:label="About BMI"
+        tools:layout="@layout/fragment_common_knowledge">
         <action
             android:id="@+id/action_commonKnowledge_to_mainFragment"
             app:destination="@id/mainFragment" />
@@ -198,8 +198,8 @@
     <fragment
         android:id="@+id/breathe"
         android:name="com.myapplication.healthylife.Breathe"
-        android:label="fragment_breathe"
-        tools:layout="@layout/fragment_breathe" >
+        android:label="Breathe"
+        tools:layout="@layout/fragment_breathe">
         <action
             android:id="@+id/action_breathe_to_mainFragment"
             app:destination="@id/mainFragment" />
