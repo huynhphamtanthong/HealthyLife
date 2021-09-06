@@ -15,6 +15,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.google.gson.Gson;
 import com.myapplication.healthylife.R;
 import com.myapplication.healthylife.databinding.FragmentDietDetailBinding;
 import com.myapplication.healthylife.databinding.FragmentLaunchBinding;
@@ -22,6 +23,7 @@ import com.myapplication.healthylife.databinding.FragmentLaunchBinding;
 import com.myapplication.healthylife.local.AppPrefs;
 import com.myapplication.healthylife.local.DatabaseHelper;
 import com.myapplication.healthylife.model.Diet;
+import com.myapplication.healthylife.model.User;
 import com.myapplication.healthylife.recycleviewadapters.DietRecViewAdapter;
 
 import java.io.Serializable;
@@ -34,6 +36,7 @@ public class DietDetailFragment extends Fragment{
     private DatabaseHelper db;
     private int number = 0;
     private ArrayList<Diet> diets;
+    private SharedPreferences sharedPreferences;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -75,9 +78,12 @@ public class DietDetailFragment extends Fragment{
                     }
                     number++;
                 }
+                String data = sharedPreferences.getString("user", null);
+                User user = new Gson().fromJson(data, User.class);
                 if(!alreadyExists) {
                     diet.setAssigned(true);
                     db.editAssignedDiet(diet);
+                    user.setCaloDiet(diet.getCalories());
                     Bundle bundle = new Bundle();
                     bundle.putSerializable("PickDietData", (Serializable) diet);
                     navController.navigate(R.id.action_DietDetail_to_mainFragment, bundle);
@@ -86,7 +92,6 @@ public class DietDetailFragment extends Fragment{
                     AlertDialog.Builder builder1 = new AlertDialog.Builder(getContext());
                     builder1.setMessage("Your current dietary recommendation will disappear. Do you want to continue?");
                     builder1.setCancelable(true);
-
                     builder1.setPositiveButton(
                             "Yes",
                             new DialogInterface.OnClickListener() {
@@ -95,6 +100,7 @@ public class DietDetailFragment extends Fragment{
                                     diets.get(number).setAssigned(false);
                                     db.editAssignedDiet(diet);
                                     db.editAssignedDiet(diets.get(number));
+                                    user.setCaloDiet(diet.getCalories());
                                     Bundle bundle = new Bundle();
                                     bundle.putSerializable("PickDietData", (Serializable) diet);
                                     navController.navigate(R.id.action_DietDetail_to_mainFragment, bundle);
