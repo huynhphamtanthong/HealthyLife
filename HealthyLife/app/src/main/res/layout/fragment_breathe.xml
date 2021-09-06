@@ -15,8 +15,8 @@
         android:layout_marginTop="87dp"
         android:fontFamily="@font/custom_font"
         android:text="60:00"
-        android:textColor="#2DC0E5"
-        android:textSize="60sp"
+        android:textColor="#00ffff"
+        android:textSize="70sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
@@ -33,7 +33,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tvTime" />
+        app:layout_constraintTop_toBottomOf="@id/tvTime"
+        android:background="@drawable/custom_button"
+        android:paddingStart="20dp"
+        android:paddingEnd="20dp"/>
 
     <VideoView
         android:id="@+id/video"

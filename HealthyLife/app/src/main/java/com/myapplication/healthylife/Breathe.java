@@ -129,11 +129,11 @@ public class Breathe extends Fragment {
         int min = (int) time / 60000;
         int sec = (int) time % 60000 / 1000;
         if (sec==59)
-            Toast.makeText(getActivity(),"Be still and bring your attention to your breath.", Toast.LENGTH_LONG ).show();
+            Toast.makeText(getContext(),"Be still and bring your attention to your breath.", Toast.LENGTH_LONG ).show();
         else if (sec==54)
-            Toast.makeText(getActivity(),"Now inhale...", Toast.LENGTH_SHORT ).show();
+            Toast.makeText(getContext(),"Now inhale...", Toast.LENGTH_SHORT ).show();
         else if (sec==52)
-            Toast.makeText(getActivity(),"and exhale.", Toast.LENGTH_SHORT ).show();
+            Toast.makeText(getContext(),"and exhale.", Toast.LENGTH_SHORT ).show();
         String text;
         text = "" + min;
         text += " : ";
@@ -150,5 +150,12 @@ public class Breathe extends Fragment {
     public void onStart() {
         super.onStart();
         navController = Navigation.findNavController(getActivity(), R.id.fragmentContainer);
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        timer.cancel();
+        binding.video.stopPlayback();
     }
 }

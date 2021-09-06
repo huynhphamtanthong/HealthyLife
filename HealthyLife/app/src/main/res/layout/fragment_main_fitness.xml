@@ -17,7 +17,8 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintWidth_percent="0.9"
         android:id="@+id/table"
-        android:background="@color/purple_500">
+        android:background="@drawable/custom_main_fitmess"
+        android:padding="10dp">
 
         <TextView
             android:layout_width="wrap_content"
@@ -166,7 +167,8 @@
         app:layout_constraintBottom_toTopOf="@id/btnExercise"
         app:layout_constraintWidth_percent="0.7"
         android:textSize="20sp"
-        android:padding="10dp"/>
+        android:padding="10dp"
+        android:background="@drawable/custom_button"/>
 
     <Button
         android:layout_width="0dp"
@@ -180,7 +182,8 @@
         app:layout_constraintBottom_toTopOf="@id/btnBreathe"
         app:layout_constraintWidth_percent="0.7"
         android:textSize="20sp"
-        android:padding="10dp"/>
+        android:padding="10dp"
+        android:background="@drawable/custom_button"/>
 
     <Button
         android:layout_width="0dp"
@@ -194,7 +197,8 @@
         app:layout_constraintBottom_toTopOf="@id/btnStandup"
         app:layout_constraintWidth_percent="0.7"
         android:textSize="20sp"
-        android:padding="10dp"/>
+        android:padding="10dp"
+        android:background="@drawable/custom_button"/>
 
     <Button
         android:layout_width="0dp"
@@ -208,7 +212,8 @@
         app:layout_constraintBottom_toTopOf="@id/btnStat"
         app:layout_constraintWidth_percent="0.7"
         android:textSize="20sp"
-        android:padding="10dp"/>
+        android:padding="10dp"
+        android:background="@drawable/custom_button"/>
 
     <Button
         android:layout_width="0dp"
@@ -222,6 +227,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintWidth_percent="0.7"
         android:textSize="20sp"
-        android:padding="10dp"/>
+        android:padding="10dp"
+        android:background="@drawable/custom_button"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
